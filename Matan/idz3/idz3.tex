@@ -24,15 +24,12 @@
 
 % \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 
-%%% PACKAGES
-\usepackage{booktabs} % for much better looking tables
-\usepackage{array} % for better arrays (eg matrices) in maths
-\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
-\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
-\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
-% These packages are all incorporated in the memoir class to one degree or another...
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{listings}
+\usepackage{subfig}
 
 %%% HEADERS & FOOTERS
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
@@ -56,7 +53,7 @@
 
 %%% The "real" document content comes below...
 
-\title{ИДЗ 2}
+\title{ИДЗ 3}
 \author{Держапольский Юрий Витальевич}
 \date{} % Activate to display a given date or no date (if empty),
          % otherwise the current date is printed 
@@ -80,52 +77,83 @@
 
 \item Найдите область сходимости $ \sum\limits_{n=1}^{\infty}\frac{(-1)^n}{(x+n)^n} $
 
-1
+Область определения ряда: $ x + n \neq 0 \implies x \neq -n \implies x \in \mathbb{R} \setminus \mathbb{Z}^{-}   $
+\[ \frac{1}{(x+n)^n} \stackrel{n\to\infty}{\sim} \frac{1}{n^n} \]
+Так как $ \frac{1}{n^n} \xrightarrow{n\to\infty} 0 $, значит это ряд Лейбница и он сходится.
 
-1
+\textbf{Ответ:} Обасть сходимости ряда: $ x \in \mathbb{R} \setminus \mathbb{Z}^{-} $
 
-1
-
-1
-
-1
-
-1
-
-1
-
-1
-
-Воспользуемся признаком д'Аламбера: $ D_{n} = \frac{a_{n+1}}{a_{n}}  $
-\[  D_{n} =  \frac{(3n+5)!}{10^{n+1} (n+1)^2} \frac{10^n n^2}{(3n+2)!} = \frac{(3n+5)(3n+4)(3n+3)n^2}{10(n^2 + 2n+1) } \stackrel{n\to\infty}{\sim} 
-\frac{27 n^5}{10 n^2 } \xrightarrow{n\to\infty} \infty \]
-Предел стремится к бесконечности, значит сумма расходится.
-
-\item Исследуйте на сходимость $ \sum\limits_{n=1}^{\infty}{n \left( \frac{3n-1}{4n+2} \right)^{2n} }$
+\item Найдите область сходимости $ \sum\limits_{n=1}^{\infty}\frac{4^n}{n^2}\sin^{2n}x $
 
 Воспользуемся признаком Коши.
-\[ C_{n} = \sqrt[n]{n \left( \frac{3n-1}{4n+2} \right)^{2n}} = \sqrt[n]{n}  \left( \frac{3n-1}{4n+2} \right)^2  \xrightarrow{n\to\infty} 1 * \left( \frac{3}{4}\right)^2 = \frac{9}{16} < 1 \]
-Значит сумма сходится.
+\[ C_{n} = \sqrt[n]{\frac{4^n}{n^2}\sin^{2n}x} = \frac{4}{(\sqrt[n]{n})^2} \sin^{2}x \xrightarrow{n\to\infty} 4 \sin^{2}x < 1 \implies \]
+\[ \implies -\frac{1}{2} < \sin x < \frac{1}{2} \implies x \in (-\frac{\pi}{6} + \pi k; \frac{\pi}{6} + \pi k), k \in \mathbb{Z} \]
+Проверим на концах отрезка: $(\sin^2 x = \frac{1}{4})$
 
-\item Исследуйте на сходимость $ \sum\limits_{n=1}^{\infty}{ \frac{1}{(2n+3)\ln^2{(2n+1)}} }$
+\[ \sum_{n=1}^{\infty}\frac{4^n}{n^2} \left( \frac{1}{4}\right)^n = \sum_{n=1}^{\infty}\frac{1}{n^2} \]
+Этот ряд сходится, значит нужно включить обе концевые точки.
 
-\[   \frac{1}{(2n+3)\ln^2{(2n+1)}} \stackrel{n\to\infty}{\sim}  \frac{1}{(2n)\ln^2{(2n)}} \]
+\textbf{Ответ:} Обасть сходимости ряда: $ x \in [\frac{\pi}{6} + \pi k; \frac{\pi}{6} + \pi k], k \in \mathbb{Z} $
 
-Воспользуемся известной суммой $  \sum\limits_{n=1}^{\infty}{ \frac{1}{x^\alpha\ln^\beta{x}} }  $. Т.к. в исследуемой сумме $\alpha = 1$, а $\beta > 1$, то она сходится, а значит и изначальная сумма сходится.
+\item Найдите область сходимости $ \sum\limits_{n=1}^{\infty}2^{3n}x^n \sin \frac{2x}{n} $
 
-\item  Исследуйте на сходимость $ \sum\limits_{n=1}^{\infty}{ (-1)^{n+1} \left( \frac{n}{2n+1} \right)^{n} }$
+Воспользуемся признаком Коши.
+\[ C_{n} = \sqrt[n]{ 2^{3n} |x|^n \left| \sin \frac{2x}{n} \right| } = 2^3 |x| \sqrt[n]{\left| \sin \frac{2x}{n} \right|} 
+\xrightarrow{n\to\infty} 8 |x| < 1 \implies -\frac{1}{8} < x < \frac{1}{8} \]
+Проверим на концах отрезка:
+\[ x = -\frac{1}{8}: \sum_{n=1}^{\infty} \left( 8^{n} \left( -\frac{1}{8} \right)^n \sin \left( -\frac{2}{8n} \right) \right) = \sum_{n=1}^{\infty} \left( (-1)^{n+1} \sin \frac{1}{4n} \right)  \]
+Так как $ \sin(\frac{1}{4n}) \xrightarrow{n\to\infty} 0 $, то это ряд Лейбница и он сходится.
+\[ x = \frac{1}{8}: \sum_{n=1}^{\infty} \left( 8^{n} \left( \frac{1}{8} \right)^n \sin \left( \frac{2}{8n} \right) \right) = \sum_{n=1}^{\infty} \sin \frac{1}{4n}  \]
+Воспользуемся признаком Коши.
+\[ C_n = \sqrt[n]{\sin \frac{1}{4n}} \xrightarrow{n\to\infty} 1 \nless 1 \]
+Значит, сумма расходится.
 
-Исследуем на абсолютную сходимость. Рассмотрим сумму $ \sum\limits_{n=1}^{\infty}{ \left( \frac{n}{2n+1} \right)^{n} }$
+\textbf{Ответ:} Обасть сходимости ряда: $ x \in [ -\frac{1}{8}; \frac{1}{8} ) $
 
-Используем признак Коши.
-\[ C_{n} = \sqrt[n]{\left( \frac{n}{2n+1} \right)^{n} } = \frac{n}{2n+1} \xrightarrow{n\to\infty} \frac{1}{2} < 1 \]
-Значит сумма сходится. Отсюда следует, что изначальная сумма сходится абсолютно.
+\item Найдите область сходимости $ \sum\limits_{n=1}^{\infty} n^{\sqrt{x}} \arcsin \frac{x}{3^{nx}} $
 
-\item Напишите программу и вычилите сумму ряда с точностью $\varepsilon$ : $ \sum\limits_{n=1}^{\infty}{ (-1)^{n} \frac{2}{n^2(n+3)}  }$
+Область определения ряда:
+$
+\begin{cases}
+    x \geq 0 \\
+    -1 \leq \frac{x}{3^{nx}} \leq 1
+\end{cases}
+$
 
-Поскольку это ряд Лейбница, то остаток суммы можно оценить его первым слагаемым:  
-\[ \bigg\vert \sum\limits_{k=n+1}^{\infty}{ (-1)^{k} a_{k} } \bigg\vert \le a_{n+1}  \]
-%\Rightarrow \bigg\vert \sum\limits_{k=n+1}^{\infty}{ (-1)^{k} \frac{2}{k^2(k+3)} } \bigg\vert \le \frac{2}{(n+1)^2(n+4)}
+Найдём значение на концах интервала для второго неравенства при $x \geq 0: $ $ \frac{x}{3^{nx}} |_{x=0} = 0 $ и $ \frac{x}{3^{nx}} \xrightarrow{x\to\infty} 0 $.
+Найдём экстремумы.
+\[ \left( \frac{x}{3^{nx}} \right)^{'} = \frac{3^{nx} - x 3^{nx} n \ln 3}{3^{2nx}} = \frac{1-xn \ln3}{3^{nx}} = 0 \implies x = \frac{1}{n \ln3} \]
+Найдём значение в экстремуме.
+\[ 0 < \frac{1}{n\ln3} \frac{1}{3^{\frac{1}{\ln3}}} < \frac{1}{n} \leq 1 \, \forall n  \]
+Получили, что $ \forall n; x \geq 0 \implies 0 \leq \frac{x}{3^{nx}} < \frac{1}{n}$. Значит второе неравенство области определения выполнено.
+
+Ислледуем общий член.
+\[ n^{\sqrt{x}} \arcsin \frac{x}{3^{nx}} \stackrel{n\to\infty}{\sim} n^{\sqrt{x}} \frac{x}{3^{nx}} \]
+Воспользуемся признаком Коши для ряда с данным общим членом.
+\[ C_n = \sqrt[n]{n^{\sqrt{x}} \frac{x}{3^{nx}}} =
+(\sqrt[n]{n})^{\sqrt{x}} \, \frac{x^{\frac{1}{n}}}{3^x} \xrightarrow{n\to\infty} \frac{1}{3^x} < 1 \implies x > 0 \]
+Проверим концевую точку $ x = 0 $
+\[ \sum_{n=1}^{\infty} n^{\sqrt{0}} \arcsin \frac{0}{3^{0n}} = \sum_{n=1}^{\infty} 0 = 0  \]
+Значит ряд сходится при $x \geq 0$
+
+\textbf{Ответ:} Обасть сходимости ряда: $ x \in [0; +\infty) $
+
+\item Найдите область сходимости $ \sum\limits_{n=1}^{\infty} 2n^2 \sqrt{x-2} \, e^{-\frac{n^2}{(x-1)^3}} $
+
+Область определения ряда: $
+\begin{cases}
+    x - 2 \geq 0 \\
+    x - 1 \neq 0
+\end{cases}
+\implies x \geq 2  $
+
+
+
+
+
+
+
+
 
 \end{enumerate}
 
