@@ -1,0 +1,138 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{subfig}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{margin=1.75cm}
+
+\title{ИДЗ 4}
+\author{Держапольский Юрий Витальевич}
+\date{}
+
+\begin{document}
+\begin{large}
+\maketitle
+
+\begin{enumerate}
+
+\item Докажите, исходя из определения, равномерную сходимость на отрезке 
+$[0;1]$. При каких $n$ абсолютная величина остатка ряда не превосходит 
+$\varepsilon$ для любого $x \in [0;1]$?
+$ \sum\limits_{1}^{\infty}(-1)^n \frac{x^n}{5n-6}$
+
+По определению
+$$ \sum\limits_{1}^{\infty}(-1)^n \frac{x^n}{5n-6} \stackrel{[0;1]}{\rightrightarrows} \Leftrightarrow 
+\forall \varepsilon > 0 \, \exists N: \forall n > N \implies \sup_{x\in[0;1]} \left|\sum_{k=n+1}^{\infty}(-1)^k \frac{x^k}{5k-6} \right| < \varepsilon $$
+
+Так как $ \frac{x^n}{5n-6} \downarrow_{n\to\infty}0 $ при $ x \in [0;1] $, то это ряд Лейбница, то его можно оценить $n+1$ членом. 
+
+$$ \sup_{x\in[0;1]} \left|\sum_{k=n+1}^{\infty}(-1)^k \frac{x^k}{5k-6} \right| \leq \sup_{x\in[0;1]} \left|\frac{x^{n+1}}{5n-1} \right| \leq \frac{1}{5n-1} < \varepsilon \implies n > \frac{1}{5\varepsilon} + \frac{1}{5} $$
+
+Значит, $ \forall \varepsilon > 0 \, \exists N = \left[ \frac{1}{5\varepsilon} + \frac{1}{5} \right] + 1$, что $\forall n > N$ остаток ряда не превосходит $\varepsilon$.
+
+\item Докажите равномерную сходимость на указанном отрезке. $ \sum\limits_{1}^{\infty} \frac{x^n}{n(n+2)}, [-1;1] $
+
+Воспользуемся признаком Коши.
+
+$$ C_n = \sqrt[n]{ \frac{x^n}{n(n+2)} } = \frac{x}{ \sqrt[n]{n} \sqrt[n]{n+2}} \xrightarrow{n\to\infty} x < 1 $$
+Проверим на концах отрезка. При $x = -1$: $ \sum\limits_{1}^{\infty} \frac{(-1)^n}{n(n+2)} $ - сходится как ряд Лейбница.
+
+При $x = 1$: $ \sum\limits_{1}^{\infty} \frac{1^n}{n(n+2)} = \sum\limits_{1}^{\infty} \frac{1}{n^2+2n} $ - сходится, т.к. степень знаменателя $> 1$.
+
+Значит, ряд равномерно сходится на отрезке $[-1;1]$.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{(x+2)^n \cos^2nx}{\sqrt{n^3 + x^4}}, x \in (-3;-1) $
+
+$$ \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n \cos^2nx}{\sqrt{n^3 + x^4}} \right| \leq \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n}{\sqrt{n^3 + x^4}} \right| \leq \frac{1}{\sqrt{n^3 + 1}} \xrightarrow{n\to\infty} 0 $$
+Значит, ряд сходится равномерно на данном интервале.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{x \sin(x+n)}{n^2x^2 + n + 1}, x > 0 $
+
+$$ \sup_{x>0} \left| \frac{x \sin(x+n)}{n^2x^2 + n + 1} \right| \leq \sup_{x>0} \left| \frac{x}{n^2x^2 + n} \right| $$
+
+$$ \frac{d}{dx} \left( \frac{x}{n^2x^2 + n} \right) = \frac{n^2x^2 + n - 2n^2x^2}{(n^2x^2 + n)^2} = 0 \implies x = \sqrt{\frac{1}{n}}$$
+Так как в $0$ и $\infty$ дробь $= 0$, то максимум в точке $x = \sqrt{\frac{1}{n}}$.
+$$ \sup_{x>0} \left| \frac{x}{n^2x^2 + n} \right| = \frac{\frac{1}{\sqrt{n}}}{n^2 \frac{1}{n} + n} = \frac{1}{2n\sqrt{n}} = \frac{1}{2 n^{\frac{3}{2}}}$$
+Рад с данным членом сходится, значит и исходный ряд сходится равномерно.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \ln^{2} \left( 1 + \frac{x}{1+n^2 x^2} \right), x > 0 $
+
+Поскольку $\ln^2 x$ возрастающая функция, то для нахождения супремума исходной функции найдем: $ \sup\limits_{x>0} \left| \frac{x}{1+n^2 x^2} \right| $. В $x = 0; x = +\infty$ функция $= 0$, значит найдём экстремум.
+
+$$ \frac{d}{dx} \left( \frac{x}{1+n^2 x^2} \right)  = \frac{1+n^2 x^2 - 2n^2 x^2}{(1+n^2 x^2)^2} = 0 \implies x = \frac{1}{n} $$
+
+$$ \sup\limits_{x>0} \left| \ln^{2} \left( 1 + \frac{x}{1+n^2 x^2} \right) \right| \leq \ln^2 \left( 1+ \frac{\frac{1}{n}}{1 + n^2 \frac{1}{n^2}} \right) = \ln^2 \left( 1 + \frac{1}{2n} \right) \stackrel{n\to\infty}{\sim} \left( \frac{1}{2n} \right)^2 = \frac{1}{4n^2} $$
+Ряд с данным членом сходится, значит изначальный ряд сходится равномерно.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{\cos nx \sin \frac{x}{n}}{1 + \sqrt{n}x^4}, x > 0 $
+
+$$ \sup_{x>0} \left| \frac{\cos nx \sin \frac{x}{n}}{1 + \sqrt{n}x^4} \right| \leq \sup_{x>0} \left| \frac{\frac{x}{n}}{1 + \sqrt{n}x^4} \right| = \sup_{x>0} \left| \frac{x}{n + n^{\frac{3}{2}}x^4} \right| $$
+
+$$ \frac{d}{dx} \left( \frac{x}{n + n^{\frac{3}{2}}x^4} \right) = \frac{n + n^{\frac{3}{2}}x^4 - 4n^{\frac{3}{2}}x^4}{(n + n^{\frac{3}{2}}x^4)^2} = 0 \implies x = \frac{1}{\sqrt[4]{3\sqrt{n}}} $$
+
+$$ \sup_{x>0} \left| \frac{x}{n + n^{\frac{3}{2}}x^4} \right| \leq \frac{\frac{1}{\sqrt[4]{3\sqrt{n}}}}{n + n^{\frac{3}{2}} 3\sqrt{n}} = \frac{1}{(\sqrt[4]{3\sqrt{n}})(n + 3n^2)}$$
+Ряд с данным членом сходится (т.к. степень знаменателя > 1), значит изначальный ряд сходится равномерно.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \sin \frac{1}{\sqrt{n}} \arctg \frac{2x}{x^2 + n^2}, x \in \mathbb{R} $
+
+$$ \sup_{x \in \mathbb{R}} \left| \sin \frac{1}{\sqrt{n}} \arctg \frac{2x}{x^2 + n^2} \right| = \sin \frac{1}{\sqrt{n}} \sup_{x \in \mathbb{R}} \left| \arctg \frac{2x}{x^2 + n^2} \right|  $$
+Так как в $x = 0$ и $x = \pm\infty$ дробь $= 0$, то найдём экстремум. 
+$$ \frac{d}{dx} \left( \arctg \frac{2x}{x^2+n^2} \right) = \frac{1}{1 + \left(\frac{2x}{x^2+n^2}\right)^2} \frac{2x^2 + 2n^2 - 4x^2}{(x^2+n^2)^2} = 0 \implies x = \pm\frac{1}{n} $$ 
+
+$$ \sin \frac{1}{\sqrt{n}} \sup_{x \in \mathbb{R}} \left| \arctg \frac{2x}{x^2 + n^2} \right| = \sin \frac{1}{\sqrt{n}} \left| \arctg \frac{\pm\frac{2}{n}}{\frac{1}{n^2} + n^2} \right| \stackrel{n\to\infty}{\sim} 
+\frac{1}{\sqrt{n}} \frac{2n}{1+n^4} \stackrel{n\to\infty}{\sim} \frac{2}{n^\frac{7}{2}} $$
+Ряд с данным членом сходится, значит и изначальный ряд сходится равномерно.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \sin^2 \frac{1}{1+nx}, x > 0 $
+
+$$ \sup_{x>0} \left| \sin^2 \frac{1}{1+nx} \right| = \sin^2 1 $$
+Проверим отрицание критерия Коши.
+$$ \sup_{x>0} \left| \sum_{k=n+1}^{n+1} \sin^2 \frac{1}{1+kx} \right| = \sup_{x>0} \left( \sin^2 \frac{1}{1+(n+1)x} \right) = \sin^2 1 $$
+Не стремится к нулю, значит исходный ряд сходится неравномерно. 
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} e^{-n^2x^2} \sin nx, x\in(0;1) $
+
+$$ \sup_{x \in (0;1)} \left| \sum_{k=n+1}^{n+1} e^{-k^2x^2} \sin kx \right|
+= \sup_{x \in (0;1)} \left| e^{-(n+1)^2x^2} \sin (n+1)x \right| \geq $$
+$$\geq \lim_{x\to\frac{1}{n+1}} \left( e^{-(n+1)^2x^2} \sin (n+1)x \right) = e^{-1} \sin 1 $$
+
+Не стремится к $0$, значит сходится неравномерно на $x \in (0;1)$.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{\ctg \frac{\pi x}{n}}{2^n}, x \in (0;1) $
+
+По признаку Даламбера.
+$$ D_n =  \frac{\ctg \frac{\pi x}{n+1}}{2^{n+1}} \frac{2^n}{\ctg \frac{\pi x}{n}} \xrightarrow{n\to\infty} \frac{1}{2} < 1 $$
+Значит, ряд сходится равномерно на области определения ($x \neq \pi k, k \in \mathbb{Z}$), а значит, и при $x \in (0;1)$.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \left( 1 + \frac{x}{n} \right)^n \frac{(-1)^n}{\sqrt[5]{n + x^2}}, x\in (0;2)  $
+
+Т.к. $\frac{1}{\sqrt[5]{n + x^2}} \downarrow_{n\to\infty}0$, то $ \sum\limits_{n=1}^{\infty} \frac{(-1)^n}{\sqrt[5]{n + x^2}} $ сходится как ряд Лейбница.
+
+И т.к. $ \sup\limits_{x\in(0;2)} \left( \left( 1 + \frac{x}{n} \right)^n \right) \leq e^2 $
+
+То по признаку Абеля исходный ряд сходится равномерно при $x \in (0;2)$.
+
+\item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{x^3 \sin^2 nx}{2 + n^3x^6}, x > 0 $
+
+$$ \sup_{x>0} \left| \frac{x^3 \sin^2 nx}{2 + n^3x^6} \right| \leq \sup_{x>0} \left| \frac{x^3}{2 + n^3x^6} \right| $$
+
+В $0$ и $\infty$ дробь $= 0$, найдём экстремум.
+$$ \frac{d}{dx} \left( \frac{x^3}{2 + n^3x^6} \right) = \frac{6x^2 + 3n^3x^8-6n^3x^8}{(2 + n^3x^6)^2} = 0 \implies x^6 = \frac{2}{n^3} \implies x = \frac{2^\frac{1}{6}}{n^\frac{1}{2}} $$
+
+$$ \sup_{x>0} \frac{x^3}{2 + n^3x^6} = \frac{\frac{2^{1/2}}{n^{3/2}}}{2 + n^3 \frac{2}{n^3}} = \frac{\sqrt{2}}{4 n^\frac{3}{2}} $$
+
+Ряд с данным членом сходится, значит исходный ряд сходится равномерно при $x > 0$.
+
+
+\end{enumerate}
+\end{large}
+\end{document}
