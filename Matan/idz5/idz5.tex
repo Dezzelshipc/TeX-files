@@ -1,0 +1,115 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{subfig}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{margin=1.75cm}
+
+\title{ИДЗ 5}
+\author{Держапольский Юрий Витальевич}
+\date{}
+
+\begin{document}
+\begin{large}
+\maketitle
+
+\begin{enumerate}
+
+\item Найти сумму ряда $\sum\limits_{1}^{\infty} (-1)^{n-1} \left( 1 - \frac{1}{n} \right) \frac{1}{x^n}$
+$$\sum_{1}^{\infty} (-1)^{n-1} \left( 1 - \frac{1}{n} \right) \frac{1}{x^n} = \sum_{1}^{\infty} (-1)^{n-1} \frac{1}{x^n} - \sum_{1}^{\infty} (-1)^{n-1} \frac{1}{n} \frac{1}{x^n} = \frac{1}{x} \frac{1}{1+\frac{1}{x}} - \frac{1}{x}\ln \left(1+\frac{1}{x}\right) = $$
+$$ = \frac{1}{x+1} - \frac{1}{x}\ln \left(1+\frac{1}{x}\right) $$
+
+\item Найти сумму ряда $\sum\limits_{1}^{\infty} (n^2 + 2n - 1) x^{n+1} $
+
+$$ S = \sum\limits_{1}^{\infty} (n + 1 + \sqrt{2})(n+1-\sqrt{2}) x^{n+1} = x \sum\limits_{1}^{\infty} (n + 1)(n+1-\sqrt{2}) x^n + x\sqrt{2}\sum\limits_{1}^{\infty} (n+1-\sqrt{2}) x^n = $$
+$$ = x \sum\limits_{1}^{\infty} (n + 1)(n+2) x^n + x (-1 -\sqrt{2})\sum\limits_{1}^{\infty} (n + 1) x^n + x\sqrt{2}\sum\limits_{1}^{\infty} (n+1) x^n - 2 x\sum\limits_{1}^{\infty} x^n = $$
+$$ = xa(x) - x b(x) - \frac{2x^2}{1-x}$$
+
+$$ a_1(x) = \int_{0}^{x} a(t)dt = \int_{0}^{x} \sum\limits_{1}^{\infty} (n + 1)(n+2) t^n dt = \sum\limits_{1}^{\infty} \int_{0}^{x} (n + 1)(n+2) t^n dt = \sum\limits_{1}^{\infty} (n+2)x^{n+1} $$
+$$ \int_{0}^{x} a_1(t)dt  = \int_{0}^{x} \sum\limits_{1}^{\infty} (n+2)t^{n+1} dt = \sum\limits_{1}^{\infty} x^{n+2} = \frac{x^3}{1-x}$$
+$$ a_1(x) = \frac{d}{dx} \left( \frac{x^3}{1-x} \right) = \frac{3x^2(1-x) + x^3}{(1-x)^2} = \frac{3x^2-2x^3}{(1-x)^2} $$
+$$ a(x) = \frac{d}{dx} \left( \frac{3x^2-2x^3}{(1-x)^2} \right) = \frac{(6x-6x^2)(1-2x+x^2) - (3x^2 - 2x^3)(-2+2x)}{(1-x)^4} $$
+$$ = \frac{6x-12x^2+8x^3-2x^4}{(1-x)^4} = \frac{6x-6x^2+2x^3}{(1-x)^3} $$
+
+$$ \int_{0}^{x} b(t) dt = \int_{0}^{x} \sum\limits_{1}^{\infty} (n + 1) t^n dt = \sum\limits_{1}^{\infty} x^{n+1} = \frac{x^2}{1-x} $$
+$$ b(x) = \frac{d}{dx} \left( \frac{x^2}{1-x} \right) = \frac{2x(1-x) + x^2}{(1-x)^2} = \frac{2x-x^2}{(1-x)^2} $$
+
+$$ S = x^2\frac{6-6x+2x^2}{(1-x)^3} - x^2\frac{2-x}{(1-x)^2} - x^2\frac{2}{1-x} = $$
+$$ = x^2\frac{6-6x+x^2 - (2-3x+x^2) - (1-2x-x^2)}{(1-x)^3} = x^2\frac{3-x+x^2}{(1-x)^3}$$
+
+\item Разложить в ряд Тейлора в точке 0 $f(x) = \ln(1+x-12x^2)$
+
+$$ f^{'}(x) = \frac{1-24x}{1+x-12x^2} = \frac{1-24x}{-(3x+1)(4x-1)} = \frac{24x-1}{(3x-1)(4x+1)} = \frac{-3}{1-3x}+\frac{4}{1+4x}$$
+$$ \int_{0}^{x} \left( \frac{-3}{1-3t}+\frac{4}{1+4t} \right) dt = -3 \int_{0}^{x} \frac{dt}{1-3t} + 4 \int_{0}^{x} \frac{dt}{1+4t} = $$
+$$ = -3 \int_{0}^{x} \sum_{0}^{\infty} (3t)^n dt + 4 \int_{0}^{x} \sum_{0}^{\infty} (-4t)^n dt = \sum_{0}^{\infty} \frac{(3x)^{n+1}}{n+1} + \sum_{0}^{\infty} \frac{(-4x)^{n+1}}{n+1} $$
+$$ = -\sum_{0}^{\infty} \frac{(3x)^{n+1} + (-4x)^{n+1}}{n+1} $$
+
+\item Исследовать на равномерную сходимость параметризованное семейство: \\ $f(x,y) = \frac{1}{1+x^2+y^2}, \, X = (0;4), \, y \to 0 $
+
+$$ \lim_{y \to 0} \frac{1}{1+x^2+y^2} = \frac{1}{1 + x^2} $$
+$$ \sup_{x \in X} \left| \frac{1}{1+x^2+y^2} - \frac{1}{1 + x^2} \right| = \sup_{x \in X} \left| \frac{1+x^2 - 1 - x^2-y^2}{(1+x^2+y^2)(1+x^2)}  \right| = \sup_{x \in X} \frac{y^2}{(1+x^2+y^2)(1+x^2)} = $$
+$$ = \frac{y^2}{1+y^2} \xrightarrow{y \to 0} 0 $$
+Значит параметризованное семество сходится на множестве $X$ при $y \to 0$.
+
+\item Вычилсить с помощью дифференцирования по параметру собственный интеграл. 
+$$ f(a) = \int\limits_0^{\frac{\pi}{4}} \arctg \left( a \sqrt{1-\tg^2x} \right)dx $$
+$ \arctg \left( a \sqrt{1-\tg^2x} \right) $ непрерына как функция 2-х аргументов $\forall a; x\in [0;\frac{\pi}{4}]$.
+$$\frac{df}{da}(a) = \int\limits_0^{\frac{\pi}{4}} \frac{\partial}{\partial a} \arctg \left( a \sqrt{1-\tg^2x} \right)dx = \int\limits_0^{\frac{\pi}{4}} \frac{\sqrt{1-\tg^2x}}{1 + a^2(1-\tg^2x)}  dx = ??? $$
+
+\item Применяя интегрирование под знаком интеграла, вычилсить 
+$$ \int_0^1 \cos \left( \ln \frac{1}{x} \right) \frac{x^b - x^a}{\ln x} dx = \int_0^1 \cos \left( \ln \frac{1}{x} \right) \int_a^b x^t dt dx = \int_0^1 dx \int_a^b \cos \left( \ln \frac{1}{x} \right) x^t dt = $$
+$$ =  \int_a^b dt \int_0^1 \cos \left( -\ln x \right) x^t dx = \int_a^b dt \int_0^1 \cos \left( \ln x \right) x^t dx $$
+
+
+$$ I = \int_0^1 \cos \left( \ln \frac{1}{x} \right) x^t dx = \frac{x^{t+1}}{t+1} \cos (\ln x) \Big| _0^1 + \int_0^1 \sin \left( \ln x \right) \frac{x^{t+1}}{t+1} \frac{1}{x} dx = $$ 
+$$ = \frac{1}{t+1} \left(1+ \int_0^1 \sin \left( \ln x \right) x^t dx \right) = \frac{1}{t+1} \left(1+ \frac{x^{t+1}}{t+1} \sin (\ln x) \Big|_0^1 - \int_0^1 \cos \left( \ln x \right) \frac{x^{t+1}}{t+1} \frac{1}{x} dx \right) = $$
+$$ = \frac{1}{t+1} \left( 1 + 0 - \frac{1}{t+1} \int_0^1 \cos \left( \ln x \right) x^t dx \right) \implies I = \frac{1}{t+1} - \frac{1}{(t+1)^2}I \implies I = \frac{t+1}{1+(t+1)^2} $$
+$$ \int_a^b \frac{t+1}{1+(t+1)^2} dt = \frac{1}{2}\int_a^b \frac{d((t+1)^2)}{1+(t+1)^2} = \frac{1}{2} \ln \left| t^2+2t+2 \right| \Big|_a^b = \frac{1}{2} \ln \left| \frac{b^2+2b+2}{a^2+2a+2} \right| $$
+
+\item Найти область сходимости несобственного интеграла
+$$ \int_0^\infty x^3 e^{-px^2} dx = \frac{1}{2} \int_0^\infty y e^{-py}dy = \frac{1}{2} \int_0^\infty \frac{e^{-p/t}}{t^3}dt$$
+По признаку Дирихле:
+
+1) $ \left| e^{-p/t} \right| \leq 1$ т.к. это возрастающая функция и $e^{-p/t} \xrightarrow{t \to \infty} 1$ при $p > 0$ \\
+2,3) $ \frac{1}{t^3} \downarrow_{t\to\infty}0$\\
+Область сходимости $p > 0$.
+
+\item Найти область сходимости несобственного интеграла
+$$ \int_0^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx = ???$$
+
+\item Исследовать на абсолютную и условную сходимость при всех значениях параметра.
+$$ \int_1^\infty \frac{\cos x}{(2x - \cos \ln x)^a} dx $$
+$$ \left| \frac{\cos x}{(2x - \cos \ln x)^a} \right| \leq \frac{1}{(2x - \cos \ln x)^a} $$
+Сходится абсолютно при $a > 1$.
+$$ \left| \int_1^A \cos x dx \right| = | \sin A | \leq 1 $$
+$$ \frac{1}{(2x - \cos \ln x)^a} \xrightarrow[a>0]{x\to\infty} 0 $$
+При $a > 0$ сходится условно по признаку Дирихле, и при $a \leq 0$ расходится.
+
+\item Исследовать на равномерную сходимость интеграл на множестве $ E = (-\infty; b), b>0$
+$$ \int_0^\infty \frac{x}{1 + (x - a)^4} dx $$
+$$ \sup_{x\in (0;+\infty), a \in E} \left| \frac{x}{1 + (x - a)^4} \right| = \infty $$
+Расходится, значит интеграл сходится неравномерно.
+
+\item Исследовать на равномерную сходимость интеграл на множестве $ E = (0; 1)$
+$$ \int_0^\infty \sin (ae^x) dx = \Big| y = ae^x, x = \ln \frac{y}{a}, dx = \frac{a}{y} \frac{1}{a} dy = \frac{dy}{y} \Big| = \int_1^\infty \frac{\sin y}{y} dy $$
+Данный интеграл сходится по признаку Дирихле, значит изначальнй равномерно сходится на множестве $E$.
+
+\item Доказать равенство
+$$ \lim_{a \to +0} \int_0^\infty e^{-ax} \sin x dx = 1 $$
+$$ I = \int_0^\infty e^{-ax} \sin x dx = -\cos x e^{-ax} \Big|_0^\infty - \int_0^\infty -a e^{-ax} (-\cos x) dx = 1 - a\int_0^\infty e^{-ax} \cos x dx = $$
+$$ = 1 - a \left(\sin x e^{-ax} \Big|_0^\infty - \int_0^\infty -a e^{-ax} \sin x dx \right) = 1 - a^2 I \implies I = \frac{1}{a^2 + 1}  $$
+$$ \lim_{a \to +0} \frac{1}{a^2+1} = 1 $$
+
+
+\end{enumerate}
+\end{large}
+\end{document}

@@ -41,19 +41,14 @@ $$ \sup_{x\in[0;1]} \left|\sum_{k=n+1}^{\infty}(-1)^k \frac{x^k}{5k-6} \right| \
 
 \item Докажите равномерную сходимость на указанном отрезке. $ \sum\limits_{1}^{\infty} \frac{x^n}{n(n+2)}, [-1;1] $
 
-Воспользуемся признаком Коши.
+$$ \sup_{x\in[-1;1]} \left| \frac{x^n}{n(n+2)} \right| \leq \frac{1}{n(n+2)} $$
 
-$$ C_n = \sqrt[n]{ \frac{x^n}{n(n+2)} } = \frac{x}{ \sqrt[n]{n} \sqrt[n]{n+2}} \xrightarrow{n\to\infty} x < 1 $$
-Проверим на концах отрезка. При $x = -1$: $ \sum\limits_{1}^{\infty} \frac{(-1)^n}{n(n+2)} $ - сходится как ряд Лейбница.
-
-При $x = 1$: $ \sum\limits_{1}^{\infty} \frac{1^n}{n(n+2)} = \sum\limits_{1}^{\infty} \frac{1}{n^2+2n} $ - сходится, т.к. степень знаменателя $> 1$.
-
-Значит, ряд равномерно сходится на отрезке $[-1;1]$.
+Ряд с данным членом сходится, а значит исходный ряд равномерно сходится на отрезке $[-1;1]$.
 
 \item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{(x+2)^n \cos^2nx}{\sqrt{n^3 + x^4}}, x \in (-3;-1) $
 
-$$ \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n \cos^2nx}{\sqrt{n^3 + x^4}} \right| \leq \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n}{\sqrt{n^3 + x^4}} \right| \leq \frac{1}{\sqrt{n^3 + 1}} \xrightarrow{n\to\infty} 0 $$
-Значит, ряд сходится равномерно на данном интервале.
+$$ \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n \cos^2nx}{\sqrt{n^3 + x^4}} \right| \leq \sup_{x\in(-3;-1)} \left| \frac{(x+2)^n}{\sqrt{n^3 + x^4}} \right| \leq \frac{1}{\sqrt{n^3}} $$
+Ряд с данным членом сходится, значит изначальный ряд сходится равномерно на данном интервале.
 
 \item Исследуйте на равномерную сходимость $ \sum\limits_{n=1}^{\infty} \frac{x \sin(x+n)}{n^2x^2 + n + 1}, x > 0 $
 
