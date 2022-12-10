@@ -63,7 +63,15 @@ $$ = \frac{y^2}{1+y^2} \xrightarrow{y \to 0} 0 $$
 \item Вычилсить с помощью дифференцирования по параметру собственный интеграл. 
 $$ f(a) = \int\limits_0^{\frac{\pi}{4}} \arctg \left( a \sqrt{1-\tg^2x} \right)dx $$
 $ \arctg \left( a \sqrt{1-\tg^2x} \right) $ непрерына как функция 2-х аргументов $\forall a; x\in [0;\frac{\pi}{4}]$.
-$$\frac{df}{da}(a) = \int\limits_0^{\frac{\pi}{4}} \frac{\partial}{\partial a} \arctg \left( a \sqrt{1-\tg^2x} \right)dx = \int\limits_0^{\frac{\pi}{4}} \frac{\sqrt{1-\tg^2x}}{1 + a^2(1-\tg^2x)}  dx = ??? $$
+$$ f^{'}(a) = \int\limits_0^{\frac{\pi}{4}} \frac{\partial}{\partial a} \arctg \left( a \sqrt{1-\tg^2x} \right)dx = \int\limits_0^{\frac{\pi}{4}} \frac{\sqrt{1-\tg^2x}}{1 + a^2(1-\tg^2x)}  dx = $$
+$$ = \Big| x = \arctg \frac{y}{\sqrt{1+y^2}}, dx = \frac{dy}{(1+2y^2) \sqrt{1+y^2}} \Big| = \int_0^\infty \frac{\sqrt{\frac{1}{(1+y^2)}}}{1+a^2\frac{1}{1+y^2}} \frac{dy}{(1+2y^2) \sqrt{1+y^2}} = $$
+$$ = \int_0^\infty \frac{dy}{(1+a^2+y^2)(1+2y^2)} = \int_0^\infty \left( \frac{2}{(1+2a^2)(1+2y^2)} - \frac{1}{(1+2a^2)(1+a^2+y^2)} \right) dy = $$
+$$ = \frac{1}{1+2a^2} \left( \int_0^\infty \frac{2dy}{1+2y^2} - \int_0^\infty \frac{dy}{1+a^2+y^2} \right) = $$
+$$ = \frac{1}{1+2a^2} \left( \frac{2}{\sqrt{2}} \arctg(y\sqrt{2}) \Big|_0^\infty - \frac{1}{\sqrt{1+a^2}} \arctg \frac{y}{\sqrt{1+y^2}} \Big|_0^\infty \right) = $$ 
+$$ = \frac{1}{1+2a^2} \left( \sqrt{2} \frac{\pi}{2} - \frac{\pi}{2\sqrt{1+a^2}} \right) = \frac{\pi}{2+4a^2} \left( \sqrt{2} - \frac{1}{\sqrt{1+a^2}} \right) $$
+$$ f(a) = \int \frac{\pi}{2+4a^2} \left( \sqrt{2} - \frac{1}{\sqrt{1+a^2}} \right)da = \frac{\pi}{2} \left( \int \frac{\sqrt{2}da}{(1+2a^2)} - \int \frac{da}{(1+2a^2)\sqrt{1+a^2}} \right) = $$
+$$ = \frac{\pi}{2} \left( \arctg (\sqrt{2}a) - \arctg \frac{a}{\sqrt{1+a^2}} \right) + f(0) = \frac{\pi}{2} \left( \arctg (\sqrt{2}a) - \arctg \frac{a}{\sqrt{1+a^2}} \right) $$
+
 
 \item Применяя интегрирование под знаком интеграла, вычилсить 
 $$ \int_0^1 \cos \left( \ln \frac{1}{x} \right) \frac{x^b - x^a}{\ln x} dx = \int_0^1 \cos \left( \ln \frac{1}{x} \right) \int_a^b x^t dt dx = \int_0^1 dx \int_a^b \cos \left( \ln \frac{1}{x} \right) x^t dt = $$
@@ -84,7 +92,13 @@ $$ \int_0^\infty x^3 e^{-px^2} dx = \frac{1}{2} \int_0^\infty y e^{-py}dy = \fra
 Область сходимости $p > 0$.
 
 \item Найти область сходимости несобственного интеграла
-$$ \int_0^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx = ???$$
+$$ \int_0^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx = \int_0^{l} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx + \int_l^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a} \ctg x dx $$
+$$ \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} \stackrel{x\to0}{\sim} \frac{2\cos 2x (-\sin 2x) 2 + 8x e^{-4x^2}}{(a+1)x^a} = \frac{-2\sin 4x +8x e^{-4x^2}}{(a+1)x^a} \sim $$
+$$ \sim \frac{-8x + 8x e^{-4x^2}}{(a+1)x^a} = \frac{8x(e^{-4x^2} - 1)(-4x^2)}{(a+1)x^a(-4x^2)} \sim \frac{-16x^3}{(a+1)x^a} = \frac{-16}{(a+1)x^{a-3}} $$
+При $x\to0$ и $a \leq 3$ дробь $= const$. При $x\to0$ и $a > 3$ дробь $= \infty$. Значит первый интеграл сходится при $a \leq 3$.
+$$ \frac{\cos^2 2x - e^{-4x^2}}{x^a} \ctg x \xrightarrow{x\to \frac{\pi}{2}} 0 $$
+Значит второй интеграл сходится при любом $a$. \\
+Значит, область сходимости изначального интеграла $a \leq 3$.
 
 \item Исследовать на абсолютную и условную сходимость при всех значениях параметра.
 $$ \int_1^\infty \frac{\cos x}{(2x - \cos \ln x)^a} dx $$
