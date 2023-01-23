@@ -1,0 +1,111 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{subfig}
+
+\usepackage{geometry}
+\geometry{a4paper}
+\geometry{margin=1.75cm}
+
+\title{ИДЗ 6}
+\author{Держапольский Юрий Витальевич}
+\date{}
+
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\minf}{{-\infty}}
+\newcommand{\pinf}{{+\infty}}
+
+\begin{document}
+\begin{large}
+\maketitle
+
+\begin{enumerate}
+
+\item Исследуйте на непрерывность на указанном множестве.
+$$ f(y) = \int_1^\infty \frac{\cos x}{4 +x^y} dx \, E = (0; \infty)$$
+
+Рассмотрим функцию $ g(x,y) = \frac{\cos x}{4 +x^y} $ на $[1;\infty) \times (0; \infty)$. Т.к. $\cos x$ непрерына $\forall x$, а $4 + x^y$ непрерывна и $\neq 0\, \forall x, y$,
+то $g(x,y)$ непрерывна как функция двух переменных.
+Значит $f(y)$ непрерывна на множестве $E$.
+
+\item Вычислить
+$$ \int_0^\infty x^{2n+1} e^{-a^2x^2} dx = \Big| t = a^2x^2, x = \frac{t^{1/2}}{a}, dx = \frac{1}{2}\frac{dt}{t^{1/2}a} \Big| = $$
+$$ = \int_0^\infty \frac{t^{n+\frac{1}{2}}}{2a^{2n+1}t^{1/2}a} e^{-t} dt = \frac{1}{2a^{2n+2}} \int_0^\infty t^n e^{-t} dt = \frac{1}{2a^{2n+2}} \Gamma(n+1) = \frac{n!}{2a^{2n+2}} $$
+
+\item Вычислить. $(a > 0)$
+$$ f(a) = \int_0^\infty \frac{\sin ax}{x (1+x^2)} dx $$
+$$ \frac{df}{da}(a) = \int_0^\infty \frac{x\cos ax }{x(1+x^2)}dx = \int_0^\infty \frac{\cos ax }{1+x^2} dx = \frac{\pi}{2}e^{-a}$$
+$$ f(a) = \frac{\pi}{2} \int e^{-a} da = -\frac{\pi}{2} e^{-a} + C$$
+$$ f(0) = 0 = -\frac{\pi}{2} + C \implies C = \frac{\pi}{2} \implies f(a) = \frac{\pi}{2}(1-e^{-a})$$
+
+\item Вычислить
+$$ \int_{-\infty}^{+\infty} \cos (ax^2 + 2bx + c) dx = \int_\minf^\pinf \cos \left( a \left( x + \frac{b}{a} \right)^2 + \frac{ac - b^2}{a} \right) dx = $$
+$$ = \int_\minf^\pinf \left[ \cos \left( a \left( x + \frac{b}{a} \right)^2 \right) \cos \frac{ac-b^2}{a} - \sin \left( a \left( x + \frac{b}{a} \right)^2 \right) \sin \frac{ac-b^2}{a} \right] dx = $$
+$$ = \sqrt{\frac{\pi}{a}} \left( \cos \frac{ac-b^2}{a} - \sin \frac{ac-b^2}{a} \right) = \sqrt{\frac{2\pi}{a}} \sin \left( \frac{\pi}{4} - \frac{ac-b^2}{a} \right) $$
+
+\item Вычислить
+$$ f(a,b,c) = \int_0^\infty \frac{\sin ax}{x} \frac{\sin bx}{x} e^{-cx} dx $$
+$$ \frac{\partial f}{\partial a} = \int_0^\infty \frac{x\cos ax}{x} \frac{\sin bx}{x} e^{-cx} dx = \int_0^\infty \frac{\sin bx \cos ax}{x} e^{-cx} dx =$$
+$$= \frac{1}{2} \left( \int_0^\infty \frac{\sin x(b+a)}{x} e^{-cx} dx + \int_0^\infty \frac{\sin x(b-a)}{x} e^{-cx} dx \right) = I_d$$
+Рассмотрим интеграл:
+$$ g(a,b) = \int_0^\infty \frac{\sin ax}{x} e^{-bx} dx $$
+$$ \frac{\partial g}{\partial a} = \int_0^\infty \cos ax \, e^{-bx} dx = \frac{b}{a^2 + b^2} \implies g(a,b) = \arctg \frac{a}{b} + \phi(b) $$
+$$ g(0,b) = 0 = \phi(b) \implies g(a,b) = \arctg \frac{a}{b} $$
+
+$$ I_d = \frac{1}{2} \left( \arctg \frac{a+b}{c} + \arctg \frac{b-a}{c} \right) = \frac{1}{2} \left( \arctg \frac{a+b}{c} - \arctg \frac{a-b}{c} \right) $$
+$$ f(a,b,c) = \frac{1}{2} \int \left( \arctg \frac{a+b}{c} - \arctg \frac{a-b}{c} \right) da = \frac{a+b}{2c} \arctg \frac{a+b}{c} - $$
+$$ - \frac{1}{4} \ln \left(\left(\frac{a+b}{c}\right)^2 + 1 \right) - \frac{a-b}{2c} \arctg \frac{a-b}{c} + \frac{1}{4} \ln \left(\left(\frac{a-b}{c}\right)^2 + 1 \right) + \phi(b,c)$$
+$$ f(0,b,c) = 0 = \phi(b,c) \implies f(a,b,c) =$$
+$$ = \frac{a+b}{2c} \arctg \frac{a+b}{c} - \frac{1}{4} \ln \left(\left(\frac{a+b}{c}\right)^2 + 1 \right) - \frac{a-b}{2c} \arctg \frac{a-b}{c} + \frac{1}{4} \ln \left(\left(\frac{a-b}{c}\right)^2 + 1 \right) $$
+
+\item Вычислить
+$$ \int_0^\infty \frac{e^{-ax} \sin^3 bx}{x^2} dx = f(a,b) $$
+$$ \frac{\partial f}{\partial a} = \int_0^\infty \frac{-xe^{-ax} \sin^3 bx}{x^2} dx = \int_0^\infty \frac{-e^{-ax} \sin^3 bx}{x} dx $$
+$$ \frac{\partial^2 f}{\partial a^2} = \int_0^\infty \frac{xe^{-ax} \sin^3 bx}{x} dx = \int_0^\infty e^{-ax} \sin^3 bx dx = \frac{1}{4} \int_0^\infty\left( e^{-ax} \sin bx + e^{-ax} \sin 3bx  \right) dx = $$
+$$ = \frac{1}{4} \left( \frac{b}{a^2 + b^2} - \frac{3b}{a^2 + 9b^2} \right) $$
+$$ \frac{\partial f}{\partial a} = \frac{1}{4} \left( \arctg \frac{a}{b} + \arctg \frac{a}{3b} \right) + \phi(b) $$
+$$ \frac{\partial f}{\partial a}(0,b) = \int_0^\infty \frac{-\sin^3 bx}{x} dx = -\int_0^\infty \frac{3 \sin bx - \sin 3bx}{4x} dx = -\frac{3\pi}{4*2} \sgn(b) + \frac{\pi}{2}\sgn(3b) = $$
+$$ = -\frac{\pi}{4}\sgn(b) == 0 + \phi(b) $$
+$$ \frac{\partial f}{\partial a} = \frac{1}{4} \left( arctg \frac{a}{b} + \arctg \frac{a}{3b} - \pi\sgn(b) \right) $$
+$$ f(a,b) = \frac{1}{4} \left( a \arctg \frac{a}{b} - \frac{b}{2} \ln(a^2+b^2) + a \arctg \frac{a}{3b} - \frac{3b}{2} \ln(a^2+9b^2) - \pi a\sgn(b) \right) + \psi(b) $$
+$$ \lim_{b\to+0} f(a,b) = 0 = \frac{1}{4}\left( a\pi-a\pi \right) + \psi(b) \implies \psi(b) = 0 $$
+$$ \lim_{b\to-0} f(a,b) = 0 = \frac{1}{4}\left( -a\pi+a\pi \right) + \psi(b) \implies \psi(b) = 0 $$
+$$ f(a,b) = \frac{1}{4}\left( a\left( \arctg \frac{a}{b} + \arctg \frac{a}{3b} \right) - \frac{b}{2}\ln \left((a^2 + b^2)(a^2 + 9b^2)\right) - a\pi\sgn(b)\right)$$
+
+\item Вычислить
+$$ \int_0^1 \frac{\ln(1+a^2x^2)}{\sqrt{1-x^2}} dx = f(a) $$
+$$ f'(a) = \int_0^1 \frac{2ax^2}{(1+a^2x^2)\sqrt{1-x^2}} = \Big| x = \sin t, dx =\cos t dt \Big| = \int_0^1 \frac{2a\sin^2 t \cos t dt}{(1+a^2\sin^2 t)\cos t} = $$
+$$ = \int_0^1 \frac{2a \sin^2 t dt}{(1+a^2\sin^2 t)} = \Big| \tg t = y, t = \arctg y, dt = \frac{dy}{1+y^2} \Big| = \int_0^1 \frac{2a y^2 dy}{(1+\frac{a^2y^2}{1+y^2})(1+y^2)} = $$
+$$ = \int_0^1 \frac{2a y^2 dy}{(1+y^2(1+a^2))(1+y^2)} = \frac{2}{a} \int_0^1 \left( \frac{1}{1+y^2} - \frac{1}{1+y^2(1+a^2)} \right)dy $$
+$$ = \frac{2}{a} \left( \arctg y \Big|_0^\infty - \frac{1}{\sqrt{1+a^2}} \arctg \frac{y}{\sqrt{1+a^2}} \Big|_0^\infty \right) = \frac{\pi}{a} \left(1 - \frac{1}{\sqrt{1+a^2}} \right) $$
+$$ f(a) = \pi \left( \ln a - \int \frac{da}{a^2\sqrt{\frac{1}{a^2}+1}} \right) = \pi\ln a + \pi \int \frac{d\frac{1}{a}}{\sqrt{\frac{1}{a^2}+1}} $$
+$$ = \pi \ln a + \pi \ln \left( \frac{1}{a} + \sqrt{\frac{1}{a^2} + 1} \right) + C = \pi\ln\left(1 + \sqrt{1+a^2} \right) + C $$
+$$ f(0) = 0 = \pi\ln2 + C \implies C = -\pi\ln2 $$
+$$ f(a) = \pi\ln\left(1 + \sqrt{1+a^2} \right) - \pi\ln2$$
+
+\item Вычислить
+$$ \int_0^\infty \frac{\sin ax \sin bx}{x^2}dx = f(a,b) $$
+$$ \frac{\partial f}{\partial a} = \int_0^\infty \frac{\cos ax \sin bx}{x} dx = \frac{1}{2} \int_0^\infty \left( \frac{\sin (b-a)x}{x} + \frac{\sin (b+a)x}{x} \right)dx = $$
+$$ = \frac{\pi}{4} (\sgn(b-a) + sgn(b+a)) = \frac{\pi}{4} (\sgn(a+b) - sgn(a-b)) $$
+$$ f(a,b) = \frac{\pi}{4} (|a+b| - |a-b|) + \phi(b) $$
+$$ f(0,b) = 0 == \frac{\pi}{4} (|0+b| - |0-b|) + \phi(b) = \phi(b) $$
+$$ f(a,b) = \frac{\pi}{4} (|a+b| - |a-b|) $$
+
+\item Вычислить
+$$ \int_0^{\pi/2} \sin^6 x \cos^4 x dx = \Big| \tg^2 x = t, x = \arctg \sqrt{t}, dx = \frac{dt}{2t^\frac{1}{2}(1+t)} \Big| = $$
+$$ = \int_0^\infty \left(\frac{t}{1+t}\right)^6 \left(\frac{1}{1+t}\right)^4 \frac{dt}{2t^\frac{1}{2}(1+t)} = \int_0^\infty \frac{t^{6-\frac{1}{2}}dt}{2(1+t)^{11}} = \frac{1}{2} B\left(6+\frac{1}{2}, 4+\frac{1}{2}\right) = $$
+$$ = \frac{1}{2} B\left(\frac{13}{2}, \frac{9}{2}\right) = \frac{1}{2} \frac{\Gamma(\frac{13}{2})\Gamma(\frac{9}{2})}{\Gamma(11)} = \frac{\frac{11!!}{2^6} \, \frac{7!!}{2^4}}{2 * 10!} = \frac{11!! \, 7!!}{2^{11} 10!} $$
+
+\item Вычислить
+$$ \int_0^\infty \frac{dx}{\sqrt{1+x^3}} = \Big| x^3 = t, x = t^\frac{1}{3}, dx = \frac{1}{3} t^\frac{-2}{3} dt \Big| = \frac{1}{3} \int_0^\infty \frac{t^{-\frac{2}{3}}dt}{(1+t)^\frac{1}{2}} = \frac{1}{3} B\left(\frac{1}{3}, \frac{1}{6} \right)$$
+
+\end{enumerate}
+\end{large}
+\end{document}

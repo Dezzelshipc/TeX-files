@@ -32,7 +32,7 @@ $$ = \frac{1}{x+1} - \frac{1}{x}\ln \left(1+\frac{1}{x}\right) $$
 
 $$ S = \sum\limits_{1}^{\infty} (n + 1 + \sqrt{2})(n+1-\sqrt{2}) x^{n+1} = x \sum\limits_{1}^{\infty} (n + 1)(n+1-\sqrt{2}) x^n + x\sqrt{2}\sum\limits_{1}^{\infty} (n+1-\sqrt{2}) x^n = $$
 $$ = x \sum\limits_{1}^{\infty} (n + 1)(n+2) x^n + x (-1 -\sqrt{2})\sum\limits_{1}^{\infty} (n + 1) x^n + x\sqrt{2}\sum\limits_{1}^{\infty} (n+1) x^n - 2 x\sum\limits_{1}^{\infty} x^n = $$
-$$ = xa(x) - x b(x) - \frac{2x^2}{1-x}$$
+$$ = x \sum\limits_{1}^{\infty} (n + 1)(n+2) x^n - x\sum\limits_{1}^{\infty} (n + 1) x^n - 2 x\sum\limits_{1}^{\infty} x^n = xa(x) - x b(x) - \frac{2x^2}{1-x}$$
 
 $$ a_1(x) = \int_{0}^{x} a(t)dt = \int_{0}^{x} \sum\limits_{1}^{\infty} (n + 1)(n+2) t^n dt = \sum\limits_{1}^{\infty} \int_{0}^{x} (n + 1)(n+2) t^n dt = \sum\limits_{1}^{\infty} (n+2)x^{n+1} $$
 $$ \int_{0}^{x} a_1(t)dt  = \int_{0}^{x} \sum\limits_{1}^{\infty} (n+2)t^{n+1} dt = \sum\limits_{1}^{\infty} x^{n+2} = \frac{x^3}{1-x}$$
@@ -44,9 +44,9 @@ $$ \int_{0}^{x} b(t) dt = \int_{0}^{x} \sum\limits_{1}^{\infty} (n + 1) t^n dt =
 $$ b(x) = \frac{d}{dx} \left( \frac{x^2}{1-x} \right) = \frac{2x(1-x) + x^2}{(1-x)^2} = \frac{2x-x^2}{(1-x)^2} $$
 
 $$ S = x^2\frac{6-6x+2x^2}{(1-x)^3} - x^2\frac{2-x}{(1-x)^2} - x^2\frac{2}{1-x} = $$
-$$ = x^2\frac{6-6x+x^2 - (2-3x+x^2) - (1-2x-x^2)}{(1-x)^3} = x^2\frac{3-x+x^2}{(1-x)^3}$$
+$$ = x^2\frac{6-6x+x^2 - (2-3x+x^2) - 2(1-2x+x^2)}{(1-x)^3} = x^2\frac{2+x-x^2}{(1-x)^3} = \frac{x^2(2-x)(x+1)}{(1-x)^3} $$
 
-\item Разложить в ряд Тейлора в точке 0 $f(x) = \ln(1+x-12x^2)$
+\item Разложить в ряд Тейлора в точке 0: $f(x) = \ln(1+x-12x^2)$
 
 $$ f^{'}(x) = \frac{1-24x}{1+x-12x^2} = \frac{1-24x}{-(3x+1)(4x-1)} = \frac{24x-1}{(3x-1)(4x+1)} = \frac{-3}{1-3x}+\frac{4}{1+4x}$$
 $$ \int_{0}^{x} \left( \frac{-3}{1-3t}+\frac{4}{1+4t} \right) dt = -3 \int_{0}^{x} \frac{dt}{1-3t} + 4 \int_{0}^{x} \frac{dt}{1+4t} = $$
@@ -94,7 +94,7 @@ $$ \int_0^\infty x^3 e^{-px^2} dx = \frac{1}{2} \int_0^\infty y e^{-py}dy = \fra
 \item Найти область сходимости несобственного интеграла
 $$ \int_0^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx = \int_0^{l} \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} dx + \int_l^{\frac{\pi}{2}} \frac{\cos^2 2x - e^{-4x^2}}{x^a} \ctg x dx $$
 $$ \frac{\cos^2 2x - e^{-4x^2}}{x^a \tg x} \stackrel{x\to0}{\sim} \frac{2\cos 2x (-\sin 2x) 2 + 8x e^{-4x^2}}{(a+1)x^a} = \frac{-2\sin 4x +8x e^{-4x^2}}{(a+1)x^a} \sim $$
-$$ \sim \frac{-8x + 8x e^{-4x^2}}{(a+1)x^a} = \frac{8x(e^{-4x^2} - 1)(-4x^2)}{(a+1)x^a(-4x^2)} \sim \frac{-16x^3}{(a+1)x^a} = \frac{-16}{(a+1)x^{a-3}} $$
+$$ \sim \frac{-8x + 8x e^{-4x^2}}{(a+1)x^a} = \frac{8x(e^{-4x^2} - 1)(-4x^2)}{(a+1)x^a(-4x^2)} \sim \frac{-32x^3}{(a+1)x^a} = \frac{-32}{(a+1)x^{a-3}} $$
 При $x\to0$ и $a \leq 3$ дробь $= const$. При $x\to0$ и $a > 3$ дробь $= \infty$. Значит первый интеграл сходится при $a \leq 3$.
 $$ \frac{\cos^2 2x - e^{-4x^2}}{x^a} \ctg x \xrightarrow{x\to \frac{\pi}{2}} 0 $$
 Значит второй интеграл сходится при любом $a$. \\
@@ -110,7 +110,7 @@ $$ \frac{1}{(2x - \cos \ln x)^a} \xrightarrow[a>0]{x\to\infty} 0 $$
 
 \item Исследовать на равномерную сходимость интеграл на множестве $ E = (-\infty; b), b>0$
 $$ \int_0^\infty \frac{x}{1 + (x - a)^4} dx $$
-$$ \sup_{x\in (0;+\infty), a \in E} \left| \frac{x}{1 + (x - a)^4} \right| = \infty $$
+$$ \sup_{x\in (0;+\infty), a \in E} \left| \frac{x}{1 + (x - a)^4} \right| = \sup_{x\in (0;+\infty), a \in E} \left| \frac{x}{1} \right| = \infty $$
 Расходится, значит интеграл сходится неравномерно.
 
 \item Исследовать на равномерную сходимость интеграл на множестве $ E = (0; 1)$
