@@ -1,0 +1,271 @@
+\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
+
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+
+\title{Лабораторная работа №1 по дисциплине <<Дифференциальные уравненеия>>}
+\author{Держапольский Юрий Витальевич}
+% \date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \pagebreak
+
+    \section{Введение}
+        Веедение здесь
+
+    \pagebreak
+
+    \section{Задание 1: Вычислить неорпеделённый интеграл}
+        \subsection{Постановка задачи}
+            Найти следующий интеграл с подробным описанием всех действий:
+            \[ \int \sin{ \sqrt[3]{t+1} } ~ dt \]
+        
+        \subsection{Решение}
+        \[
+            \begin{split}
+                \int \sin{ \sqrt[3]{t+1} } ~ dt &= \circledast
+                \begin{vmatrix}
+                    \sqrt[3]{t+1} = x \\
+                    t = x^3 - 1 \\
+                    dt = 3x^2dx
+                \end{vmatrix}
+                \circledast = \int 3x^2\sin{x} ~ dx = \\
+                &= -3 \int x^2 ~ d(\cos{x}) = \\
+                &= -3 \left( 
+                    x^2\cos{x} - \int \cos{x} ~ d \left(x^2\right) 
+                \right) = \\
+                &= -3x^2\cos{x} + 6\left(\int x \cos{x} ~ dx\right) = \\
+                &= -3x^2\cos{x} + 6\left(\int x ~ d(\sin{x})\right) = \\
+                &= -3x^2\cos{x} + 6\left(x\sin{x} - \int \sin{x} ~ dx \right)=\\
+                &= -3x^2\cos{x} + 6x\sin{x} + 6\cos{x} + C =\\
+                &= 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}} + 
+                    3\left(2 - (t+1)^{\frac{2}{3}}\right) \cos{\sqrt[3]{t+1}}+C
+            \end{split}    
+        \]
+
+        \textit{Ответ:} 
+        \[
+            \displaystyle
+            \int \sin{ \sqrt[3]{t+1} } ~ dt
+            = 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}}
+            + 3\left( 2 - (t+1)^{\frac{2}{3}} \right) \cos{\sqrt[3]{t+1}} + C 
+        \]
+
+    \pagebreak
+
+    \section{Задание 2: Численно вычислить интеграл}
+        \subsection{Постановка задачи}
+            Четыремя методами численно вычислить следующий интеграл
+            с точностью \( \varepsilon = 10^{-4} \).
+            Реализацию решения проводить на языке <<Go>>:
+            
+            \[ \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \]
+
+        \subsection{Решение}
+            \textit{Точное значение:}
+            \( 
+                \displaystyle
+                \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx -0.643767
+            \)
+
+            \begin{enumerate}
+                \item Метод левых прямоугольников
+                    \[
+                        \int\limits_a^b f(x) ~ dx \approx
+                        \sum_{k=0}^{n-1} f\left( x_k \right) \cdot \Delta x,
+                        \quad x_k \in [a, b], ~ \Delta x = \frac{b-a}{n}    
+                    \]
+
+                    \textit{Найденное значение:}
+                    \[
+                        \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                    \]
+
+                    \textit{Код программы:}
+                    \begin{lstlisting}[
+                        language=Go,
+                        basicstyle=\footnotesize\ttfamily,
+                        frame=lines
+                    ]
+asdasdasd
+                    \end{lstlisting}
+
+
+                \item Метод правых прямоугольников
+                \[
+                    \int\limits_a^b f(x) ~ dx \approx
+                    \sum_{k=1}^{n} f\left( x_k \right) \cdot \Delta x,
+                    \quad x_k \in [a, b], ~ \Delta x = \frac{b-a}{n}    
+                \]
+
+                \textit{Найденное значение:}
+                \[
+                    \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                \]
+
+                \textit{Код программы:}
+                \begin{lstlisting}[
+                    language=Go,
+                    basicstyle=\footnotesize\ttfamily,
+                    frame=lines
+                ]
+asdasdasd
+                \end{lstlisting}
+                
+                \item Метод центральных прямоугольников
+                \[
+                    \int\limits_a^b f(x) ~ dx \approx
+                    \sum_{k=0}^{n-1} f\left( \frac{x_k + x_{k+1}}{2}\right)\cdot
+                    \Delta x,
+                    \quad x_k \in [a, b], ~ \Delta x = \frac{b-a}{n}    
+                \]
+
+                \textit{Найденное значение:}
+                \[
+                    \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                \]
+
+                \textit{Код программы:}
+                \begin{lstlisting}[
+                    language=Go,
+                    basicstyle=\footnotesize\ttfamily,
+                    frame=lines
+                ]
+asdasdasd
+                \end{lstlisting}
+                
+                \item Метод трапеций
+                \[
+                    \int\limits_a^b f(x) ~ dx \approx
+                    \sum_{k=0}^{n-1} 
+                    \frac{f\left( x_k \right) + f\left(x_{k+1}\right)}{2}
+                    \cdot \Delta x,
+                    \quad x_k \in [a, b], ~ \Delta x = \frac{b-a}{n}    
+                \]
+
+                \textit{Найденное значение:}
+                \[
+                    \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                \]
+
+                \textit{Код программы:}
+                \begin{lstlisting}[
+                    language=Go,
+                    basicstyle=\footnotesize\ttfamily,
+                    frame=lines
+                ]
+asdasdasd
+                \end{lstlisting}
+            \end{enumerate}
+
+    \pagebreak
+
+    \section{Задание 3: Решить уравнения}
+        \subsection{Постановка задачи}
+            Для следующих дифференциальных уравнений определить тип и найти
+            общее решение с помощью программ компьютерной математики:
+            \begin{enumerate}
+                \item 
+                \(
+                    \displaystyle
+                    r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6}    
+                \)
+
+                \item 
+                \(
+                    \displaystyle
+                    \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8
+                \)
+
+                \item 
+                \(
+                    \displaystyle
+                    \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}}
+                \)
+                
+                \item 
+                \(
+                    \displaystyle
+                    t\dot{u} - u^2=2u+1    
+                \)
+            \end{enumerate}
+
+        \subsection{Решение}
+            \begin{enumerate}
+                \item 
+                \(
+                    \displaystyle
+                    r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6}    
+                \)
+
+                \textit{Тип уравнения:}
+                Обычное дифференциальное уравнение 1 порядка
+
+                \textit{Общее решение:}
+                \(
+                    \displaystyle
+                    r(\theta) = \frac{3 (\theta - 2)}{11} \pm
+                    \frac{i \sqrt{C - 2 (\frac{5 \theta^2}{2} + 2 \theta) - 
+                    \frac{9}{11} (\theta - 2)^2}}{\sqrt{11}}
+                \)
+
+                \item 
+                \(
+                    \displaystyle
+                    \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8
+                \)
+
+                \textit{Тип уравнения:}
+                Обычное дифференциальное уравнение 1 порядка (?)
+
+                \textit{Общее решение:}
+                \(
+                    \displaystyle
+                \)
+
+                \item 
+                \(
+                    \displaystyle
+                    \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}}
+                \)
+
+                \textit{Тип уравнения:}
+                Обычное дифференциальное уравнение 1 порядка
+
+                \textit{Общее решение:}
+                \(
+                    \displaystyle
+                    y(t) = \pm \arcsin \left(\frac{1}{2} \left(
+                        \mp 2 W \left(e^{-\frac{t}{2} - 1} C \right) \pm t \pm 2
+                        \right)\right)
+                \)
+                
+                \item 
+                \(
+                    \displaystyle
+                    t\dot{u} - u^2=2u+1    
+                \)
+
+                \textit{Тип уравнения:} Уравнение с разделяющимися переменными.
+                \textit{Общее решение:}
+                \(
+                    \displaystyle
+                    u = -\frac{\ln(t) + 1 + C}{\ln(t) + C}
+                \)
+            \end{enumerate}
+
+    \pagebreak
+
+    \section{Заключение}
+    aslhdakjshdkjsadasdsd
+
+
+\end{document}
