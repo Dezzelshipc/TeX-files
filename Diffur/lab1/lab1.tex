@@ -5,6 +5,37 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+
+\lstset{  
+morekeywords=[1]{define, define-syntax, define-macro, lambda, define-stream, stream-lambda},
+morekeywords=[2]{begin, call-with-current-continuation, call/cc,
+  call-with-input-file, call-with-output-file, case, cond,
+  do, else, for-each, if,
+  let*, let, let-syntax, letrec, letrec-syntax,
+  let-values, let*-values,
+  and, or, not, delay, force,
+  quasiquote, quote, unquote, unquote-splicing,
+  map, fold, syntax, syntax-rules, eval, environment, query },
+morekeywords=[3]{import, export},
+deletekeywords={real},
+alsodigit=!\$\%&*+-./:<=>?@^_~,
+sensitive=true,
+morecomment=[l]{;},
+morecomment=[s]{\#|}{|\#},
+morestring=[b]",
+basicstyle=\small\ttfamily,
+keywordstyle=\bf\ttfamily\color[rgb]{0,.3,.7},
+commentstyle=\color[rgb]{0.133,0.545,0.133},
+stringstyle={\color[rgb]{0.75,0.49,0.07}},
+upquote=true,
+breaklines=true,
+breakatwhitespace=true,
+literate=*{`}{{`}}{1},
+showstringspaces=false,
+language=Go
+}
 
 \title{Лабораторная работа №1 по дисциплине <<Дифференциальные уравненеия>>}
 \author{Держапольский Юрий Витальевич}
@@ -19,7 +50,8 @@
     \pagebreak
 
     \section{Введение}
-        Веедение здесь
+        В этой лабораторной работе мы научимся раешать дифференциальные
+        уравниения и верстать их в Latex. %ном костюме.
 
     \pagebreak
 
@@ -35,7 +67,7 @@
                 \begin{vmatrix}
                     \sqrt[3]{t+1} = x \\
                     t = x^3 - 1 \\
-                    dt = 3x^2dx
+                    dt = 3x^2dx 
                 \end{vmatrix}
                 \circledast = \int 3x^2\sin{x} ~ dx = \\
                 &= -3 \int x^2 ~ d(\cos{x}) = \\
@@ -57,6 +89,7 @@
             \int \sin{ \sqrt[3]{t+1} } ~ dt
             = 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}}
             + 3\left( 2 - (t+1)^{\frac{2}{3}} \right) \cos{\sqrt[3]{t+1}} + C 
+            \frac{1}{2}
         \]
 
     \pagebreak
@@ -87,6 +120,11 @@
                     \textit{Найденное значение:}
                     \[
                         \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                        -0.64366700142377, n = 30291
+                    \]
+                    \[
+                        |-0.643767+0.64366700142377| = 9.999857622999819 
+                        \cdot 10^{-5} < \varepsilon
                     \]
 
                     \textit{Код программы:}
@@ -95,7 +133,38 @@
                         basicstyle=\footnotesize\ttfamily,
                         frame=lines
                     ]
-asdasdasd
+package main
+
+import "math"
+import "fmt"
+
+func f(x float64) float64 {
+    return ((math.Log(1-x))/(1+x*x))
+}
+
+func left_rect(n int, a float64, b float64) float64 {
+    s := 0.0
+    delta := (b-a)/ float64(n)
+    for i := 0; i < n; i++ {
+        s += f(a + delta * float64(i))
+    }
+    s *= delta
+    return s
+}
+
+func main() {
+    n := 0
+    eps := 1e-4
+    a := 0.0
+    b := 1.0
+    real := -0.643767
+    s:= 10000
+    for math.Abs(real - s) >= eps {
+        n++
+        s = left_rect(n,a,b)
+    }
+    fmt.Println(s, n, math.Abs(real-s))
+}
                     \end{lstlisting}
 
 
@@ -109,6 +178,11 @@ asdasdasd
                 \textit{Найденное значение:}
                 \[
                     \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                    -0.6438669977222573, n = 27507
+                \]
+                \[
+                    |-0.643767+0.6438669977222573| = 9.999772225732784 
+                    \cdot 10^{-5} < \varepsilon
                 \]
 
                 \textit{Код программы:}
@@ -117,7 +191,44 @@ asdasdasd
                     basicstyle=\footnotesize\ttfamily,
                     frame=lines
                 ]
-asdasdasd
+package main
+
+import "math"
+import "fmt"
+
+func f(x float64) float64 {
+    return ((math.Log(1-x))/(1+x*x))
+}
+
+func right_rect(n int, a float64, b float64) float64 {
+    s := 0.0
+    delta := (b-a)/ float64(n)
+    eps := 1e-5
+    for i := 1; i <= n; i++ {
+        if (i != n) {
+            s += f(a + delta * float64(i))
+        } else {
+            s += f(a + delta * float64(i) - eps)
+        }
+    }
+    s *= delta
+    return s
+}
+
+func main() {
+    n := 0
+    eps := 1e-4
+    a := 0.0
+    b := 1.0
+    real := -0.643767
+    s := 10000
+    n=0
+    for math.Abs(real - s) >= eps {
+        n++
+        s = right_rect(n,a,b)
+    }
+    fmt.Println(s, n, math.Abs(real-s))
+}
                 \end{lstlisting}
                 
                 \item Метод центральных прямоугольников
@@ -131,6 +242,11 @@ asdasdasd
                 \textit{Найденное значение:}
                 \[
                     \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                    -0.6436670101243651, n = 1726
+                \]
+                \[
+                    |-0.643767+0.6436670101243651| = 9.998987563486494 
+                    \cdot 10^{-5} < \varepsilon
                 \]
 
                 \textit{Код программы:}
@@ -139,7 +255,39 @@ asdasdasd
                     basicstyle=\footnotesize\ttfamily,
                     frame=lines
                 ]
-asdasdasd
+package main
+
+import "math"
+import "fmt"
+
+func f(x float64) float64 {
+    return ((math.Log(1-x))/(1+x*x))
+}
+
+func center_rect(n int, a float64, b float64) float64 {
+    s := 0.0
+    delta := (b-a)/ float64(n)
+    for i := 0; i < n; i++ {
+        s += f((2*a + delta * float64(2*i + 1))/2)
+    }
+    s *= delta
+    return s
+}
+
+func main() {
+    n := 0
+    eps := 1e-4
+    a := 0.0
+    b := 1.0
+    real := -0.643767
+    s := 10000
+    n=0
+    for math.Abs(real - s) >= eps {
+        n++
+        s = center_rect(n,a,b)
+    }
+    fmt.Println(s, n, math.Abs(real-s))
+}
                 \end{lstlisting}
                 
                 \item Метод трапеций
@@ -154,6 +302,11 @@ asdasdasd
                 \textit{Найденное значение:}
                 \[
                     \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                    -0.6438669676926193, n = 3676
+                \]
+                \[
+                    |-0.643767+0.6438669676926193| = 9.996769261932936
+                    \cdot 10^{-5} < \varepsilon
                 \]
 
                 \textit{Код программы:}
@@ -162,7 +315,46 @@ asdasdasd
                     basicstyle=\footnotesize\ttfamily,
                     frame=lines
                 ]
-asdasdasd
+package main
+
+import "math"
+import "fmt"
+
+func f(x float64) float64 {
+    return ((math.Log(1-x))/(1+x*x))
+}
+
+func trapezoid_rect(n int, a float64, b float64) float64 {
+    s := 0.0
+    delta := (b-a)/ float64(n)
+    eps := 1e-5
+    for i := 0; i < n; i++ {
+        if (i != n - 1) {
+            s += (f(a + delta * float64(i)) +
+                 f(a + delta * float64(i+1)))/2
+        } else {
+            s += (f(a + delta * float64(i)) +
+                 f(a + delta * float64(i+1) - eps))/2
+        }
+    }
+    s *= delta
+    return s
+}
+
+func main() {
+    n := 0
+    eps := 1e-4
+    a := 0.0
+    b := 1.0
+    real := -0.643767
+    s:= 10000
+    n=0
+    for math.Abs(real - s) >= eps {
+        n++
+        s = trapezoid_rect(n,a,b)
+    }
+    fmt.Println(s, n, math.Abs(real-s))
+}
                 \end{lstlisting}
             \end{enumerate}
 
@@ -207,14 +399,12 @@ asdasdasd
                 \)
 
                 \textit{Тип уравнения:}
-                Обычное дифференциальное уравнение 1 порядка
+                Обобщённое однородное дифференциальное уравнение 1 порядка
 
                 \textit{Общее решение:}
                 \(
                     \displaystyle
-                    r(\theta) = \frac{3 (\theta - 2)}{11} \pm
-                    \frac{i \sqrt{C - 2 (\frac{5 \theta^2}{2} + 2 \theta) - 
-                    \frac{9}{11} (\theta - 2)^2}}{\sqrt{11}}
+                    (3x-6)y-\frac{11y^2}{2}=-\frac{5x^2}{2}-2x+C
                 \)
 
                 \item 
@@ -224,11 +414,13 @@ asdasdasd
                 \)
 
                 \textit{Тип уравнения:}
-                Обычное дифференциальное уравнение 1 порядка (?)
+                Обычное дифференциальное уравнение 1 порядка, приводимое к
+                уравнению в полных дифференциалах
 
                 \textit{Общее решение:}
                 \(
                     \displaystyle
+                    -\ln{(\cos{(u-t+1)})}-u^2-2ut-8u=t^2+8t+C
                 \)
 
                 \item 
@@ -238,14 +430,13 @@ asdasdasd
                 \)
 
                 \textit{Тип уравнения:}
-                Обычное дифференциальное уравнение 1 порядка
+                Линейное приведённое неоднородное дифференциальное уравнение 
+                1 порядка с переменными коэффициентами относительно \(t = t(y)\)
 
                 \textit{Общее решение:}
                 \(
                     \displaystyle
-                    y(t) = \pm \arcsin \left(\frac{1}{2} \left(
-                        \mp 2 W \left(e^{-\frac{t}{2} - 1} C \right) \pm t \pm 2
-                        \right)\right)
+                    t(y) = C e^{\sin{y}} - 2 \sin{y}-2
                 \)
                 
                 \item 
@@ -258,14 +449,15 @@ asdasdasd
                 \textit{Общее решение:}
                 \(
                     \displaystyle
-                    u = -\frac{\ln(t) + 1 + C}{\ln(t) + C}
+                    u = -\frac{1}{\ln(t) + C} - 1
                 \)
             \end{enumerate}
 
     \pagebreak
 
     \section{Заключение}
-    aslhdakjshdkjsadasdsd
+        Мы научились раешать дифференциальные
+        уравниения и верстать их в Latex.
 
 
 \end{document}
