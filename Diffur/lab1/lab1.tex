@@ -65,38 +65,37 @@
     \section{Задание 1: Вычислить неопределённый интеграл}
         \subsection{Постановка задачи}
             Найти следующий интеграл с подробным описанием всех действий:
-            \[ \int \sin{ \sqrt[3]{t+1} } ~ dt. \]
+            \[ \int \sin{ \sqrt[3]{t+1} } ~ dt \]
         
         \subsection{Решение}
-        \[
-            \begin{split}
-                \int \sin{ \sqrt[3]{t+1} } ~ dt &= \circledast
-                \begin{vmatrix}
-                    \sqrt[3]{t+1} = x \\
-                    t = x^3 - 1 \\
-                    dt = 3x^2dx 
-                \end{vmatrix}
-                \circledast = \int 3x^2\sin{x} ~ dx = \\
-                &= -3 \int x^2 ~ d(\cos{x}) = \\
-                &= -3 \left( 
-                    x^2\cos{x} - \int \cos{x} ~ d \left(x^2\right) 
-                \right) = \\
-                &= -3x^2\cos{x} + 6\left(\int x \cos{x} ~ dx\right) = \\
-                &= -3x^2\cos{x} + 6\left(\int x ~ d(\sin{x})\right) = \\
-                &= -3x^2\cos{x} + 6\left(x\sin{x} - \int \sin{x} ~ dx \right)=\\
-                &= -3x^2\cos{x} + 6x\sin{x} + 6\cos{x} + C =\\
-                &= 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}} + \\
-                &+ 3\left(2 - (t+1)^{\frac{2}{3}}\right) \cos{\sqrt[3]{t+1}}+C.
-            \end{split}    
-        \]
+            \[
+                \begin{split}
+                    \int \sin{ \sqrt[3]{t+1} } ~ dt &= \circledast
+                    \begin{vmatrix}
+                        \sqrt[3]{t+1} = x \\
+                        t = x^3 - 1 \\
+                        dt = 3x^2dx 
+                    \end{vmatrix}
+                    \circledast = \int 3x^2\sin{x} ~ dx = \\
+                    &= -3 \int x^2 ~ d(\cos{x}) = \\
+                    &= -3 \left( 
+                        x^2\cos{x} - \int \cos{x} ~ d \left(x^2\right) 
+                    \right) = \\
+                    &= -3x^2\cos{x} + 6 \int x \cos{x} ~ dx = \\
+                    &= -3x^2\cos{x} + 6 \int x ~ d(\sin{x}) = \\
+                    &= -3x^2\cos{x} + 6\left(x\sin{x} - \int \sin{x} ~ dx \right)=\\
+                    &= -3x^2\cos{x} + 6x\sin{x} + 6\cos{x} + C =\\
+                    &= 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}} + \\
+                    &+ 3\left(2 - \sqrt[3]{(t+1)^2}\right) \cos{\sqrt[3]{t+1}}+C.
+                \end{split}    
+            \]
 
-        \textit{Ответ:} 
-        \[
-            \displaystyle
-            \int \sin{ \sqrt[3]{t+1} } ~ dt
-            = 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}}
-            + 3\left( 2 - (t+1)^{\frac{2}{3}} \right) \cos{\sqrt[3]{t+1}} + C.
-        \]
+            \textit{Ответ:} 
+                \[
+                    \int \sin{ \sqrt[3]{t+1} } ~ dt
+                    = 6 \sqrt[3]{t+1} \sin{\sqrt[3]{t+1}}
+                    + 3\left( 2 - \sqrt[3]{(t+1)^2} \right) \cos{\sqrt[3]{t+1}} + C.
+                \]
 
     \pagebreak
 
@@ -106,14 +105,14 @@
             с точностью \( \varepsilon = 10^{-4} \).
             Реализацию решения проводить на языке <<Go>>:
             
-            \[ \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt. \]
+            \[ \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \]
 
         \subsection{Решение}
-            \textit{Точное значение:}
-            \( 
-                \displaystyle
-                \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx -0.643767\dots
-            \)
+            \textit{Примерное значение:}
+                \( 
+                    \displaystyle
+                    \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx -0.643767\dots
+                \)
 
             \begin{enumerate}
                 \item Метод левых прямоугольников:
@@ -124,23 +123,23 @@
                     \]
 
                     \textit{Найденное значение:}
-                    \[
-                        \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
-                        -0.643667\dots, ~ n = 30291,
-                    \]
-                    \[
-                        \vert-0.643767+0.643667\vert = 9.999 
-                        \cdot 10^{-5} < \varepsilon.
-                    \]
+                        \[
+                            \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                            -0.643667\dots, ~ n = 30291,
+                        \]
+                        \[
+                            \vert-0.643767+0.643667\vert = 9.999 
+                            \cdot 10^{-5} < \varepsilon.
+                        \]
 
                     \pagebreak
 
                     \textit{Код программы:}
-                    \begin{lstlisting}[
-                        language=Go,
-                        basicstyle=\footnotesize\ttfamily,
-                        frame=lines
-                    ]
+                        \begin{lstlisting}[
+                            language=Go,
+                            basicstyle=\footnotesize\ttfamily,
+                            frame=lines
+                        ]
 package main
 
 import "math"
@@ -173,9 +172,9 @@ func main() {
     }
     fmt.Println(s, n, math.Abs(real-s))
 }
-                    \end{lstlisting}
+                        \end{lstlisting}
 
-                    \pagebreak
+                \pagebreak
 
                 \item Метод правых прямоугольников:
                     \[
@@ -186,22 +185,23 @@ func main() {
 
 
                     \textit{Найденное значение:}
-                    \[
-                        \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
-                        -0.643866\dots, ~ n = 27507,
-                    \]
-                    \[
-                        \vert-0.643767+0.643866\vert = 9.999 
-                        \cdot 10^{-5} < \varepsilon.
-                    \]
+                        \[
+                            \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                            -0.643866\dots, ~ n = 27507,
+                        \]
+                        \[
+                            \vert-0.643767+0.643866\vert = 9.999 
+                            \cdot 10^{-5} < \varepsilon.
+                        \]
 
                     \pagebreak
+
                     \textit{Код программы:}
-                    \begin{lstlisting}[
-                        language=Go,
-                        basicstyle=\footnotesize\ttfamily,
-                        frame=lines
-                    ]
+                        \begin{lstlisting}[
+                            language=Go,
+                            basicstyle=\footnotesize\ttfamily,
+                            frame=lines
+                        ]
 package main
 
 import "math"
@@ -240,8 +240,8 @@ func main() {
     }
     fmt.Println(s, n, math.Abs(real-s))
 }
-                    \end{lstlisting}
-                    \pagebreak
+                        \end{lstlisting}
+                \pagebreak
                 
                 \item Метод центральных прямоугольников:
                     \[
@@ -252,22 +252,23 @@ func main() {
                     \]
 
                     \textit{Найденное значение:}
-                    \[
-                        \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
-                        -0.643667\dots, ~ n = 1726,
-                    \]
-                    \[
-                        \vert-0.643767+0.643667\vert = 9.998 
-                        \cdot 10^{-5} < \varepsilon.
-                    \]
+                        \[
+                            \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                            -0.643667\dots, ~ n = 1726,
+                        \]
+                        \[
+                            \vert-0.643767+0.643667\vert = 9.998 
+                            \cdot 10^{-5} < \varepsilon.
+                        \]
 
                     \pagebreak
+
                     \textit{Код программы:}
-                    \begin{lstlisting}[
-                        language=Go,
-                        basicstyle=\footnotesize\ttfamily,
-                        frame=lines
-                    ]
+                        \begin{lstlisting}[
+                            language=Go,
+                            basicstyle=\footnotesize\ttfamily,
+                            frame=lines
+                        ]
 package main
 
 import "math"
@@ -301,9 +302,9 @@ func main() {
     }
     fmt.Println(s, n, math.Abs(real-s))
 }
-                    \end{lstlisting}
+                        \end{lstlisting}
                 
-                    \pagebreak
+                \pagebreak
 
                 \item Метод трапеций:
                     \[
@@ -315,23 +316,23 @@ func main() {
                     \]
 
                     \textit{Найденное значение:}
-                    \[
-                        \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
-                        -0.643866\dots, ~ n = 3676,
-                    \]
-                    \[
-                        \vert-0.643767+0.643866\vert = 9.996
-                        \cdot 10^{-5} < \varepsilon.
-                    \]
+                        \[
+                            \int\limits_0^1 \frac{\ln(1-t)}{t^2+1} ~ dt \approx
+                            -0.643866\dots, ~ n = 3676,
+                        \]
+                        \[
+                            \vert-0.643767+0.643866\vert = 9.996
+                            \cdot 10^{-5} < \varepsilon.
+                        \]
 
                     \pagebreak
 
                     \textit{Код программы:}
-                    \begin{lstlisting}[
-                        language=Go,
-                        basicstyle=\footnotesize\ttfamily,
-                        frame=lines
-                    ]
+                        \begin{lstlisting}[
+                            language=Go,
+                            basicstyle=\footnotesize\ttfamily,
+                            frame=lines
+                        ]
 package main
 
 import "math"
@@ -382,92 +383,77 @@ func main() {
             Для следующих дифференциальных уравнений определить тип и найти
             общее решение с помощью программ компьютерной математики:
             \begin{enumerate}
-                \item 
-                \(
-                    \displaystyle
-                    r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6}.
-                \)
+                \item \( 
+                        \displaystyle  
+                        r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6} 
+                    \)
 
-                \item 
-                \(
-                    \displaystyle
-                    \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8.
-                \)
+                \item \( 
+                        \displaystyle  
+                        \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8 
+                    \)
 
-                \item 
-                \(
-                    \displaystyle
-                    \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}}.
-                \)
+                \item \( 
+                        \displaystyle  
+                        \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}} 
+                    \)
                 
-                \item 
-                \(
-                    t\dot{u} - u^2=2u+1.
-                \)
+                \item \( t \dot{u} - u^2 = 2u + 1 \)
             \end{enumerate}
 
         \subsection{Решение}
             \begin{enumerate}
-                \item 
-                \(
-                    \displaystyle
-                    r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6}. 
-                \)
+                \item \( 
+                        \displaystyle 
+                        r' = -\frac{5\theta + 3r + 2}{3\theta -11r-6}
+                    \)
 
-                \textit{Тип уравнения:}
-                Уравнение в полных дифференциалах.
+                    \textit{Тип уравнения:}
+                        Уравнение в полных дифференциалах.
 
-                \textit{Общее решение:}
-                \(
-                    \displaystyle
-                    6 \theta r-12r-11r^2+5\theta^2+4\theta=C.
-                \)
+                    \textit{Общее решение:}
+                        \(
+                            \displaystyle
+                            6 \theta r-12r-11r^2+5\theta^2+4\theta=C.
+                        \)
 
-                \item 
-                \(
-                    \displaystyle
-                    \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8.
-                \)
+                \item  \(
+                        \displaystyle
+                        \frac{1-\dot{u}}{1+\dot{u}} \tg (t-u-1) = 2t+2u+8 %шойта (в полных производных???)
+                    \)
 
-                \textit{Тип уравнения:}
-                Уравнение, приводимое к уравнению в полных дифференциалах.
+                    \textit{Тип уравнения:}
+                        Уравнение, приводимое к уравнению в полных дифференциалах.
 
-                \textit{Общее решение:}
-                \(
-                    \displaystyle
-                    e^{(u+t+4)^2} \cos(t-u-1) = C.
-                \)
+                    \textit{Общее решение:}
+                        \(
+                            \displaystyle
+                            e^{(u+t+4)^2} \cos(t-u-1) = C.
+                        \)
 
                 \pagebreak
-                \item 
-                \(
-                    \displaystyle
-                    \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}}.
-                \)
 
-                \textit{Тип уравнения:}
-                Линейное приведённое неоднородное дифференциальное уравнение 
-                \rnc{1} порядка с переменными коэффициентами относительно
-                \(t = t(y)\).
+                \item  \(
+                        \displaystyle
+                        \dot{y} = \frac{1}{t \cdot \cos{y} + \sin{2y}}
+                    \)
 
-                \textit{Общее решение:}
-                \(
-                    \displaystyle
-                    t = C e^{\sin{y}} - 2 \sin{y}-2.
-                \)
+                    \textit{Тип уравнения:}
+                        Линейное приведённое неоднородное дифференциальное уравнение 
+                        \rnc{1} порядка с переменными коэффициентами относительно
+                        \(t = t(y)\).
+
+                    \textit{Общее решение:}
+                        \( t = C e^{\sin{y}} - 2 \sin{y}-2. \)
                 
-                \item 
-                \(
-                    \displaystyle
-                    t\dot{u} - u^2=2u+1.
-                \)
+                \item \( t\dot{u} - u^2=2u+1 \)
 
                 \textit{Тип уравнения:} Уравнение с разделяющимися переменными.
                 \textit{Общее решение:}
-                \(
-                    \displaystyle
-                    -\frac{1}{u+1}=\ln{t}+C.
-                \)
+                    \(
+                        \displaystyle
+                        -\frac{1}{u+1}=\ln{t}+C.
+                    \)
             \end{enumerate}
 
     \pagebreak
