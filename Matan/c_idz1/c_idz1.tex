@@ -304,13 +304,38 @@
         \[
             = \sum_{n=-\infty}^{-3} \left( \frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n
         \]
+        \[
+            C_n = \left\lbrace
+                \begin{aligned}
+                    &\frac{(-1)^{n+1}}{2^{n+2}} - 1, \quad n \leq -3 \\
+                    &0, \quad n \geq -2
+                \end{aligned}
+            \right.
+        \]
 
         \item Найти все лорановские разложения функции по степеням \( z - z_0 \): \( \displaystyle f(z) = \frac{z-2}{(z+1)(z-3)}, \quad z_0 = 3+i \).  
         
+        \pagebreak
 
         \item Данную функцию разложить в ряд Лорана в окрестности точки \( z_0 \): \( \displaystyle f(z) = \cos \frac{3z}{z-i}, z_0 = i \).
-        
-
+        \[
+            f(z) = \cos \frac{3z}{z-i} = \cos \left( 3 + \frac{3i}{z-i} \right) = \cos 3 \cdot \cos \frac{3i}{z-i} - \sin 3 \cdot \sin \frac{3i}{z-i} =
+        \]
+        \[
+            = \cos 3 \cdot \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n)!} \left( \frac{3i}{z-i} \right)^{2n}  - \sin 3 \cdot \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} \left( \frac{3i}{z-i} \right)^{2n+1} =
+        \]
+        \[
+            = \sum_{n=-\infty}^{0} \frac{(-1)^n \cos 3}{(-2n)! (3i)^{2n}} \left( z-i \right)^{2n}  - \sum_{n=-\infty}^{0} \frac{(-1)^n \sin 3}{(1-2n)! (3i)^{2n-1}} \left( z-i \right)^{2n-1}
+        \]
+        \[
+            C_k = \left\lbrace
+                \begin{aligned}
+                    &\frac{(-1)^n \cos 3}{(-2n)! (3i)^{2n}}, \quad k = 2n, ~ n \leq 0, \\
+                    &\frac{(-1)^n \sin 3}{(1-2n)! (3i)^{2n-1}}, \quad k = 2n-1, ~ n \leq 0, \\
+                    &0, \quad k \geq 1
+                \end{aligned}
+            \right.
+        \]  
 
         \item Определить тип особой точки \( z = 0 \) для данной функции: \( \displaystyle f(z) = \frac{\cos 5z -1 }{\ch z - 1 - z^2/2} \).
         \[
