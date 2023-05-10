@@ -288,21 +288,53 @@
             \right.
         \]
 
-        Разложим в точке \( \infty \):
+        % Разложим в точке \( \infty \):
+        % \[
+        %     f(z) = \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{4} \frac{1}{(1 + z/2)} + \frac{1}{1 - z} =
+        %     \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{2z} \frac{1}{(1 + 2/z)} - \frac{1}{z} \frac{1}{1 - 1/z} =
+        % \]
+        % \[
+        %     = \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{2z} \sum_{n=0}^\infty (-1)^n \frac{2^n}{z^n} - \frac{1}{z} \sum_{n=0}^\infty \frac{1}{z^n} 
+        %     = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n=0}^\infty (-1)^n \frac{2^{n-1}}{z^{n+1}} - \sum_{n=0}^\infty \frac{1}{z^{n+1}} =
+        % \]
+        % \[
+        %     = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n'=-\infty}^{-1} (-1)^{n'+1} \frac{z^{n'} }{2^{n'+2}} - \sum_{n=-\infty}^{-1} z^n
+        %     = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n=-\infty}^{-1} \left( \frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n =
+        % \]
+        % \[
+        %     = \sum_{n=-\infty}^{-3} \left( \frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n
+        % \]
+        % \[
+        %     C_n = \left\lbrace
+        %         \begin{aligned}
+        %             &\frac{(-1)^{n+1}}{2^{n+2}} - 1, \quad n \leq -3 \\
+        %             &0, \quad n \geq -2
+        %         \end{aligned}
+        %     \right.
+        % \]
+
+        Разложим в точке \( z = \infty \). Заменим \( z = \frac{1}{w} \), значит раскладываем в точке \( w = 0 \):
         \[
-            f(z) = \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{4} \frac{1}{(1 + z/2)} + \frac{1}{1 - z} =
-            \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{2z} \frac{1}{(1 + 2/z)} - \frac{1}{z} \frac{1}{1 - 1/z} =
+            f(w) = \frac{\frac{1}{w}-4}{\frac{1}{w^4} + \frac{1}{w^3}-\frac{2}{w^2}} = \frac{w^3-4w^4}{1+w-2w^2} = 
         \]
         \[
-            = \frac{2}{z^2} + \frac{1}{2 z} + \frac{1}{2z} \sum_{n=0}^\infty (-1)^n \frac{2^n}{z^n} - \frac{1}{z} \sum_{n=0}^\infty \frac{1}{z^n} 
-            = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n=0}^\infty (-1)^n \frac{2^{n-1}}{z^{n+1}} - \sum_{n=0}^\infty \frac{1}{z^{n+1}} =
+            = 2w^2 + \frac{w}{2} - \frac{1}{1-w} - \frac{1}{4(1+2w)} + \frac{5}{4} =
         \]
         \[
-            = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n'=-\infty}^{-1} (-1)^{n'+1} \frac{z^{n'} }{2^{n'+2}} - \sum_{n=-\infty}^{-1} z^n
-            = \frac{2}{z^2} + \frac{1}{2 z} + \sum_{n=-\infty}^{-1} \left( \frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n =
+            = 2w^2 + \frac{w}{2} + \frac{5}{4} - \sum_{n=0}^{\infty} w^n - \frac{1}{4} \sum_{n=0}^{\infty} (-1)^n (2w)^n =
         \]
         \[
-            = \sum_{n=-\infty}^{-3} \left( \frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n
+            = 2w^2 + \frac{w}{2} + \frac{5}{4} - \sum_{n=0}^{\infty} \left(1 + \frac{(-2)^n}{4} \right) w^n =
+        \]
+        \[
+            = \frac{5}{4} - \frac{5}{4} + \frac{w}{2} - \frac{w}{2} + 2w^2 - 2w^2 - \sum_{n=3}^{\infty} \left(1 + \frac{(-2)^n}{4} \right) w^n =
+        \]
+        \[
+            = - \sum_{n=3}^{\infty} \left(1 + \frac{(-2)^n}{4} \right) w^n 
+        \]
+        Сделаем обратную замену:
+        \[
+            - \sum_{n=3}^{\infty} \left(1 + \frac{(-2)^n}{4} \right) \frac{1}{z^n} = - \sum_{n=-\infty}^{-3} \left(1 + \frac{(-1)^n}{4 \cdot 2^n} \right) z^n = \sum_{n=-\infty}^{-3} \left(\frac{(-1)^{n+1}}{2^{n+2}} - 1 \right) z^n
         \]
         \[
             C_n = \left\lbrace
@@ -313,7 +345,78 @@
             \right.
         \]
 
+        
         \item Найти все лорановские разложения функции по степеням \( z - z_0 \): \( \displaystyle f(z) = \frac{z-2}{(z+1)(z-3)}, \quad z_0 = 3+i \).  
+        
+        \[
+            f(z) = \frac{z-2}{(z+1)(z-3)} = \frac{3}{4} \cdot \frac{1}{z+1} + \frac{1}{4} \cdot \frac{1}{z-3}
+        \]
+
+        Функция голоморфна в 3-х кольцах:
+        \[
+            \begin{aligned}
+                K_1:&~ 0<|z-z_0|<1 \\
+                K_2:&~ 1 < |z-z_0|<\sqrt{17} \\
+                K_3:&~ \sqrt{17}<|z-z_0|<\infty
+            \end{aligned}
+        \]
+        
+        Разложим в \( K_1 \):
+        \[
+            \frac{1}{z+1} = \frac{1}{z - z_0 + z_0+1 } = \frac{1}{z_0+1} \cdot \frac{1}{1+\frac{z-z_0}{z_0+1}} =
+        \]
+        \[
+            = \frac{1}{z_0+1} \sum_{n=0}^{\infty} (-1)^n \left(\frac{z-z_0}{z_0+1} \right)^n = \sum_{n=0}^{\infty} \frac{ (-1)^n }{(z_0+1)^{n+1}} (z-z_0)^n
+        \]
+        \[
+            \frac{1}{z-3} = \frac{1}{z- z_0 + z_0 - 3} = \frac{1}{z_0-3} \cdot \frac{1}{1+\frac{z-z_0}{z_0-3}} =
+        \]
+        \[
+            = \frac{1}{z_0-3} \sum_{n=0}^{\infty} (-1)^n \left( \frac{z-z_0}{z_0-3} \right)^n = \sum_{n=0}^{\infty} \frac{(-1)^n}{(z_0-3)^{n+1}} (z-z_0)^n
+        \]
+        \[
+            f(z) = \sum_{n=0}^{\infty} \frac{ 3(-1)^n }{4(z_0+1)^{n+1}} (z-z_0)^n + \sum_{n=0}^{\infty} \frac{(-1)^n}{4(z_0-3)^{n+1}} (z-z_0)^n =
+        \]
+        \[
+            = \sum_{n=0}^{\infty} \frac{(-1)^n}{4} \left( \frac{3}{(z_0+1)^{n+1}} + \frac{1}{(z_0-3)^{n+1}} \right) (z-z_0)^n
+        \]
+
+        \pagebreak
+
+        Разложим в \( K_2 \):
+
+        \( \displaystyle \frac{1}{z+1} \) аналогично разложению в \( K_1 \).
+        \[
+            \frac{1}{z-3} = \frac{1}{z- z_0 + z_0 - 3} = \frac{1}{z-z_0} \cdot \frac{1}{1 + \frac{z_0-3}{z-z_0}} =
+        \]
+        \[
+            = \frac{1}{z-z_0} \sum_{n=0}^{\infty} (-1)^n \left( \frac{z_0-3}{z-z_0} \right)^n = \sum_{n=0}^{\infty} (-1)^n \frac{(z_0-3)^n}{(z-z_0)^{n+1}} =
+        \]
+        \[
+            = \sum_{n=-\infty}^{-1} (-1)^{n+1} \frac{(z-z_0)^n}{(z_0-3)^{n+1}}
+        \]
+        \[
+            f(z) = \sum_{n=0}^{\infty} \frac{ 3(-1)^n }{4(z_0+1)^{n+1}} (z-z_0)^n + \sum_{n=-\infty}^{-1} \frac{(-1)^{n+1}}{4(z_0-3)^{n+1}} (z-z_0)^n
+        \]
+
+        Разложим в \( K_3 \): 
+        \[
+            \frac{1}{z+1} = \frac{1}{z-z_0+z_0+1} = \frac{1}{z-z_0} \cdot \frac{1}{1+\frac{z_0+1}{z-z_0}} =
+        \]
+        \[
+            = \frac{1}{z-z_0} \sum_{n=0}^{\infty} (-1)^n \left( \frac{z_0+1}{z-z_0} \right)^n = \sum_{n=0}^{\infty} (-1)^n \frac{(z_0+1)^n}{(z-z_0)^{n+1}} =
+        \]
+        \[
+            = \sum_{n=-\infty}^{-1} \frac{(-1)^{n+1}}{(z_0+1)^{n+1}} (z-z_0)^n
+        \]
+        \( \displaystyle \frac{1}{z-3} \) аналогично разложению в \( K_2 \). 
+        \[
+            f(z) = \sum_{n=-\infty}^{-1} \frac{3(-1)^{n+1}}{4(z_0+1)^{n+1}} (z-z_0)^n + \sum_{n=-\infty}^{-1} \frac{(-1)^{n+1}}{4(z_0-3)^{n+1}} (z-z_0)^n =
+        \]
+        \[
+            = \sum_{n=-\infty}^{-1} \frac{(-1)^{n+1}}{4} \left( \frac{3}{(z_0+1)^{n+1}} + \frac{1}{(z_0-3)^{n+1}}\right) (z-z_0)^n
+        \]
+
         
         \pagebreak
 

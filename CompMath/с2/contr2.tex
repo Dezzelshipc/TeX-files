@@ -1,0 +1,89 @@
+\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
+
+\usepackage[russian]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{svg}
+
+\newcommand{\rnc}[1]
+    {\MakeUppercase{\romannumeral #1}}
+\newcommand{\otv}{\textit{Ответ:} }
+
+\DeclareMathOperator{\D}{\partial}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Imz}{Im}
+\DeclareMathOperator{\Rez}{Re}
+
+\newcommand{\triple}[3]{(x-x_#2)(x-x_#3)+(x-x_#1)(x-x_#3)+(x-x_#1)(x-x_#2)}
+
+
+\title{Контрольная работа по численному дифференцированию}
+\author{Держапольский Юрий Витальевич \\ Группа Б9121-01.03.02сп}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \section*{Задача}
+        \[
+            f' (x_2) = \frac{1}{6h}(y_0 - 6y_1 + 3y_2 + 2y_3) + R(x)
+        \]
+        Вывести формулу погрешности аппроксимации
+        \( \displaystyle R(x) = \frac{h^m}{C_2} f^{(q)} \left( \xi \right) \).
+        
+    \section*{Решение}
+        Для вывода воспользуемся рядом Тейлора функции \( f(x) \) в точке \( x_2 \):
+        \[
+            f(x) = f(x_2) + f'(x_2)(x-x_2) + \frac{f''(x_2)}{2!} (x-x_2)^2 + \frac{f'''(x_2)}{3!} (x-x_2)^3 + \dots
+        \]
+        Отметим, что для вычисления нас интересуют только коэффициенты \( C_n \) у каждого слагаемого 
+        \( \displaystyle \frac{f^{(n)}(x_2)}{n!} \), поскольку мы будем складывать соответствующие слагаемые:
+        \[
+            f(x) = C_0 f(x_2) + C_1 f'(x_2) + C_2 \frac{f''(x_2)}{2!} + C_3 \frac{f'''(x_2)}{3!} + \dots
+        \]
+        Поэтому для краткости будем записывать в таком виде: \( \left[C_0, ~ C_1, ~ C_2, ~ \dots \right] \). 
+        \\
+        
+        Изначально имеем \( \left[(x-x_2)^0, ~ (x-x_2), ~ (x-x_2)^2, ~ \dots \right] \).
+        \[ 
+            \begin{matrix}
+                y_0 = f(x_0) \implies & [&1, & -2h, & 4h^2, & -8h^3, & 16h^4, & -32h^5, & \dots ] \\
+                y_1 = f(x_1) \implies & [&1, & -h, & h^2, & -h^3, & h^4, & -h^5, & \dots ] \\
+                y_2 = f(x_2) \implies & [&1, & 0, & 0, & \dots ]  \\
+                y_3 = f(x_3) \implies & [&1, & h, & h^2, & h^3, & h^4, &  h^5, & \dots ] 
+            \end{matrix}
+        \]
+        
+
+        Согласно формуле умножим каждый ряд на соответствующий множитель:
+        \[
+            \begin{matrix}
+                y_0: &[& \! 1, & -2h, & 4h^2, & -8h^3, & 16h^4, & -32h^5, & \dots ]  \\
+                -6 \cdot y_1: &[& \! -6, & 6h, & -6h^2, & 6h^3, & -6h^4, & 6h^5, & \dots ] \\
+                3 \cdot y_2: &[& \! 3, & 0, & 0, & \dots ] \\
+                2 \cdot y_3: &[& \! 2, & 2h, & 2h^2, & 2h^3, & 2h^4, & 2h^5, & \dots ]
+            \end{matrix}
+        \]
+
+        Сложим ряды и умножим на \( \displaystyle \frac{1}{6h} \):
+        \[
+            \left[0, 6h, 0, 0, 12h^4, -24h^5, \dots\right] \implies \left[0, 1, 0, 0, 2h^3, -4h^4, \dots\right]
+        \]
+
+        Запишем в явном виде:
+        \[
+            f'(x_2) = f'(x_2) + 2h^3 \cdot \frac{f^{(4)}(x_2)}{4!} - 4h^4 \cdot \frac{f^{(5)}(x_2)}{5!} + \dots + R(x)
+        \]
+
+        Отсюда:
+        \[
+            R(x) = -2h^3 \cdot \frac{f^{(4)}(x_2)}{4!} + 4h^4 \cdot \frac{f^{(5)}(x_2)}{5!} + \dots = -\frac{h^3}{12} f^{(4)}(\xi) + O(h^4)
+        \]
+
+        Получили: \( m = 3, ~ C_2 = -12, ~ q = 4 \).
+
+\end{document}
