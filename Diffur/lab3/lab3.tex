@@ -5,14 +5,10 @@
 
 \everymath{\displaystyle}
 
-\title{Контрольная работа по численному дифференцированию asd }
-\author{Держапольский Юрий Витальевич \\ Группа Б9121-01.03.02сп}
-\date{}
-
 \begin{document}
 
-    \fefutitlepage{ОТЧЁТ}{к лабораторной работе №3 по дисциплине\\ \textquote{Дифференциальные уравнения}}
-    {01.03.02 \textquote{Прикладная математика и информатика}}{Б9121-01.03.02сп(1)}{Держапольский Ю.В.}
+    \fefutitlepage{ОТЧЁТ}{к лабораторной работе №3 по дисциплине\\ <<Дифференциальные уравнения>>}
+    {01.03.02 <<Прикладная математика и информатика>>}{Б9121-01.03.02сп(1)}{Держапольский Ю.В.}
     
     \tableofcontents
 
@@ -51,7 +47,7 @@
                     \textit{Характеристика уравнения:}
                         Полное неразрешенное относительно производной;
 
-                    \textit{Общее решение:} \( r^C = C e^\varphi. \)
+                    \textit{Общее решение:} \( r \cdot C^C = e^{C \varphi}. \)
 
                 \item \( \tan{\frac{r}{r'}} = \ln{r}; \)
                 
@@ -60,7 +56,7 @@
                     \textit{Характеристика уравнения:}
                         Неразрешенное относительно производной, не содержащее аргумента;
 
-                    \textit{Общее решение:} \( r e^{\arctg{\left( \ln r \right)}} = C e^\varphi \sqrt{\ln^2{r} + 1}. \)
+                    \textit{Общее решение:} \( \ln{r} \cdot \arctg{\left( \ln r \right)} = \varphi + \frac{1}{2}\ln{\Big(\ln^2{r} + 1\Big)} + C. \)
                 
 
                 \item \( r = \frac{3}{2} \varphi r' + e^{r'}; \)
@@ -74,7 +70,7 @@
                         \(
                             \left\lbrace
                                 \begin{aligned}
-                                    r &= \frac{3C - \left(4p^2 - 12p + 12\right) e^p}{2p^2}, \\
+                                    r &= \frac{3C}{2p^2} - \frac{\left(4p^2 - 6p + 6\right) e^p}{p^2}, \\
                                     \varphi &= \frac{C - \left( 2p^2 - 4p + 4 \right)e^p}{p^3}.
                                 \end{aligned}
                             \right.    
@@ -117,7 +113,7 @@
             Разрешить следующие уравнения относительно производной и, 
             используя метод Эйлера, найти значение функции в точке. 
             Нарисовать график искомой функции. 
-            Реализацию решения проводить на языке \textquote{C++}:
+            Реализацию решения проводить на языке <<C++>>:
 
             \begin{enumerate}
                 \item \( \sec^2{(1 -y- x)} = y'^2 - \tan{xy} + 2; \quad y \left( \frac{\pi}{4} \right) = 1, ~ y \left( \frac{\pi}{3} \right) = ?;  \)
@@ -137,7 +133,7 @@
                         \( \left[
                             \begin{aligned}
                                 &1.85955\dots, \\
-                                &0.737429\dots
+                                &0.73742\dots
                             \end{aligned}
                         \right. \)
 
@@ -151,7 +147,7 @@
                     \lstinputlisting[language=C++,
                         caption=Код программы,
                         style=Cpps,
-                        basicstyle=\footnotesize\ttfamily,
+                        basicstyle=\footnotesize\dejavu,
                         frame=lines]{code/2_1.cpp}
 
                 \pagebreak
@@ -176,7 +172,7 @@
                     \lstinputlisting[language=C++,
                         caption=Код программы,
                         style=Cpps,
-                        basicstyle=\footnotesize\ttfamily,
+                        basicstyle=\footnotesize\dejavu,
                         frame=lines]{code/2_2.cpp}
 
             \end{enumerate}
@@ -203,32 +199,32 @@
                 \item \( y'' \cdot \cos{y} = y'^2 \cdot \cot{y}; \)
                     
                     \textit{Тип уравнения:} 
-                        Уравнение, допускающее понижение порядка;
+                        Вполне интегрируемое уравнение;
 
                     \textit{Характеристика уравнения:}
-                        Не содержащее переменную;
+                        Не содержащее аргумента,  с интегрирующим множителем \( \frac{\cos{y} + 1}{\sin{y}\cos{y}} \);
 
-                    \textit{Общее решение:} \( y = C_2 - \ln \left(x + C_1\right). \)
+                    \textit{Общее решение:} \( \sin^2{y} = C_1 e^{C_2 x} \left( \cos{y}+1 \right) \)
 
                 \item \( u^2 + 4tu \dot{u} + t^2 \dot{u}^2 + t^2 u \ddot{u} = 2tu \left( u + t \dot{u} \right) \cdot \tan{t}; ~ [z = \tan{t}]; \)
                 
                     \textit{Тип уравнения:} 
-                        Однородное уравнение;
+                        Вполне интегрируемое уравнение с заменой \( z = \tan{t} \);
 
                     \textit{Характеристика уравнения:}
-                        Однородное по степеням \(u\);
+                        Полное;
 
-                    \textit{Общее решение:} \( t^2u^2 \cos{t} = C_2 \cos\left( C_1 + t \right) . \)
+                    \textit{Общее решение:} \( t^2u^2 = C_1 \tan{t} + C_2. \)
 
                 \item \( \frac{\ddot{x}}{\dot{x}^2 + 1} = \dot{x}; \)
-                
+                                
                     \textit{Тип уравнения:} 
-                    Уравнение, допускающее понижение порядка;
+                        Вполне интегрируемое уравнение;
 
                     \textit{Характеристика уравнения:}
-                        Не содержащее переменную и функцию;
+                        Не содержащее аргумента и функцию;
 
-                    \textit{Общее решение:} \( \sin \left( x + C_1 \right) = C_2 e^t. \)
+                    \textit{Общее решение:} \( \sin\left(x + C_1\right) = C_2 e^t. \)
                     
 
 
