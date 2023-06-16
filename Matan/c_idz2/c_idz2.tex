@@ -1,0 +1,196 @@
+\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
+
+\usepackage{style/style}
+\usepackage{style/titlepage}
+
+\everymath{\displaystyle}
+
+\DeclareMathOperator*{\res}{Res}
+
+\begin{document}
+\fefutitlepage{
+    ОТЧЁТ
+}{
+    к индивидуальному домашнему заданию №2 по дисциплине\\ <<Комплексный анализ>>
+}{
+    01.03.02 <<Прикладная математика и информатика>>
+}{
+    Б9121-01.03.02сп(1)
+}{
+    Держапольский Ю.В.
+}
+
+    \pagebreak
+
+    \begin{enumerate}
+        \item \( \oint\limits_{\left| z - \frac{1}{2} \right|=1} \frac{e^z + 1}{z(z-1)} dz = \circledast . \)
+
+            Отношение голоморфных функций, поэтому есть только полюсы \( 0; 1 \) 1-го порядка в круге \( \left| z - \frac{1}{2} \right| = 1 \).
+            \[
+                \circledast = 2\pi i \left( \res_{z=0} \frac{e^z+1}{z(z-1)} + \res_{z=1} \frac{e^z+1}{z(z-1)} \right) = 2\pi i \left( \lim_{z \to 0} \frac{e^z+1}{z-1} + \lim_{z \to 1} \frac{e^z+1}{z} \right) =
+            \]
+            \[
+                = 2 \pi i \left( -2 + \frac{e+1}{1} \right) = 2\pi i \left( e-1 \right)
+            \] 
+
+            \textit{Ответ:} \( 2\pi i \left( e-1 \right) \).
+
+            \item \( \oint\limits_{\left| z \right|=\frac{1}{3}} \frac{1-2z+3z^2+4z^3}{2z^2} dz = \circledast . \)
+            
+            Отношение голоморфных функций, поэтому есть только полюс \( 0 \); 2-го порядка в данном круге.
+            \[
+                \circledast = 2\pi i \res_{z=0} \frac{1-2z+3z^2+4z^3}{2z^2} =  \frac{2\pi i}{1!} \lim_{z \to 0} \left( \frac{1-2z+3z^2+4z^3}{2} \right)' = 
+            \]
+            \[
+                = \pi i \lim_{z\to 0} \left( -2 + 6z + 12 z^2 \right) = -2 \pi i
+            \]
+            \textit{Ответ:} \( -2\pi i \).
+
+            \item \( \oint\limits_{\left| z \right|=0.3} \frac{e^{3z} - 1 - \sin 3z}{z^2 \sh 3\pi z} dz = \circledast . \)
+            
+            Отношение голоморфных функций, поэтому есть только особая точка \( 0 \) в данном круге. Найдём тип точки.
+            \[
+                e^{3z} - 1 - \sin 3z = 1 + 3z + \frac{(3z)^2}{2!} + \frac{(3z)^3}{3!} + \dots - 1 - \left( 3z - \frac{(3z)^3}{3!} + \frac{(3z)^5}{5!} + \dots \right) =
+            \]
+            \[
+                = \frac{(3z)^2}{2} \phi(z). \implies \text{Ноль 2-го порядка.}
+            \]
+            \[
+                z^2 \sh 3\pi z = z^2 \left( 3\pi z + \frac{(3\pi z)^3}{3!} + \frac{(3\pi z)^5}{5!} \right) = 3\pi z^3 \psi(z). \implies \text{Ноль 3-го порядка.}
+            \]
+            Значит, \( z = 0 \) является полюсом 1-го порядка.
+            \[
+                \circledast = 2\pi i \lim_{z\to 0} z \frac{e^{3z} - 1 - \sin 3z}{z^2 \sh 3\pi z} = 2\pi i \lim_{z\to 0} \frac{e^{3z} - 1 - \sin 3z}{z \cdot 3\pi z} = \left[\frac{0}{0}\right] =
+            \]
+            \[
+                = 2\pi i \lim_{z\to0} \frac{3e^{3z} - 3\cos 3z}{6 \pi z} = \left[\frac{0}{0}\right] = 2\pi i \lim_{z\to0} \frac{9e^{3z} + 9\sin 3z}{6 \pi} = 2\pi i \frac{3}{2\pi} = 3i
+            \]
+            \textit{Ответ:} \( 3i \).
+
+
+            \item \( \oint\limits_{\left| z + i \right|=2} \left( \frac{2 \sin \frac{\pi z}{2 - 2i}}{(z-1+i)^2 (z-3+i)} - \frac{3\pi i}{e^\frac{\pi z}{2} + i} \right) dz = \circledast. \)
+            
+            Первая функция - это отношение голоморфных функций, поэтому в данном круге есть полюс \( 1 - i \); 2-го порядка.
+            \[
+                \res_{z\to 1-i} \frac{2 \sin \frac{\pi z}{2 - 2i}}{(z-1+i)^2 (z-3+i)} = \frac{1}{1!} \lim_{z\to 1-i} \left( \frac{2 \sin \frac{\pi z}{2 - 2i}}{z-3+i} \right)' =
+            \]
+            \[
+                = \lim_{z\to 1-i} \frac{ \left( \frac{\pi}{1-i}\cos \frac{\pi z}{2-2i} \right)(z-3+i) - 2 \sin \frac{\pi z}{2 - 2i} }{(z-3+i)^2} = \frac{-2}{4} = -\frac{1}{2}
+            \]
+            Вторая функция - это отношение голоморфных функций. Нули знаменателя: \( z = 4n + 3i, n \in \mathbb{N} \). Они не попадают в данный круг, значит значение интеграла \( = 0 \).
+            \[
+                \circledast = 2 \pi i ~ \frac{-1}{2} = -\pi i.
+            \]
+            \textit{Ответ:} \( -\pi i \).
+
+            \item \( 
+                \int_0^{2\pi} \frac{dt}{4 - \sqrt{7} \sin t} = \begin{vmatrix}
+                z = e^{it} \quad t = \frac{\ln z}{i} \quad dt = \frac{dz}{iz} \\
+                \sin t = \frac{1}{2i} \left( z - \frac{1}{z} \right)
+            \end{vmatrix} = \oint\limits_{|z|=1} \frac{1}{4 - \frac{\sqrt{7}}{2i}\left( z - \frac{1}{z} \right)} \frac{dz}{iz} =
+            \)
+            \[
+                = \oint\limits_{|z|=1} \frac{dz}{\frac{\sqrt{7}}{2} + 4iz - z^2\frac{\sqrt{7}}{2}} = \circledast
+            \]
+            Нули знаменателя: \( i\sqrt{7}; \frac{i}{\sqrt{7}} \). В круг попадает только \( \frac{i}{\sqrt{7}} \) -- полюс 1-го порядка.
+            \[
+                \circledast = -\frac{2}{\sqrt{7}} \cdot 2\pi i \res_{z=\frac{i}{\sqrt{7}}}\frac{1}{(z-i\sqrt{z})(z - \frac{i}{\sqrt{7}})} = \frac{-4\pi i}{\sqrt{7}} \lim_{z \to \frac{i}{\sqrt{7}}} \frac{1}{(z-i\sqrt{z})} =
+            \]
+            \[
+                = \frac{-4\pi i}{\sqrt{7}} \frac{1}{i \left( \frac{1}{\sqrt{7}} - \sqrt{7} \right)} = \frac{2\pi}{3}
+            \]
+            \textit{Ответ:} \( \frac{2\pi}{3} \).
+
+            \item \(
+                 \int_{0}^{2\pi} \frac{dt}{(4+\sqrt{7} \cos t)^2 } = \begin{vmatrix}
+                    z = e^{it} \quad t = \frac{\ln z}{i} \quad dt = \frac{dz}{iz} \\
+                    \cos t = \frac{1}{2} \left( z + \frac{1}{z} \right)
+                \end{vmatrix} = \oint\limits_{|z|=1} \frac{dz/iz}{\left( 4 + \frac{\sqrt{7}}{2} \left( z + \frac{1}{z} \right) \right)^2} =
+            \)
+            \[
+                = \frac{4}{7i} \oint\limits_{|z|=1} \frac{z ~ dz}{ (z+\sqrt{7})^2 \left( z + \frac{1}{\sqrt{7}} \right)^2} = \circledast
+            \]
+            Нули знаменателя: \( -\sqrt{7}; ~ -\frac{1}{\sqrt{7}} \). В круг попадает только \( -\frac{1}{\sqrt{7}} \) -- полюс 2-го порядка.
+            \[
+                \circledast = \frac{4}{7i} \cdot 2\pi i \res_{z = -\frac{1}{7}} \frac{z}{ (z+\sqrt{7})^2 \left( z + \frac{1}{\sqrt{7}} \right)^2} = \frac{8\pi}{7} \lim_{z\to -\frac{1}{\sqrt{7}}} \left( \frac{z}{(z+\sqrt{7})^2} \right)' =
+            \]
+            \[
+                = \frac{8\pi}{7} \lim_{z\to -\frac{1}{\sqrt{7}}} \frac{\sqrt{7} - z}{\left( z+\sqrt{7} \right)^3} = \frac{8\pi}{7} \frac{\sqrt{7} + \frac{1}{\sqrt{7}}}{(\sqrt{7} - \frac{1}{\sqrt{7}})^3} = \frac{8\pi}{27}
+            \]
+            \textit{Ответ:} \( \frac{8\pi}{27} \).
+
+            \item \( \int_{-\infty}^{+\infty} \frac{dx}{(x^4+1)^2} \).
+
+            \item \( \int_{-\infty}^{+\infty} \frac{(x^2+x) \cos x}{x^4+13x^2+36} dx \).
+            
+            \item Найти оригинал по изображению \( \frac{4p+5}{(p-2)(p^2+4p+5)} \).
+            \[
+                \frac{4p+5}{(p-2)(p^2+4p+5)} = \frac{13}{17(p-2)} - \frac{13p+10}{17(p^2+4p+5)} = 
+            \]
+            \[
+                = \frac{13}{17} \frac{1}{(p-2)} - \frac{13}{17} \frac{p+2}{(p+2)^2 + 1} + \frac{36}{17}\frac{1}{(p+2)^2 + 1} \fallingdotseq
+            \]
+            \[
+                \fallingdotseq \frac{13}{17} e^{2t} - \frac{13}{17} e^{-2t} \cos t + \frac{36}{17} e^{-2t} \sin t
+            \]
+            \textit{Ответ:} \( \frac{13}{17} e^{2t} - \frac{13}{17} e^{-2t} \cos t + \frac{36}{17} e^{-2t} \sin t \).
+
+            \item Найти решения дифференциального уравнения \( y'' - y = \th^2 t \).
+            
+            \item Оперпционным методом решить задачу Коши \( \begin{cases}
+                y'' + y' + y = t^2 + t, \\
+                y(0)=1, ~ y'(0) = -3
+            \end{cases}  \).
+
+            Преобразование Лапласа:
+            \[
+                p^2 \overline{y}(p) - p + 3 + p \overline{y}(p) - 1 + \overline{y}(p) = \frac{2}{p^3} + \frac{1}{p^2}
+            \]
+            \[
+                \overline{y}(p) = \frac{p^4-2p^3+p+2}{p^3(p^2+p+1)} = \frac{2}{p^3} + \frac{2p}{p^2+p+1}-\frac{1}{p^2}-\frac{1}{p} =
+            \]
+            \[
+                = \frac{2}{p^3} -\frac{1}{p^2}-\frac{1}{p} + 2\frac{p+\frac{1}{2}}{(p+\frac{1}{2})^2 + \frac{3}{4}} - \frac{1}{(p+\frac{1}{2})^2 + \frac{3}{4}} \fallingdotseq
+            \]
+            \[
+                \fallingdotseq t^2 - t - 1 + 2e^{-\frac{t}{2}}\cos \frac{t \sqrt{3}}{2} - \frac{2}{\sqrt{3}} e^{-\frac{t}{2}}\sin \frac{t \sqrt{3}}{2}
+            \]
+            \textit{Ответ:} \( t^2 - t - 1 + 2e^{-\frac{t}{2}}\cos \frac{t \sqrt{3}}{2} - \frac{2}{\sqrt{3}} e^{-\frac{t}{2}}\sin \frac{t \sqrt{3}}{2} \).
+
+
+            \item \( \begin{cases}
+                x' = -2 + y + 2, & x(0)=1, \\
+                y' = 3x, & y(0)=0
+            \end{cases} \)
+
+            Преобразование Лапласа:
+            \[
+                \begin{cases}
+                    p \overline{x}-1 = -2 \overline{x} + \overline{y} + \frac{2}{p} \\
+                    p \overline{y} = 3\overline{x}
+                \end{cases}
+            \]
+            \[
+                \begin{cases}
+                    (p + 2)\overline{x} - \overline{y} = 1 + \frac{2}{p} \\
+                    3\overline{x} - p \overline{y} = 0
+                \end{cases}
+            \]
+            \[
+                \begin{cases}
+                    \displaystyle \overline{x} = \frac{p+2}{p^2+2p-3} = \frac{p+1}{(p+1)^2 - 4} + \frac{1}{(p+1)^2 - 4} \fallingdotseq e^{-t} \left(\ch 2t + \frac{1}{2} \sh 2t \right)   \\
+                    \displaystyle \overline{y} = 3\frac{p+2}{p(p^2 + 2p - 3)} = \frac{9}{4}\frac{1}{p-1} - \frac{2}{p} - \frac{1}{4}\frac{1}{p+3} \fallingdotseq \frac{9}{4} e^t - 2 - \frac{1}{4} e^{-3}
+                \end{cases}
+            \]
+            \textit{Ответ:} \( 
+                \begin{cases}
+                    \displaystyle x = e^{-t} \left(\ch 2t + \frac{1}{2} \sh 2t \right)   \\
+                    \displaystyle y = \frac{9}{4} e^t - 2 - \frac{1}{4} e^{-3}
+                \end{cases}
+            \).
+
+
+    \end{enumerate}
+    
+
+\end{document}

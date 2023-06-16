@@ -1,4 +1,4 @@
-\section{Задание 3: Решить линейные уравнения}
+\section{Задание 3: Генератор псевдо-случайных чисел}
     \subsection{Постановка задачи}
         На основе представленной ниже системы дифференциальных уравнений построить генератор псевдо-случайных чисел в диапазоне \( [0, 1] \) с помощью метода Эйлера:
         \[ \dot{x} = \sigma \cdot (y - x); \quad \dot{y} = x \cdot (r - z) - y; \quad \dot{z} = x \cdot y - b \cdot z. \]
@@ -20,17 +20,25 @@
         \begin{figure}[H]
             \centering
             \includegraphics[width=14cm]{pictures/task3_1.pdf}
-            \caption{Соотношение значений с точностью до десятых при выборке в 100000.}
+            \caption{Значения с точностью до десятых при генерации 100000 чисел.}
         \end{figure}
 
         \begin{figure}[H]
             \centering
             \includegraphics[width=14cm]{pictures/task3_2.pdf}
-            \caption{Соотношение значений с точностью до сотых при выборке в 100000.}
+            \caption{Значения с точностью до сотых при генерации 100000 чисел.}
         \end{figure}
         
         \lstinputlisting[language=Python,
-        caption=Код генератора псевдослучайных чисел,
+        caption=Код генератора псевдо-случайных чисел.,
+        captionpos=t,
         style=colored,
         basicstyle=\footnotesize\dejavu,
         frame=lines]{source/task3.py}
+
+        \lstinputlisting[language=Python,
+        caption=Пример вызова генератора.,
+        captionpos=t,
+        style=colored,
+        basicstyle=\footnotesize\dejavu,
+        frame=lines]{source/task3_ex.py}

@@ -3,16 +3,16 @@ from math import fmod
 
 
 class PseudoRandom:
-    def __init__(self):
+    def __init__(self, seed : float = None):
+        self.seed(seed)
         self.sigma = 10
         self.r = 28
         self.b = 2.66
-        self.n_min, self.n_max = 100, 1000
+        self.n_range = (100, 1000)
         self.x_range = (2.8915, 3.2027)
         self.y_range = (1.4296, 1.7365)
         self.z_range = (15.2113, 16.1852)
         self.dt_range = (1e-20, 0.1)
-        self.entropy = 1
 
     def fx(self, x, y, z):
         return self.sigma * (y - x)
@@ -22,19 +22,23 @@ class PseudoRandom:
 
     def fz(self, x, y, z):
         return x * y - self.b * z
+    
+    def seed(self, seed : float = None):
+        self._seed = seed if seed is not None else time.time_ns()
+        self.entropy = self._seed
 
-    @staticmethod
-    def get_rand(seed, values: tuple, div):
-        return values[0] + fmod(seed, div) * (values[1] - values[0]) / div
+    def get_seed(self):
+        return self._seed
+    
+    def uniform(self, values: tuple[2], div):
+        return values[0] + fmod(self.entropy+div/3, div) * (values[1] - values[0]) / div
 
     def generate(self):
-        self.entropy = time.time() * 1000
-
-        x_i = self.get_rand(self.entropy, self.x_range, 463)
-        y_i = self.get_rand(self.entropy, self.y_range, 539)
-        z_i = self.get_rand(self.entropy, self.z_range, 822)
-        dt = self.get_rand(self.entropy, self.dt_range, 1000)
-        n = int(self.n_min + self.get_rand(self.entropy, (1, self.n_max - self.n_min), self.n_max - self.n_min))
+        x_i = self.uniform(self.x_range, 12399)
+        y_i = self.uniform(self.y_range, 874323)
+        z_i = self.uniform(self.z_range, 56664)
+        dt = self.uniform(self.dt_range, 230487)
+        n = int( self.uniform(self.n_range, 1000) )
 
         cut = 10000
         for _ in range(n):
@@ -45,4 +49,8 @@ class PseudoRandom:
             y_i = fmod(y_, cut)
             z_i = fmod(z_, cut)
 
-        return abs(fmod(x_i, 1))
+        number = abs(fmod(x_i, 1))
+
+        self.entropy = number * 1e+10
+
+        return number
