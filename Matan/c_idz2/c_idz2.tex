@@ -1,24 +1,19 @@
 \documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
 
 \usepackage{style/style}
-\usepackage{style/titlepage}
 
 \everymath{\displaystyle}
 
 \DeclareMathOperator*{\res}{Res}
+\DeclareMathOperator{\Rez}{Re}
+
+\title{Индивидуальное домашнее задание №2 по дисциплине <<Комплексный анализ>>}
+\author{Держапольский Юрий Витальевич}
+\date{}
 
 \begin{document}
-\fefutitlepage{
-    ОТЧЁТ
-}{
-    к индивидуальному домашнему заданию №2 по дисциплине\\ <<Комплексный анализ>>
-}{
-    01.03.02 <<Прикладная математика и информатика>>
-}{
-    Б9121-01.03.02сп(1)
-}{
-    Держапольский Ю.В.
-}
+
+    \maketitle
 
     \pagebreak
 
@@ -120,8 +115,51 @@
             \textit{Ответ:} \( \frac{8\pi}{27} \).
 
             \item \( \int_{-\infty}^{+\infty} \frac{dx}{(x^4+1)^2} \).
+            \[
+                \sup_{z\in C_R} \left| \frac{1}{(z^4+1)^2} \right| \leq \sup_{z\in C_R} \frac{1}{(|z|^4-1)^2} = \frac{1}{(R^4 - 1)^2} \xrightarrow[R \to \infty]{} 0
+            \]
+            \[
+                \frac{1}{(z^4+1)^2} = \frac{1}{\left(z-\frac{1+i}{\sqrt{2}} \right)^2 \left(z+\frac{1+i}{\sqrt{2}}\right)^2 \left(z-\frac{1-i}{\sqrt{2}}\right)^2 \left(z+\frac{1-i}{\sqrt{2}}\right)^2}
+            \]
+            Голоморфна в верхней полуплоскости кроме точек \( z_1 = \frac{1+i}{\sqrt{2}}, ~ z_2= -\frac{1-i}{\sqrt{2}}\) -- полюса 2-го порядка.
+            \[
+                \int_{-\infty}^{+\infty} \frac{dx}{(x^4+1)^2} = 2\pi i \left( \res_{z = \frac{1+i}{\sqrt{2}}} \frac{1}{(z^4+1)^2} + \res_{z = -\frac{1-i}{\sqrt{2}}} \frac{1}{(z^4+1)^2} \right) = \circledast
+            \]
+            \[
+                \res_{z = \frac{1+i}{\sqrt{2}}} \frac{1}{(z^4+1)^2} = \lim_{z\to\frac{1+i}{\sqrt{2}}} \left( \frac{1}{\left( z + \frac{1+i}{\sqrt{2}} \right)^2 \left(z^2 + i \right)^2} \right)' = 
+            \]
+            \[
+                = \lim_{z\to\frac{1+i}{\sqrt{2}}} \left( -\frac{4z\left( \frac{1+i}{\sqrt{2}} \right) + 6z^2 +2i}{\left( z + \frac{1+i}{\sqrt{2}} \right)^3 \left(z^2 + i \right)^3} \right) = -\frac{4i + 6i + 2i}{-8i (-4+4i)\sqrt{2}} = \frac{3}{8\sqrt{2} (i-1)}
+            \]
+            \[
+                \res_{z = -\frac{1-i}{\sqrt{2}}} \frac{1}{(z^4+1)^2} = \lim_{z\to-\frac{1-i}{\sqrt{2}}} \left( \frac{1}{\left( z - \frac{1-i}{\sqrt{2}} \right)^2 \left(z^2 - i \right)^2} \right)' = 
+            \]
+            \[
+                = \lim_{z\to-\frac{1-i}{\sqrt{2}}} \left( -\frac{-4z\left( \frac{1-i}{\sqrt{2}} \right) + 6z^2 -2i}{\left( z - \frac{1-i}{\sqrt{2}} \right)^3 \left(z^2 - i \right)^3} \right) = -\frac{-4i - 6i - 2i}{8i (4+4i)\sqrt{2}} = \frac{3}{8\sqrt{2} (i+1)}
+            \]
+            \[
+                \circledast = 2\pi i \frac{3}{8\sqrt{2}} \left( \frac{1}{i-1} + \frac{1}{i+1} \right) = 2\pi i \frac{3}{8\sqrt{2}} (-i) = \frac{3\pi}{4\sqrt{2}} 
+            \]
+            \textit{Ответ:} \( \frac{3\pi}{4\sqrt{2}} \).
 
-            \item \( \int_{-\infty}^{+\infty} \frac{(x^2+x) \cos x}{x^4+13x^2+36} dx \).
+            \item \( \int_{-\infty}^{+\infty} \frac{(x^2+x) \cos x}{x^4+13x^2+36} ~ dx = \Rez \int_{-\infty}^{+\infty} \frac{z(z+1) e^{iz}}{(z^2+9)(z^2+4)} ~ dz = \circledast \).
+            \[
+                \sup_{z\in C_R} \left| \frac{z(z+1)}{z^4+13z^2+36} \right| \leq \sup_{z\in C_R} \frac{|z|(|z|-1)}{|z|^4-13|z|^2-36} = \frac{R^2-R}{R^4-13R^2-36} \xrightarrow[R \to \infty]{} 0
+            \]
+            Функция голоморфна в верхней полуплоскости, кроме точек \( z_1 = 3i, ~ z_2 = 2i \) -- полюса 1-го порядка.
+            \[
+                \res_{z=3i} \frac{z(z+1) e^{iz}}{(z^2+9)(z^2+4)} = \lim_{z\to 3i} \frac{z(z+1)e^{iz}}{(z+3i)(z^2+4)} = \frac{3i(3i+1) e^{-3}}{6i (-5)} = -\frac{3i+1}{10} e^{-3}
+            \]
+            \[
+                \res_{z=2i} \frac{z(z+1) e^{iz}}{(z^2+9)(z^2+4)} = \lim_{z\to 2i} \frac{z(z+1)e^{iz}}{(z^2+9)(z+2i)} = \frac{2i(2i+1) e^{-2}}{5\cdot 4i} = \frac{2i+1}{10} e^{-2}
+            \]
+            \[
+                \circledast = \Rez \left( 2 \pi i \left( \frac{2i+1}{10} e^{-2} - \frac{3i+1}{10} e^{-3} \right) \right) = \pi \Rez \left( \frac{-2 + i}{5}e^{-2} - \frac{-3+i}{5}e^{-3} \right) =
+            \]
+            \[
+                = \frac{3e^{-3} - 2e^{-2}}{5} \pi
+            \]
+            \textit{Ответ:} \( \frac{3e^{-3} - 2e^{-2}}{5} \pi \).
             
             \item Найти оригинал по изображению \( \frac{4p+5}{(p-2)(p^2+4p+5)} \).
             \[
