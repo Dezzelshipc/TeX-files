@@ -45,5 +45,5 @@ class Test:
         plt.show()
 
 
-# Test.dynamic_test(2, 10000)
-Test.const_test(2, 100000)
+Test.dynamic_test(2, 10000)
+# Test.const_test(2, 100000)

@@ -1,32 +1,3 @@
-\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
-
-\usepackage{style/style}
-\usepackage{style/titlepage}
-
-\everymath{\displaystyle}
-
-\begin{document}
-
-    \input{parts/titlepage}
-    
-    \tableofcontents
-
-    \pagebreak
-
-    \input{parts/introduction}
-
-    \pagebreak
-
-    \input{parts/task}
-
-    \pagebreak
-
-    \input{parts/conclusion}
-
-    \pagebreak
-
-    \section*{Приложение}
-    \begin{lstlisting}
 # main element method
 import numpy as np
 import utility as ut
@@ -72,10 +43,10 @@ def solve(matrix: np.matrix, values: np.array):
         solution[ind] = values[i]
 
     return solution
-    \end{lstlisting}
-
-    
 
 
-
-\end{document}
+if __name__ == "__main__":
+    # ut.main_solve(solve, 10)
+    # ut.max_val_test(10000, solve, 10, plot=1)
+    A1, b1 = ut.read_data("in.txt")
+    ut.main_solve(solve, matrix=A1, values=b1)
