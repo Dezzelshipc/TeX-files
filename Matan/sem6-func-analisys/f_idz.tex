@@ -1,0 +1,143 @@
+\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
+
+\usepackage{style/style}
+% \usepackage{style/titlepage}
+
+\everymath{\displaystyle}
+
+\newcommand{\rnc}[1]
+    {\MakeUppercase{\romannumeral #1}}
+\newcommand{\otv}{\textit{Ответ:} }
+
+\DeclareMathOperator{\D}{\partial}
+\DeclareMathOperator{\Ln}{Ln}
+\DeclareMathOperator{\Imz}{Im}
+\DeclareMathOperator{\Rez}{Re}
+
+
+\title{Индивидуальное домашнее задание по дисциплине <<Функциональный анализ>>}
+\author{Держапольский Юрий Витальевич}
+\date{}
+
+\begin{document}
+
+    \maketitle
+
+    \tableofcontents
+
+    \pagebreak
+
+    \section{Задание 1 (1.13в)}
+
+        \subsection{Постановка}
+        В множестве \( X \) всевозможных последовательностей натуральных чисел для элементов 
+        \( x = \{ \xi_k \}_{k=1}^\infty , \quad y = \{ \eta_k \}_{k=1}^\infty \)
+        обозначим через \( k_0 (x, y) \) наименьший индекс, при котором \( \xi_k \neq \eta_k \). Доказать, что если \( \rho(x, y) \neq \rho(y,z) \), то \( \rho(x, z) = \max\{ \rho(x, y), \rho(y,z) \} \).
+
+        
+        \subsection{Решение}
+        Также имеем, что \( \rho(x, z) \leq \max\{ \rho(x, y), \rho(y,z) \} \) и
+        \[
+            \rho(x, y) = 
+            \begin{cases}
+                0, & x = y, \\
+                1 + \dfrac{1}{k_0(x,y)}, & x \neq y.
+            \end{cases}
+        \]
+
+        \begin{enumerate}
+            \item Пусть \( x \neq y, y = z \), тогда
+            \[
+                \rho(x, y) \leq \max \{ \rho(x, y), \rho(y, y) \} = \max \{ \rho(x, y), 0 \} = \rho(x, y)
+            \]
+
+            \item Пусть \( x \neq y \neq z \), тогда без ограничения общности запишем эти элементы так:
+            \[
+                \begin{split}
+                    & x = (\dots, x_{k-1}, x_{k}, x_{k+1}, \dots, x_{n-1}, x_{n}, x_{n+1}, \dots), \\
+                    & y = (\dots, x_{k-1}, x_{k}, x_{k+1}, \dots, x_{n-1}, y_{n}, y_{n+1}, \dots), \\
+                    & z = (\dots, x_{k-1}, z_{k}, z_{k+1}, \dots, z_{n-1}, z_{n}, z_{n+1}, \dots),
+                \end{split}
+            \]
+            Откуда наглядно имеем: \( k_0(x,z) = k_0(y,z) = k_0 \leq k_0(x,y) = k_1 \). Т.к. по условию \( \rho(x, y) \neq \rho(y,z) \), то мы не можем находить \( \rho(x, y) \), т.к. \( \rho(x, z) = \rho(y,z) \). Окончательно имеем:
+            \[
+                1 + \frac{1}{k_0} \leq \max \left\{ 1 + \frac{1}{k_1}, 1 + \frac{1}{k_0} \right\} = 1 + \frac{1}{k_0}.
+            \]
+            Что и требовалось доказать.
+            
+        \end{enumerate}
+
+
+    
+
+    \pagebreak
+
+    \section{Задание 2 (5.10)}
+
+        \subsection{Постановка}
+        Пусть вещественная функция \( f \) дифференцируема на \( \mathbb{R} \). Доказать, что \(f\) -- сжимающее отображение в пространстве \( \langle \mathbb{R}, \rho_{|\cdot|} \rangle \) тогда и только тогда, когда существует \( \alpha \in [0, 1) \) такое, что \( |f'(x)| \leq \alpha \) для всех \( x \in \mathbb{R} \).
+        
+        \subsection{Решение}
+        \( (\Rightarrow) \) \( f \) -- дифференцируемая функция, сжимающее отображение в пространстве \( \mathbb{R} \) с нормой \( \rho(x, y) = |x - y| \). Т.е. \( \exists \alpha \in [0, 1): \rho\left(f(x), f(y)\right) \leq \alpha \cdot \rho(x, y) \, \forall x,y \in \mathbb{R} \). По формуле конечных приращений \( \rho\left(f(x), f(y)\right) = |f(x) - f(y)| \leq |f'(\xi)| \cdot |x - y| = |f'(\xi)| \cdot \rho(x, y), \xi \in [x, y]\subset \mathbb{R} \). Пусть \( \alpha = \sup_{\xi \in \mathbb{R}} |f'(\xi)| \in [0, 1) \), откуда следует, что \( |f'(x)| \leq \alpha \, \forall x \in \mathbb{R} \), что и требовалось доказать.
+
+        \( (\Leftarrow) \) \( f \) -- дифференцируемая функция в \( \mathbb{R} \) с нормой \( \rho(x, y) = |x - y| \) и \( \exists  \alpha \in [0, 1): |f'(x)| \leq \alpha \, \forall x \in \mathbb{R}\). По формуле конечных приращений \( \rho\left(f(x), f(y)\right) = |f(x) - f(y)| \leq |f'(\xi)| \cdot |x - y| = |f'(\xi)| \cdot \rho(x, y), \xi \in [x, y]\subset \mathbb{R} \). Функция \( f \) будет сжимающим отображением, если \( |f'(\xi)| < 1, \, \forall \xi \in \mathbb{R} \). Но \( |f'(x)| \leq \alpha < 1  \, \forall x \in \mathbb{R} \), что и требовалось доказать.
+    
+
+    \pagebreak
+
+    \section{Задание 3 (10.3в)}
+
+        \subsection{Постановка}
+        В пространстве \( X = L_p\left[ 0, \frac{\pi}{2} \right], 1 < p < \infty \) вычислить норму функционала \( f(x)  = \int_0^\frac{\pi}{2} \sin^3 s \cdot \cos s \cdot x(s) \, ds \).
+        
+        \subsection{Решение}
+        Оценим норму функционала сверху.
+        \[
+            |f(x)| = \left| \int_0^\frac{\pi}{2} \sin^3 s \cdot \cos s \cdot x(s) \, ds \right| \stackrel{(1)}{\leq} 
+            \int_0^\frac{\pi}{2} \left| \sin^3 s \cdot \cos s \cdot x(s) \right| ds \stackrel{(2)}{\leq} 
+        \]
+        \[
+            \leq \int_0^\frac{\pi}{2} |x(s)| ds = ||x||_{L_1} = ||x^\frac{1}{p}||^p_{L_p}
+        \]
+
+        % Следовательно, \( ||f|| \leq \left( \frac{\pi}{2} \right)^{1 + \frac{1}{p} }  \). Неравенство (1) становится равенством, если \( \sin^3 s \cdot \cos s \cdot x(s) \) сохраняет знак на \( \left[ 0, \frac{\pi}{2} \right] \), т.е. \( x(s) \) должен сохранять знак. Неравенство (2) становится равенством, если \( x(s) = \text{const} \, \) на заданном отрезке. По определению норма функционала \( ||f|| \) ищется \( \forall x: ||x|| = 1 \), значит, все неравенства обращаются в равенства при \( x(t) \equiv 1 \) и достигается норма \( ||f|| = \left( \frac{\pi}{2} \right)^{1 + \frac{1}{p} }  \).
+
+
+    
+
+    \pagebreak
+    \section{Задание 4 (8.26д)}
+
+        \subsection{Постановка}
+        В пространстве \( L_2 [ 0, 1 ] \) найти \( M^\perp \), если \( M \) -- множество функций из пространства \( L_2[0, 1] \), которые равны нулю почти всюду на отрезке \( \left[ 0, \frac{1}{2} \right] \).
+        
+        \subsection{Решение}
+        \( M = \left\{ f \in L_2 [ 0, 1 ]: f(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ 0, \frac{1}{2} \right] \right\} \).
+        
+        Пусть:
+        \[
+            f \in M: f(t) = \begin{cases}
+                0^* \, (\text{п.в.}), & t \in \left[ 0, \frac{1}{2} \right], \\
+                f_2(t) \in L_2\left[ \frac{1}{2}, 1 \right], & t\in \left[ \frac{1}{2}, 1 \right].
+            \end{cases}
+        \]
+        \[
+            g \in M^\perp: g(t) = \begin{cases}
+                g_1(t) \in L_2\left[ 0, \frac{1}{2} \right], & t \in \left[ 0, \frac{1}{2} \right], \\
+                g_2(t) \in L_2\left[ \frac{1}{2}, 1 \right], & t \in \left[ \frac{1}{2}, 1 \right].
+            \end{cases}
+        \]
+
+        Тогда:
+        \[
+            (f, g) = \int_{0}^{1} f(t) \cdot g(t) \, dt = 
+            \int_{0}^{\frac{1}{2}} 0^* \cdot g_1(t) \, dt + \int_{\frac{1}{2}}^{1} f_2(t) \cdot g_2(t) \, dt =
+        \]
+        \[
+            = \int_{\frac{1}{2}}^{1} f_2(t) \cdot g_2(t) \, dt = 0.
+        \]
+        В силу произвольности \( f_2(t) \) необходимо, чтобы \( g_2(t) = 0^* \). Тогда,
+        \[
+            M^\perp = \left\{ g \in L_2 [ 0, 1 ]: g(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ \frac{1}{2}, 1 \right] \right\}
+        \]
+\end{document}
