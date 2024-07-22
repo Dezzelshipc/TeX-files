@@ -13,6 +13,7 @@
 \DeclareMathOperator{\Ln}{Ln}
 \DeclareMathOperator{\Imz}{Im}
 \DeclareMathOperator{\Rez}{Re}
+\DeclareMathOperator{\sign}{sign}
 
 
 \title{Индивидуальное домашнее задание по дисциплине <<Функциональный анализ>>}
@@ -88,7 +89,7 @@
     \section{Задание 3 (10.3в)}
 
         \subsection{Постановка}
-        В пространстве \( X = L_p\left[ 0, \frac{\pi}{2} \right], 1 < p < \infty \) вычислить норму функционала \( f(x)  = \int_0^\frac{\pi}{2} \sin^3 s \cdot \cos s \cdot x(s) \, ds \).
+        В пространстве \( X = L^p\left[ 0, \frac{\pi}{2} \right], 1 < p < \infty \) вычислить норму функционала \( f(x)  = \int_0^\frac{\pi}{2} \sin^3 s \cdot \cos s \cdot x(s) \, ds \).
         
         \subsection{Решение}
         Оценим норму функционала сверху.
@@ -97,34 +98,79 @@
             \int_0^\frac{\pi}{2} \left| \sin^3 s \cdot \cos s \cdot x(s) \right| ds \stackrel{(2)}{\leq} 
         \]
         \[
-            \leq \int_0^\frac{\pi}{2} |x(s)| ds = ||x||_{L_1} = ||x^\frac{1}{p}||^p_{L_p}
+            \leq \max_{s\in\left[ 0, \frac{\pi}{2} \right]} \left| \sin^3 s \cdot \cos s \right| \int_0^\frac{\pi}{2} |1 \cdot  x(s)| ds \stackrel{(3)}{\leq}
+        \]
+        \[
+            \leq \frac{3 \sqrt{3}}{16} \left( \int_0^\frac{\pi}{2} 1^q \, ds \right)^{\frac{1}{q}} \left( \int_0^\frac{\pi}{2} |x(s)|^p s \, ds \right)^{\frac{1}{p}} = \frac{3 \sqrt{3}}{16} \left( \frac{\pi}{2} \right)^{\frac{1}{q}} ||x||_{L^p}
         \]
 
-        % Следовательно, \( ||f|| \leq \left( \frac{\pi}{2} \right)^{1 + \frac{1}{p} }  \). Неравенство (1) становится равенством, если \( \sin^3 s \cdot \cos s \cdot x(s) \) сохраняет знак на \( \left[ 0, \frac{\pi}{2} \right] \), т.е. \( x(s) \) должен сохранять знак. Неравенство (2) становится равенством, если \( x(s) = \text{const} \, \) на заданном отрезке. По определению норма функционала \( ||f|| \) ищется \( \forall x: ||x|| = 1 \), значит, все неравенства обращаются в равенства при \( x(t) \equiv 1 \) и достигается норма \( ||f|| = \left( \frac{\pi}{2} \right)^{1 + \frac{1}{p} }  \).
+        Значит, \( ||f|| \leq \frac{3 \sqrt{3}}{16} \left( \frac{\pi}{2} \right)^{\frac{1}{q}} \). Проверим достижимость нормы. 
+        
+        Неравенство (1) становится равенством, когда \( x(s) \) имеет постоянный знак на интервале. 
+        
+        (2) -- когда \( \sin^3 s \cdot \cos s \) является константой, что не верно. 
+
+        (3) -- достигается при \( x(s) \equiv const \).
 
 
+        \pagebreak
+        \[
+            \stackrel{(2)}{\leq} \left( \int_0^\frac{\pi}{2} \left| \sin^3 s \cdot \cos s \right|^q \, ds \right)^{\frac{1}{q}} \left( \int_0^\frac{\pi}{2} |x(s)|^p s \, ds \right)^{\frac{1}{p}} \leq \frac{3 \sqrt{3}}{16} ||x||_{L^p}
+        \]
+        Известно выражение для Бета-функции:
+        \[
+            B(x, y) = 2 \int_{0}^{\frac{\pi}{2}} \sin^{2x-1} t \cdot \cos^{2y-1} t \, dt.
+        \]
+
+        Отсюда следует, что
+        \[
+            k_q = \left( \int_0^\frac{\pi}{2} \sin^{3q} s \cdot \cos^{q} s \, ds \right)^{\frac{1}{q}} = 
+            \left( \frac{1}{2} B\left(\frac{3q}{2} + \frac{1}{2}, \frac{q}{2}+\frac{1}{2}\right) \right)^{\frac{1}{q}} = 
+        \]
+        \[
+            = \left( 0.5 \cdot \frac{\Gamma\left(\frac{1}{2} + \frac{3q}{2}\right) \Gamma\left(\frac{1}{2} + \frac{q}{2}\right)}{\Gamma\left(1 + 2q\right)} \right)^{\frac{1}{q}}
+            = \left( 0.5 \cdot \frac{(3q-1)!!}{2^\frac{3q}{2}} \frac{(q-1)!!}{2^\frac{q}{2}} \frac{\pi}{\left(2q\right)!} \right)^{\frac{1}{q}}
+        \]
+        \[
+            = \frac{1}{4}  \left( \frac{\pi}{2} \right)^{\frac{1}{q}} \left( \frac{(3q-1)!! (q-1)!! }{\left(2q\right)!} \right)^{\frac{1}{q}} = \dots
+        \]
+
+        \dots
+
+        \[
+            k_q \stackrel{q \to \infty}{\sim} \frac{3 \sqrt{3}}{16}  \left( \frac{\pi}{2} \right)^{\frac{1}{q}}
+        \]
+
+        Значит, что \( ||f|| \leq \frac{3 \sqrt{3}}{16} \left( \frac{\pi}{2} \right)^{\frac{1}{q}} \). Проверим достижимость нормы.
+        
+        Неравенство \( (1) \) выполняется, если  \( x(s) \) имеет постоянный знак.
+
+        Неравенство Гёльдера (2) выполняется, если
+        \[
+            x(s) = C |\sin^3 s \cdot \cos s|^{q-1} \sign(\sin^3 s \cdot \cos s) = C \cdot \sin^{3q - 3} s \cdot \cos^{q-1} s
+        \]
     
 
     \pagebreak
     \section{Задание 4 (8.26д)}
 
         \subsection{Постановка}
-        В пространстве \( L_2 [ 0, 1 ] \) найти \( M^\perp \), если \( M \) -- множество функций из пространства \( L_2[0, 1] \), которые равны нулю почти всюду на отрезке \( \left[ 0, \frac{1}{2} \right] \).
+        В пространстве \( L^2 [ 0, 1 ] \) найти \( M^\perp \), если \( M \) -- множество функций из пространства \( L^2[0, 1] \), которые равны нулю почти всюду на отрезке \( \left[ 0, \frac{1}{2} \right] \).
         
         \subsection{Решение}
-        \( M = \left\{ f \in L_2 [ 0, 1 ]: f(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ 0, \frac{1}{2} \right] \right\} \).
+        \( M = \left\{ f \in L^2 [ 0, 1 ]: f(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ 0, \frac{1}{2} \right] \right\} \).
         
         Пусть:
         \[
             f \in M: f(t) = \begin{cases}
                 0^* \, (\text{п.в.}), & t \in \left[ 0, \frac{1}{2} \right], \\
-                f_2(t) \in L_2\left[ \frac{1}{2}, 1 \right], & t\in \left[ \frac{1}{2}, 1 \right].
+                f_2(t) \in L^2\left[ \frac{1}{2}, 1 \right], & t\in \left[ \frac{1}{2}, 1 \right].
             \end{cases}
         \]
         \[
             g \in M^\perp: g(t) = \begin{cases}
-                g_1(t) \in L_2\left[ 0, \frac{1}{2} \right], & t \in \left[ 0, \frac{1}{2} \right], \\
-                g_2(t) \in L_2\left[ \frac{1}{2}, 1 \right], & t \in \left[ \frac{1}{2}, 1 \right].
+                g_1(t) \in L^2\left[ 0, \frac{1}{2} \right], & t \in \left[ 0, \frac{1}{2} \right], \\
+                g_2(t) \in L^2\left[ \frac{1}{2}, 1 \right], & t \in \left[ \frac{1}{2}, 1 \right].
             \end{cases}
         \]
 
@@ -138,6 +184,6 @@
         \]
         В силу произвольности \( f_2(t) \) необходимо, чтобы \( g_2(t) = 0^* \). Тогда,
         \[
-            M^\perp = \left\{ g \in L_2 [ 0, 1 ]: g(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ \frac{1}{2}, 1 \right] \right\}
+            M^\perp = \left\{ g \in L^2 [ 0, 1 ]: g(t) \stackrel{\text{п.в.}}{=} 0, t \in \left[ \frac{1}{2}, 1 \right] \right\}
         \]
 \end{document}
