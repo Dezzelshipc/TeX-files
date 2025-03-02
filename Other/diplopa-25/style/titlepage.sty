@@ -1,0 +1,291 @@
+\RequirePackage{graphicx}
+\RequirePackage{multicol}
+
+\newcommand{\uline}[1]{\underline{#1\vphantom{lp}}}
+
+\newcommand{\usersignature}[1]{
+    \(
+        \underset{\textit{(Ф.И.О.)}}{\uline{~ \text{#1} ~}}
+    \)
+    \(
+        \underset{\textit{(подпись)}}{\uline{\hspace{50pt}}}
+    \)
+}
+
+\newcommand{\signatureuser}[1]{
+    \(
+        \underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}
+    \)
+    \(
+        \underset{\textit{(И.О.Ф)}}{\uline{~ \text{#1} ~}}
+    \)
+}
+
+\newcommand{\signature}{
+    \(
+        \underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}
+    \)
+}
+
+\newcommand{\undertext}[2]{
+    \(
+        \underset{\textit{(#1)}}{\uline{#2}}
+    \)
+}
+
+\newcommand{\docdate}{
+    <<\uline{~\the\day~}>> \uline{~\monthname{\the\month}~} 20\uline{\DTMtwodigits{\the\year}}~г.
+}
+
+\newcommand{\fefutitlepage}[7]{
+
+    \thispagestyle{empty}
+
+    \begin{center}
+        \includegraphics[scale=0.25]{pictures/logo.pdf}
+
+        {\fontsize{11}{11}\selectfont МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}
+        
+        \vspace*{-12pt}
+
+        {\fontsize{11}{11}\selectfont Федеральное государственное автономное образовательное учреждение высшего образования}
+
+        \vspace*{-10pt}
+
+        \textbf{<<Дальневосточный федеральный университет>>}
+
+        \vspace*{-10pt}
+
+        (ДВФУ)
+        
+        \vspace*{-10pt}
+
+        \rule{\textwidth}{3pt}
+
+        \vspace*{-24pt}
+
+        \rule{\textwidth}{1pt}
+
+        \vspace{10pt}
+
+        \textbf{ИНСТИТУТ МАТЕМАТИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
+
+        \textbf{(ШКОЛА)}
+
+        \vspace{10pt}
+
+        \textbf{Департамент математического и компьютерного моделирования}
+        
+        \vspace{15pt}
+        
+        \textbf{#1}
+
+        #2
+
+        направление подготовки #3
+       
+
+    \end{center}
+
+    \begin{multicols}{2}
+        
+        \(~\)
+
+        \vspace{40pt}
+
+        \noindent Отчёт защищен:\\
+        с оценкой \uline{~~\textit{отлично}~~}
+
+        \vspace{10pt}
+
+        \noindent Регистрационный №\uline{\hspace{80pt}} \\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} 2024 г.
+
+        \vspace{10pt}
+
+
+        \columnbreak
+
+        Выполнил студент гр.
+
+        #4
+
+        \usersignature{#5}
+
+        #6
+
+        \usersignature{#7}
+
+        \docdate
+
+        \vspace{10pt}
+
+        \small
+        Практика пройдена в срок
+
+        \vspace*{-6pt}
+
+        с <<>>  20__ г.
+
+        \vspace*{-6pt}
+
+        по <<>> июля 20__ г.
+
+        \vspace*{-10pt}
+
+        (2 недели)
+        \normalsize
+
+        
+    \end{multicols}
+
+    \vfill
+
+    \begin{center}
+
+        \textbf{г. Владивосток}
+
+        \textbf{2024}
+
+    \end{center}
+
+    \pagebreak
+}
+
+
+\newcommand{\fefutitlepageVKR}[3]{
+
+    \thispagestyle{empty}
+
+    \begin{center}
+        \includegraphics[scale=0.25]{pictures/logo.pdf}
+
+        {\fontsize{11}{11}\selectfont МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}
+        
+        \vspace*{-12pt}
+
+        {\fontsize{11}{11}\selectfont Федеральное государственное автономное образовательное учреждение высшего образования}
+
+        \vspace*{-10pt}
+
+        \textbf{<<Дальневосточный федеральный университет>>}
+
+        \vspace*{-10pt}
+
+        (ДВФУ)
+        
+        \vspace*{-10pt}
+
+        \rule{\textwidth}{3pt}
+
+        \vspace*{-24pt}
+
+        \rule{\textwidth}{1pt}
+
+        \vspace{10pt}
+
+        \textbf{ИНСТИТУТ МАТЕМАТИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
+
+        \textbf{(ШКОЛА)}
+
+        \vspace{4pt}
+
+        \textbf{Департамент математического и компьютерного моделирования}
+        
+        \vspace{50pt}
+        
+        #1
+        
+        \vspace{20pt}
+
+        #2
+        
+        \vspace{10pt}
+
+        \textbf{ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА}
+
+        \vspace{-6pt}
+
+        по образовательной программе подготовки бакалавров
+
+        \vspace{-6pt}
+
+        по направлению #3
+       
+
+    \end{center}
+
+    \vfill
+
+    \begin{center}
+
+        \textbf{г. Владивосток}
+
+        \textbf{\the\year}
+
+    \end{center}
+
+    \pagebreak
+}
+
+\newcommand{\fefureverseVKR}[4]{
+
+    \thispagestyle{empty}
+
+    \begin{multicols}{2}
+        
+        \(~\)
+
+        \vfill
+
+        \noindent Защищена с оценкой: \uline{~~\hspace{30pt}~~}\\
+        Секретарь \\
+        \usersignature{\hspace{100pt}}\\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+
+        \columnbreak
+
+        \noindent Автор работы \signature\\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+
+        \noindent Консультант (если имеется)\\
+        \usersignature{\hspace{100pt}}\\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        
+        \noindent Руководитель ВКР\undertext{должность, учёное звание}{\text{проф., д. ф.-м. н.}}
+        \usersignature{Абакумов А. И.}\\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+
+        #1
+
+        \usersignature{#2}
+
+        #3
+
+        \usersignature{#4}
+
+        % \docdate
+
+        % \vspace{10pt}
+
+        % \small
+        % Практика пройдена в срок
+
+        % \vspace*{-6pt}
+
+        % с <<>>  20__ г.
+
+        % \vspace*{-6pt}
+
+        % по <<>> июля 20__ г.
+
+        % \vspace*{-10pt}
+
+        % (2 недели)
+        % \normalsize
+
+        
+    \end{multicols}
+
+    \pagebreak
+}
