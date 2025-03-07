@@ -1,5 +1,6 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{amsthm}
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{float}
@@ -10,6 +11,7 @@
 \RequirePackage[center]{caption}
 \RequirePackage{array}
 \RequirePackage{tikz}
+\RequirePackage{enumitem}
 
 \RequirePackage{polyglossia}
 \RequirePackage{xecyr}
@@ -36,6 +38,9 @@
 
 \addto\captionsrussian{\def\refname{\section{Список литературы}\vspace*{-1em}}}
 \addto\captionsrussian{\def\contentsname{Оглавление}}
+
+\makeatletter
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
 
 \newcommand{\monthname}[1]{
 	\ifcase#1

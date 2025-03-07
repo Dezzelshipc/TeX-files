@@ -85,31 +85,63 @@
         \draw [arrow] ($(KNVN1)!(BTC)!(NCN)$) -- (DC2);
         % Right - Cycle
 
+        \node at (0,-1) {\textit{а)}};
+        \node at (8,-1) {\textit{б)}};
+
     \end{tikzpicture}
-    \caption{CAPTION}
+    \caption{Описание} \label{shemas}
     \end{figure}
 
+    \begin{enumerate}[label={\asbuk*)}, ref=\asbuk*]
+        \item \textit{Незамкнутая цепь:}
+        \begin{equation}  \label{flow_full}
+            \begin{split}
+                & \frac{dR}{dt} = Q - V_0(R) N_1, \\
+                & \frac{dN_1}{dt} = -m_1 N_1 + k_1 V_0(R) N_1 - V_1(N_1) N_2, \\
+                & \dots \\
+                & \frac{dN_i}{dt} = -m_i N_i + k_i V_{i-1}(N_{i-1}) N_i - V_i(N_i) N_{i+1}, \quad i=\overline{2,n-1}, \\
+                & \dots \\
+                & \frac{dN_n}{dt} = -m_n N_n + k_n V_{n-1}(N_{n-1}) N_n.
+            \end{split}
+        \end{equation}
 
-    \pagebreak
-    Вот такой вид диффура моделей.
+        \item \textit{Замкнутая цепь:}
+        \begin{equation} \label{cycle_full}
+            \begin{split}
+                & \frac{dR}{dt} = Q - V_0(R) N_1  + \sum_{i=1}^{n} a_i m_i N_i, \\
+                & \frac{dN_1}{dt} = -m_1 N_1 + k_1 V_0(R) N_1 - V_1(N_1) N_2, \\
+                & \dots \\
+                & \frac{dN_i}{dt} = -m_i N_i + k_i V_{i-1}(N_{i-1}) N_i - V_i(N_i) N_{i+1}, \quad i=\overline{2,n-1}, \\
+                & \dots \\
+                & \frac{dN_n}{dt} = -m_n N_n + k_n V_{n-1}(N_{n-1}) N_n.
+            \end{split}
+        \end{equation}
+    \end{enumerate}
 
-    \begin{equation} \label{flow}
-        Q -> N_i
+    По биологическому смыслу параметры $k_i$ и $a_i$ удовлетворяют ограничениям $ 0 \leq k_i, a_i \leq 1 $.
+
+    Если считать, что ни один вид не имеет в избытке трофического ресурса, т.е. трофические связи <<напряжены>>, то в этом случае
+    \begin{equation}
+        V_0(R) = \alpha_0 R, \quad V_i(N_i) = \alpha_i N_i \quad (i=\overline{1,n})
     \end{equation}
+    и уравнения (\ref{flow_full}) и (\ref{cycle_full}) переходят в уравнения вольтерровского типа, за исключением первых уравнений, содержащих слагаемое \(Q\). Тогда, формально полагая \(R \equiv N_0\) и \( N_{n+1} \equiv 0 \), получим две системы, которые описывают динамику двух трофических цепей.  
 
+    \begin{enumerate}[label={\asbuk*)}, ref=\asbuk*]
+        \item \textit{Незамкнутая цепь:}
+        \begin{equation}  \label{flow}
+            \begin{split}
+                & \frac{dN_0}{dt} = Q - \alpha_0 N_0 N_1, \\
+                & \frac{dN_i}{dt} = N_i (-m_i + k_i \alpha_{i-1} N_{i-1}  - \alpha_i N_{i+1}), \quad i=\overline{1,n}.
+            \end{split}
+        \end{equation}
 
-    \begin{equation} \label{cycle}
-        Q -> N_i -> Q + a_i * N_i
-    \end{equation}
+        \item \textit{Замкнутая цепь:}
+        \begin{equation} \label{cycle}
+            \begin{split}
+                & \frac{dN_0}{dt} = Q - \alpha_0 N_0 N_1  + \sum_{i=1}^{n} a_i m_i N_i, \\
+                & \frac{dN_i}{dt} = N_i (-m_i + k_i \alpha_{i-1} N_{i-1}  - \alpha_i N_{i+1}), \quad i=\overline{1,n}.
+            \end{split}
+        \end{equation}
+    \end{enumerate}
 
     Исследуем равновесия и их устойчивость при изменении параметра \(Q\).
-
-    \subsection{Тут ещё}
-        Долги вывод и всё такое.
-
-    \begin{figure}[H]
-        \centering
-        % \includegraphics[width=14cm]{pictures/process.png}
-        \caption{}  \label{pic_label}
-    \end{figure}
-
