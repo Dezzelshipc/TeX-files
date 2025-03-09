@@ -5,6 +5,8 @@
 
 \everymath{\displaystyle}
 
+\DeclareMathOperator{\diag}{diag}
+
 \newtheorem{theorem}{Теорема}
 \newtheorem{statement}[theorem]{Утверждение}
 \newtheorem{corollary}{Следствие}[theorem]
@@ -25,7 +27,12 @@
 
     \pagebreak
     
-    \input{parts/analysis}
+    \section{Анализ моделей}
+    \input{parts/analysis_flow}
+
+    \pagebreak
+    
+    \input{parts/analysis_cycle}
 
     \pagebreak
 
