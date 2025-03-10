@@ -47,86 +47,127 @@
                 \end{equation*}
         \end{enumerate}
 
-        Очевидно, что стационарные значения численностей \(N_i\) имеют смысл, только когда они положительные.
+        В итоге имеем:
+        \begin{enumerate}
+            \item \(q = 2s\): \begin{equation} \label{cycle_2s_01}
+                N_1 = f_{2s}, \quad 
+                N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}
+            \end{equation}
+            \item \(q = 2s+1\): \begin{equation} \label{cycle_2s1_01}
+                N_0 = f_{2s+1}, \quad 
+                N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }
+            \end{equation}
+        \end{enumerate}
 
-    %     \begin{statement}
-    %         Если в трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
-    %     \end{statement}
+        \begin{statement}
+            Если в \textbf{замкнутой} трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
+        \end{statement}
 
-    %     \begin{proof}
-    %         Для начала заметим, что \(f_{2s}\) и \(f_{2s+1}\) положительны и монотонно возрастают с увеличением \(s\). Величины \(N_0\) и \(N_1\) также положительны и зависят от параметра \(q\) -- длины трофической цепи.  
-    %         Поскольку все параметры положительные, то численность \( N_{q-1} > 0 \).
+        \begin{proof}
+            % Для начала заметим, что \(f_{2s}\) и \(f_{2s+1}\) положительны и монотонно возрастают с увеличением \(s\). Величины \(N_0\) и \(N_1\) также положительны и зависят от параметра \(q\) -- длины трофической цепи.  
+            % Поскольку все параметры положительные, то численность \( N_{q-1} > 0 \).
 
-    %         Из условия \( N_q > 0 \) и (\ref{cycle_2s}, \ref{cycle_2s1}) получим неравенство
-    %         \begin{equation} \label{cycle_lower}
-    %             Q > \alpha_0 f_{q-1} f_{q}
-    %         \end{equation} 
+            Из условия \( N_q > 0 \) и (\ref{cycle_2s_01}, \ref{cycle_2s1_01}) получим неравенства, ограничивающие скорость поступления внешнего ресурса в систему.
+            \begin{enumerate}
+                \item \( q = 2s \) \begin{equation}  \label{cycle_lower_2s}
+                    \begin{split}
+                        & N_q = N_{2s} = H_{2s-1} (N_0 - f_{2s-1}) > 0, \quad 
+                        \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s} > f_{2s-1}, \\
+                        & Q > \alpha_0 f_{2s-1} f_{2s} - ( \varphi_s f_{2s-1} + f_{2s} \psi_s - \sigma_{2s} ) = \widetilde{Q}^*(q).
+                    \end{split}
+                \end{equation}
+                
+                \item \( q = 2s+1 \) \begin{equation}  \label{cycle_lower_2s1}
+                    \begin{split}
+                        & N_q = N_{2s+1} = H_{2s} (N_1 - f_{2s}) > 0, \quad 
+                        \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } > f_{2s}, \\
+                        & Q > \alpha_0 f_{2s+1} f_{2s} - ( \psi_{s+1} f_{2s} + f_{2s+1} \varphi_s - \sigma_{2s+1}) = \widetilde{Q}^*(q).
+                    \end{split}
+                \end{equation}
+            \end{enumerate}
 
-    %         Предположим противное: \(\exists p < q : N_p \leq 0\). Возможны 4 варианта: \(p\) и \(q\) одинаковой чётности и разной чётности.
 
-    %         \begin{enumerate}
-    %             \item Пусть \(q = 2s \) и \( N_0 = \frac{Q}{\alpha_0 f_{2s}}, N_1 = f_{2s}\).
-    %             \begin{enumerate}
-    %                 \item \(p = 2u \, (u < s)\), тогда из (\ref{cycle_2s}) следует, что \( N_p = N_{2u} \leq 0 \), если \(N_0 \leq f_{2u-1}\). Значит \(Q \leq \alpha_0 f_{2u-1} f_{2s} \). Сравнивая с (\ref{cycle_lower}) получаем
-    %                 \begin{equation*}
-    %                     \alpha_0 f_{2s-1} f_{2s} < Q \leq \alpha_0 f_{2u-1} f_{2s} \Rightarrow f_{2s-1} < f_{2u-1}.
-    %                 \end{equation*}
-    %                 Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
+            Предположим противное: \(\exists p < q : N_p \leq 0\). Возможны 4 варианта: \(p\) и \(q\) одинаковой чётности и разной чётности.
 
-    %                 \item \(p = 2u+1 \, (2u < 2s-1)\), тогда из (\ref{cycle_2s1}) следует, что \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u}\), т.е. \(f_{2s} \leq f_{2u} \). Что также невозможно из-за монотонного возрастания \(f_{2s}\) с ростом \(s\). 
-    %             \end{enumerate}
+            \begin{enumerate}
+                \item Пусть \(q = 2s \) и \( N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}, N_1 = f_{2s}\).
+                \begin{enumerate}
+                    \item \(p = 2u \, (u < s)\), тогда из (\ref{flow_2s}) следует, что \( N_p = N_{2u} \leq 0 \), если \(N_0 \leq f_{2u-1}\). Значит 
+                    \begin{equation*}
+                        Q \leq f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - (f_{2s} \psi_s - \sigma_{2s}).
+                    \end{equation*}
+                    Сравнивая с (\ref{cycle_lower_2s}) получаем
+                    \begin{equation*}
+                        \begin{split}
+                        & f_{2s-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}
+                        < Q \leq 
+                        f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}, \\
+                        & f_{2s-1} < f_{2u-1}
+                        \end{split}
+                    \end{equation*}
+                    Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
 
-    %             \item Пусть \( q = 2s+1 \) и \( N_0 = f_{2s+1}, N_1 = \frac{Q}{\alpha_0 f_{2s+1}}\).
-    %             \begin{enumerate}
-    %                 \item \(p = 2u \, (2u-1 < 2s)\), тогда \( N_p = N_{2u} \leq 0 \) при \(N_0 \leq f_{2u-1}\). Значит \(f_{2s+1} < f_{2u-1} \). 
+                    \item \(p = 2u+1 \, (2u < 2s-1)\), тогда из (\ref{flow_2s1}) следует, что \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u}\), т.е. \(f_{2s} \leq f_{2u} \). Что также невозможно из-за монотонного возрастания \(f_{2s}\) с ростом \(s\). 
+                \end{enumerate}
+
+                \item Пусть \( q = 2s+1 \) и \( N_0 = f_{2s+1}, N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } \).
+                \begin{enumerate}
+                    \item \(p = 2u \, (2u-1 < 2s)\), тогда \( N_p = N_{2u} \leq 0 \) при \(N_0 \leq f_{2u-1}\). Значит \(f_{2s+1} < f_{2u-1} \). 
                     
-    %                 Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
+                    Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
 
-    %                 \item \(p = 2u+1 \, (u < s)\), тогда \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u}\), т.е. \( Q \leq \alpha f_{2u} f_{2s+1} \). Сравнивая с (\ref{cycle_lower}) получаем
-    %                 \begin{equation*}
-    %                     \alpha_0 f_{2s} f_{2s+1} < Q \leq \alpha f_{2u} f_{2s+1} \Rightarrow f_{2s} < f_{2u}.
-    %                 \end{equation*}
-    %                 Что также невозможно из-за монотонного возрастания \(f_{2s}\) с ростом \(s\). 
-    %             \end{enumerate}
-    %         \end{enumerate}
-    %     \end{proof}
-        
-    %     \begin{corollary}
-    %         Из (\ref{cycle_lower}) следует, что если длина трофической цепи равна \(q\), то скорость поступления ресурса \( Q \) должна превосходить критическое значение 
-    %         \begin{equation*}
-    %             Q^* (q) = \alpha_0 f_{q-1} f_{q}.
-    %         \end{equation*}
-    %     \end{corollary}
+                    \item \(p = 2u+1 \, (u < s)\), тогда \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u} \), т.е. 
+                    \begin{equation*}
+                        Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
+                    \end{equation*}
+                    Сравнивая с (\ref{cycle_lower_2s1}) получаем
+                    \begin{equation*}
+                        \begin{split}
+                        & \left\{ \begin{split}
+                            & f_{2s} ( \alpha_0 f_{2s+1}  - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
+                            < Q, \\
+                            & Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1},
+                        \end{split} \right. \\
+                        & f_{2s} < f_{2u}.
+                        \end{split}
+                    \end{equation*}
+                    Что также невозможно. 
+                \end{enumerate}
+            \end{enumerate}
+        \end{proof}
 
-    %     \subsubsection{Условия существования цепи фиксированной длины}
+    \subsubsection{Условия существования цепи фиксированной длины}
 
-    %     Для определения устойчивости равновесного состояния трофической цепи длины \(q\): \(N^* = [ N_0, N_1, \dots, N_q, 0, \dots, 0 ]\) будем исследовать собственные значения матрицы системы (\ref{cycle}), линеаризованной в окрестности этого состояния.
-        
-    %     Найдём матрицу якоби этой системы и подставим равновесную точку: \( \left.\frac{\partial f}{\partial N}\right|_{N^*} \) (\(f\) -- правая часть системы). Получим матрицу
-    %     \begin{equation}
-    %         J = \left\Vert \begin{matrix}
-    %             A_q & 0 \\
-    %             0 & D_{n-q}
-    %         \end{matrix} \right\Vert,
-    %     \end{equation}
-    %     где \(D_{n-q} = \diag\left\{ -m_{q+1} + k_{q+1} \alpha_q N_q, -m_{q+2}, \ldots, -m_{n} \right\}\) и \(A_q\) матрица вида:
-    %     \begin{equation}
-    %         A_q = \left\Vert \begin{matrix}
-    %                -b_0  & -d_0   &          &     0    & \\
-    %                 b_1  & -h_1   &  -d_1    &          & \\
-    %                      & \ddots & \ddots   &  \ddots  &          \\
-    %                      &        & b_{q-1}  & -h_{q-1} & -d_{q-1} \\
-    %                      &   0    &          & b_{q}    & -h_{q}  
-    %         \end{matrix} \right\Vert
-    %     \end{equation}
-    %     В нашем случае 
-    %     \begin{equation*}
-    %         \begin{split}
-    %             & b_0 = \alpha_0 N_1, \quad d_0 = \alpha_0, \\
-    %             & b_i = k_i \alpha_{i-1} N_i, \quad d_i = \alpha_i N_i, \quad h_i = 0, \quad i=\overline{1,q}.
-    %         \end{split}
-    %     \end{equation*}
-    %     Значение \(h_i\) следует из уравнений (\ref{cycle_stationary_equations}).
+        Линеаризуем систему (\ref{cycle}) для определения устойчивости в окрестности состояния \(N^* = [ N_0, N_1, \dots, N_q, 0, \dots, 0 ]\) .
+
+        Получим матрицу, похожую на (\ref{flow_jacobian_small}), вида
+        \begin{equation}
+            J = \left\Vert \begin{matrix}
+                A^1_q & C \\
+                0 & D_{n-q}
+            \end{matrix} \right\Vert,
+        \end{equation}
+        где
+        \begin{equation}
+            A^1_q = \left\Vert \begin{matrix}
+                   -b_0  & c_1-d_0&   c_2    &  \dots   & c_q      \\
+                    b_1  &  0     &  -d_1    &          &  0       \\
+                         & \ddots & \ddots   &  \ddots  &          \\
+                         &        & b_{q-1}  &     0    & -d_{q-1} \\
+                         &   0    &          & b_{q}    &  0  
+            \end{matrix} \right\Vert,
+            C = \left\Vert \begin{matrix}
+                c_{q+1} & c_{q+2} & \dots & c_{n} \\
+                        &    0    &       &
+         \end{matrix} \right\Vert,
+        \end{equation}
+        \( c_i = a_i m_i, i = \overline{1,n} \), а остальные обозначения соответствуют (\ref{flow_jacobian_vars}).
+
+        Аналогично из (\ref{flow_jacobian_spectrum}) имеем асимптотическую устойчивость системы при
+        \begin{equation} \label{cycle_nq_upper}
+            N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
+        \end{equation}
+        и устойчивости матрицы \( A^q_1 \).
 
 
     %     Собственные значения \(J\) равны

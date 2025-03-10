@@ -1,4 +1,9 @@
-\documentclass[14pt, a4paper, titlepage, fleqn]{extarticle}
+\documentclass[
+    14pt, 
+    a4paper, 
+    titlepage, 
+    fleqn
+]{extarticle}
 
 \usepackage{style/style}
 \usepackage{style/titlepage}
@@ -6,6 +11,9 @@
 \everymath{\displaystyle}
 
 \DeclareMathOperator{\diag}{diag}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 
 \newtheorem{theorem}{Теорема}
 \newtheorem{statement}[theorem]{Утверждение}
@@ -26,7 +34,7 @@
     \input{parts/models}
 
     \pagebreak
-    
+
     \section{Анализ моделей}
     \input{parts/analysis_flow}
 

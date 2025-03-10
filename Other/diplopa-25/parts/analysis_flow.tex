@@ -81,7 +81,7 @@
         Очевидно, что стационарные значения численностей \(N_i\) имеют смысл, только когда они положительные.
 
         \begin{statement}
-            Если в трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
+            Если в \textbf{незамкнутой} трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
         \end{statement}
 
         \begin{proof}
@@ -134,7 +134,7 @@
         Для определения устойчивости равновесного состояния трофической цепи длины \(q\): \(N^* = [ N_0, N_1, \dots, N_q, 0, \dots, 0 ]\) будем исследовать собственные значения матрицы системы (\ref{flow}), линеаризованной в окрестности этого состояния.
         
         Найдём матрицу якоби этой системы и подставим равновесную точку: \( \left.\frac{\partial f}{\partial N}\right|_{N^*} \) (\(f\) -- правая часть системы). Получим матрицу
-        \begin{equation}
+        \begin{equation} \label{flow_jacobian_small}
             J = \left\Vert \begin{matrix}
                 A_q & 0 \\
                 0 & D_{n-q}
@@ -151,23 +151,23 @@
             \end{matrix} \right\Vert
         \end{equation}
         В нашем случае 
-        \begin{equation*}
+        \begin{equation} \label{flow_jacobian_vars}
             \begin{split}
                 & b_0 = \alpha_0 N_1, \quad d_0 = \alpha_0, \\
                 & b_i = k_i \alpha_{i-1} N_i, \quad d_i = \alpha_i N_i, \quad h_i = 0, \quad i=\overline{1,q}.
             \end{split}
-        \end{equation*}
+        \end{equation}
         Значение \(h_i\) следует из уравнений (\ref{flow_stationary_equations}).
 
 
         Собственные значения \(J\) равны
-        \begin{equation*}
+        \begin{equation} \label{flow_jacobian_spectrum}
             \lambda_i = \left\{ \begin{matrix}
                 \lambda_i (A_q), & i=\overline{1,q}, \\
                 k_{q+1} \alpha_q N_q - m_{q+1}, & i=q+1, \\
                 -m_i, & i=\overline{q+2, n}. 
             \end{matrix} \right.
-        \end{equation*}
+        \end{equation}
         Очевидно, что при \(i = \overline{q+2,n}\) выполняется условие \(\lambda = -m_i < 0\). Для \(\lambda_{q+1}\) все переменные положительные и достаточно выполнения неравенства
         \begin{equation} \label{flow_nq_upper}
             N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
@@ -176,7 +176,7 @@
 
         Для определения устойчивости матрицы \(A_q\) воспользуемся достаточными условиями знак-устойчивости. 
         
-        \textcolor{red}{(Ссылка/Подробнее?)} \dots
+        \textcolor{red}{(Ссылка/Подробнее?) Нужно доказательство самой знак-устойчивости} \dots
 
         Таким образом матрица \(A_q\) удовлетворяет достаточным условием знак-устойчивости и поэтому устойчива при любых значениях заданных параметров. А это значит, что равновесие \(N^*\) асимптотически устойчиво.
 
