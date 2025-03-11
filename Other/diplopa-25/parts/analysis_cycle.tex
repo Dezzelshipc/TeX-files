@@ -169,6 +169,68 @@
         \end{equation}
         и устойчивости матрицы \( A^q_1 \).
 
+        Матрица \(A^1_q\) не является якобиевой (трёхдиагональной), поэтому определять её устойчивость нужно определять методами обычной устойчивости, например с помощью характеристического многочлена.
+
+        \begin{equation*}
+            P_q (\lambda) = \det (A^1_q - \lambda I) = \left| \begin{matrix}
+                -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_q      \\
+                 b_1  & -\lambda &  -d_1    &          &  0       \\
+                      & \ddots & \ddots   &  \ddots  &          \\
+                      &        & b_{q-1}  & -\lambda & -d_{q-1} \\
+                      &   0    &          & b_{q}    & - \lambda
+            \end{matrix} \right|
+        \end{equation*}
+        Раскладывая определитель сначала по нижней строке, а потом по последнему столбцу получим:
+        \begin{equation*}
+            \begin{split}
+            & P_q (\lambda) = -\lambda P_{q-1} (\lambda) - b_q \left| \begin{matrix}
+                -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_{q-2}    & c_q \\
+                 b_1  & -\lambda &  -d_1    &          &  & 0 \\
+                      & \ddots & \ddots   &  \ddots  &   \\
+                      &       &   b_{q-3}  & -\lambda & -d_{q-3} &   \\
+                      &                &    &   b_{q-2}  &   -\lambda  &      \\
+                      &   0           &   &     &  b_{q-1}  & -d_{q-1}  \\
+            \end{matrix} \right| = \\
+            & = -\lambda P_{q-1} (\lambda) - b_q( -d_{q-1} ) P_{q-2} (\lambda) -b_q (-1)^{q} c_q \left| \begin{matrix}
+                 b_1  & -\lambda &  -d_1    &        & 0  \\
+                      & \ddots & \ddots   &  \ddots  &   \\
+                      &       &   b_{q-3}  & -\lambda & -d_{q-3}  \\
+                      &  0            &    &   b_{q-2}  &   -\lambda  \\
+                   &                &   &  &   b_{q-1}  \\
+            \end{matrix} \right| = \\
+            & = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q \prod_{i=1}^{q} b_i.
+            \end{split}
+        \end{equation*}
+        Учитывая начальные значения характеристического многочлена получаем рекуррентную формулу:
+        \begin{equation} \label{cycle_reccur}
+            \begin{split}
+                & P_q (\lambda) = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q b_1 \cdots b_q, \\
+                & P_0 (\lambda) = - b_0 -\lambda, \\
+                & P_1 (\lambda) = \lambda^2 + b_0 \lambda + b_1 (d_0 - c_1).
+            \end{split}
+        \end{equation}
+
+        Если характеристическое уравнение \( P_q (\lambda) = 0 \) записано в виде
+        \begin{equation*}
+            \lambda^{q+1} + e_q(\lambda) \lambda^q + e_{q-1}(\lambda) \lambda^{q-1} + \dots + e_{1}(\lambda) \lambda + e_0(q) = 0,
+        \end{equation*}
+        тогда, используя (\ref{cycle_reccur}), можно выписать рекуррентные  соотношения для коэффициентов \(e_i (q)\):
+        \begin{equation} \label{cycle_reccur_coeffs}
+            \begin{split}
+            & e_i (q) = \left\{\begin{split}
+                & b_q d_{q-1} e_0(q-2) - (-1)^q c_q b_1 \cdots b_q, && i = 0, \\
+                & e_{i-1} (q-1) + b_q d_{q-1} e_i (q-1), && i = \overline{1,q}, \\
+                & 1, && i = q+1, \\
+                & 0, && i = q+2, \dots, \\
+            \end{split}\right. \\
+            & e_{1} (1) = b_0, \\
+            & e_{0} (0) = b_0, \\
+            & e_{0} (1) = b_1 (d_0 - c_1).
+            \end{split}
+        \end{equation}
+
+        \textcolor{red}{Всё с примерами и только 1-замкнутой?}
+
 
     %     Собственные значения \(J\) равны
     %     \begin{equation*}
@@ -215,12 +277,14 @@
     %         Q < \alpha_0 f_{q} f_{q+1} = Q^*(q+1).
     %     \end{equation}
 
-    %     \begin{corollary}
-    %         Необходимым и достаточным условием существования устойчивой незамкнутой трофической цепи длины \(q\) является ограничение (сверху и снизу) скорости поступления внешнего ресурса в экосистему:
-    %         \begin{equation}
-    %             Q^*(q) < Q < Q^*(q+1).
-    %         \end{equation}.
-    %     \end{corollary}
+        \textcolor{red}{\dots}
+
+        \begin{corollary}
+            Необходимым условием существования замкнутой трофической цепи длины \(q\) является ограничение (сверху и снизу) скорости поступления внешнего ресурса в экосистему:
+            \begin{equation}
+                \widetilde{Q}^*(q) < Q < \widetilde{Q}^*(q+1).
+            \end{equation}.
+        \end{corollary}
         
 
 
