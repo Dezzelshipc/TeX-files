@@ -1,21 +1,44 @@
 from manim import *
 from manim_slides import Slide
 
-class Start(Slide):
+class Intro(Slide):
     def construct(self):
-        circle = Circle()  # create a circle
-        circle.set_fill(PINK, opacity=0.5)  # set color and transparency
+        t1 = Tex("1").to_corner(DL).set_opacity(0.1)
+        self.add(t1)
+         
+        self.wait()
+        self.next_slide()
+        self.remove(t1)
 
-        square = Square()  # create a square
-        square.flip(RIGHT)  # flip horizontally
-        square.rotate(-3 * TAU / 8)  # rotate a certain amount
+        logo = SVGMobject("assets/logo").scale(1.5)
+        self.play(Write(logo), run_time=2)
+        self.wait(0.05)
 
-        self.play(Create(square))  # animate the creation of the square
+        self.play(LaggedStart( ApplyWave(logo), Circumscribe(logo, Circle), lag_ratio=0.25))
 
-        self.next_slide() 
+        names = Text("Держапольский Юрий Витальевич\nБ9121-01.03.02сп").scale(0.5).to_corner(DL)
 
-        self.play(Transform(square, circle))  # interpolate the square into the circle
-        
-        self.next_slide() 
-        
-        self.play(FadeOut(square))  # fade out animation
+        title = VGroup(
+            Text("Моделирование трофических сетей").scale(1.2),
+            Text("Особенности динамики видов в трофических цепях").move_to(DOWN)
+        ).scale(0.7).move_to(ORIGIN)
+
+        self.play(
+            LaggedStart( 
+            logo.animate.scale(0.5).to_corner(DR),
+            [
+            Write(names),
+            Write(title)
+            ],
+            lag_ratio=0.1)
+        )
+
+        self.next_slide()
+
+        self.play(
+            FadeOut(logo, shift=DOWN),
+            FadeOut(title, shift=DOWN),
+            FadeOut(names, shift=DOWN)
+        )
+
+        self.wait()

@@ -34,7 +34,24 @@
 \geometry{bottom=2cm}
 
 \renewcommand{\lstlistingname}{Листинг}
-\newcommand{\Rez}{\operatorname{Re}}
+
+%%% Math commands and operators 
+\newcommand{\D}{\partial}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Rez}{Re}
+\DeclareMathOperator{\Imz}{Im}
+
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}[theorem]{Утверждение}
+\newtheorem{corollary}[theorem]{Следствие}
+\newtheorem{lemma}[theorem]{Лемма}
+
+%%% Math END
 
 \addto\captionsrussian{\def\refname{\section{Список литературы}\vspace*{-1em}}}
 \addto\captionsrussian{\def\contentsname{Оглавление}}

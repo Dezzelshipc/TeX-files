@@ -10,14 +10,7 @@
 
 \everymath{\displaystyle}
 
-\DeclareMathOperator{\diag}{diag}
-
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
-\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
-
-\newtheorem{theorem}{Теорема}
-\newtheorem{statement}[theorem]{Утверждение}
-\newtheorem{corollary}{Следствие}[theorem]
+\usetikzlibrary{shapes.geometric, calc, arrows.meta}
 
 \begin{document}
 
@@ -36,6 +29,10 @@
     \pagebreak
 
     \section{Анализ моделей}
+    \input{parts/sign_stability.tex}
+
+    \pagebreak
+
     \input{parts/analysis_flow}
 
     \pagebreak
