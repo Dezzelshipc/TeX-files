@@ -3,12 +3,13 @@
 \RequirePackage{amsthm}
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
+\RequirePackage{caption}
+\RequirePackage{subcaption}
 \RequirePackage{float}
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{listings}
 \RequirePackage{color}
 \RequirePackage{datetime2}
-\RequirePackage[center]{caption}
 \RequirePackage{array}
 \RequirePackage{tikz}
 \RequirePackage{enumitem}
@@ -35,21 +36,30 @@
 
 \renewcommand{\lstlistingname}{Листинг}
 
+\newcommand{\labeltext}[2]{%
+  \@bsphack
+  \MakeLinkTarget*{#1}%
+  \def\@currentlabel{#1}{\label{#2}}%
+  \@esphack%
+  #1%
+}
+
 %%% Math commands and operators 
 \newcommand{\D}{\partial}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 
+\newtheorem{definition}{Определение}
+\newtheorem{theorem}{Теорема}
+\newtheorem{statement}{Утверждение}
+\newtheorem{corollary}{Следствие}
+\newtheorem{lemma}{Лемма}
+
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\Rez}{Re}
 \DeclareMathOperator{\Imz}{Im}
-
-\newtheorem{definition}{Определение}
-\newtheorem{theorem}{Теорема}
-\newtheorem{statement}[theorem]{Утверждение}
-\newtheorem{corollary}[theorem]{Следствие}
-\newtheorem{lemma}[theorem]{Лемма}
+\DeclareMathOperator{\const}{const}
 
 %%% Math END
 
