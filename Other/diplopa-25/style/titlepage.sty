@@ -37,6 +37,10 @@
     <<\uline{~\the\day~}>> \uline{~\monthname{\the\month}~} 20\uline{\DTMtwodigits{\the\year}}~г.
 }
 
+\newcommand{\emptydate}{
+    <<\uline{~~~~~}>> \uline{ \hspace{80pt} } 20\uline{\DTMtwodigits{\the\year}}~г.
+}
+
 \newcommand{\fefutitlepage}[7]{
 
     \thispagestyle{empty}
@@ -282,6 +286,122 @@
 
         
     \end{multicols}
+
+    \pagebreak
+}
+
+\newcommand{\fefutitlepagePRAC}[9]{
+
+    \thispagestyle{empty}
+
+    \begin{center}
+        \includegraphics[scale=0.25]{pictures/logo.pdf}
+
+        {\fontsize{11}{11}\selectfont МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}
+        
+        \vspace*{-12pt}
+
+        {\fontsize{11}{11}\selectfont Федеральное государственное автономное образовательное учреждение высшего образования}
+
+        \vspace*{-10pt}
+
+        \textbf{<<Дальневосточный федеральный университет>>}
+
+        \vspace*{-10pt}
+
+        (ДВФУ)
+        
+        \vspace*{-10pt}
+
+        \rule{\textwidth}{3pt}
+
+        \vspace*{-24pt}
+
+        \rule{\textwidth}{1pt}
+
+        \vspace{10pt}
+
+        \textbf{ИНСТИТУТ МАТЕМАТИКИ И КОМПЬЮТЕРНЫХ ТЕХНОЛОГИЙ}
+
+        \textbf{(ШКОЛА)}
+
+        % \vspace{10pt}
+
+        \textbf{Департамент математического и компьютерного моделирования}
+        
+        \vspace{15pt}
+        
+        \textbf{ОТЧЁТ}
+
+        \linespread{1.0}\selectfont
+        #1 \\
+        направление подготовки #2
+       
+
+    \end{center}
+
+    \begin{multicols}{2}
+        
+        \(~\)
+
+        \vspace{40pt}
+
+        \noindent Отчёт защищен:\\
+        % с оценкой \uline{~~\textit{отлично}~~}
+        с оценкой \uline{\hspace{80pt}}
+
+        \vspace{10pt}
+
+        \noindent Регистрационный №\uline{\hspace{80pt}} \\
+        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year г.
+
+        \vspace{10pt}
+
+
+        \columnbreak
+
+        Выполнил студент гр.
+
+        #3
+
+        \usersignature{#4}
+
+        #5
+
+        \usersignature{#6}
+
+        \emptydate
+
+        \vspace{10pt}
+
+        \small
+        Практика пройдена в срок
+
+        \vspace*{-6pt}
+
+        с #7
+
+        \vspace*{-6pt}
+
+        по #8
+
+        \vspace*{-10pt}
+
+        (#9)
+        \normalsize
+
+        
+    \end{multicols}
+
+    \vfill
+
+    \begin{center}
+
+        \textbf{г. Владивосток}
+
+        \textbf{\the\year}
+
+    \end{center}
 
     \pagebreak
 }
