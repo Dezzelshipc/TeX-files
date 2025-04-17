@@ -1,0 +1,1 @@
+manim-slides present Intro DiplomIntro ModelsIntro StabilityTypes SignStability ExampleFlow1Intro ExampleFlow1 Outro

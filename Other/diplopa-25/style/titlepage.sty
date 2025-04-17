@@ -1,5 +1,6 @@
 \RequirePackage{graphicx}
 \RequirePackage{multicol}
+\RequirePackage{trimspaces}
 
 \newcommand{\uline}[1]{\underline{#1\vphantom{lp}}}
 
@@ -39,6 +40,28 @@
 
 \newcommand{\emptydate}{
     <<\uline{~~~~~}>> \uline{ \hspace{80pt} } 20\uline{\DTMtwodigits{\the\year}}~г.
+}
+
+\newcommand*{\trim}[1]{%
+  \trim@spaces@noexp{#1}%
+}
+
+\newcommand{\pracdates}[3]{
+    \small
+    Практика пройдена в срок
+
+    \vspace*{-6pt}
+
+    с \trim{#1}
+
+    \vspace*{-6pt}
+
+    по \trim{#2}
+
+    \vspace*{-10pt}
+
+    (\trim{#3})
+    \normalsize
 }
 
 \newcommand{\fefutitlepage}[7]{
@@ -111,7 +134,7 @@
         \columnbreak
 
         Выполнил студент гр.
-
+        
         #4
 
         \usersignature{#5}
@@ -290,7 +313,7 @@
     \pagebreak
 }
 
-\newcommand{\fefutitlepagePRAC}[9]{
+\newcommand{\fefutitlepagePRAC}[7]{
 
     \thispagestyle{empty}
 
@@ -357,38 +380,29 @@
 
         \vspace{10pt}
 
-
         \columnbreak
 
         Выполнил студент гр.
 
-        #3
+        \vspace*{-10pt}
 
-        \usersignature{#4}
+        #3 % Группа
 
-        #5
+        \vspace*{-10pt}
 
-        \usersignature{#6}
+        \usersignature{\trim{#4}} % Студ
+
+        #5 % Текст рук + должность
+
+        \vspace*{-10pt}
+
+        \usersignature{\trim{#6}} % Рук
 
         \emptydate
 
         \vspace{10pt}
 
-        \small
-        Практика пройдена в срок
-
-        \vspace*{-6pt}
-
-        с #7
-
-        \vspace*{-6pt}
-
-        по #8
-
-        \vspace*{-10pt}
-
-        (#9)
-        \normalsize
+        #7 % Время прохождения практики
 
         
     \end{multicols}
