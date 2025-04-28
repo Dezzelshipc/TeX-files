@@ -217,7 +217,7 @@
 
         \draw[arrow] ($(DBR)!(MR)!(DBR)$) -- (DBR2);
         \draw[arrow] (DBR2) -- (DBR);
-        \draw[arrow] (DBR) |- node[pos=0.75, anchor=south] {$\textstyle\sum\limits_{i=1}^r a_i m'_i N'_i$} (N0);
+        \draw[arrow] (DBR) |- node[pos=0.75, anchor=south] {$\textstyle\sum\limits_{i=1}^r a'_i m'_i N'_i$} (N0);
 
 
         \draw[arrow] (N1) -- node[anchor=south] {$m_1 N_1$} ($(DBS)!(N1)!(DBS)$);
@@ -237,10 +237,11 @@
 По схеме можем построить систему дифференциальных уравнений.
 \begin{equation} \label{double_full}
     \begin{split}
-        & \frac{d N_0}{dt} = Q - V_0(N_0) N_1 + \sum_{i=1}^q a_i m_i N_i + \sum_{i=1}^r a_i m'_i N'_i, \\
-        & \frac{d N_i}{dt} = -m_i N_i + k_i V_{i-1}(N_{i-1}) N_i - V_i(N_i) N_{i+1} - \delta_{si} V_s^b(N_s) N'_1, \quad i=\overline{1,q}, \\
-        & \frac{d N'_1}{dt} = V_s^b(N_s) N'_1 -m'_1 N'_1 + k'_1 {V^b}'_{i-1}(N'_{i-1}) N'_i - V'_i(N'_i) N'_{i+1}, \\
-        & \frac{d N'_i}{dt} = -m'_i N'_i + k'_i {V^b}'_{i-1}(N'_{i-1}) N'_i - V'_i(N'_i) N'_{i+1}, \quad i=\overline{2,r}.
+        & \frac{d N_0}{dt} = Q - V_0(N_0) N_1 + \sum_{i=1}^q a_i m_i N_i + \sum_{i=1}^r a'_i m'_i N'_i, \\
+        & \frac{d N_i}{dt} = -m_i N_i + k_i V_{i-1}(N_{i-1}) N_i - V_i(N_i) N_{i+1}, \quad i=\overline{1,s-1},  \overline{s+1,q}, \\
+        & \frac{d N_s}{dt} = -m_s N_s + k_s V_{s-1}(N_{s-1}) N_s - V_s(N_s) N_{s+1} - V_s^b(N_s) N'_1, \\
+        & \frac{d N'_1}{dt} = -m'_1 N'_1 + k'_1 V_s^b(N_s) N'_1 - V'_1(N'_1) N'_{2}, \\
+        & \frac{d N'_k}{dt} = -m'_k N'_k + k'_k V'_{k-1}(N'_{k-1}) N'_k - V'_k(N'_k) N'_{k+1}, \quad k=\overline{2,r}.
     \end{split}
 \end{equation} 
-Здесь \( \delta_{si} = 1\), если \(s = i\), иначе \(\delta_{si} = 0\). \(N_{q+1} \equiv 0, N'_{r+1} \equiv 0\). Аналогично неветвящимся цепям, можем положить функции \(V\) линейными. 
+Здесь аналогично \(N_{q+1} \equiv 0, N'_{r+1} \equiv 0\).
