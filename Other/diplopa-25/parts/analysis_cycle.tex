@@ -1,295 +1,360 @@
 \subsection{Равновесные состояния}
-    Аналогично незамкнутой системе, в системе с частичным восстановлением ресурса (\ref{cycle}) при \(Q > 0\) могут существовать \( n \) равновесных состояний типа \(\left[ N_0, N_1, \ldots, N_q, 0, \ldots, 0 \right]\), которые могут быть найдены из уравнений
-    \begin{equation} \label{cycle_stationary_equations}
-        \frac{dN}{dt} = 0 \Rightarrow
-        \left\lbrace\begin{split}
-            & Q + \sum_{i=1}^{q} a_i m_i N_i = \alpha_0 N_0 N_1, \\
-            & \alpha_i N_{i+1} = k_i \alpha_{i-1} N_{i-1} - m_i, \quad i=\overline{1,q}                
-        \end{split}\right.
-    \end{equation}
+Аналогично незамкнутой системе, в системе с частичным восстановлением ресурса (\ref{cycle}) при \(Q > 0\) могут существовать \( n \) равновесных состояний типа \(\left[ N_0, N_1, \ldots, N_q, 0, \ldots, 0 \right]\), которые могут быть найдены из уравнений
+\begin{equation} \label{cycle_stationary_equations}
+    \frac{dN}{dt} = 0 \Rightarrow
+    \left\lbrace\begin{split}
+        & Q + \sum_{i=1}^{q} a_i m_i N_i = \alpha_0 N_0 N_1, \\
+        & \alpha_i N_{i+1} = k_i \alpha_{i-1} N_{i-1} - m_i, \quad i=\overline{1,q}                
+    \end{split}\right.
+\end{equation}
 
-    Поскольку связь \(N_{i-1}\) и \(N_{i+1}\) точно такая же, что и у незамкнутой модели, то значения \(N_i\) также могут быть определены по формулам (\ref{flow_2s}, \ref{flow_2s1}). Остаётся найти явные выражения для \(N_0\) и \( N_1\).
-    
-    Используем обозначения (\ref{flow_sub}) и введём новые:
-    \begin{equation}
-        \begin{split}
-        & \varphi_s = \sum_{j=1}^{s} a_{2j} m_{2j} H_{2s-1}, \quad 
-        \psi_s = \sum_{j=1}^{s} a_{2j-1} m_{2j-1} H_{2s-2}, \\
-        & \sigma_i = \sum_{j=1}^{i} a_j m_j f_{j-1} H_{j-1} \quad (H_0 = 1, \, f_0 = 0).
-        \end{split}
-    \end{equation}
+Поскольку связь \(N_{i-1}\) и \(N_{i+1}\) точно такая же, что и у незамкнутой модели, то значения \(N_i\) также могут быть определены по формулам (\ref{flow_2s}, \ref{flow_2s1}). Остаётся найти явные выражения для \(N_0\) и \( N_1\).
 
-    \begin{enumerate}
-        \item Пусть \(q = 2s\) -- \textit{чётное}. Тогда аналогично шагам для незамкнутой цепи получаем \( N_1 = f_{2s} \).
-        Используя первое уравнение в (\ref{cycle_stationary_equations}), будем иметь            
-        \begin{equation*}
+Используем обозначения (\ref{flow_sub}) и введём новые:
+\begin{equation} \label{cycle_sub}
+    \begin{split}
+    & \varphi_s = \sum_{j=1}^{s} a_{2j} m_{2j} H_{2j-1}, \quad 
+    \psi_s = \sum_{j=1}^{s} a_{2j-1} m_{2j-1} H_{2j-2}, \\
+    & \sigma_i = \sum_{j=1}^{i} a_j m_j f_{j-1} H_{j-1} \quad (H_0 = 1, \, f_0 = 0).
+    \end{split}
+\end{equation}
+
+\begin{enumerate}
+    \item Пусть \(q = 2s\) -- \textit{чётное}. Тогда аналогично шагам для незамкнутой цепи получаем \( N_1 = f_{2s} \).
+    Используя первое уравнение в (\ref{cycle_stationary_equations}), будем иметь            
+    \begin{equation*}
+    \begin{split}
+        & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
+        & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(f_{2s} - f_{2i-2})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}), \\
+        & Q + f_{2s} \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} - \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2} = \\
+        & = N_0 \left( \alpha_0 f_{2s} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} \right) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1},  \\
+        & Q + f_{2s} \psi_s - \sigma_{2s} = N_0 \left( \alpha_0 f_{2s} - \varphi_s \right), \\
+        & N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}.
+    \end{split}
+    \end{equation*}
+
+    \item Пусть \(q = 2s+1\) -- \textit{нечётное}. Тогда \( N_1 = f_{2s+1} \) и
+    \begin{equation*}
         \begin{split}
-            & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
-            & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(f_{2s} - f_{2i-2})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}), \\
-            & Q + f_{2s} \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} - \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2} = \\
-            & = N_0 \left( \alpha_0 f_{2s} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} \right) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1},  \\
-            & Q + f_{2s} \psi_s - \sigma_{2s} = N_0 \left( \alpha_0 f_{2s} - \varphi_s \right), \\
-            & N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}.
+            & Q + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
+            & Q + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(f_{2s+1} - f_{2i-1})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}), \\
+            & Q + f_{2s+1} \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1} = \\
+            & = N_1 \left( \alpha_0 f_{2s+1} - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} \right) + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2},  \\
+            & Q + f_{2s+1} \varphi_s - \sigma_{2s+1} = N_1 \left( \alpha_0 f_{2s+1} - \psi_{s+1} \right), \\
+            & N_0 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
         \end{split}
         \end{equation*}
+\end{enumerate}
 
-        \item Пусть \(q = 2s+1\) -- \textit{нечётное}. Тогда \( N_1 = f_{2s+1} \) и
-        \begin{equation*}
-            \begin{split}
-                & Q + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
-                & Q + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(f_{2s+1} - f_{2i-1})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}), \\
-                & Q + f_{2s+1} \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1} = \\
-                & = N_1 \left( \alpha_0 f_{2s+1} - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} \right) + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2},  \\
-                & Q + f_{2s+1} \varphi_s - \sigma_{2s+1} = N_1 \left( \alpha_0 f_{2s+1} - \psi_{s+1} \right), \\
-                & N_0 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
-            \end{split}
-            \end{equation*}
-    \end{enumerate}
+В итоге имеем:
+\begin{enumerate}
+    \item \(q = 2s\): \begin{equation} \label{cycle_2s_01}
+        N_1 = f_{2s}, \quad 
+        N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}
+    \end{equation}
+    \item \(q = 2s+1\): \begin{equation} \label{cycle_2s1_01}
+        N_0 = f_{2s+1}, \quad 
+        N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }
+    \end{equation}
+\end{enumerate}
 
-    В итоге имеем:
+\begin{statement}
+    Если в \textbf{замкнутой} трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
+\end{statement}
+
+\begin{proof}
+    Из условия \( N_q > 0 \) и (\ref{cycle_2s_01}, \ref{cycle_2s1_01}) получим неравенства, ограничивающие скорость поступления внешнего ресурса в систему.
     \begin{enumerate}
-        \item \(q = 2s\): \begin{equation} \label{cycle_2s_01}
-            N_1 = f_{2s}, \quad 
-            N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}
+        \item \( q = 2s \) \begin{equation}  \label{cycle_lower_2s}
+            \begin{split}
+                & N_q = N_{2s} = H_{2s-1} (N_0 - f_{2s-1}) > 0, \quad 
+                \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s} > f_{2s-1}, \\
+                & Q > \alpha_0 f_{2s-1} f_{2s} - ( \varphi_s f_{2s-1} + f_{2s} \psi_s - \sigma_{2s} ) = \widetilde{Q}^*(q).
+            \end{split}
         \end{equation}
-        \item \(q = 2s+1\): \begin{equation} \label{cycle_2s1_01}
-            N_0 = f_{2s+1}, \quad 
-            N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }
+        
+        \item \( q = 2s+1 \) \begin{equation}  \label{cycle_lower_2s1}
+            \begin{split}
+                & N_q = N_{2s+1} = H_{2s} (N_1 - f_{2s}) > 0, \quad 
+                \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } > f_{2s}, \\
+                & Q > \alpha_0 f_{2s+1} f_{2s} - ( \psi_{s+1} f_{2s} + f_{2s+1} \varphi_s - \sigma_{2s+1}) = \widetilde{Q}^*(q).
+            \end{split}
         \end{equation}
     \end{enumerate}
 
-    \begin{statement}
-        Если в \textbf{замкнутой} трофической цепи длины \(q\) численность \(N_q > 0\), то \(N_i > 0 \, (i=\overline{1,q-1})\).
-    \end{statement}
 
-    \begin{proof}
-        % Для начала заметим, что \(f_{2s}\) и \(f_{2s+1}\) положительны и монотонно возрастают с увеличением \(s\). Величины \(N_0\) и \(N_1\) также положительны и зависят от параметра \(q\) -- длины трофической цепи.  
-        % Поскольку все параметры положительные, то численность \( N_{q-1} > 0 \).
+    Предположим противное: \(\exists p < q : N_p \leq 0\). Возможны 4 варианта: \(p\) и \(q\) одинаковой чётности и разной чётности.
 
-        Из условия \( N_q > 0 \) и (\ref{cycle_2s_01}, \ref{cycle_2s1_01}) получим неравенства, ограничивающие скорость поступления внешнего ресурса в систему.
+    \begin{enumerate}
+        \item Пусть \(q = 2s \) и \( N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}, N_1 = f_{2s}\).
         \begin{enumerate}
-            \item \( q = 2s \) \begin{equation}  \label{cycle_lower_2s}
+            \item \(p = 2u \, (u < s)\), тогда из (\ref{flow_2s}) следует, что \( N_p = N_{2u} \leq 0 \), если \(N_0 \leq f_{2u-1}\). Значит 
+            \begin{equation*}
+                Q \leq f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - (f_{2s} \psi_s - \sigma_{2s}).
+            \end{equation*}
+            Сравнивая с (\ref{cycle_lower_2s}) получаем
+            \begin{equation*}
                 \begin{split}
-                    & N_q = N_{2s} = H_{2s-1} (N_0 - f_{2s-1}) > 0, \quad 
-                    \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s} > f_{2s-1}, \\
-                    & Q > \alpha_0 f_{2s-1} f_{2s} - ( \varphi_s f_{2s-1} + f_{2s} \psi_s - \sigma_{2s} ) = \widetilde{Q}^*(q).
+                & f_{2s-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}
+                < Q \leq 
+                f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}, \\
+                & f_{2s-1} < f_{2u-1}
                 \end{split}
-            \end{equation}
+            \end{equation*}
+            Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
+
+            \item \(p = 2u+1 \, (2u < 2s-1)\), тогда из (\ref{flow_2s1}) следует, что \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u}\), т.е. \(f_{2s} \leq f_{2u} \). Что также невозможно из-за монотонного возрастания \(f_{2s}\) с ростом \(s\). 
+        \end{enumerate}
+
+        \item Пусть \( q = 2s+1 \) и \( N_0 = f_{2s+1}, N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } \).
+        \begin{enumerate}
+            \item \(p = 2u \, (2u-1 < 2s)\), тогда \( N_p = N_{2u} \leq 0 \) при \(N_0 \leq f_{2u-1}\). Значит \(f_{2s+1} < f_{2u-1} \). 
             
-            \item \( q = 2s+1 \) \begin{equation}  \label{cycle_lower_2s1}
+            Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
+
+            \item \(p = 2u+1 \, (u < s)\), тогда \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u} \), т.е. 
+            \begin{equation*}
+                Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
+            \end{equation*}
+            Сравнивая с (\ref{cycle_lower_2s1}) получаем
+            \begin{equation*}
                 \begin{split}
-                    & N_q = N_{2s+1} = H_{2s} (N_1 - f_{2s}) > 0, \quad 
-                    \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } > f_{2s}, \\
-                    & Q > \alpha_0 f_{2s+1} f_{2s} - ( \psi_{s+1} f_{2s} + f_{2s+1} \varphi_s - \sigma_{2s+1}) = \widetilde{Q}^*(q).
+                & \left\{ \begin{split}
+                    & f_{2s} ( \alpha_0 f_{2s+1}  - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
+                    < Q, \\
+                    & Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1},
+                \end{split} \right. \\
+                & f_{2s} < f_{2u}.
                 \end{split}
-            \end{equation}
+            \end{equation*}
+            Что также невозможно. 
         \end{enumerate}
-
-
-        Предположим противное: \(\exists p < q : N_p \leq 0\). Возможны 4 варианта: \(p\) и \(q\) одинаковой чётности и разной чётности.
-
-        \begin{enumerate}
-            \item Пусть \(q = 2s \) и \( N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}, N_1 = f_{2s}\).
-            \begin{enumerate}
-                \item \(p = 2u \, (u < s)\), тогда из (\ref{flow_2s}) следует, что \( N_p = N_{2u} \leq 0 \), если \(N_0 \leq f_{2u-1}\). Значит 
-                \begin{equation*}
-                    Q \leq f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - (f_{2s} \psi_s - \sigma_{2s}).
-                \end{equation*}
-                Сравнивая с (\ref{cycle_lower_2s}) получаем
-                \begin{equation*}
-                    \begin{split}
-                    & f_{2s-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}
-                    < Q \leq 
-                    f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}, \\
-                    & f_{2s-1} < f_{2u-1}
-                    \end{split}
-                \end{equation*}
-                Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
-
-                \item \(p = 2u+1 \, (2u < 2s-1)\), тогда из (\ref{flow_2s1}) следует, что \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u}\), т.е. \(f_{2s} \leq f_{2u} \). Что также невозможно из-за монотонного возрастания \(f_{2s}\) с ростом \(s\). 
-            \end{enumerate}
-
-            \item Пусть \( q = 2s+1 \) и \( N_0 = f_{2s+1}, N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} } \).
-            \begin{enumerate}
-                \item \(p = 2u \, (2u-1 < 2s)\), тогда \( N_p = N_{2u} \leq 0 \) при \(N_0 \leq f_{2u-1}\). Значит \(f_{2s+1} < f_{2u-1} \). 
-                
-                Это невозможно, поскольку \(f_{2s-1}\) монотонно возрастает с ростом \(s\).
-
-                \item \(p = 2u+1 \, (u < s)\), тогда \( N_p = N_{2u+1} \leq 0 \) при \(N_1 \leq f_{2u} \), т.е. 
-                \begin{equation*}
-                    Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
-                \end{equation*}
-                Сравнивая с (\ref{cycle_lower_2s1}) получаем
-                \begin{equation*}
-                    \begin{split}
-                    & \left\{ \begin{split}
-                        & f_{2s} ( \alpha_0 f_{2s+1}  - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
-                        < Q, \\
-                        & Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1},
-                    \end{split} \right. \\
-                    & f_{2s} < f_{2u}.
-                    \end{split}
-                \end{equation*}
-                Что также невозможно. 
-            \end{enumerate}
-        \end{enumerate}
-    \end{proof}
+    \end{enumerate}
+\end{proof}
 
 \subsection{Условия существования цепи фиксированной длины}
 
-    Линеаризуем систему (\ref{cycle}) для определения устойчивости в окрестности состояния \(N^* = [ N_0, N_1, \dots, N_q, 0, \dots, 0 ]\) .
+Линеаризуем систему (\ref{cycle}) для определения устойчивости в окрестности состояния \(N^* = [ N_0, N_1, \dots, N_q, 0, \dots, 0 ]\) .
 
-    Получим матрицу, похожую на (\ref{flow_jacobian_small}), вида
-    \begin{equation}
-        J = \left\Vert \begin{matrix}
-            A^1_q & C \\
-            0 & D_{n-q}
-        \end{matrix} \right\Vert,
-    \end{equation}
-    где
-    \begin{equation}
-        A^1_q = \left\Vert \begin{matrix}
-                -b_0  & c_1-d_0&   c_2    &  \dots   & c_q      \\
-                b_1  &  0     &  -d_1    &          &  0       \\
-                        & \ddots & \ddots   &  \ddots  &          \\
-                        &        & b_{q-1}  &     0    & -d_{q-1} \\
-                        &   0    &          & b_{q}    &  0  
-        \end{matrix} \right\Vert,
-        C = \left\Vert \begin{matrix}
-            c_{q+1} & c_{q+2} & \dots & c_{n} \\
-                    &    0    &       &
-        \end{matrix} \right\Vert,
-    \end{equation}
-    \( c_i = a_i m_i, i = \overline{1,n} \), а остальные обозначения соответствуют (\ref{flow_jacobian_vars}).
-
-    Аналогично из (\ref{flow_jacobian_spectrum}) имеем асимптотическую устойчивость системы при
-    \begin{equation} \label{cycle_nq_upper}
-        N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
-    \end{equation}
-    и устойчивости матрицы \( A^q_1 \).
-
-    Матрица \(A^1_q\) не является якобиевой (трёхдиагональной), поэтому определять её устойчивость нужно определять методами обычной устойчивости, например с помощью характеристического многочлена.
-
-    \begin{equation*}
-        P_q (\lambda) = \det (A^1_q - \lambda I) = \left| \begin{matrix}
-            -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_q      \\
-                b_1  & -\lambda &  -d_1    &          &  0       \\
+Получим матрицу, похожую на (\ref{flow_jacobian_small}), вида
+\begin{equation} \label{cycle_stability_matrix}
+    J = \left\Vert \begin{matrix}
+        A^1_q & C \\
+        0 & D_{n-q}
+    \end{matrix} \right\Vert,
+\end{equation}
+где
+\begin{equation}
+    A^1_q = \left\Vert \begin{matrix}
+            -b_0  & c_1-d_0&   c_2    &  \dots   & c_q      \\
+            b_1  &  0     &  -d_1    &          &  0       \\
                     & \ddots & \ddots   &  \ddots  &          \\
-                    &        & b_{q-1}  & -\lambda & -d_{q-1} \\
-                    &   0    &          & b_{q}    & - \lambda
-        \end{matrix} \right|
-    \end{equation*}
-    Раскладывая определитель сначала по нижней строке, а потом по последнему столбцу получим:
-    \begin{equation*}
-        \begin{split}
-        & P_q (\lambda) = -\lambda P_{q-1} (\lambda) - b_q \left| \begin{matrix}
-            -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_{q-2}    & c_q \\
-                b_1  & -\lambda &  -d_1    &          &  & 0 \\
-                    & \ddots & \ddots   &  \ddots  &   \\
-                    &       &   b_{q-3}  & -\lambda & -d_{q-3} &   \\
-                    &                &    &   b_{q-2}  &   -\lambda  &      \\
-                    &   0           &   &     &  b_{q-1}  & -d_{q-1}  \\
-        \end{matrix} \right| = \\
-        & = -\lambda P_{q-1} (\lambda) - b_q( -d_{q-1} ) P_{q-2} (\lambda) -b_q (-1)^{q} c_q \left| \begin{matrix}
-                b_1  & -\lambda &  -d_1    &        & 0  \\
-                    & \ddots & \ddots   &  \ddots  &   \\
-                    &       &   b_{q-3}  & -\lambda & -d_{q-3}  \\
-                    &  0            &    &   b_{q-2}  &   -\lambda  \\
-                &                &   &  &   b_{q-1}  \\
-        \end{matrix} \right| = \\
-        & = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q \prod_{i=1}^{q} b_i.
-        \end{split}
-    \end{equation*}
-    Учитывая начальные значения характеристического многочлена получаем рекуррентную формулу:
-    \begin{equation} \label{cycle_reccur}
-        \begin{split}
-            & P_q (\lambda) = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q b_1 \cdots b_q, \\
-            & P_0 (\lambda) = - b_0 -\lambda, \\
-            & P_1 (\lambda) = \lambda^2 + b_0 \lambda + b_1 (d_0 - c_1).
-        \end{split}
+                    &        & b_{q-1}  &     0    & -d_{q-1} \\
+                    &   0    &          & b_{q}    &  0  
+    \end{matrix} \right\Vert,
+    C = \left\Vert \begin{matrix}
+        c_{q+1} & c_{q+2} & \dots & c_{n} \\
+                &    0    &       &
+    \end{matrix} \right\Vert,
+\end{equation}
+\( c_i = a_i m_i, i = \overline{1,n} \), а остальные обозначения соответствуют (\ref{flow_jacobian_vars}).
+
+Аналогично из (\ref{flow_jacobian_spectrum}) имеем асимптотическую устойчивость системы при
+\begin{equation} \label{cycle_nq_upper}
+    N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
+\end{equation}
+и устойчивости матрицы \( A^q_1 \).
+
+Матрица \(A^1_q\) не является якобиевой (трёхдиагональной), поэтому определять её устойчивость нужно определять методами обычной устойчивости, например с помощью характеристического многочлена.
+
+\begin{equation*}
+    P_q (\lambda) = \det (A^1_q - \lambda I) = \left| \begin{matrix}
+        -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_q      \\
+            b_1  & -\lambda &  -d_1    &          &  0       \\
+                & \ddots & \ddots   &  \ddots  &          \\
+                &        & b_{q-1}  & -\lambda & -d_{q-1} \\
+                &   0    &          & b_{q}    & - \lambda
+    \end{matrix} \right|
+\end{equation*}
+Раскладывая определитель сначала по нижней строке, а потом по последнему столбцу получим:
+\begin{equation*}
+    \begin{split}
+    & P_q (\lambda) = -\lambda P_{q-1} (\lambda) - b_q \left| \begin{matrix}
+        -b_0 -\lambda & c_1-d_0&   c_2    &  \dots   & c_{q-2}    & c_q \\
+            b_1  & -\lambda &  -d_1    &          &  & 0 \\
+                & \ddots & \ddots   &  \ddots  &   \\
+                &       &   b_{q-3}  & -\lambda & -d_{q-3} &   \\
+                &                &    &   b_{q-2}  &   -\lambda  &      \\
+                &   0           &   &     &  b_{q-1}  & -d_{q-1}  \\
+    \end{matrix} \right| = \\
+    & = -\lambda P_{q-1} (\lambda) - b_q( -d_{q-1} ) P_{q-2} (\lambda) -b_q (-1)^{q} c_q \left| \begin{matrix}
+            b_1  & -\lambda &  -d_1    &        & 0  \\
+                & \ddots & \ddots   &  \ddots  &   \\
+                &       &   b_{q-3}  & -\lambda & -d_{q-3}  \\
+                &  0            &    &   b_{q-2}  &   -\lambda  \\
+            &                &   &  &   b_{q-1}  \\
+    \end{matrix} \right| = \\
+    & = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q \prod_{i=1}^{q} b_i.
+    \end{split}
+\end{equation*}
+Учитывая начальные значения характеристического многочлена получаем рекуррентную формулу:
+\begin{equation} \label{cycle_reccur}
+    \begin{split}
+        & P_q (\lambda) = -\lambda P_{q-1} (\lambda) + b_q d_{q-1} P_{q-2} (\lambda) - (-1)^{q} c_q b_1 \cdots b_q, \\
+        & P_0 (\lambda) = - b_0 -\lambda, \\
+        & P_1 (\lambda) = \lambda^2 + b_0 \lambda + b_1 (d_0 - c_1).
+    \end{split}
+\end{equation}
+
+Если характеристическое уравнение \( P_q (\lambda) = 0 \) записано в виде
+\begin{equation*}
+    \lambda^{q+1} + e_q(\lambda) \lambda^q + e_{q-1}(\lambda) \lambda^{q-1} + \dots + e_{1}(\lambda) \lambda + e_0(q) = 0,
+\end{equation*}
+тогда, используя (\ref{cycle_reccur}), можно выписать рекуррентные  соотношения для коэффициентов \(e_i (q)\):
+\begin{equation} \label{cycle_reccur_coeffs}
+    \begin{split}
+    & e_i (q) = \left\{\begin{split}
+        & b_q d_{q-1} e_0(q-2) - (-1)^q c_q b_1 \cdots b_q, && i = 0, \\
+        & e_{i-1} (q-1) + b_q d_{q-1} e_i (q-2), && i = \overline{1,q}, \\
+        & 1, && i = q+1, \\
+        & 0, && i \geq q+2, \\
+    \end{split}\right. \\
+    & e_{1} (1) = b_0, \\
+    & e_{0} (0) = b_0, \\
+    & e_{0} (1) = b_1 (d_0 - c_1).
+    \end{split}
+\end{equation}
+
+Рассмотрим 2 случая.
+
+\begin{enumerate}
+\item Пусть \(q = 1\), тогда характеристический многочлен будет выглядеть как
+\begin{equation*}
+    \lambda^2 + e_1 (1) \lambda + e_0(1) = \lambda^2 + b_0 \lambda + b_1(d_0 - c_1) = 0.
+\end{equation*}
+Откуда корни уравнения
+\begin{equation*}
+    \lambda = \frac{-b_0 \pm \sqrt{b_0^2 - 4b_1 (d_0 - c_1)}}{2}.
+\end{equation*}
+Для устойчивости необходимо \(\lambda < 0\), тогда это условие эквивалентно
+\begin{equation*}
+    \begin{split}
+        & b_0 > \sqrt{b_0^2 - 4b_1 (d_0 - c_1)}, \\
+        & 0 < 4b_1 (d_0 - c_1).
+    \end{split}
+\end{equation*}
+Значит, матрица \(A^1_1\) устойчива, если \(c_1 < d_0\), или \(m_1 a_1 < \alpha_0 N^*_0\). Из \eqref{cycle_2s1_01} имеем \(N^*_0 = \frac{m_1}{\alpha_0 k_1}\), поэтому условие устойчивости можно записать в виде \(a_1 k_1 < 1\). При этом
+\begin{equation*}
+    N^*_1 = \frac{Q + f_{1} \varphi_0 - \sigma_{1}}{ \alpha_0 f_{1} - \psi_{1} } = \frac{Q + \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) \cdot 0 - 0}{\alpha_0 \cdot \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) - a_1 m_1} = \frac{Q k_1}{m_1(1 - a_1 k_1)}.
+\end{equation*}
+Тогда \(N^*_1 > 0\) только при \(a_1 k_1 < 1\). Неравенство \eqref{cycle_nq_upper} даёт ограничение сверху на скорость поступления ресурса.
+\begin{equation*}
+    \begin{split}
+        & \frac{Q k_1}{m_1(1 - a_1 k_1)} < \frac{m_2}{\alpha_1 k_2}, \\
+        & Q < \frac{m_1 m_2}{\alpha_1 k_1 k_2} (1 - a_1 k_1) = \wt{Q}^*(2).        
+    \end{split}
+\end{equation*}
+Таким образом, ограничение скорости поступления ресурса
+\begin{equation*}
+    0 < Q < \frac{m_1 m_2}{\alpha_1 k_1 k_2} (1 - a_1 k_1)
+\end{equation*}
+является необходимым и достаточным условием существования устойчивого равновесия типа \([N^*_0, N^*_1, 0, \dots, 0]\), то есть существования замкнутой трофической цепи длины \(1\).
+
+\item Пусть \(q=2\), тогда имеем \( \lambda^3 + e_2(2) \lambda^2 + e_1(2) \lambda + e_0(2) = 0 \). По теореме Виета корни связаны соотношениями:
+\begin{equation*}
+    \begin{split}
+        & \lambda_1 + \lambda_2 + \lambda_3 = -e_2(2), \\
+        & \lambda_1 \lambda_2 + \lambda_2 \lambda_3 + \lambda_1 \lambda_3 = e_1(2), \\
+        & \lambda_1 \lambda_2 \lambda_3 = -e_0(2).
+    \end{split}
+\end{equation*}
+Для устойчивости нужно \(\lambda_i < 0\), значит \( e_0(2), e_1(2), e_2(2) > 0 \). С помощью формул \eqref{cycle_reccur_coeffs} получим
+\begin{equation*}
+    \begin{split}
+        & e_0(2) = b_2 d_{1} e_0(0) - c_2 b_1 b_2 = b_2 ( d_{1} b_0 - c_2 b_1 ) > 0, \\
+        & e_1(2) = e_0(1) + b_2 d_1 e_1(0) = b_1 (d_0 - c_1) + b_2 d_1 \cdot 1 > 0, \\
+        & e_2(2) = e_1(1) + b_2 d_1 e_2(0) = b_0 + b_2 d_1 \cdot 0 > 0,
+    \end{split}
+\end{equation*}
+Из первого неравенства следует \( \alpha_0 N_1^* \cdot \alpha_1 N^*_1 > a_2 m_2 \cdot k_1 \alpha_0 N^*_1 \). По \eqref{cycle_2s_01} \(N_1^* = f_2 = \frac{m_2}{\alpha_2} \cdot \frac{\alpha_2}{k_2 \alpha_1} = \frac{m_2}{k_2 \alpha_1}\), значит неравенство становится
+\begin{equation*}
+    \alpha_1 \frac{m_2}{k_2 \alpha_1} > a_2 m_2 k_1, ~~ a_2 k_1 k_2 < 1. 
+\end{equation*}
+Второе неравенство записывается в виде
+\begin{equation*}
+    \begin{split}
+        & k_1 \alpha_0 N^*_1 ( \alpha_0 N^*_0 - a_1 m_1 ) + k_2 \alpha_1 N^*_2 \cdot \alpha_1 N^*_1 > 0, \\
+        & \alpha_0 N^*_0 N^*_1 - a_1 m_1 N^*_1 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 N^*_2 > 0, \\
+        & (\alpha_0 N^*_0 N^*_1 - a_1 m_1 N^*_1 - a_2 m_2 N^*_2) + N^*_2 ( a_2 m_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 ) > 0, \\
+        & Q + a_2 m_2 N^*_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 N^*_2 > 0,
+    \end{split}
+\end{equation*}
+т.е. при \(N^*_2 > 0\) всегда выполняется. Найдём \(N^*_0\) и \( N^*_2\). 
+\begin{equation*}
+    \begin{split}
+        N^*_0 &= \frac{Q + f_2 \psi_1 - \sigma_2}{\alpha_0 f_2 - \vphi_1} = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 f_1 g_1}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 g_1} =\\
+        & = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 \frac{m_1}{\alpha_1}}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 \frac{k_1 \alpha_0}{\alpha_1}} = 
+        \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1- a_2 k_1 k_2 ) }, \\
+        N^*_2 &= H_1 (N^*_1 - f_1) = \frac{k_1 \alpha_0}{\alpha_1} \cdot \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1 - a_2 k_1 k_2 ) } - \frac{m_1}{\alpha_1} =\\
+        & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) } - \frac{m_1 m_2 ( 1- a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 )} = \\
+        & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - 1 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) }.
+    \end{split}
+\end{equation*}
+Поскольку \( N^*_2 > 0 \) при \( Q > \wt{Q}^*(2)\), то и в этом случае из существования стационарного состояния автоматически следует его устойчивость.
+\end{enumerate}
+
+Как видно, для ответа на вопрос об устойчивости циклической трофической цепи приходится проводить дополнительное исследование, и заранее не известно будут ли необходимые условия в то же время и достаточными. Хотя и для любого конкретного \(q\) эта задача разрешима. Можем сформулировать слабое утверждение для циклической трофической цепи:
+\begin{corollary}
+    Необходимым условием существования замкнутой трофической цепи длины \(q\) является ограничение (сверху и снизу) скорости поступления внешнего ресурса в экосистему:
+    \begin{equation}
+        \widetilde{Q}^*(q) < Q < \widetilde{Q}^*(q+1).
     \end{equation}
+\end{corollary}
+Где \(\wt{Q}^*(q)\) задаются формулами \eqref{cycle_lower_2s} и \eqref{cycle_lower_2s1}.
 
-    Если характеристическое уравнение \( P_q (\lambda) = 0 \) записано в виде
-    \begin{equation*}
-        \lambda^{q+1} + e_q(\lambda) \lambda^q + e_{q-1}(\lambda) \lambda^{q-1} + \dots + e_{1}(\lambda) \lambda + e_0(q) = 0,
-    \end{equation*}
-    тогда, используя (\ref{cycle_reccur}), можно выписать рекуррентные  соотношения для коэффициентов \(e_i (q)\):
-    \begin{equation} \label{cycle_reccur_coeffs}
-        \begin{split}
-        & e_i (q) = \left\{\begin{split}
-            & b_q d_{q-1} e_0(q-2) - (-1)^q c_q b_1 \cdots b_q, && i = 0, \\
-            & e_{i-1} (q-1) + b_q d_{q-1} e_i (q-1), && i = \overline{1,q}, \\
-            & 1, && i = q+1, \\
-            & 0, && i = q+2, \dots, \\
-        \end{split}\right. \\
-        & e_{1} (1) = b_0, \\
-        & e_{0} (0) = b_0, \\
-        & e_{0} (1) = b_1 (d_0 - c_1).
-        \end{split}
-    \end{equation}
+\subsubsection{Цикл, замкнутый только на первом уровне}
+В реальных экосистемах основную массу мёртвой органики образует отмершие листья растений. То есть один из первых уровней цепи. Поэтому предположим, что выражение \( \sum_{i=1}^{n} a_i m_i N_i \) можно представить в виде 
+\begin{equation*}
+    a_1 m_1 N_1 + \veps \sum_{i=2}^{n} a_i m_i N_i \xrightarrow{\veps \to 0} a_1 m_1 N_1.
+\end{equation*}
+Тогда в матрице \eqref{cycle_stability_matrix} положим \(c_1 \neq 0, ~~ c_i = 0, i>1\). В этом случае матрица \(A^1_q\) будет принадлежать к классу якобиевых \eqref{flow_jacobian_big} и аналогично устойчивой при положительных переменных, то есть при \(d_0 - c_1 > 0\). Значит, при выполнении неравенства \(c_1 < d_0\) и \eqref{cycle_nq_upper}, существует трофическая цепь длины \(q\).
 
-    \textcolor{red}{Всё с примерами и только 1-замкнутой?}
+Поскольку в нашем случае \(с_i = 0 ~ i > 1\), то в формулах \eqref{cycle_sub} положим \(a_1 \neq 0, ~~ a_i = 0, i>1\). Тогда \(\vphi_s = \sigma_2s = \sigma_{2s+1} = 0, ~ \psi_s = \psi_{s+1} = m_1 a_1 \), и при \(q = 2s\)
+\begin{equation} \label{cycle1_2s_01}
+    \begin{split}
+        & N^*_0 = \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}}, ~~ N^*_1 = f_{2s}, \\
+        & N^*_q = N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right),
+    \end{split}
+\end{equation}
+а при \(q = 2s+1\)
+\begin{equation} \label{cycle1_2s1_01}
+    \begin{split}
+        & N^*_0 = f_{2s}, ~~ N^*_1 = \frac{Q}{\alpha_0 f_{2s} - a_1 m_1}, \\
+        & N^*_q = N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right).
+    \end{split}
+\end{equation}
+Условие \( c_1 < d_0 \) эквивалентно \( a_1 m_1 < \alpha_0 N^*_0 \). Значит
+\begin{equation*}
+    \begin{matrix}
+        a_1 m_1 f_{2s} < Q + a_1 m_1 f_{2s}, & q = 2s, \\
+        a_1 m_1 < \alpha_0 f_{2s+1}, & q = 2s+1. \\
+    \end{matrix}
+\end{equation*}
+Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N^*_q > 0\). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
 
+Используя выражение для \(N^*_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
 
-%     Собственные значения \(J\) равны
-%     \begin{equation*}
-%         \lambda_i = \left\{ \begin{matrix}
-%             \lambda_i (A_q), & i=\overline{1,q}, \\
-%             k_{q+1} \alpha_q N_q - m_{q+1}, & i=q+1, \\
-%             -m_i, & i=\overline{q+2, n}. 
-%         \end{matrix} \right.
-%     \end{equation*}
-%     Очевидно, что при \(i = \overline{q+2,n}\) выполняется условие \(\lambda = -m_i < 0\). Для \(\lambda_{q+1}\) все переменные положительные и достаточно выполнения неравенства
-%     \begin{equation} \label{cycle_nq_upper}
-%         N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
-%     \end{equation}
-%     Это условие становится излишним, при \(q = n\), поскольку тогда устойчивость определяется собственными значениями матрицы \(A_q\).
-
-%     Для определения устойчивости матрицы \(A_q\) воспользуемся достаточными условиями знак-устойчивости. 
-    
-%     \textcolor{red}{(Ссылка/Подробнее?)} \dots
-
-%     Таким образом матрица \(A_q\) удовлетворяет достаточным условием знак-устойчивости и поэтому устойчива при любых значениях заданных параметров. А это значит, что равновесие \(N^*\) асимптотически устойчиво.
-
-%     Находя явное значение \(N_q\) для чётного и нечётного \(q\) и используя (\ref{cycle_nq_upper}) получим:
-%     \begin{enumerate}
-%         \item При \(q = 2s\):
-%         \begin{equation}
-%             \begin{split}
-%                 & N_{2s} = H_{2s-1} \left( \frac{Q}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}} \Rightarrow \\
-%                 & \Rightarrow \frac{Q}{\alpha_0 f_{2s}} - f_{2s-1} < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}} \frac{\alpha_{2s+1}}{\alpha_{2s+1}} \frac{1}{H_{2s-1}} = \frac{\mu_{2s+1}}{g_{2s+1} H_{2s-1}} = \frac{\mu_{2s+1}}{H_{2s+1}} \Rightarrow \\
-%                 & Q < \alpha_0 f_{2s} \left(  f_{2s-1} + \frac{\mu_{2s+1}}{H_{2s+1}} \right) = \alpha_0 f_{2s} f_{2s+1},        
-%             \end{split}
-%         \end{equation}
-        
-%         \item При \(q = 2s+1\):
-%         \begin{equation}
-%             \begin{split}
-%                 & N_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1}} - f_{2s+1} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}} \Rightarrow \\
-%                 & \Rightarrow \frac{Q}{\alpha_0 f_{2s+1}} - f_{2s} < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}} \frac{\alpha_{2s+2}}{\alpha_{2s+2}} \frac{1}{H_{2s}} = \frac{\mu_{2s+2}}{g_{2s+2} H_{2s}} = \frac{\mu_{2s+2}}{H_{2s+2}} \Rightarrow \\
-%                 & Q < \alpha_0 f_{2s+1} \left(  f_{2s} + \frac{\mu_{2s+2}}{H_{2s+2}} \right) = \alpha_0 f_{2s+1} f_{2s+2},      
-%             \end{split}
-%         \end{equation}
-%     \end{enumerate}
-%     объединяя получим
-%     \begin{equation}
-%         Q < \alpha_0 f_{q} f_{q+1} = Q^*(q+1).
-%     \end{equation}
-
-    \textcolor{red}{\dots}
-
-    \begin{corollary}
-        Необходимым условием существования замкнутой трофической цепи длины \(q\) является ограничение (сверху и снизу) скорости поступления внешнего ресурса в экосистему:
-        \begin{equation}
-            \widetilde{Q}^*(q) < Q < \widetilde{Q}^*(q+1).
-        \end{equation}.
-    \end{corollary}
-    
-
-
-% % \begin{figure}[H]
-% %     \centering
-% %     % \includegraphics[width=14cm]{pictures/process.png}
-% %     % \caption{}  \label{pic_label}
-% % \end{figure}
-
+\begin{itemize}
+    \item При \(q = 2s \)
+        \begin{align}
+            \begin{split}
+                N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}}
+            \end{split}
+        \end{align}
+    \item При \( q = 2s+1 \)
+        \begin{align}
+            \begin{split}
+                N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}}
+            \end{split}
+        \end{align}
+\end{itemize}
