@@ -342,19 +342,39 @@
 \end{equation*}
 Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N^*_q > 0\). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
 
-Используя выражение для \(N^*_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
+Используя выражение для \(N^*_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s1_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
 
+\begin{subequations}
 \begin{itemize}
     \item При \(q = 2s \)
         \begin{align}
             \begin{split}
-                N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}}
+                & N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}}, \\
+                & \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} < f_{2s-1} + \frac{1}{H_{2s-1}} \frac{\mu_{2s+1}}{g_{2s+1}}, \\
+                & Q < \alpha f_{2s} f_{2s+1} - a_1 m_1 f_{2s}.
             \end{split}
         \end{align}
     \item При \( q = 2s+1 \)
         \begin{align}
             \begin{split}
-                N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}}
+                & N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}}, \\
+                & \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} < f_{2s} + \frac{1}{H_{2s}} \frac{\mu_{2s+2}}{g_{2s+2}}, \\
+                & Q < \alpha_0f_{2s+1} f_{2s+2} - a_1 m_1 f_{2s+2}.
             \end{split}
         \end{align}
 \end{itemize}
+\end{subequations}
+
+\begin{corollary}
+    Необходимым и достаточным условием существования устойчивой трофической цепи длины \(q\) с замыканием лишь по \(1\)-му уровню является ограничение (сверху и снизу) скорости поступления внешнего ресурса в экосистему:
+    \begin{equation}
+        \wt{Q}^*(q) < Q < \wt{Q}^*(q+1).
+    \end{equation}
+\end{corollary}
+Здесь, согласно \eqref{cycle_lower_2s} и \eqref{cycle_lower_2s1}
+\begin{equation*}
+    \wt{Q}^*(q) = \begin{cases}
+        \alpha_0 f_{q-1} f_q - a_1 m_1 f_q & q = 2s, \\
+        \alpha_0 f_{q-1} f_q - a_1 m_1 f_{q-1} & q = 2s + 1.
+    \end{cases}
+\end{equation*}
