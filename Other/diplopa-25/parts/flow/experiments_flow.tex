@@ -1,16 +1,16 @@
 \subsection{Численные эксперименты}
 Рассмотрим систему (\ref{flow}) при \(n=3\) со следующими коэффициентами:
-\begin{equation*}
+\begin{equation} \label{flow_exp1}
     \begin{split}
         & \alpha_0 = 20, ~~ \alpha_1 = 16, ~~ \alpha_2 = 12, ~~ \alpha_3 = 8; \\
         & k_1 = 0.3, ~~ k_2 = 0.2, ~~ k_3 = 0.1; \\
         & m_1 = 4, ~~ m_2 = 3, ~~ m_3 = 2. \\ 
     \end{split}
-\end{equation*}
+\end{equation}
 Имеем трофические цепи длиной от \(q=1\) до \(q=3\). При заданных значениях параметров имеем данные интервалы, ограничивающие поступление внешнего ресурса \(Q\):
 \begin{enumerate}
     \item \(0 < Q < 12.5\);
-    \item \(12.5 < Q < 95.83\dots\);
+    \item \(12.5 < Q < 95.83\ldots\);
     \item \( 95.83\ldots < Q\).
 \end{enumerate}
 Варьируем значение \(Q\) и получаем графики численностей в равновесии.
@@ -23,7 +23,7 @@
     \centering
     \begin{subfigure}[t]{.45\linewidth}
         \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp1_Q05.pdf}
+        \includegraphics[width=\textwidth]{pictures/exp_flow/exp1_Q0.5.pdf}
         \caption{\(Q = 0.5\)}
     \end{subfigure}
     \begin{subfigure}[t]{.45\linewidth}
@@ -66,63 +66,22 @@
     \caption{Численности видов системы, при \(Q\) близко к началу третьего интервала и на некотором отдалении.}  \label{fig:flow_exp1_q3}
 \end{figure}
 
+Как видно по графикам, модель ведёт себя в соответствии с теоретическим анализом. На каждом из интервалов ровно нужное количество видов остаётся в живых. 
 
-Для сравнения поведения системы при <<напряжённых>> трофических связях, возьмём систему (\ref{flow_full}) при трофических функциях \( V_i(x) = \alpha_i \arctan x  \). Т.е. виды могут насыщаться и не все его жертвы будут становиться добычей.
+Для сравнения поведения системы при <<напряжённых>> трофических связях, возьмём систему (\ref{flow_full}) при трофических функциях \( V_i(x) = \alpha_i \arctan x \). Т.е. виды могут насыщаться и не все его жертвы будут становиться добычей.
 
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q05.pdf}
-        \caption{\(Q = 0.5\)}
-    \end{subfigure}
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q17.pdf}
-        \caption{\(Q = 17\)}
-    \end{subfigure}
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q20.pdf}
-        \caption{\(Q = 20\)}
-    \end{subfigure}
-    \caption{Численности видов системы.}  \label{fig:flow_exp2_q1}
-\end{figure}
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q34.pdf}
-        \caption{\(Q = 34\)}
-    \end{subfigure}
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q35.pdf}
-        \caption{\(Q = 35\)}
-    \end{subfigure}
-\caption{Численности видов системы.}  \label{fig:flow_exp2_q2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q40.pdf}
-        \caption{\(Q = 40\)}
-    \end{subfigure}
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q100.pdf}
-        \caption{\(Q = 100\)}
-    \end{subfigure}
-    \begin{subfigure}[t]{.3\linewidth}
-        \centering
-        \includegraphics[width=\textwidth]{pictures/exp_flow/exp2_Q1000.pdf}
-        \caption{\(Q = 1000\)}
-    \end{subfigure}
-\caption{Численности видов системы.}  \label{fig:flow_exp2_q3}
+    \subfigexp{0.5}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{17}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{20}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{34}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{35}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{40}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{100}{pictures/exp_flow/exp2_Q}{.3}
+    \subfigexp{1000}{pictures/exp_flow/exp2_Q}{.3}
+\caption{Численности видов системы.}  \label{fig:flow_exp2}
 \end{figure}
 
 Как видно, с некоторого значения \(Q\) асимптотическая устойчивость прекращается и появляется циклическое поведение.

@@ -9,11 +9,21 @@
 \usepackage{style/titlepage}
 \usepackage{style/math}
 
+\newcommand{\subfigexp}[3]{\begin{subfigure}[t]{#3\linewidth}
+    \centering
+    \includegraphics[width=\textwidth]{#2#1.pdf}
+    \caption{\(Q = #1\)}
+\end{subfigure}}
+
 \begin{document}
 
     \input{parts/titlepage}
     
     \tableofcontents
+
+    \pagebreak
+
+    \input{parts/add/annotation}
 
     \pagebreak
 
@@ -63,9 +73,9 @@
 
     \input{parts/bibliography}
 
-    \pagebreak
+    % \pagebreak
     
-    \section{Приложения}
-    \input{parts/add/prac1_diary}
+    % \section{Приложения}
+    % \input{parts/add/prac1_diary}
 
 \end{document}

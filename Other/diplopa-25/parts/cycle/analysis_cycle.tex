@@ -213,7 +213,7 @@
 тогда, используя (\ref{cycle_reccur}), можно выписать рекуррентные  соотношения для коэффициентов \(e_i (q)\):
 \begin{equation} \label{cycle_reccur_coeffs}
     \begin{split}
-    & e_i (q) = \left\{\begin{split}
+        & e_i (q) = \left\{\begin{split}
         & b_q d_{q-1} e_0(q-2) - (-1)^q c_q b_1 \cdots b_q, && i = 0, \\
         & e_{i-1} (q-1) + b_q d_{q-1} e_i (q-2), && i = \overline{1,q}, \\
         & 1, && i = q+1, \\
@@ -295,7 +295,7 @@
         N^*_0 &= \frac{Q + f_2 \psi_1 - \sigma_2}{\alpha_0 f_2 - \vphi_1} = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 f_1 g_1}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 g_1} =\\
         & = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 \frac{m_1}{\alpha_1}}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 \frac{k_1 \alpha_0}{\alpha_1}} = 
         \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1- a_2 k_1 k_2 ) }, \\
-        N^*_2 &= H_1 (N^*_1 - f_1) = \frac{k_1 \alpha_0}{\alpha_1} \cdot \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1 - a_2 k_1 k_2 ) } - \frac{m_1}{\alpha_1} =\\
+        N^*_2 &= H_1 (N^*_0 - f_1) = \frac{k_1 \alpha_0}{\alpha_1} \cdot \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1 - a_2 k_1 k_2 ) } - \frac{m_1}{\alpha_1} =\\
         & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) } - \frac{m_1 m_2 ( 1- a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 )} = \\
         & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - 1 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) }.
     \end{split}
