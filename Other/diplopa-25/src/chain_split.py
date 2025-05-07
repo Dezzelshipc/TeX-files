@@ -28,7 +28,7 @@ def runge_kutta(function, y0: np.ndarray | float, time_space: np.ndarray) -> tup
 # m2 = np.array([4, 3, 2])
 # a2 = np.array([0.3, 0.3, 0.3])
 
-_q = 4
+_q = 3
 _r = 2
 
 # alpha = np.array([10] * (_q+1))
@@ -46,9 +46,11 @@ _r = 2
 alpha = np.linspace(20, 8, _q+1)
 k = np.append([0], np.linspace(0.5, 0.3, _q))
 m = np.append([0], np.linspace(5, 1, _q))
-a = np.append([0, 0], [0] * (_q-1))
+a = np.append([0, 0.2], [0] * (_q-1))\
 
-alpha2 = np.linspace(16, 8, _r)
+
+alpha_b = 16
+alpha2 = np.append([alpha_b], np.linspace(16, 8, _r-1)) 
 k2 = np.linspace(0.5, 0.3, _r)
 m2 = np.linspace(4, 1, _r)
 a2 = np.array([0] * _r)
@@ -59,9 +61,18 @@ print("m", m, m2)
 print("k", k, k2)
 print()
 
-ab = 10
 q = len(m) - 1
 r = len(m2)
+
+
+g = np.append([0], k[1:] * alpha[:-1] / alpha[1:])
+H = np.append([1], [ np.prod(g[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+
+mu =np.append([0], m[1:] / alpha[1:])
+f = np.append([0], [ sum(mu[2-(i%2):i+2:2]/H[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+
+if q % 2 == 1:
+    print(f[q], a[1] * m[1] / alpha[0])
 
 cc = np.append(a*m, a2*m2)
 alpha = np.append(alpha, alpha2)
@@ -70,6 +81,7 @@ m = np.append(m, m2)
 a = np.append(a, a2)
 
 cc[2:] = 0
+# cc[:] = 0
 
 n = len(alpha)
 print(q, r, n)
@@ -85,17 +97,17 @@ def get_right_split(func_v, func_1=None):
                 for i in range(1, s)
             ],
             *[
-                -m[s] * x[s] + k[s] * alpha[s-1] * func_v(x[s-1]) * x[s] - x[s+1] * alpha[s] * func_v(x[s]) - ab * func_v(x[s]) * x[q+1]
+                -m[s] * x[s] + k[s] * alpha[s-1] * func_v(x[s-1]) * x[s] - x[s+1] * alpha[s] * func_v(x[s]) - (alpha_b * func_v(x[s]) * x[q+1] if r > 0 else 0)
             ],
             *[
-                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < q-1 else 0 ) * alpha[i] * func_v(x[i])
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < q else 0 ) * alpha[i] * func_v(x[i])
                 for i in range(s+1, q+1)
             ],
             *[
-                -m[q+1] * x[q+1] + k[q+1] * ab * func_v(x[s]) * x[q+1] - x[q+2] * alpha[q+1] * func_v(x[q+1])
+                -m[q+1] * x[q+1] + k[q+1] * alpha_b * func_v(x[s]) * x[q+1] - (x[q+2] * alpha[q+1] * func_v(x[q+1]) if r > 1 else 0 )
             ],
             *[
-                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < r-1 else 0 ) * alpha[i] * func_v(x[i])
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < r else 0 ) * alpha[i] * func_v(x[i])
                 for i in range(q+2, q+r+1)
             ],
         ])
@@ -106,11 +118,11 @@ def identity(x):
     return x
 
 
-Q = 10000
-s = 3
+Q = 200
+s = 1
 
 t_s = np.arange(0, 100, 0.001)
-N0 = np.array([ 1 ] * (1+q+r))
+N0 = np.array([ 2 ] * (1+q+r))
 
 right_flow = get_right_split(identity)
 # right_flow = get_right_flow(np.atan)

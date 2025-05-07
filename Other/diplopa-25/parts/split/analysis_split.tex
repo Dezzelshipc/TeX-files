@@ -240,4 +240,38 @@
     \item \( k = 2l - 1\). \(N'_{2l-1} = H'_{2l-2} (N'_1 - f'_{2l-2}) \);
     \item \(N_{q-1} = \frac{m_q}{k_q \alpha_{q-1}}\), \(N'_{r-1} = \frac{m'_r}{k'_r \alpha'_{r-1}}\);
 \end{itemize}
-???
+
+\begin{equation*}
+    N_0 = \frac{a_1 m_1}{\alpha_0} - \frac{Q}{\alpha_0 N_1}.
+\end{equation*}
+
+\begin{enumerate}
+    \item Если \(q+1 \equiv s \mod 2\): \(N_{q+1} = \begin{cases}
+        H_{2p} (N_1 - f_{2p}), & q = 2p, \\
+        H_{2p-1} (N_0 - f_{2p-1}), & q = 2p-1.
+    \end{cases}\)
+
+    Тогда из условия \(N_{q+1} = 0\) следует \(\begin{cases}
+        N_1 = f_{2p}, & q=2p, \\
+        N_0 = f_{2p-1}, & q=2p-1.
+    \end{cases}\).
+
+    При \(q=2p\): \(\frac{a_1 m_1}{\alpha_0} < N_0 = \frac{a_1 m_1}{\alpha_0} - \frac{Q}{\alpha_0 f_{q}}\), откуда \(- \frac{Q}{\alpha_0 f_{q}} > 0\). То есть выполняется всегда.
+
+    При \(q=2p-1\):
+    \begin{equation*}
+        \begin{split}
+            & f_{2p-1} > \frac{a_1 m_1}{\alpha_0}, \\
+            & \frac{\frac{m_1}{\alpha_1}}{\frac{k_1 \alpha_0}{\alpha_1}} + \frac{\frac{m_3}{\alpha_3}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3}} + \dots + \frac{\frac{m_{2p-1}}{\alpha_{2p-1}}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3} \dots \frac{k_{2p-1} \alpha_{2p-2}}{\alpha_{2p-1}}} > \frac{a_1 m_1}{\alpha_0}, \\
+            & \frac{m_1}{k_1} \frac{1}{\alpha_0} + \frac{m_3}{k_1 k_3} \frac{\alpha_1}{\alpha_0 \alpha_2} + \dots + \frac{m_{2p-1}}{k_1 k_3 \dots k_{2p-1}} \frac{\alpha_1 \alpha_3 \dots \alpha_{2p-3}}{\alpha_0 \alpha_2 \dots \alpha_{2p-2}}> \frac{a_1 m_1}{\alpha_0}.
+        \end{split}
+    \end{equation*}
+    Поскольку \(0 \leq k_i \leq 1\), то заменяя все \(k_i = 1\) получим минимальное значение выражения относительно \(k_i\).
+    \begin{equation*}
+        \begin{split}
+            & m_1 \frac{1}{\alpha_0} + m_3 \frac{\alpha_1}{\alpha_0 \alpha_2} + \dots + m_{2p-1} \frac{\alpha_1 \alpha_3 \dots \alpha_{2p-3}}{\alpha_0 \alpha_2 \dots \alpha_{2p-2}}> \frac{a_1 m_1}{\alpha_0}, \\
+            & 1 + \frac{m_3}{m_1} \frac{\alpha_1}{\alpha_2} + \dots + \frac{m_{2p-1}}{m_1} \frac{\alpha_1 \alpha_3 \dots \alpha_{2p-3}}{\alpha_2 \dots \alpha_{2p-2}} > a_1.
+        \end{split}
+    \end{equation*}
+    По условиям \(0 \leq a_i \leq 1\). Значит выражение выполняется почти всегда. Исключением является вырожденный случай при \(q = 1, ~ k_1 = 1\).
+\end{enumerate}
