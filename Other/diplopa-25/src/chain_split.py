@@ -28,7 +28,7 @@ def runge_kutta(function, y0: np.ndarray | float, time_space: np.ndarray) -> tup
 # m2 = np.array([4, 3, 2])
 # a2 = np.array([0.3, 0.3, 0.3])
 
-_q = 3
+_q = 4
 _r = 2
 
 # alpha = np.array([10] * (_q+1))
@@ -72,7 +72,7 @@ mu =np.append([0], m[1:] / alpha[1:])
 f = np.append([0], [ sum(mu[2-(i%2):i+2:2]/H[2-(i%2):i+2:2]) for i in range(1, q+1) ])
 
 if q % 2 == 1:
-    print(f[q], a[1] * m[1] / alpha[0])
+    print("check", f[q], a[1] * m[1] / alpha[0])
 
 cc = np.append(a*m, a2*m2)
 alpha = np.append(alpha, alpha2)
@@ -119,9 +119,9 @@ def identity(x):
 
 
 Q = 200
-s = 1
+s = 2
 
-t_s = np.arange(0, 100, 0.001)
+t_s = np.arange(0, 100, 0.01)
 N0 = np.array([ 2 ] * (1+q+r))
 
 right_flow = get_right_split(identity)
@@ -155,5 +155,19 @@ print(Nl[-1])
 
 # plt.savefig("./figs/exp3.pdf")
 print(cc[1]/alpha[0])
+
+if (q + 1) % 2 == s % 2:
+    if q % 2 == 0:
+        N_1 = f[q]
+        N_0 = Q / (alpha[0] * N_1) + a[1]* m[1] / alpha[0]
+    else:
+        N_0 = f[q]
+        N_1 = Q / (alpha[0] * N_0 - a[1] * m[1])
+    
+    print(N_0, N_1)
+    plt.plot(t_s[[0, -1]], [N_0]*2, "--")
+    plt.plot(t_s[[0, -1]], [N_1]*2, "--")
+else:
+    pass
 
 plt.show()

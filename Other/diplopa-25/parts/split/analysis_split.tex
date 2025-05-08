@@ -207,7 +207,7 @@
 Из \( \frac{d \mb{N}}{dt} = 0 \) можно найти состояние равновесия:
 \begin{equation} \label{double_stab_system}
     \begin{cases}
-        N_1 = \dfrac{Q}{ a_1 m_1 - \alpha_0 N_0 }, \\
+        N_1 = \dfrac{Q}{ \alpha_0 N_0 - a_1 m_1 }, \\
         \alpha_i N_{i+1} = k_i \alpha_{i-1} N_{i-1} -m_i , \quad i=\overline{1,s-1},  \overline{s+1,q}, \\
         \alpha_s^b N'_1 + \alpha_s N_{s+1} = k_s \alpha_{s-1} N_{s-1} -m_s, \\
         \alpha'_1 N'_{2} = k'_1 \alpha_s^b N_s -m'_1, \\
@@ -229,43 +229,24 @@
 \end{equation}
 Тогда условие устойчивости \(d_0 > c_1\) становится \(\alpha_0 N^*_{0} > a_1 m_1\); \( N^*_0 > \frac{a_1 m_1}{\alpha_0} \).
 
-Найдём значения точки равновесия. Используем обозначения \eqref{flow_sub} и \(\alpha'_0 = \alpha^b_s\). Рассмотрим цепь, не включая связь третьего уравнения в \eqref{double_stab_system}.
+Найдём значения точки равновесия. Используем обозначения \eqref{flow_sub} и \(\alpha'_0 = \alpha^b_s\). Найдём \(N_0\):
+\begin{equation} \label{split_lin_N0_0}
+    N_0 = \frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0} > 0.
+\end{equation}
+Тогда условие становится \(\frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0} > \frac{a_1 m_1}{\alpha_0}\), откуда \(\frac{Q}{\alpha_0 N_1} > 0\). То есть выполняется всегда при \(N^*_1 > 0\).
+
+Если \(q+1 \equiv s \mod 2\) тогда можно обойти третье уравнение в \eqref{double_stab_system}.
 \begin{itemize}
-    \item \( i = 2p \leq s\). Тогда \( N_{2p} = g_{2p-1} N_{2p-2} - \mu_{2p-1} = \dots = H_{2p-1} (N_0 - f_{2p-1}) \);
-    \item \( i = 2p - 1\leq s \). \(N_{2p-1} = H_{2p-2} (N_1 - f_{2p-2}) \);
-    \item \( i > s, ~ i \equiv s \mod 2 \). \( N_{2p} = \frac{H_{2p-1}}{H_{s-1}} \left( N_s - \frac{\mu_{s+1}}{g_{s+1}} - \dots - \frac{\mu_{2p-1}}{g_{s+1} \cdots g_{2p-1}} \right) = \) \\
-    \( = \frac{H_{2p-1}}{H_{s-1}} \left( N_s - H_{s-1} (f_{2p-1} - f_{s-1}) \right) \);
-    \item \( i > s, ~ i \neq s \mod 2 \). \( N_{2p-1} = \frac{H_{2p-2}}{H_{s}} \left( N_{s+1} - H_{s} (f_{2p-2} - f_{s}) \right) \);
-    \item \( k = 2l \). \( N'_{2l} = H'_{2l-1} (N_s - f'_{2l-1}) \);
-    \item \( k = 2l - 1\). \(N'_{2l-1} = H'_{2l-2} (N'_1 - f'_{2l-2}) \);
-    \item \(N_{q-1} = \frac{m_q}{k_q \alpha_{q-1}}\), \(N'_{r-1} = \frac{m'_r}{k'_r \alpha'_{r-1}}\);
-\end{itemize}
-
-\begin{equation*}
-    N_0 = \frac{a_1 m_1}{\alpha_0} - \frac{Q}{\alpha_0 N_1}.
-\end{equation*}
-
-\begin{enumerate}
-    \item Если \(q+1 \equiv s \mod 2\): \(N_{q+1} = \begin{cases}
-        H_{2p} (N_1 - f_{2p}), & q = 2p, \\
-        H_{2p-1} (N_0 - f_{2p-1}), & q = 2p-1.
-    \end{cases}\)
-
-    Тогда из условия \(N_{q+1} = 0\) следует \(\begin{cases}
-        N_1 = f_{2p}, & q=2p, \\
-        N_0 = f_{2p-1}, & q=2p-1.
-    \end{cases}\).
-
-    При \(q=2p\): \(\frac{a_1 m_1}{\alpha_0} < N_0 = \frac{a_1 m_1}{\alpha_0} - \frac{Q}{\alpha_0 f_{q}}\), откуда \(- \frac{Q}{\alpha_0 f_{q}} > 0\). То есть выполняется всегда.
-
-    При \(q=2p-1\):
-    \begin{equation*}
+    \item При \(q = 2p\): \( N_{q+1} = H_{2p} (N_1 - f_{2p}) \) откуда из \(N_{q+1} = 0\) следует \(N_1 = f_{2p} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
+    
+    \item При \(q=2p-1\): \(N_{q+1} =H_{2p-1} (N_0 - f_{2p-1}) = 0\) откуда \(N_0 = f_{2p-1}\). Тогда
+    \begin{equation} \label{split_f2pm1_stab}
         \begin{split}
             & f_{2p-1} > \frac{a_1 m_1}{\alpha_0}, \\
             & \frac{\frac{m_1}{\alpha_1}}{\frac{k_1 \alpha_0}{\alpha_1}} + \frac{\frac{m_3}{\alpha_3}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3}} + \dots + \frac{\frac{m_{2p-1}}{\alpha_{2p-1}}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3} \dots \frac{k_{2p-1} \alpha_{2p-2}}{\alpha_{2p-1}}} > \frac{a_1 m_1}{\alpha_0}, \\
             & \frac{m_1}{k_1} \frac{1}{\alpha_0} + \frac{m_3}{k_1 k_3} \frac{\alpha_1}{\alpha_0 \alpha_2} + \dots + \frac{m_{2p-1}}{k_1 k_3 \dots k_{2p-1}} \frac{\alpha_1 \alpha_3 \dots \alpha_{2p-3}}{\alpha_0 \alpha_2 \dots \alpha_{2p-2}}> \frac{a_1 m_1}{\alpha_0}.
         \end{split}
-    \end{equation*}
+    \end{equation}
     Поскольку \(0 \leq k_i \leq 1\), то заменяя все \(k_i = 1\) получим минимальное значение выражения относительно \(k_i\).
     \begin{equation*}
         \begin{split}
@@ -273,5 +254,12 @@
             & 1 + \frac{m_3}{m_1} \frac{\alpha_1}{\alpha_2} + \dots + \frac{m_{2p-1}}{m_1} \frac{\alpha_1 \alpha_3 \dots \alpha_{2p-3}}{\alpha_2 \dots \alpha_{2p-2}} > a_1.
         \end{split}
     \end{equation*}
-    По условиям \(0 \leq a_i \leq 1\). Значит выражение выполняется почти всегда. Исключением является вырожденный случай при \(q = 1, ~ k_1 = 1\).
-\end{enumerate}
+    По условиям \(0 \leq a_i \leq 1\). Значит выражение выполняется почти всегда. Исключением является случай при \(q = 1, ~ k_1 = 1\).
+\end{itemize}
+
+Если \(r = 2l - 1\), тогда \(N'_{r+1} = N'_{2l} = H'_{2l-1} (N_s - f'_{2l-1}) = 0\), \(N_{s} = f'_{2l-1}\).
+\begin{itemize}
+    \item При \(s = 2u\): \(N_{2u} = H_{2u-1} (N_0 - f_{2u-1})\), \(N_0 = \frac{f'_{2l-1}}{H_{2u-1}} + f_{2u-1}\). Условие устойчивости выполняется аналогично \eqref{split_f2pm1_stab} всегда.
+    
+    \item При \(s = 2u-1\): \(N_{2u-1} = H_{2u-2} (N_1 - f_{2u-2})\), \( N_1 = \frac{f'_{2l-1}}{H_{2u-2}} + f_{2u-2} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
+\end{itemize}
