@@ -28,7 +28,7 @@ def runge_kutta(function, y0: np.ndarray | float, time_space: np.ndarray) -> tup
 # m2 = np.array([4, 3, 2])
 # a2 = np.array([0.3, 0.3, 0.3])
 
-_q = 4
+_q = 3
 _r = 2
 
 # alpha = np.array([10] * (_q+1))
@@ -43,26 +43,26 @@ _r = 2
 
 ##
 
-alpha = np.linspace(20, 8, _q+1)
+alpha = np.linspace(30, 12, _q+1)
 k = np.append([0], np.linspace(0.5, 0.3, _q))
 m = np.append([0], np.linspace(5, 1, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
 
 alpha_b = 16
-alpha2 = np.append([alpha_b], np.linspace(16, 8, _r-1)) 
-k2 = np.linspace(0.5, 0.3, _r)
-m2 = np.linspace(4, 1, _r)
-a2 = np.array([0] * _r)
+alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
+k2 = np.append([0], np.linspace(0.5, 0.3, _r))
+m2 = np.append([0], np.linspace(4, 2, _r))
+a2 = np.append([0], np.array([0] * _r))
 
 print("alpha", alpha, alpha2)
-print("a", a[1])
+print("a", a)
 print("m", m, m2)
 print("k", k, k2)
 print()
 
 q = len(m) - 1
-r = len(m2)
+r = len(m2) - 1
 
 
 g = np.append([0], k[1:] * alpha[:-1] / alpha[1:])
@@ -71,14 +71,28 @@ H = np.append([1], [ np.prod(g[2-(i%2):i+2:2]) for i in range(1, q+1) ])
 mu =np.append([0], m[1:] / alpha[1:])
 f = np.append([0], [ sum(mu[2-(i%2):i+2:2]/H[2-(i%2):i+2:2]) for i in range(1, q+1) ])
 
+g2 = np.append([0], k2[1:] * alpha2[:-1] / alpha2[1:])
+H2 = np.append([1], [ np.prod(g2[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+
+mu2 =np.append([0], m2[1:] / alpha2[1:])
+f2 = np.append([0], [ sum(mu2[2-(i%2):i+2:2]/H2[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+
+print(f"{f=}")
+print(f"{f2=}")
+
+
 if q % 2 == 1:
     print("check", f[q], a[1] * m[1] / alpha[0])
 
-cc = np.append(a*m, a2*m2)
-alpha = np.append(alpha, alpha2)
-k = np.append(k, k2)
-m = np.append(m, m2)
-a = np.append(a, a2)
+
+alpha = np.append(alpha, alpha2[1:])
+k = np.append(k, k2[1:])
+m = np.append(m, m2[1:])
+a = np.append(a, a2[1:])
+
+cc = a*m
+
+print(cc)
 
 cc[2:] = 0
 # cc[:] = 0
@@ -118,11 +132,11 @@ def identity(x):
     return x
 
 
-Q = 200
-s = 2
+Q = 1000
+s = 1
 
-t_s = np.arange(0, 100, 0.01)
-N0 = np.array([ 2 ] * (1+q+r))
+t_s = np.arange(0, 100, 0.001)
+N0 = np.array([ 0.5 ] * (1+q+r))
 
 right_flow = get_right_split(identity)
 # right_flow = get_right_flow(np.atan)
@@ -155,19 +169,54 @@ print(Nl[-1])
 
 # plt.savefig("./figs/exp3.pdf")
 print(cc[1]/alpha[0])
+print()
+
+N_0 = N_1 = None
+
+def N0_f(_N_1):
+    return Q / (alpha[0] * _N_1) + a[1]* m[1] / alpha[0]
+
+def N1_f(_N_0):
+    return Q / (alpha[0] * _N_0 - a[1] * m[1])
 
 if (q + 1) % 2 == s % 2:
+    print(1)
+    X = f[q]
     if q % 2 == 0:
-        N_1 = f[q]
-        N_0 = Q / (alpha[0] * N_1) + a[1]* m[1] / alpha[0]
+        N_1 = X
+        N_0 = N0_f(X)
     else:
-        N_0 = f[q]
-        N_1 = Q / (alpha[0] * N_0 - a[1] * m[1])
+        N_0 = X
+        N_1 = N1_f(X)
     
-    print(N_0, N_1)
+
+elif r % 2 == 0 and q % 2 == s % 2:
+    print(2)
+    X = f[q] + alpha_b/alpha[s] * f2[r]/H[s]
+    if s % 2 == 0:
+        N_1 = X
+        N_0 = N0_f(X)
+    else:
+        N_0 = X
+        N_1 = N1_f(X)
+
+elif r % 2 == 1:
+    # ???
+    print(3)
+    X = f2[r] / H[s-1] + f[s-1]
+    if s % 2 == 0:
+        N_0 = X
+        N_1 = N1_f(X)
+    else:
+        N_0 = N0_f(X)
+        N_1 = X
+else:
+    print("__ !! NOT HANDLED !! __")
+
+
+print(N_0, N_1)
+if N_0 and N_1:
     plt.plot(t_s[[0, -1]], [N_0]*2, "--")
     plt.plot(t_s[[0, -1]], [N_1]*2, "--")
-else:
-    pass
 
 plt.show()
