@@ -293,17 +293,25 @@
                 \end{split}
             \end{equation*}
 
-            Оставшиеся формулы Для \(N'_1\):
+            Оставшиеся формулы. Для \(N'_1\):
             \begin{equation*}
                 \begin{split}
                     & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
                     & \frac{\alpha^b_s}{\alpha_s} N'_1 + H_{2u} (f_{2p} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
-                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} ( N_1 - f_{2p} ).
+                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} H_{2u} ( N_1 - f_{2p} ).
                 \end{split}
             \end{equation*}
             Для \(N'_{2j+1}\):
             \begin{equation*}
-                N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} ( N_1 - f_{2p} ) - f'_{2j} \right).
+                N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u} ( N_1 - f_{2p} ) - f'_{2j} \right).
+            \end{equation*}
+            Для \(N_{2j+1}\) (\(2j+1 > 2u\)):
+            \begin{equation*}
+                \begin{split}
+                    & N_{2j+1} = \frac{H_{2j}}{H_{2u}} \left( N_{2u+1} - H_{2u} (f_{2j} - f_{2u}) \right), \\
+                    & N_{2j+1} = \frac{H_{2j}}{H_{2u}} \left( H_{2u} (f_{2p} - f_{2u}) - H_{2u} (f_{2j} - f_{2u}) \right), \\
+                    & N_{2j+1} = H_{2j} ( f_{2p} - f_{2j} ).
+                \end{split}
             \end{equation*}
         \end{enumerate} % r
 
@@ -326,7 +334,7 @@
                 N'_{2j} = H'_{2j-1} (N_{2u} - f'_{2j-1}) = H'_{2j-1} \left( H_{2u-1} (f_{2p+1} - f_{2u-1}) - f'_{2j-1} \right).
             \end{equation*}
 
-            \item \(r=2l+1\), \(N_s = f'_{2l+1}\).
+            \item \(r=2l+1\), \(N'_{2l+2} = 0, ~~ N_s = f'_{2l+1}\).
             
             \textcolor{red}{Все пути чётные, а нечётный только до развилки (?)}
 
@@ -350,7 +358,7 @@
     \end{equation*}
 
     \begin{enumerate}
-        \item \(q=2p\). \(N_1 = f_{2p}\).
+        \item \(q=2p\). \(N_{2p+1} = 0, ~~ N_1 = f_{2p}\).
         \begin{enumerate}
             \item \(r=2l\). \(N'_1 = f'_{2l}\). Оставшиеся формулы. Для \(N_{2j}\):
             \begin{equation*}
@@ -367,18 +375,88 @@
                     N'_{2j} = H'_{2j-1} (N_{2u+1} - f'_{2j-1}) = H'_{2j-1} ( H_{2u} (f_{2p} - f_{2j}) - f'_{2j-1}).
                 \end{split}
             \end{equation*}
-        \end{enumerate}
+
+            \item \(r=2l+1\). \(N'_{2l+2} = 0, ~~N_s = N_{2u+1} = f'_{2l+1} \).
+            
+            \textcolor{red}{Все пути нечётные, а чётный только до развилки (?)}
+            \begin{equation*}
+                \begin{split}
+                    & N_{2u+1} = H_{2u} (N_1 - f_{2u}) = f'_{2l+1}, \\
+                    & N_1 = \frac{f'_{2l+1}}{H_{2u}} + f_{2u}.
+                \end{split}
+            \end{equation*}
+            Для \(N_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                \end{split}
+            \end{equation*}
+            \textcolor{red}{???}
+        \end{enumerate} % r
+
+        \item \(q=2p+1\). \(N_{2p+2} = 0, ~~ N_{2u+2} = H_{2u+1} (f_{2p+1} - f_{2u+1}) \).
+        \begin{enumerate}
+            \item \(r=2l\). \(N'_{2l+1} = 0, ~~ N'_1 = f'_{2l}\).
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + H_{2u+1} (f_{2p+1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & N_0 = \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} + f_{2p+1}.
+                \end{split}
+            \end{equation*}
+            Для \(N_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & \frac{H_{2u+1}}{H_{2j-1}} N_{2j} = H_{2u+1} ( N_0 - f_{2j+1} ) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} ( N_0 - f_{2j-1} ) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} + f_{2p+1} - f_{2j-1} \right) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} (f_{2p+1} - f_{2j-1}).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u+1} - f'_{2j-1}) = H'_{2j-1} ( H_{2u} (N_1 - f_{2u}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+
+            \item \( r=2l+1 \), \( N'_{2l+2} = 0, N_s = N_{2u+1} = f'_{2l+1} \).
+            \begin{equation*}
+                \begin{split}
+                    & N_{2u+1} = H_{2u} (N_1 - f_{2u}) = f'_{2l+1}, \\
+                    & N_1 = \frac{f'_{2l+1}}{H_{2u}} + f_{2u}.
+                \end{split}
+            \end{equation*}
+            Для \(N'_{1}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + H_{2u+1} (f_{2p+1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} H_{2u+1} (N_0 - f_{2p+1}).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j+1}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u+1} (N_0 - f_{2p+1}) - f'_{2j} \right).
+                \end{split}
+            \end{equation*}
+            Для \(N_{2j}\) (\(2j > 2u+1\)):
+            \begin{equation*}
+                \begin{split}
+                    & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( N_{2u+2} - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right), \\
+                    & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( H_{2u+1} (f_{2p+1} - f_{2u+1}) - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right), \\
+                    & N_{2j} = H_{2j-1} ( f_{2p+1} - f_{2j-1} ).
+                \end{split}
+            \end{equation*}
+        \end{enumerate} % r
     \end{enumerate} % q
 \end{enumerate} % s
 
-
-
-
-\pagebreak
-1
-\pagebreak
-
-Из \eqref{double_lin} получим параметры для системы \eqref{double_matrix_system}.
+!!Из \eqref{double_lin} получим параметры для системы \eqref{double_matrix_system}.
 \begin{equation}
     \begin{split}
         & h_i, h'_k = 0, \\
