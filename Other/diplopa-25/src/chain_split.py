@@ -28,8 +28,8 @@ def runge_kutta(function, y0: np.ndarray | float, time_space: np.ndarray) -> tup
 # m2 = np.array([4, 3, 2])
 # a2 = np.array([0.3, 0.3, 0.3])
 
-_q = 3
-_r = 2
+_q = 5
+_r = 3
 
 # alpha = np.array([10] * (_q+1))
 # k = np.append([0], [0.5] * _q)
@@ -53,7 +53,7 @@ alpha_b = 16
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 m2 = np.append([0], np.linspace(4, 2, _r))
-a2 = np.append([0], np.array([0] * _r))
+a2 = np.append([0, 0.0], np.array([0] * (_r-1)))
 
 print("alpha", alpha, alpha2)
 print("a", a)
@@ -75,7 +75,7 @@ g2 = np.append([0], k2[1:] * alpha2[:-1] / alpha2[1:])
 H2 = np.append([1], [ np.prod(g2[2-(i%2):i+2:2]) for i in range(1, q+1) ])
 
 mu2 =np.append([0], m2[1:] / alpha2[1:])
-f2 = np.append([0], [ sum(mu2[2-(i%2):i+2:2]/H2[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+f2 = np.append([0], [ sum(mu2[2-(i%2):i+2:2]/H2[2-(i%2):i+2:2]) for i in range(1, r+1) ])
 
 print(f"{f=}")
 print(f"{f2=}")
@@ -132,10 +132,10 @@ def identity(x):
     return x
 
 
-Q = 1000
-s = 1
+Q = 10000
+s = 2
 
-t_s = np.arange(0, 100, 0.001)
+t_s = np.arange(0, 10, 0.0001)
 N0 = np.array([ 0.5 ] * (1+q+r))
 
 right_flow = get_right_split(identity)
@@ -201,7 +201,6 @@ elif r % 2 == 0 and q % 2 == s % 2:
         N_1 = N1_f(X)
 
 elif r % 2 == 1:
-    # ???
     print(3)
     X = f2[r] / H[s-1] + f[s-1]
     if s % 2 == 0:

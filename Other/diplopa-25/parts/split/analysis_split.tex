@@ -217,6 +217,167 @@
 
 Пусть оно существует и равно \( [N^*_0, N^*_1, \dots N^*_q; N'{}^*_1, \dots, N'{}^*_r] \).
 
+!!
+
+Найдём точку равновесия, используя обозначения \eqref{flow_sub} и \(\alpha'_0 = \alpha^b_s\). Для боковой цепи получим
+\begin{equation}
+    \begin{split}
+        & N'_{2j} = H'_{2j-1} (N_s - f'_{2j-1}), ~~ N_s = \frac{N'_{2j}}{H'_{2j-1}} + f'_{2j-1}, \\
+        & N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}), ~~ N'_1 = \frac{N'_{2j+1}}{H'_{2j}} + f'_{2j}.
+    \end{split}
+\end{equation}
+
+Для главной цепи нужно рассматривать случаи чётности одновременно для \(q, s\). Заметим, что при одинаковой чётности индексов \(N_i\) и \(N_s\) рекуррентное соотношение для \(N_i\) не затронет третье уравнение в \eqref{double_stab_system}. В то же время индексы разной чётности (\(i > s\)) затронут это уравнение. В таких случаях будем искать отдельно значения \(N_{s+1}\) и \(N_{s-1}\). Перепишем связывающее уравнение, поделив на \(\alpha_s\):
+\begin{equation*}
+    \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{s+1} = g_s N_{s-1} - \mu_{s}.
+\end{equation*}
+
+Для нахождения явных формул точки равновесия достаточно найти \(N_0\) или \(N_1\). После нахождения одного из этих видов другой можно найти по первой формуле \eqref{double_stab_system} или её обратной:
+\begin{equation}
+    N_0 = \frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0}.
+\end{equation}
+
+Последовательно рассмотрим каждую тройку чётностей \((s,q,r)\).
+\begin{enumerate}
+    \item \(s=2u\). Тогда 
+    \begin{equation*}
+        \begin{split}
+            & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}), ~~ N_0 = \frac{N_{2j}}{H_{2j-1}} + f_{2j-1}; \\
+            & N_{2j+1} = H_{2j}(N_1 - f_{2j}), ~~ N_1 = \frac{N_{2j+1}}{H_{2j}} + f_{2j}, ~~ 2j+1 < 2u.
+        \end{split}
+    \end{equation*}
+    При \(2j+1 > 2u\)
+    \begin{equation*}
+        \begin{split}
+            N_{2j+1} &= g_{2j} \dots g_{2u+4} g_{2u+2} \left( N_{2u+1} - \frac{\mu_{2u+2}}{g_{2u+2}} - \dots - \frac{\mu_{2j}}{g_{2u+2} g_{2u+4} \dots g_{2j}} \right) = \\
+            & = \frac{H_{2j}}{H_{2u}} \left( N_{2u+1} - H_{2u} (f_{2j} - f_{2u}) \right), \\
+            N_{2u+1} &= \frac{H_{2u}}{H_{2j}} N_{2j+1} + H_{2u} (f_{2j} - f_{2u}).
+        \end{split}
+    \end{equation*}
+    
+    \begin{enumerate}
+        \item \(q=2p\). Тогда \(N_{2p+1} = 0\) и \(N_{2u+1} = H_{2u} (f_{2p} - f_{2u}) \).
+        
+        \begin{enumerate}
+            \item \(r=2l\). Тогда \(N'_{2l+1} = 0\) и \(N'_1 = f'_{2l}\).
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + H_{2u} (f_{2p} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & N_1 = \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p}.
+                \end{split}
+            \end{equation*}
+            
+            И получаем оставшиеся формулы. Для \(N_{2j+1}\)
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u}}{H_{2j}} N_{2j+1} + H_{2u} (f_{2j} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j}}{H_{2u}} f'_{2l} + N_{2j+1} + H_{2j} f_{2j} = H_{2j} \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right), \\
+                    & N_{2j+1} = H_{2j} f_{2p} - H_{2j} f_{2j} = H_{2j} ( f_{2p} - f_{2j} ). 
+                \end{split}
+            \end{equation*}
+
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u} - f'_{2j-1}) = H'_{2j-1} ( H_{2u-1} (N_0 - f_{2u-1}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+
+            \item \(r = 2l+1\). Тогда \(N'_{2l+2} = 0\) и \(N_s = N_{2u} = f'_{2l+1}\).
+            \begin{equation*}
+                \begin{split}
+                    & N_{2u} = H_{2u-1} (N_0 - f_{2u-1}) = f'_{2l+1}, \\
+                    & N_0 = \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1}.
+                \end{split}
+            \end{equation*}
+
+            Оставшиеся формулы Для \(N'_1\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + H_{2u} (f_{2p} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} ( N_1 - f_{2p} ).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j+1}\):
+            \begin{equation*}
+                N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} ( N_1 - f_{2p} ) - f'_{2j} \right).
+            \end{equation*}
+        \end{enumerate} % r
+
+        \item \(q = 2p+1\). Тогда \(N_{2p+2} = 0\) и \(N_0 = f_{2p+1}\).
+        
+        \begin{enumerate}
+            \item \(r = 2l\). \(N'_1 = f'_{2l}\).
+            \begin{equation*}
+                N_{2u+1} = H_{2u} (N_1 - f_{2u}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}.
+            \end{equation*}
+            Получаем формулы. Для \(N_{2j+1}\), \(2j+1 > 2u\):
+            \begin{equation*}
+                \begin{split}
+                    N_{2j+1} &= \frac{H_{2j}}{H_{2u}} \left( H_{2u} (N_1 - f_{2u}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l} - H_{2u} (f_{2j} - f_{2u}) \right) = \\
+                    & = H_{2j} \left( N_1 - f_{2j} - \frac{\alpha^b_s}{\alpha_s} \frac{ f'_{2l} }{H_{2u}} \right).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                N'_{2j} = H'_{2j-1} (N_{2u} - f'_{2j-1}) = H'_{2j-1} \left( H_{2u-1} (f_{2p+1} - f_{2u-1}) - f'_{2j-1} \right).
+            \end{equation*}
+
+            \item \(r=2l+1\), \(N_s = f'_{2l+1}\).
+            
+            \textcolor{red}{Все пути чётные, а нечётный только до развилки (?)}
+
+        \end{enumerate} % r
+
+    \end{enumerate} % q
+
+    \item \(s = 2u+1\). Тогда 
+    \begin{equation*}
+        \begin{split}
+            & N_{2j+1} = H_{2j} (N_1 - f_{2j}), ~~ N_1 = \frac{N_{2j+1}}{H_{2j}} + f_{2j}; \\
+            & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}), ~~ N_0 = \frac{N_{2j}}{H_{2j-1}} + f_{2j-1}, ~~ 2j < 2u+1.
+        \end{split}
+    \end{equation*}
+    При \(2j > 2u+1\):
+    \begin{equation*}
+        \begin{split}
+            & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( N_{2u+2} - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right),\\
+            & N_{2u+2} = \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}).
+        \end{split}
+    \end{equation*}
+
+    \begin{enumerate}
+        \item \(q=2p\). \(N_1 = f_{2p}\).
+        \begin{enumerate}
+            \item \(r=2l\). \(N'_1 = f'_{2l}\). Оставшиеся формулы. Для \(N_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & \frac{H_{2u+1}}{H_{2j-1}} N_{2j} = H_{2u+1} (N_0 - f_{2j-1}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u+1} - f'_{2j-1}) = H'_{2j-1} ( H_{2u} (f_{2p} - f_{2j}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+        \end{enumerate}
+    \end{enumerate} % q
+\end{enumerate} % s
+
+
+
+
+\pagebreak
+1
+\pagebreak
+
 Из \eqref{double_lin} получим параметры для системы \eqref{double_matrix_system}.
 \begin{equation}
     \begin{split}
@@ -229,17 +390,18 @@
 \end{equation}
 Тогда условие устойчивости \(d_0 > c_1\) становится \(\alpha_0 N^*_{0} > a_1 m_1\); \( N^*_0 > \frac{a_1 m_1}{\alpha_0} \).
 
-Найдём значения точки равновесия. Используем обозначения \eqref{flow_sub} и \(\alpha'_0 = \alpha^b_s\). Найдём \(N_0\):
+Найдём значения точки равновесия. Найдём \(N_0\):
 \begin{equation} \label{split_lin_N0_0}
     N_0 = \frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0} > 0.
 \end{equation}
 Тогда условие становится \(\frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0} > \frac{a_1 m_1}{\alpha_0}\), откуда \(\frac{Q}{\alpha_0 N_1} > 0\). То есть выполняется всегда при \(N^*_1 > 0\).
 
-Если \(q+1 \equiv s \mod 2\) тогда можно обойти третье уравнение в \eqref{double_stab_system}.
-\begin{itemize}
-    \item При \(q = 2p\): \( N_{q+1} = H_{2p} (N_1 - f_{2p}) \) откуда из \(N_{q+1} = 0\) следует \(N_1 = f_{2p} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
+\begin{enumerate}
+    \item Если \(q+1 \equiv s \mod 2\) тогда можно обойти третье уравнение в \eqref{double_stab_system}.
+
+    При \(q = 2p\): \( N_{q+1} = H_{2p} (N_1 - f_{2p}) \) откуда из \(N_{q+1} = 0\) следует \(N_1 = f_{2p} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
     
-    \item При \(q=2p-1\): \(N_{q+1} =H_{2p-1} (N_0 - f_{2p-1}) = 0\) откуда \(N_0 = f_{2p-1}\). Тогда
+    При \(q=2p-1\): \(N_{q+1} =H_{2p-1} (N_0 - f_{2p-1}) = 0\) откуда \(N_0 = f_{2p-1}\). Тогда
     \begin{equation} \label{split_f2pm1_stab}
         \begin{split}
             & f_{2p-1} > \frac{a_1 m_1}{\alpha_0}, \\
@@ -255,11 +417,55 @@
         \end{split}
     \end{equation*}
     По условиям \(0 \leq a_i \leq 1\). Значит выражение выполняется почти всегда. Исключением является случай при \(q = 1, ~ k_1 = 1\).
+
+\item Если \(r = 2l - 1\), тогда \(N'_{r+1} = N'_{2l} = H'_{2l-1} (N_s - f'_{2l-1}) = 0\), \(N_{s} = f'_{2l-1}\).
+
+При \(s = 2u\): \(N_{2u} = H_{2u-1} (N_0 - f_{2u-1})\), \(N_0 = \frac{f'_{2l-1}}{H_{2u-1}} + f_{2u-1}\). Условие устойчивости выполняется аналогично \eqref{split_f2pm1_stab} всегда.
+    
+При \(s = 2u-1\): \(N_{2u-1} = H_{2u-2} (N_1 - f_{2u-2})\), \( N_1 = \frac{f'_{2l-1}}{H_{2u-2}} + f_{2u-2} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
+
+\item Если \(q \equiv s \mod 2\) и \(r = 2l\), то есть обойти третье уравнение в \eqref{double_stab_system} нельзя. Поделим это уравнение на \(\alpha_s\) и перепишем.
+\begin{equation*}
+    \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{s+1} = g_s N_{s-1} - \mu_{s}.
+\end{equation*}
+
+Найдём отдельно формулы для \(N_{s+1}\) через \(N_{q+1}\), \(N'_1\) через \(N'_{r+1}\), и правую часть через \(N_0\) или \(N_1\).
+
+Из предыдущих вычислений имеем \(N'_1 = f'_{r}\). Найдём \(N_{s+1}\).
+\begin{equation*}
+    \begin{split}
+        & N_{q+1} = g_q N_{q-1} - \mu_q = g_q (g_{q-2} N_{q-3} - \mu_{q} ) - \mu_q = \dots = \\
+        & = g_q g_{q-2} \dots g_{s+2} \left( N_{s+1} - \frac{\mu_{s+2}}{g_{s+2}} - \frac{\mu_{s+4}}{g_{s+2} g_{s+4}} - \dots - \frac{\mu_{q}}{g_{s+2} g_{s+4} \dots g_{q}} \right) = \\
+        & = \frac{H_q}{H_s} \left( N_{s+1} - H_s ( f_q - f_s ) \right).
+    \end{split}
+\end{equation*}
+Поскольку \(N_{q+1} = 0\), то \(N_{s+1} = H_s ( f_q - f_s ) \). Найдём правую часть и значения \(N_0\) или \(N_1\).
+
+\begin{itemize}
+    \item Пусть \(s = 2u\), тогда \(g_{2u} N_{2u-1} - \mu_{2u} = H_{2u} (N_1 - f_{2u}) = H_s (N_1 - f_s)\). Подставим в уравнение.
+    \begin{equation*}
+        \begin{split}
+            &\frac{\alpha^b_s}{\alpha_s} f'_r + H_s ( f_q - f_s ) = H_s (N_1 - f_s), \\
+            &N_1 = f_q + \frac{\alpha^b_s}{\alpha_s} \frac{ f'_r }{H_s}.
+        \end{split}
+    \end{equation*}
+
+    \item Пусть \(s = 2u-1\), тогда \(g_{2u-1} N_{2u-2} - \mu_{2u-1} = H_{2u-1} (N_0 - f_{2u-1}) = H_s (N_0 - f_s)\). откуда
+    \begin{equation*}
+        \begin{split}
+            &\frac{\alpha^b_s}{\alpha_s} f'_r + H_s ( f_q - f_s ) = H_s (N_0 - f_s), \\
+            &N_0 = f_q + \frac{\alpha^b_s}{\alpha_s} \frac{ f'_r }{H_s}.
+        \end{split}
+    \end{equation*}
 \end{itemize}
 
-Если \(r = 2l - 1\), тогда \(N'_{r+1} = N'_{2l} = H'_{2l-1} (N_s - f'_{2l-1}) = 0\), \(N_{s} = f'_{2l-1}\).
-\begin{itemize}
-    \item При \(s = 2u\): \(N_{2u} = H_{2u-1} (N_0 - f_{2u-1})\), \(N_0 = \frac{f'_{2l-1}}{H_{2u-1}} + f_{2u-1}\). Условие устойчивости выполняется аналогично \eqref{split_f2pm1_stab} всегда.
-    
-    \item При \(s = 2u-1\): \(N_{2u-1} = H_{2u-2} (N_1 - f_{2u-2})\), \( N_1 = \frac{f'_{2l-1}}{H_{2u-2}} + f_{2u-2} > 0\), значит из \eqref{split_lin_N0_0} выполняется всегда.
-\end{itemize}
+Значит по неравенствам \eqref{split_lin_N0_0} и \eqref{split_f2pm1_stab} условие устойчивости выполняются.
+
+\end{enumerate}
+
+Определим условия существования ветвящейся цепи длины \((q, r)\). Для этого используем неравенства \(0 < N_q < \frac{\mu_{q+1}}{g_{q+1}}, ~ 0 < N'_r < \frac{\mu'_{r+1}}{g'_{r+1}}\). Правые части неравенств, являются условиями, ограничивающими длину цепей, записанные для линейных функций. 
+
+\begin{enumerate}
+    \item \(q+1 \equiv s \mod 2\). \(N_q = \frac{ H_{q-1} }{}\)
+    При \(q=2p, ~ s=2u-1\)
+\end{enumerate}
