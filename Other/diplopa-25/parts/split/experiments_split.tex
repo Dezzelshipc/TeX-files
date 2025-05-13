@@ -1,2 +1,52 @@
 \subsection{Численные эксперименты}
-TODO!()
+Чтобы рассмотреть разные варианты ветвящейся цепи, выберем максимальные длины ветвей, равные \(q = 4, ~ r=2\). Таким образом, рассматривая два эксперимента: \(s=2\) и \(s=3\). Пусть линейная система \eqref{double_lin} имеет такие коэффициенты:
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \(i\)        & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) \\ \hline
+        \(\alpha_i\)& \(20\) & \(17.5\) & \(15\) & \(12.5\) & \(10\) \\ \hline
+        \(m_i\) &            & \(5\) & \(4\) & \(3\) & \(2\) \\ \hline
+        \(k_i\) &            & \(0.5\) & \(0.4\) & \(0.3\) & \(0.2\) \\ \hline
+        \(a_i\) &            & \(0.2\) &  &  &  \\ \hline \hline
+
+        \(\alpha'_i\)& \(16\) & \(16\) & \(8\) &  &  \\ \hline
+        \(m'_i\) &            & \(4\) & \(1\) &  &  \\ \hline
+        \(k'_i\) &            & \(0.5\) & \(0.3\) &  &  \\ \hline
+    \end{tabular}
+\end{center}
+
+Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равно \(0.5\). 
+
+Рассмотрим при \(s=2\).
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{40}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{50}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{60}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{80}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{90}  {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{100} {pictures/split/exp1_s2_Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s2_Q}{.3}
+\caption{Численности видов системы при \(s=2\).}  \label{fig:split_exp1_s2}
+\end{figure}
+
+
+Рассмотрим при \(s=3\).
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{40}  {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{80}  {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{120} {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{150} {pictures/split/exp1_s3_Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s3_Q}{.3}
+\caption{Численности видов системы при \(s=2\).}  \label{fig:split_exp1_s3}
+\end{figure}

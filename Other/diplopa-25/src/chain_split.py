@@ -18,41 +18,21 @@ def runge_kutta(function, y0: np.ndarray | float, time_space: np.ndarray) -> tup
     return x_a, np.array(y_a)
 
 
-# alpha = np.array([20, 16, 12, 8])
-# k = np.append([0], [0.3, 0.2, 0.1])
-# m = np.append([0], [4, 3, 2])
-# a = np.append([0], [0.3, 0.3, 0.3])
-
-# alpha2 = np.array([16, 12, 8])
-# k2 = np.array([0.3, 0.2, 0.1])
-# m2 = np.array([4, 3, 2])
-# a2 = np.array([0.3, 0.3, 0.3])
-
-_q = 5
-_r = 3
-
-# alpha = np.array([10] * (_q+1))
-# k = np.append([0], [0.5] * _q)
-# m = np.append([0], [2] * _q)
-# a = np.append([0, 0], [0] * (_q-1))
-
-# alpha2 = np.array([10] * _r)
-# k2 = np.array([0.5] * _r)
-# m2 = np.array([2] * _r)
-# a2 = np.array([0] * _r)
+_q = 4
+_r = 2
 
 ##
 
-alpha = np.linspace(30, 12, _q+1)
-k = np.append([0], np.linspace(0.5, 0.3, _q))
-m = np.append([0], np.linspace(5, 1, _q))
+alpha = np.linspace(20, 10, _q+1)
+k = np.append([0], np.linspace(0.5, 0.2, _q))
+m = np.append([0], np.linspace(5, 2, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
 
 alpha_b = 16
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
-m2 = np.append([0], np.linspace(4, 2, _r))
+m2 = np.append([0], np.linspace(4, 1, _r))
 a2 = np.append([0, 0.0], np.array([0] * (_r-1)))
 
 print("alpha", alpha, alpha2)
@@ -61,28 +41,22 @@ print("m", m, m2)
 print("k", k, k2)
 print()
 
-q = len(m) - 1
-r = len(m2) - 1
-
+# exit()
 
 g = np.append([0], k[1:] * alpha[:-1] / alpha[1:])
-H = np.append([1], [ np.prod(g[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+H = np.append([1], [ np.prod(g[2-(i%2):i+2:2]) for i in range(1, _q+1) ])
 
 mu =np.append([0], m[1:] / alpha[1:])
-f = np.append([0], [ sum(mu[2-(i%2):i+2:2]/H[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+f = np.append([0], [ sum(mu[2-(i%2):i+2:2]/H[2-(i%2):i+2:2]) for i in range(1, _q+1) ])
 
 g2 = np.append([0], k2[1:] * alpha2[:-1] / alpha2[1:])
-H2 = np.append([1], [ np.prod(g2[2-(i%2):i+2:2]) for i in range(1, q+1) ])
+H2 = np.append([1], [ np.prod(g2[2-(i%2):i+2:2]) for i in range(1, _q+1) ])
 
 mu2 =np.append([0], m2[1:] / alpha2[1:])
-f2 = np.append([0], [ sum(mu2[2-(i%2):i+2:2]/H2[2-(i%2):i+2:2]) for i in range(1, r+1) ])
+f2 = np.append([0], [ sum(mu2[2-(i%2):i+2:2]/H2[2-(i%2):i+2:2]) for i in range(1, _r+1) ])
 
 print(f"{f=}")
 print(f"{f2=}")
-
-
-if q % 2 == 1:
-    print("check", f[q], a[1] * m[1] / alpha[0])
 
 
 alpha = np.append(alpha, alpha2[1:])
@@ -98,7 +72,7 @@ cc[2:] = 0
 # cc[:] = 0
 
 n = len(alpha)
-print(q, r, n)
+print(_q, _r, n)
 
 
 def get_right_split(func_v, func_1=None):
@@ -111,18 +85,18 @@ def get_right_split(func_v, func_1=None):
                 for i in range(1, s)
             ],
             *[
-                -m[s] * x[s] + k[s] * alpha[s-1] * func_v(x[s-1]) * x[s] - x[s+1] * alpha[s] * func_v(x[s]) - (alpha_b * func_v(x[s]) * x[q+1] if r > 0 else 0)
+                -m[s] * x[s] + k[s] * alpha[s-1] * func_v(x[s-1]) * x[s] - x[s+1] * alpha[s] * func_v(x[s]) - (alpha_b * func_v(x[s]) * x[_q+1] if _r > 0 else 0)
             ],
             *[
-                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < q else 0 ) * alpha[i] * func_v(x[i])
-                for i in range(s+1, q+1)
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < _q else 0 ) * alpha[i] * func_v(x[i])
+                for i in range(s+1, _q+1)
             ],
             *[
-                -m[q+1] * x[q+1] + k[q+1] * alpha_b * func_v(x[s]) * x[q+1] - (x[q+2] * alpha[q+1] * func_v(x[q+1]) if r > 1 else 0 )
+                -m[_q+1] * x[_q+1] + k[_q+1] * alpha_b * func_v(x[s]) * x[_q+1] - (x[_q+2] * alpha[_q+1] * func_v(x[_q+1]) if _r > 1 else 0 )
             ],
             *[
-                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < r else 0 ) * alpha[i] * func_v(x[i])
-                for i in range(q+2, q+r+1)
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < _r else 0 ) * alpha[i] * func_v(x[i])
+                for i in range(_q+2, _q+_r+1)
             ],
         ])
     return right
@@ -132,11 +106,16 @@ def identity(x):
     return x
 
 
-Q = 10000
-s = 2
+# CHANGE PARAMETERS
+Q = 1000
+s = 3
 
-t_s = np.arange(0, 10, 0.0001)
-N0 = np.array([ 0.5 ] * (1+q+r))
+q = 4
+r = 2
+#
+
+t_s = np.arange(0, 100, 0.01)
+N0 = np.array([ 0.5 ] * (1+_q+_r))
 
 right_flow = get_right_split(identity)
 # right_flow = get_right_flow(np.atan)
@@ -155,21 +134,10 @@ leg = []
 
 for i in range(start,n):
     plt.plot(Tl[slc_start:slc], Nl[slc_start:slc,i])
-    leg.append(f"Вид{i if i < q+1 else i-q}")
-
-plt.legend(
-    leg, 
-    loc='upper right'
-)
-plt.xlabel('t')
-plt.ylabel('N')
-plt.title(f"dt={t_s[1]-t_s[0]} {q=} {r=}")
+    leg.append(f"Вид{i if i < _q+1 else f"'{i-_q}"}")
 
 print(Nl[-1])
 
-# plt.savefig("./figs/exp3.pdf")
-print(cc[1]/alpha[0])
-print()
 
 N_0 = N_1 = None
 
@@ -217,5 +185,24 @@ print(N_0, N_1)
 if N_0 and N_1:
     plt.plot(t_s[[0, -1]], [N_0]*2, "--")
     plt.plot(t_s[[0, -1]], [N_1]*2, "--")
+
+    leg.extend([
+        "Равн0",
+        "Равн1"
+    ])
+
+plt.legend(
+    leg, 
+    loc='upper right'
+)
+plt.xlabel('t')
+plt.ylabel('N')
+plt.title(f"{q=} {r=} {s=}")
+print(f"dt={t_s[1] - t_s[0]}")
+
+
+from pathlib import Path
+plt.savefig(Path(__file__).parent / f"figs/exp1_s{s}_Q{Q}.pdf")
+
 
 plt.show()
