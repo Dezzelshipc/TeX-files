@@ -195,6 +195,7 @@
 
 \subsection{Равновесные состояния при линейных функциях}
 Пусть трофические функции соответствуют напряжённым связям и при этом есть замыкание только по первому виду, т.е. \(V_i(N_i) = \alpha_i N_i, ~ V'_k(N'_k) = \alpha'_k N'_k, ~ V^b_s(N_s) = \alpha^b_s N_s\) и \( a_1 \neq 0, ~ a_i, a'_k = 0 ~ i=\overline{2,q}, k=\overline{1,r}\). Тогда система \eqref{double_full} становится:
+
 \begin{equation} \label{double_lin}
     \begin{split}
         & \frac{d N_0}{dt} = Q + N_1 ( -\alpha_0 N_0 + a_1 m_1 ), \\
@@ -497,4 +498,72 @@
 
 Определим условия существования ветвящейся цепи длины \((q, r)\). Для этого используем неравенства \(0 < N_q < \frac{\mu_{q+1}}{g_{q+1}}, ~ 0 < N'_r < \frac{\mu'_{r+1}}{g'_{r+1}}\). Правые части неравенств, являются условиями, ограничивающими длину цепей, записанные для линейных функций. 
 
-\textcolor{red}{Расписать это всё.}
+Рассмотрим возможные варианты для \(N_q\) при \(s=2u\):
+\begin{enumerate}
+    \item \(q = 2p, r = 2l\): 
+    \begin{align*}
+        & N_0 = \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0}, \\
+        & 0 < N_q = N_{2p} = H_{2p-1} \left( \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0} - f_{2p-1} \right) < \frac{\mu_{2p+1}}{g_{2p+1}}, \\
+        & f_{2p-1} - \frac{a_1 m_1}{\alpha_0} < \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} < \frac{\mu_{2p+1}}{H_{2p-1} g_{2p+1}} + f_{2p-1} - \frac{a_1 m_1}{\alpha_0},
+    \end{align*}
+    \begin{align*}
+        \begin{cases}
+            Q > \left( \alpha_0 f_{2p-1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2p+1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q = 2p+1, r = 2l\):
+    \begin{align*}
+        & N_1 = \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1}, \\
+        & 0 < N_{q} = N_{2p+1} = H_{2p} \left( \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1} - f_{2p} - \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right) < \frac{\mu_{2p+2}}{g_{2p+2}}, \\
+        & f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} < \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1} < \frac{\mu_{2p+2}}{H_{2p} g_{2p+2}} + f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}}, \\
+        & \begin{cases}
+            Q > \left( \alpha_0  f_{2p+1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2p+1} - a_1 m_1 \right) \left( f_{2p+2} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p, r=2l+1\):
+    \begin{align*}
+        & N_0 = \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1}, \\
+        & 0 < N_q = N_{2p} = H_{2p-1} \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} - f_{2p-1} \right) < \frac{\mu_{2p+1}}{g_{2p+1}}, \\
+        & f_{2p-1} - f_{2u-1} < \frac{f'_{2l+1}}{H_{2u-1}} < f_{2p+1} - f_{2u-1}, \\
+        & f_{2p-1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}} < 0 < f_{2p+1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}}.
+    \end{align*}
+\end{enumerate}
+
+Рассмотрим возможные варианты для \(N'_r\) при \(s=2u\):
+\begin{enumerate}
+    \item \(q=2p, r=2l\):
+    \begin{align*}
+        & 0 < N'_r = N'_{2l} < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & N'_{2l} = H'_{2l-1} \left( H_{2u-1} \left( \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0} - f_{2u-1} \right) - f'_{2l-1} \right), \\
+        & f_{2u-1} - \frac{a_1 m_1}{\alpha_0} + \frac{f'_{2l-1}}{H_{2u-1}} < \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} < f_{2u-1} - \frac{a_1 m_1}{\alpha_0} + \frac{f'_{2l+1}}{H_{2u-1}}, \\
+        & \begin{cases}
+            Q > \left( \alpha_0 f_{2u-1} - a_1 m_1 + \alpha_0 \frac{f'_{2l-1}}{H_{2u-1}} \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2u-1} - a_1 m_1 + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}} \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p+1, r=2l\):
+    \begin{align*}
+        & 0 < N'_{r} = N'_{2l} = H'_{2l-1} \left( H_{2u-1} \left( f_{2p+1} - f_{2u-1} \right) - f'_{2l-1} \right) < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & \frac{f'_{2l-1}}{H_{2u-1}} - f_{2p+1} + f_{2u-1} < 0 < \frac{f'_{2l+1}}{H_{2u-1}} - f_{2p+1} + f_{2u-1}, \\
+        & f_{2p+1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}} < 0 < f_{2p+1} - f_{2u-1} - \frac{f'_{2l-1}}{H_{2u-1}}.
+    \end{align*}
+
+    \item \(q=2p, r=2l+1\):
+    \begin{align*}
+        & N_1 = \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 }, \quad 0 < N'_r = N'_{2l+1} < \frac{\mu'_{2l+2}}{g'_{2l+2}}, \\
+        & N'_{2l+1} = H'_{2l} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u} \left( \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 } - f_{2p} \right) - f'_{2l} \right), \\
+        & \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} < \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 } < \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u}} + f_{2p}, \\ 
+        & \begin{cases}
+            Q > \left( \alpha_0 f_{2u-1} - a_1 m_1  + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}}\right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2u-1} - a_1 m_1  + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}}\right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+\end{enumerate}
+
+
+\textcolor{red}{Поток сначала течёт в сторону \(\max \{ \alpha_s, \alpha^b_s \}\).}

@@ -16,9 +16,32 @@
     \end{tabular}
 \end{center}
 
-Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равно \(0.5\). 
+Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равны \(0.5\). 
 
-Рассмотрим при \(s=2\).
+Рассмотрим при \(s=2\). Поскольку меняется длина сразу двух ветвей, то получим матрицу состояний:
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
+        \(1\) & \cellcolor{gray!20}\(\begin{matrix} q(0,5.14) \\ r?(-0.87, -0.36) \end{matrix}\) 
+        & -- 
+        & \(\begin{matrix} q(4.28, 9.42) \\ r?(-0.87, -0.87) \end{matrix}\) \\ \hline
+        \(2\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(5.14,18.47) \\ r(9.3, 15.14) \end{matrix}\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q?(-0.87,0.29) \\ r(15.14, 27.76) \end{matrix}\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(9.42, 33.87) \\ r(27.76, +\infty) \end{matrix}\) \\ \hline
+        \(3\) 
+        & \(\begin{matrix} q(18.47,73.9) \\ r?(0.29,0.8) \end{matrix}\) 
+        & -- 
+        & \cellcolor{gray!20}\(\begin{matrix} q(33.87, 89.3) \\ r?(0.29, 0.29) \end{matrix}\) \\ \hline
+        \(4\) 
+        & \(\begin{matrix} q(73.9,+\infty) \\ r(37.23. 60.57) \end{matrix}\) 
+        & \(\begin{matrix} q?(0.29, 0.29) \\ r(60.57, 73.19) \end{matrix}\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(89.3, +\infty) \\ r?(73.19, +\infty) \end{matrix}\) \\ \hline
+    \end{tabular}
+\end{center}
+Здесь обозначениями \(q(x,y), ~ r(x,y)\) показаны нижняя и верхняя границы \((x, y)\) поступающей энергии \(Q\) для данных длин цепи (\(x < Q < y\)), а \(q?(x,y), ~ r?(x,y)\) обозначены левая и правая часть неравенства существования соответствующих ветвей (\(x < 0 < y\)). Серым цветом помечены ячейки, длины которых появляются в эксперименте.
+
 \begin{figure}[H]
     \centering
     \subfigexp{1}   {pictures/split/exp1_s2_Q}{.3}
@@ -48,5 +71,7 @@
     \subfigexp{120} {pictures/split/exp1_s3_Q}{.3}
     \subfigexp{150} {pictures/split/exp1_s3_Q}{.3}
     \subfigexp{1000}{pictures/split/exp1_s3_Q}{.3}
-\caption{Численности видов системы при \(s=2\).}  \label{fig:split_exp1_s3}
+\caption{Численности видов системы при \(s=3\).}  \label{fig:split_exp1_s3}
 \end{figure}
+
+% Проблемные цепи: (s=2u, q=2p+1, r=2l+1), (s=2u+1, q=2p, r=2l+1)

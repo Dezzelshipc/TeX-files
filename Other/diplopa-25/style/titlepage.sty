@@ -18,13 +18,13 @@
         \underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}
     \)
     \(
-        \underset{\textit{(И.О.Ф)}}{\uline{~ \text{#1} ~}}
+        \underset{\textit{И. О. Фамилия}}{\uline{~ \text{#1} ~}}
     \)
 }
 
 \newcommand{\signature}{
     \(
-        \underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}
+        \underset{\textit{(подпись)}}{\uline{\hspace{100pt}}}
     \)
 }
 
@@ -201,13 +201,13 @@
 
         (ДВФУ)
         
-        \vspace*{-10pt}
+        % \vspace*{-10pt}
 
-        \rule{\textwidth}{3pt}
+        % \rule{\textwidth}{3pt}
 
-        \vspace*{-24pt}
+        % \vspace*{-24pt}
 
-        \rule{\textwidth}{1pt}
+        % \rule{\textwidth}{1pt}
 
         \vspace{10pt}
 
@@ -222,22 +222,18 @@
         \vspace{50pt}
         
         #1
+
+        \vspace{20pt}
+
+        \textbf{ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА}
         
         \vspace{20pt}
 
-        #2
+        \textbf{#2}
         
         \vspace{10pt}
 
-        \textbf{ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА}
-
-        \vspace{-6pt}
-
-        по образовательной программе подготовки бакалавров
-
-        \vspace{-6pt}
-
-        по направлению #3
+        по направлению подготовки#3
        
 
     \end{center}
@@ -255,37 +251,59 @@
     \pagebreak
 }
 
-\newcommand{\fefureverseVKR}[4]{
+\newcommand{\fefureverseVKR}[3]{
+
+    \begingroup
 
     \thispagestyle{empty}
 
+    \parindent 0pt
+    \fontsize{12pt}{0.6\baselineskip}
+    \selectfont
+
     \begin{multicols}{2}
-        
-        \(~\)
+            {
+                В материалах данной выпускной \\[-6pt] квалификационной работы не содержатся \\[-6pt] сведения, составляющие государственную \\[-6pt] тайну, и сведения, подлежащие экспертному \\[-6pt] контролю
+            }
+
+        Уполномоченный по экспертному контролю \\
+        \signatureuser{\hspace{100pt}} \\
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         \vfill
 
-        \noindent Защищена с оценкой: \uline{~~\hspace{30pt}~~}\\
-        Секретарь \\
-        \usersignature{\hspace{100pt}}\\
-        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        Защищена в ГЭК с оценкой: \\
+        \uline{~~\hspace{120pt}~~}\\
+        Секретарь ГЭК \\
+        \signatureuser{\hspace{100pt}}\\
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         \columnbreak
 
-        \noindent Автор работы \signature\\
-        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        Автор работы \signature,\\
+        Обучающийся группы \uline{~Б9121-01.03.02сп~} \\
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
-        \noindent Консультант (если имеется)\\
-        \usersignature{\hspace{100pt}}\\
-        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        \vspace{20pt}
         
-        \noindent Руководитель ВКР\undertext{должность, учёное звание}{\text{#1}}
-        \usersignature{#2}\\
-        <<\uline{\hspace{20pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        Руководитель ВКР\undertext{должность, учёное звание}{\text{#1}} \\
+        \signatureuser{#2}\\
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
-        #3
+        \vfill
 
-        \usersignature{#4}
+        \textbf{<<Допустить к защите>>}
+        
+        {
+            Директор Департамента \\[-6pt] математического и компьютерного \\[-6pt] моделирования
+        }
+
+        \undertext{должность, учёное звание}{~~\hspace{140pt}~~}
+
+        \signatureuser{#3}
+
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+
 
         % \docdate
 
@@ -309,6 +327,8 @@
 
         
     \end{multicols}
+
+    \endgroup
 
     \pagebreak
 }
