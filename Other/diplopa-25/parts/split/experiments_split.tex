@@ -1,5 +1,5 @@
 \subsection{Численные эксперименты}
-Чтобы рассмотреть разные варианты ветвящейся цепи, выберем максимальные длины ветвей, равные \(q = 4, ~ r=2\). Таким образом, рассматривая два эксперимента: \(s=2\) и \(s=3\). Пусть линейная система \eqref{double_lin} имеет такие коэффициенты:
+Чтобы рассмотреть разные варианты ветвящейся цепи, выберем максимальные длины ветвей, равные \(q = 4, ~ r=2\). Таким образом, рассматривая четыре эксперимента по две пары параметров: \(s=2, ~~ s=3\) и \(\alpha^b_s = 16, ~~ \alpha^b_s = 8\). Пусть линейная система \eqref{double_lin} имеет такие коэффициенты:
 
 \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|}
@@ -10,7 +10,7 @@
         \(k_i\) &            & \(0.5\) & \(0.4\) & \(0.3\) & \(0.2\) \\ \hline
         \(a_i\) &            & \(0.2\) &  &  &  \\ \hline \hline
 
-        \(\alpha'_i\)& \(16\) & \(16\) & \(8\) &  &  \\ \hline
+        \(\alpha'_i\)& \(\alpha^b_s\) & \(16\) & \(8\) &  &  \\ \hline
         \(m'_i\) &            & \(4\) & \(1\) &  &  \\ \hline
         \(k'_i\) &            & \(0.5\) & \(0.3\) &  &  \\ \hline
     \end{tabular}
@@ -18,12 +18,13 @@
 
 Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равны \(0.5\). 
 
-Рассмотрим при \(s=2\). Поскольку меняется длина сразу двух ветвей, то получим матрицу состояний:
+Рассмотрим при \(s=2\) и \(\alpha^b_s = 16\). Поскольку меняется длина сразу двух ветвей, то получим матрицу состояний:
 \begin{center}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
-        \(1\) & \cellcolor{gray!20}\(\begin{matrix} q(0,5.14) \\ r?(-0.87, -0.36) \end{matrix}\) 
+        \(1\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(0,5.14) \\ r?(-0.87, -0.36) \end{matrix}\) 
         & -- 
         & \(\begin{matrix} q(4.28, 9.42) \\ r?(-0.87, -0.87) \end{matrix}\) \\ \hline
         \(2\) 
@@ -44,34 +45,128 @@
 
 \begin{figure}[H]
     \centering
-    \subfigexp{1}   {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{10}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{20}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{30}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{40}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{50}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{60}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{80}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{90}  {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{100} {pictures/split/exp1_s2_Q}{.3}
-    \subfigexp{1000}{pictures/split/exp1_s2_Q}{.3}
-\caption{Численности видов системы при \(s=2\).}  \label{fig:split_exp1_s2}
+    \subfigexp{1}   {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{40}  {pictures/split/exp1_s2_16/Q}{.3}
+    % \subfigexp{50}  {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{60}  {pictures/split/exp1_s2_16/Q}{.3}
+    % \subfigexp{80}  {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{90}  {pictures/split/exp1_s2_16/Q}{.3}
+    % \subfigexp{100} {pictures/split/exp1_s2_16/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s2_16/Q}{.3}
+\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 16\).}  \label{fig:split_exp1_s2_16}
 \end{figure}
 
-
-Рассмотрим при \(s=3\).
+Рассмотрим при \(s=2\) и \(\alpha^b_s = 8\). 
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
+        \(1\)
+        & \(\begin{matrix} q(0.0, 5.14) \\ r?(-1.75, -0.36) \end{matrix}\) \cellcolor{gray!20}
+        & --
+        & \(\begin{matrix} q(2.14, 7.28) \\ r?(-1.75, -1.75) \end{matrix}\) \\ \hline
+        \(2\)
+        & \(\begin{matrix} q(5.14, 18.47) \\ r(9.3, 25.14) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-1.75, -0.58) \\ r(25.14, 35.61) \end{matrix}\)
+        & \(\begin{matrix} q(7.28, 26.17) \\ r(35.61, +\infty) \end{matrix}\) \\ \hline
+        \(3\)
+        & \(\begin{matrix} q(18.47, 73.9) \\ r?(-0.58, 0.8) \end{matrix}\) \cellcolor{gray!20}
+        & --
+        & \(\begin{matrix} q(26.17, 81.6) \\ r?(-0.58, -0.58) \end{matrix}\) \\ \hline
+        \(4\)
+        & \(\begin{matrix} q(73.9, +\infty) \\ r(37.23, 100.57) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-0.58, -0.58) \\ r(100.57, 111.04) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q(81.6, +\infty) \\ r(111.04, +\infty) \end{matrix}\) \cellcolor{gray!20} \\ \hline
+    \end{tabular}
+\end{center}
 \begin{figure}[H]
     \centering
-    \subfigexp{1}   {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{10}  {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{20}  {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{30}  {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{40}  {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{80}  {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{120} {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{150} {pictures/split/exp1_s3_Q}{.3}
-    \subfigexp{1000}{pictures/split/exp1_s3_Q}{.3}
-\caption{Численности видов системы при \(s=3\).}  \label{fig:split_exp1_s3}
+    \subfigexp{1}   {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{70}  {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{90}  {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{105} {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{120} {pictures/split/exp1_s2_8/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s2_8/Q}{.3}
+\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s2_8}
 \end{figure}
 
-% Проблемные цепи: (s=2u, q=2p+1, r=2l+1), (s=2u+1, q=2p, r=2l+1)
+
+Рассмотрим при \(s=3\) и \(\alpha^b_s = 16\). 
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
+        \(1\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(0,5.14) \\ r(9.16, 14.78) \end{matrix}\) 
+        & \(\begin{matrix} q?(-1.64, -1.07) \\ r(14.78, 57.37) \end{matrix}\)
+        & \(\begin{matrix} q(0, 19.95) \\ r(57.37, +\infty) \end{matrix}\) \\ \hline
+        \(2\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(5.14,18.47) \\ r?(-1.07, -0.44) \end{matrix}\) 
+        & -- 
+        & \(\begin{matrix} q(19.95, 33.29) \\ r?(-1.07, -1.07) \end{matrix}\) \\ \hline
+        \(3\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(18.47,73.9) \\ r(32.91, 53.11) \end{matrix}\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q?(-1.07, 0.64) \\ r(53.11, 95.11) \end{matrix}\) 
+        & \cellcolor{gray!20}\(\begin{matrix} q(33.29, 133.16) \\ r(95.71, +\infty) \end{matrix}\) \\ \hline
+        \(4\) 
+        & \(\begin{matrix} q(73.9,+\infty) \\ r?(0.64, 1.26) \end{matrix}\) 
+        & -- 
+        & \cellcolor{gray!20}\(\begin{matrix} q(133.16, +\infty) \\ r?(0.64, 0.64) \end{matrix}\) \\ \hline
+    \end{tabular}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{40}  {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{80}  {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{120} {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{150} {pictures/split/exp1_s3_16/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s3_16/Q}{.3}
+\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 16\).}  \label{fig:split_exp1_s3_16}
+\end{figure}
+
+
+Рассмотрим при \(s=3\) и \(\alpha^b_s = 8\). 
+\begin{center}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
+        \(1\)
+        & \(\begin{matrix} q(0.0, 5.14) \\ r(9.16, 24.42) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-2.71, -2.14) \\ r(24.42, 59.61) \end{matrix}\)
+        & \(\begin{matrix} q(0.0, 12.55) \\ r(59.61, +\infty) \end{matrix}\) \\ \hline
+        \(2\)
+        & \(\begin{matrix} q(5.14, 18.47) \\ r?(-2.14, -0.44) \end{matrix}\) \cellcolor{gray!20}
+        & --
+        & \(\begin{matrix} q(12.55, 25.88) \\ r?(-2.14, -2.14) \end{matrix}\) \\ \hline
+        \(3\)
+        & \(\begin{matrix} q(18.47, 73.9) \\ r(32.91, 87.76) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-2.14, -0.42) \\ r(87.76, 122.94) \end{matrix}\)
+        & \(\begin{matrix} q(25.88, 103.53) \\ r(122.94, +\infty) \end{matrix}\) \\ \hline
+        \(4\)
+        & \(\begin{matrix} q(73.9, +\infty) \\ r?(-0.42, 1.26) \end{matrix}\) \cellcolor{gray!20}
+        & --
+        & \(\begin{matrix} q(103.53, +\infty) \\ r?(-0.42, -0.42) \end{matrix}\) \\ \hline
+    \end{tabular}
+\end{center}
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{60}  {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{80}  {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{100} {pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{1001}{pictures/split/exp1_s3_8/Q}{.3}
+    \subfigexp{10000}{pictures/split/exp1_s3_8/Q}{.3}
+\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s3_8}
+\end{figure}

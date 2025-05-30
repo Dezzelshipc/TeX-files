@@ -52,7 +52,7 @@ k = np.append([0], np.linspace(0.5, 0.2, _q))
 m = np.append([0], np.linspace(5, 2, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
-alpha_b = 16
+alpha_b = 8
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 m2 = np.append([0], np.linspace(4, 1, _r))
@@ -130,15 +130,15 @@ def identity(x):
 
 
 ### CHANGE PARAMETERS
-Q = 15
+Q = 1001
 
-s = 2
+s = 3
 
-q = 2
+q = 4
 r = 0
 ###
 
-t_s = np.arange(0, 100, 0.01)
+t_s = np.arange(0, 1000, 0.01)
 N0 = np.array([ 0.5 ] * (1+_q+_r))
 
 right_flow = get_right_split(identity)
@@ -235,15 +235,16 @@ f2 = np.append(f2, [f2[-2], f2[-1]])
 def calc_Q(ss, qq, rr):
     QQ1, QQ2, QR1, QR2 = (0,)*4
 
-    if ss % 2 == 0:
-        u = ss // 2
-        p = qq // 2
-        l = rr // 2
+    u = ss // 2
+    p = qq // 2
+    l = rr // 2
 
-        alpha0 = alpha[0]
-        a1 = a[1]
-        m1 = m[1]
-        alphasb_alphas = alpha_b / alpha[ss]
+    alpha0 = alpha[0]
+    a1 = a[1]
+    m1 = m[1]
+    alphasb_alphas = alpha_b / alpha[ss]
+
+    if ss % 2 == 0:
 
         if qq % 2 == 0 and rr % 2 == 0:
             QQ1 = (alpha0 * f[2*p-1] - a1 * m1) * (f[2*p] + alphasb_alphas * f2[2*l] / H[2*u])
@@ -257,18 +258,45 @@ def calc_Q(ss, qq, rr):
             
             QR1 = f[2*p+1] - f[2*u-1] - f2[2*l+1] / H[2*u-1]
             QR2 = f[2*p+1] - f[2*u-1] - f2[2*l-1] / H[2*u-1]
-            QR1 = f"! {QR1} < 0 !"
-            QR2 = f"! 0 < {QR2} !"
+            QR1 = (QR1, True)
+            QR2 = (QR2, True)
         elif qq % 2 == 0 and rr % 2 == 1: 
             QQ1 = f[2*p-1] - f[2*u-1] - f2[2*l+1] / H[2*u-1]
             QQ2 = f[2*p+1] - f[2*u-1] - f2[2*l+1] / H[2*u-1]
-            QQ1 = f"! {QQ1} < 0 !"
-            QQ2 = f"! 0 < {QQ2} !"
+            QQ1 = (QQ1, True)
+            QQ2 = (QQ2, True)
 
             QR1 = (alpha0 * f[2*u-1] - a1 * m1 + alpha0 * f2[2*l+1] / H[2*u-1]) * (f[2*p] + alphasb_alphas * f2[2*l] / H[2*u])
             QR2 = (alpha0 * f[2*u-1] - a1 * m1 + alpha0 * f2[2*l+1] / H[2*u-1]) * (f[2*p] + alphasb_alphas * f2[2*l+2] / H[2*u])
         elif qq % 2 == 1 and rr % 2 == 1:
             QQ1, QQ2, QR1, QR2 = (-1,)*4
+        
+    else:
+        if qq % 2 == 0 and rr % 2 == 0:
+            QQ1 = f[2*p] * (alpha0 * f[2*p-1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1])
+            QQ2 = f[2*p] * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1])
+            
+            QR1 = f[2*p] - f[2*u] - f2[2*l+1] / H[2*u]
+            QR2 = f[2*p] - f[2*u] - f2[2*l-1] / H[2*u]
+            QR1 = (QR1, True)
+            QR2 = (QR2, True)
+        elif qq % 2 == 1 and rr % 2 == 0:
+            QQ1 = f[2*p] * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1])
+            QQ2 = f[2*p+2] * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1])
+
+            QR1 = (f[2*u] + f2[2*l-1] / H[2*u]) * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1]) 
+            QR2 = (f[2*u] + f2[2*l+1] / H[2*u]) * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1])
+        elif qq % 2 == 1 and rr % 2 == 1: 
+            QQ1 = f[2*p] - f[2*u] - f2[2*l+1] / H[2*u]
+            QQ2 = f[2*p+2] - f[2*u] - f2[2*l+1] / H[2*u]
+            QQ1 = (QQ1, True)
+            QQ2 = (QQ2, True)
+
+            QR1 = (f[2*u] + f2[2*l+1] / H[2*u]) * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l] / H[2*u+1]) 
+            QR2 = (f[2*u] + f2[2*l+1] / H[2*u]) * (alpha0 * f[2*p+1] - a1 * m1 + alpha0 * alphasb_alphas * f2[2*l+2] / H[2*u+1])
+        elif qq % 2 == 0 and rr % 2 == 1:
+            QQ1, QQ2, QR1, QR2 = (-1,)*4
+
 
     return QQ1, QQ2, QR1, QR2
 
@@ -281,8 +309,56 @@ def calc_Q_table(s_, q_, r_):
             print(f"r={ri}: {QR1} < Q < {QR2}")
             print("---")
 
+def calc_Q_table2(s_, q_, r_):
+    def trunc(x, pow: int):
+        from numpy import trunc as trnc
+        p10 = 10**int(pow)
+        return trnc(x * p10) / p10
 
-calc_Q_table(s, _q, _r)
+    print("-----")
+    print(r"""\hline
+\backslashbox{\(q\)}{\(r\)} & """ + f"{" & ".join(fr"\({i}\)" for i in range(r_+1))}" + r" \\ \hline")
+    for qi in range(1,q_+1):
+        print(fr"\({qi}\)")
+        for ri in range(r_+1):
+            QQ1, QQ2, QR1, QR2 = calc_Q(s_, qi, ri)
+            out_str = None
+            if QQ1 == -1:
+                out_str = "& -- "
+            else:
+                qstr, rstr = "", ""
+                if isinstance(QQ1, tuple):
+                    q1 = trunc(QQ1[0], 2)
+                    q2 = trunc(QQ2[0], 2)
+                    qstr = fr"q?({q1}, {q2})"
+                else:
+                    q1 = trunc(QQ1, 2)
+                    q2 = trunc(QQ2, 2)
+                    if QQ1 == QQ2:
+                        q2 = r"+\infty"
+                    qstr = fr"q({q1}, {q2})"
+
+                if isinstance(QR1, tuple):
+                    r1 = trunc(QR1[0], 2)
+                    r2 = trunc(QR2[0], 2)
+                    rstr = fr"r?({r1}, {r2})"
+                else:
+                    r1 = trunc(QR1, 2)
+                    r2 = trunc(QR2, 2)
+                    if QR1 == QR2:
+                        r2 = r"+\infty"
+                    rstr = fr"r({r1}, {r2})"
+
+                out_str = fr"& \(\begin{{matrix}} {qstr} \\ {rstr} \end{{matrix}}\) "
+
+            if ri == r_:
+                out_str += r"\\ \hline"
+
+            print(out_str)
+    print("-----")
+
+
+# calc_Q_table2(s, _q, _r)
 
 print("Current threshold")
 QQ1, QQ2, QR1, QR2 = calc_Q(s, q, r)
@@ -291,9 +367,11 @@ print(f"{r=}: {QR1} < Q < {QR2}")
 
 ###
 
+print(f"{s=}, {_q=}, {_r=}, {Q=}")
+
 
 from pathlib import Path
-# plt.savefig(Path(__file__).parent / f"figs/exp1_s{s}_Q{Q}.pdf")
+plt.savefig(Path(__file__).parent / f"figs/s{s}_{alpha_b}_Q{Q}.pdf")
 
 
 plt.show()
