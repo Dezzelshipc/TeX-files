@@ -1,0 +1,242 @@
+\subsection{Равновесные состояния при линейных функциях}
+Пусть трофические функции соответствуют напряжённым связям и при этом есть замыкание только по первому виду, т.е. \(V_i(N_i) = \alpha_i N_i, ~ V'_k(N'_k) = \alpha'_k N'_k, ~ V^b_s(N_s) = \alpha^b_s N_s\) и \( a_1 \neq 0, ~ a_i, a'_k = 0 ~ i=\overline{2,q}, k=\overline{1,r}\). Тогда система \eqref{double_full} становится:
+
+\begin{equation} \label{double_lin}
+    \begin{split}
+        & \frac{d N_0}{dt} = Q + N_1 ( -\alpha_0 N_0 + a_1 m_1 ), \\
+        & \frac{d N_i}{dt} = N_i (-m_i + k_i \alpha_{i-1} N_{i-1} - \alpha_i N_{i+1}), \quad i=\overline{1,s-1},  \overline{s+1,q}, \\
+        & \frac{d N_s}{dt} = N_s ( -m_s + k_s \alpha_{s-1} N_{s-1} - \alpha_s N_{s+1} - \alpha_s^b N'_1 ), \\
+        & \frac{d N'_1}{dt} = N'_1 ( -m'_1 + k'_1 \alpha_s^b N_s - \alpha'_1 N'_{2} ), \\
+        & \frac{d N'_k}{dt} = N'_k ( -m'_k + k'_k \alpha'_{k-1} N'_{k-1} - \alpha'_k N'_{k+1} ), \quad k=\overline{2,r}.
+    \end{split}
+\end{equation}
+Из \( \frac{d \mb{N}}{dt} = 0 \) можно найти состояние равновесия:
+\begin{equation} \label{double_stab_system}
+    \begin{cases}
+        N_1 = \dfrac{Q}{ \alpha_0 N_0 - a_1 m_1 }, \\
+        \alpha_i N_{i+1} = k_i \alpha_{i-1} N_{i-1} -m_i , \quad i=\overline{1,s-1},  \overline{s+1,q}, \\
+        \alpha_s^b N'_1 + \alpha_s N_{s+1} = k_s \alpha_{s-1} N_{s-1} -m_s, \\
+        \alpha'_1 N'_{2} = k'_1 \alpha_s^b N_s -m'_1, \\
+        \alpha'_k N'_{k+1} = k'_k \alpha'_{k-1} N'_{k-1} -m'_k, \quad k=\overline{2,r}.
+    \end{cases}
+\end{equation}
+
+Найдём точку равновесия, используя обозначения \eqref{flow_sub} и \(\alpha'_0 = \alpha^b_s\). Для боковой цепи получим
+\begin{equation}
+    \begin{split}
+        & N'_{2j} = H'_{2j-1} (N_s - f'_{2j-1}), ~~ N_s = \frac{N'_{2j}}{H'_{2j-1}} + f'_{2j-1}, \\
+        & N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}), ~~ N'_1 = \frac{N'_{2j+1}}{H'_{2j}} + f'_{2j}.
+    \end{split}
+\end{equation}
+
+Для главной цепи нужно рассматривать случаи чётности одновременно для \(q, s\). Заметим, что при одинаковой чётности индексов \(N_i\) и \(N_s\) рекуррентное соотношение для \(N_i\) не затронет третье уравнение в \eqref{double_stab_system}. В то же время индексы разной чётности (\(i > s\)) затронут это уравнение. В таких случаях будем искать отдельно значения \(N_{s+1}\) и \(N_{s-1}\). Перепишем связывающее уравнение, поделив на \(\alpha_s\):
+\begin{equation*}
+    \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{s+1} = g_s N_{s-1} - \mu_{s}.
+\end{equation*}
+
+Для нахождения явных формул точки равновесия достаточно найти \(N_0\) или \(N_1\). После нахождения одного из этих видов другой можно найти по первой формуле \eqref{double_stab_system} или её обратной:
+\begin{equation} \label{split_N0_from_N1}
+    N_0 = \frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0}.
+\end{equation}
+
+Последовательно рассмотрим каждую тройку чётностей \((s,q,r)\).
+\begin{enumerate}
+    \item \(s=2u\). Тогда 
+    \begin{equation*}
+        \begin{split}
+            & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}), ~~ N_0 = \frac{N_{2j}}{H_{2j-1}} + f_{2j-1}; \\
+            & N_{2j+1} = H_{2j}(N_1 - f_{2j}), ~~ N_1 = \frac{N_{2j+1}}{H_{2j}} + f_{2j}, ~~ 2j+1 < 2u.
+        \end{split}
+    \end{equation*}
+    При \(2j+1 > 2u\)
+    \begin{equation*}
+        \begin{split}
+            N_{2j+1} &= g_{2j} \dots g_{2u+4} g_{2u+2} \left( N_{2u+1} - \frac{\mu_{2u+2}}{g_{2u+2}} - \dots - \frac{\mu_{2j}}{g_{2u+2} g_{2u+4} \dots g_{2j}} \right) = \\
+            & = \frac{H_{2j}}{H_{2u}} \left( N_{2u+1} - H_{2u} (f_{2j} - f_{2u}) \right), \\
+            N_{2u+1} &= \frac{H_{2u}}{H_{2j}} N_{2j+1} + H_{2u} (f_{2j} - f_{2u}).
+        \end{split}
+    \end{equation*}
+    
+    \begin{enumerate}
+        \item \(q=2p\). Тогда \(N_{2p+1} = 0\) и \(N_{2u+1} = H_{2u} (f_{2p} - f_{2u}) \).
+        
+        \begin{enumerate}
+            \item \(r=2l\). Тогда \(N'_{2l+1} = 0\) и \(N'_1 = f'_{2l}\).
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + H_{2u} (f_{2p} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & N_1 = \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p}.
+                \end{split}
+            \end{equation*}
+            
+            И получаем оставшиеся формулы. Для \(N_{2j+1}\)
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u}}{H_{2j}} N_{2j+1} + H_{2u} (f_{2j} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j}}{H_{2u}} f'_{2l} + N_{2j+1} + H_{2j} f_{2j} = H_{2j} \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right), \\
+                    & N_{2j+1} = H_{2j} f_{2p} - H_{2j} f_{2j} = H_{2j} ( f_{2p} - f_{2j} ). 
+                \end{split}
+            \end{equation*}
+
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u} - f'_{2j-1}) = H'_{2j-1} ( H_{2u-1} (N_0 - f_{2u-1}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+
+            \item \(r = 2l+1\). Тогда \(N'_{2l+2} = 0\) и \(N_s = N_{2u} = f'_{2l+1}\).
+            \begin{equation*}
+                \begin{split}
+                    & N_{2u} = H_{2u-1} (N_0 - f_{2u-1}) = f'_{2l+1}, \\
+                    & N_0 = \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1}.
+                \end{split}
+            \end{equation*}
+
+            Оставшиеся формулы. Для \(N'_1\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+1} = g_{2u} N_{2u-1} - \mu_{2u}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + H_{2u} (f_{2p} - f_{2u}) = H_{2u} (N_1 - f_{2u}), \\
+                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} H_{2u} ( N_1 - f_{2p} ).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j+1}\):
+            \begin{equation*}
+                N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u} ( N_1 - f_{2p} ) - f'_{2j} \right).
+            \end{equation*}
+            Для \(N_{2j+1}\) (\(2j+1 > 2u\)):
+            \begin{equation*}
+                \begin{split}
+                    & N_{2j+1} = \frac{H_{2j}}{H_{2u}} \left( N_{2u+1} - H_{2u} (f_{2j} - f_{2u}) \right), \\
+                    & N_{2j+1} = \frac{H_{2j}}{H_{2u}} \left( H_{2u} (f_{2p} - f_{2u}) - H_{2u} (f_{2j} - f_{2u}) \right), \\
+                    & N_{2j+1} = H_{2j} ( f_{2p} - f_{2j} ).
+                \end{split}
+            \end{equation*}
+        \end{enumerate} % r
+
+        \item \(q = 2p+1\). Тогда \(N_{2p+2} = 0\) и \(N_0 = f_{2p+1}\).
+        
+        \begin{enumerate}
+            \item \(r = 2l\). \(N'_1 = f'_{2l}\).
+            \begin{equation*}
+                N_{2u+1} = H_{2u} (N_1 - f_{2u}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}.
+            \end{equation*}
+            Получаем формулы. Для \(N_{2j+1}\), \(2j+1 > 2u\):
+            \begin{equation*}
+                \begin{split}
+                    N_{2j+1} &= \frac{H_{2j}}{H_{2u}} \left( H_{2u} (N_1 - f_{2u}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l} - H_{2u} (f_{2j} - f_{2u}) \right) = \\
+                    & = H_{2j} \left( N_1 - f_{2j} - \frac{\alpha^b_s}{\alpha_s} \frac{ f'_{2l} }{H_{2u}} \right).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                N'_{2j} = H'_{2j-1} (N_{2u} - f'_{2j-1}) = H'_{2j-1} \left( H_{2u-1} (f_{2p+1} - f_{2u-1}) - f'_{2j-1} \right).
+            \end{equation*}
+
+            \item \(r=2l+1\), \(N'_{2l+2} = 0, ~~ N_s = f'_{2l+1}\).
+            В данном случае появляются проблемы. Во-первых происходит переопределение значений видов цепочки. Во-вторых нет достаточного количества данных: из-за переопределения связывающее уравнение из трёх параметров имеет известным только одно (\(N_{s-1}\)). % BAD CASE
+        \end{enumerate} % r
+
+    \end{enumerate} % q
+
+    \item \(s = 2u+1\). Тогда 
+    \begin{equation*}
+        \begin{split}
+            & N_{2j+1} = H_{2j} (N_1 - f_{2j}), ~~ N_1 = \frac{N_{2j+1}}{H_{2j}} + f_{2j}; \\
+            & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}), ~~ N_0 = \frac{N_{2j}}{H_{2j-1}} + f_{2j-1}, ~~ 2j < 2u+1.
+        \end{split}
+    \end{equation*}
+    При \(2j > 2u+1\):
+    \begin{equation*}
+        \begin{split}
+            & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( N_{2u+2} - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right),\\
+            & N_{2u+2} = \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}).
+        \end{split}
+    \end{equation*}
+
+    \begin{enumerate}
+        \item \(q=2p\). \(N_{2p+1} = 0, ~~ N_1 = f_{2p}\).
+        \begin{enumerate}
+            \item \(r=2l\). \(N'_1 = f'_{2l}\). Оставшиеся формулы. Для \(N_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & \frac{H_{2u+1}}{H_{2j-1}} N_{2j} = H_{2u+1} (N_0 - f_{2j-1}) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} (N_0 - f_{2j-1}) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u+1} - f'_{2j-1}) = H'_{2j-1} ( H_{2u} (f_{2p} - f_{2u}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+
+            \item \(r=2l+1\). \(N'_{2l+2} = 0, ~~ N_s = N_{2u+1} = f'_{2l+1} \). 
+            Симметричный проблемный вариант с переопределением и недостаточным количеством данных. % BAD CASE
+        \end{enumerate} % r
+
+        \item \(q=2p+1\). \(N_{2p+2} = 0, ~~ N_{2u+2} = H_{2u+1} (f_{2p+1} - f_{2u+1}) \).
+        \begin{enumerate}
+            \item \(r=2l\). \(N'_{2l+1} = 0, ~~ N'_1 = f'_{2l}\).
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + H_{2u+1} (f_{2p+1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & N_0 = \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} + f_{2p+1}.
+                \end{split}
+            \end{equation*}
+            Для \(N_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} f'_{2l} + \frac{H_{2u+1}}{H_{2j-1}} N_{2j} + H_{2u+1} (f_{2j-1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & \frac{H_{2u+1}}{H_{2j-1}} N_{2j} = H_{2u+1} ( N_0 - f_{2j+1} ) - \frac{\alpha^b_s}{\alpha_s} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} ( N_0 - f_{2j-1} ) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} + f_{2p+1} - f_{2j-1} \right) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2j-1}}{H_{2u+1}} f'_{2l}, \\
+                    & N_{2j} = H_{2j-1} (f_{2p+1} - f_{2j-1}).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j} = H'_{2j-1} (N_{2u+1} - f'_{2j-1}) = H'_{2j-1} ( H_{2u} (N_1 - f_{2u}) - f'_{2j-1}).
+                \end{split}
+            \end{equation*}
+
+            \item \( r=2l+1 \), \( N'_{2l+2} = 0, N_s = N_{2u+1} = f'_{2l+1} \).
+            \begin{equation*}
+                \begin{split}
+                    & N_{2u+1} = H_{2u} (N_1 - f_{2u}) = f'_{2l+1}, \\
+                    & N_1 = \frac{f'_{2l+1}}{H_{2u}} + f_{2u}.
+                \end{split}
+            \end{equation*}
+            Для \(N'_{1}\):
+            \begin{equation*}
+                \begin{split}
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + N_{2u+2} = g_{2u+1} N_{2u} - \mu_{2u+1}, \\
+                    & \frac{\alpha^b_s}{\alpha_s} N'_1 + H_{2u+1} (f_{2p+1} - f_{2u+1}) = H_{2u+1} (N_0 - f_{2u+1}), \\
+                    & N'_1 = \frac{\alpha_s}{\alpha^b_s} H_{2u+1} (N_0 - f_{2p+1}).
+                \end{split}
+            \end{equation*}
+            Для \(N'_{2j+1}\):
+            \begin{equation*}
+                \begin{split}
+                    N'_{2j+1} = H'_{2j} (N'_1 - f'_{2j}) = H'_{2j} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u+1} (N_0 - f_{2p+1}) - f'_{2j} \right).
+                \end{split}
+            \end{equation*}
+            Для \(N_{2j}\) (\(2j > 2u+1\)):
+            \begin{equation*}
+                \begin{split}
+                    & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( N_{2u+2} - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right), \\
+                    & N_{2j} = \frac{H_{2j-1}}{H_{2u+1}} \left( H_{2u+1} (f_{2p+1} - f_{2u+1}) - H_{2u+1} (f_{2j-1} - f_{2u+1}) \right), \\
+                    & N_{2j} = H_{2j-1} ( f_{2p+1} - f_{2j-1} ).
+                \end{split}
+            \end{equation*}
+        \end{enumerate} % r
+    \end{enumerate} % q
+\end{enumerate} % s

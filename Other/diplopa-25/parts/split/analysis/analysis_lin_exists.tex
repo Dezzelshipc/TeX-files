@@ -1,0 +1,192 @@
+\subsection{Условия существования при линейных функциях}
+Из \eqref{double_lin} получим параметры для системы \eqref{double_matrix_system}.
+\begin{equation}
+    \begin{split}
+        & h_i, h'_k = 0, \\
+        & c_1 = a_1 m_1, & c_i, c'_k = 0, ~ i>1,  \\
+        & b_i = k_i \alpha_{i-1} N_{i}, & d_i = \alpha_i N_{i}, \\
+        & b'_1 = k'_1 \alpha^b_s N'_1, & d^b_s = \alpha^b_s N_s, \\
+        & b'_k = k'_k \alpha'_{k-1} N_{k}, & d'_k = \alpha_k N_{k}.
+    \end{split}
+\end{equation}
+Тогда условие устойчивости \(d_0 > c_1\) становится \(\alpha_0 N_{0} > a_1 m_1\), \( N_0 > \frac{a_1 m_1}{\alpha_0}\).
+
+\begin{itemize}
+    \item Если известно \(N_1\), то используя обратную формулу \eqref{split_N0_from_N1} получим:
+    \begin{equation*}
+        \frac{Q}{\alpha_0 N_1} + \frac{a_1 m_1}{\alpha_0} > \frac{a_1 m_1}{\alpha_0}, ~~ \frac{Q}{\alpha_0 N_1} > 0.
+    \end{equation*}
+    То есть условие всегда выполняется при \(N_1 > 0\).
+
+    \item Если известно \(N_0\), то нужно оценивать само значение \(N_0\). Можно заметить, что все формулы \(N_0\) имеют слагаемым \(f_{2j-1}\). Оценим его.
+    \begin{equation} \label{split_f2jm1_stab}
+        \begin{split}
+            & f_{2j-1} > \frac{a_1 m_1}{\alpha_0}, \\
+            & \frac{\frac{m_1}{\alpha_1}}{\frac{k_1 \alpha_0}{\alpha_1}} + \frac{\frac{m_3}{\alpha_3}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3}} + \dots + \frac{\frac{m_{2j-1}}{\alpha_{2j-1}}}{\frac{k_1 \alpha_0}{\alpha_1} \frac{k_3 \alpha_2}{\alpha_3} \dots \frac{k_{2j-1} \alpha_{2j-2}}{\alpha_{2j-1}}} > \frac{a_1 m_1}{\alpha_0}, \\
+            & \frac{m_1}{k_1} \frac{1}{\alpha_0} + \frac{m_3}{k_1 k_3} \frac{\alpha_1}{\alpha_0 \alpha_2} + \dots + \frac{m_{2j-1}}{k_1 k_3 \dots k_{2j-1}} \frac{\alpha_1 \alpha_3 \dots \alpha_{2j-3}}{\alpha_0 \alpha_2 \dots \alpha_{2j-2}}> \frac{a_1 m_1}{\alpha_0}.
+        \end{split}
+    \end{equation}
+    Поскольку \(0 \leq k_i \leq 1\), то заменяя все \(k_i = 1\) получим минимальное значение выражения относительно \(k_i\).
+    \begin{equation*}
+        \begin{split}
+            & m_1 \frac{1}{\alpha_0} + m_3 \frac{\alpha_1}{\alpha_0 \alpha_2} + \dots + m_{2j-1} \frac{\alpha_1 \alpha_3 \dots \alpha_{2j-3}}{\alpha_0 \alpha_2 \dots \alpha_{2j-2}}> \frac{a_1 m_1}{\alpha_0}, \\
+            & 1 + \frac{m_3}{m_1} \frac{\alpha_1}{\alpha_2} + \dots + \frac{m_{2j-1}}{m_1} \frac{\alpha_1 \alpha_3 \dots \alpha_{2j-3}}{\alpha_2 \dots \alpha_{2j-2}} > a_1.
+        \end{split}
+    \end{equation*}
+    По условиям \(0 \leq a_i \leq 1\). Значит выражение выполняется почти всегда. Исключением является случай при \(j = 1, ~ k_1 = 1\).
+\end{itemize}
+
+Значит это условие асимптотической устойчивости выполняется (почти) всегда.
+
+Определим условия существования ветвящейся цепи длины \((q, r)\). Для этого используем неравенства \(0 < N_q < \frac{\mu_{q+1}}{g_{q+1}}, ~ 0 < N'_r < \frac{\mu'_{r+1}}{g'_{r+1}}\). Правые части неравенств, являются условиями, ограничивающими длину цепей, записанные для линейных функций. 
+
+Рассмотрим возможные варианты для \(N_q\) при \(s=2u\):
+\begin{enumerate}[leftmargin=10pt,itemindent=26pt]
+    \item \(q = 2p, r = 2l\):
+    \begin{align*}
+        & N_0 = \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0}, \quad 0 < N_q = N_{2p} < \frac{\mu_{2p+1}}{g_{2p+1}}, \\
+        & N_{2p} = H_{2p-1} \left( \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0} - f_{2p-1} \right), \\
+        & f_{2p-1} - \frac{a_1 m_1}{\alpha_0} < \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} < \frac{\mu_{2p+1}}{H_{2p-1} g_{2p+1}} + f_{2p-1} - \frac{a_1 m_1}{\alpha_0}, \\
+        & \begin{cases} \eqnum \label{enum:split_s2p_q}
+            Q > \left( \alpha_0 f_{2p-1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2p+1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q = 2p+1, r = 2l\):
+    \begin{align*}
+        & N_1 = \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1}, \\
+        & 0 < N_{q} = N_{2p+1} = H_{2p} \left( \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1} - f_{2p} - \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right) < \frac{\mu_{2p+2}}{g_{2p+2}}, \\
+        & f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} < \frac{Q}{\alpha_0 f_{2p+1} - a_1 m_1} < \frac{\mu_{2p+2}}{H_{2p} g_{2p+2}} + f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}}, \\
+        & \begin{cases} \eqnum
+            Q > \left( \alpha_0  f_{2p+1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2p+1} - a_1 m_1 \right) \left( f_{2p+2} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p, r=2l+1\):
+    \begin{align*}
+        & N_0 = \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1}, \\
+        & 0 < N_q = N_{2p} = H_{2p-1} \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} - f_{2p-1} \right) < \frac{\mu_{2p+1}}{g_{2p+1}}, \\
+        & f_{2p-1} - f_{2u-1} < \frac{f'_{2l+1}}{H_{2u-1}} < f_{2p+1} - f_{2u-1}, \\
+        & f_{2p-1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}} < 0 < f_{2p+1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}}. \eqnum \label{enum:split_s2p_q_0}
+    \end{align*}
+\end{enumerate}
+
+Рассмотрим возможные варианты для \(N'_r\) при \(s=2u\):
+\begin{enumerate}[leftmargin=10pt,itemindent=26pt]
+    \item \(q=2p, r=2l\):
+    \begin{align*}
+        & 0 < N'_r = N'_{2l} < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & N'_{2l} = H'_{2l-1} \left( H_{2u-1} \left( \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} + \frac{a_1 m_1}{\alpha_0} - f_{2u-1} \right) - f'_{2l-1} \right), \\
+        & f_{2u-1} - \frac{a_1 m_1}{\alpha_0} + \frac{f'_{2l-1}}{H_{2u-1}} < \frac{Q}{\alpha_0 \left( \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} \right)} < f_{2u-1} - \frac{a_1 m_1}{\alpha_0} + \frac{f'_{2l+1}}{H_{2u-1}}, \\
+        & \begin{cases} \eqnum \label{enum:split_s2p_r}
+            Q > \left( \alpha_0 f_{2u-1} - a_1 m_1 + \alpha_0 \frac{f'_{2l-1}}{H_{2u-1}} \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2u-1} - a_1 m_1 + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}} \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p+1, r=2l\):
+    \begin{align*}
+        & 0 < N'_{r} = N'_{2l} = H'_{2l-1} \left( H_{2u-1} \left( f_{2p+1} - f_{2u-1} \right) - f'_{2l-1} \right) < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & \frac{f'_{2l-1}}{H_{2u-1}} - f_{2p+1} + f_{2u-1} < 0 < \frac{f'_{2l+1}}{H_{2u-1}} - f_{2p+1} + f_{2u-1}, \\
+        & f_{2p+1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}} < 0 < f_{2p+1} - f_{2u-1} - \frac{f'_{2l-1}}{H_{2u-1}}. \eqnum \label{enum:split_s2p_r_0}
+    \end{align*}
+
+    \item \(q=2p, r=2l+1\):
+    \begin{align*}
+        & N_1 = \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 }, \quad 0 < N'_r = N'_{2l+1} < \frac{\mu'_{2l+2}}{g'_{2l+2}}, \\
+        & N'_{2l+1} = H'_{2l} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u} \left( \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 } - f_{2p} \right) - f'_{2l} \right), \\
+        & \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} + f_{2p} < \dfrac{Q}{ \alpha_0 \left( \frac{f'_{2l+1}}{H_{2u-1}} + f_{2u-1} \right) - a_1 m_1 } < \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u}} + f_{2p}, \\ 
+        & \begin{cases} \eqnum
+            Q > \left( \alpha_0 f_{2u-1} - a_1 m_1  + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}}\right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+            Q < \left( \alpha_0 f_{2u-1} - a_1 m_1  + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}}\right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u}} \right).
+        \end{cases}
+    \end{align*}
+\end{enumerate}
+
+Единственным вариантом, при котором есть ограничение на поступающую энергию \(Q\) для обоих цепей, является \(q=2p, ~ r=2l\). Переход на другие длины цепей произойдёт тогда, когда будет достигнуто одно из верхних ограничений на \(Q\). Сравним значения из \eqref{enum:split_s2p_q} и \eqref{enum:split_s2p_r}. Пусть увеличится длина главной цепи, то есть:
+\begin{align*}
+    & \left( \alpha_0 f_{2p+1} - a_1 m_1 \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right) < \\
+    &< \left( \alpha_0 f_{2u-1} - a_1 m_1 + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}} \right) \left( f_{2p} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u}} \right), \\
+    & \alpha_0 f_{2p+1} < \alpha_0 f_{2u-1} + \alpha_0 \frac{f'_{2l+1}}{H_{2u-1}}, \\
+    & f_{2p+1} - f_{2u-1} - \frac{f'_{2l+1}}{H_{2u-1}} < 0.
+\end{align*}
+Это уравнение является левой частью \eqref{enum:split_s2p_r_0} и c противоположным знаком правой частью \eqref{enum:split_s2p_q_0}. То есть выполнение неравенства возможно только в одном из неравенств. Другими словами, увеличится та цепь, верхнее ограничение которой на \(Q\) меньшее.
+
+Рассмотрим возможные варианты для \(N_q\) при \(s=2u+1\):
+\begin{enumerate}[leftmargin=10pt,itemindent=26pt]
+    \item \(q = 2p, r = 2l\):
+    \begin{align*}
+        & N_0 = \frac{Q}{\alpha_0 f_{2p} } + \frac{a_1 m_1}{\alpha_0}, \quad 0 < N_q = N_{2p} < \frac{\mu_{2p+1}}{g_{2p+1}}, \\
+        & N_{2p} = H_{2p-1} \left( \frac{Q}{\alpha_0 f_{2p} } + \frac{a_1 m_1}{\alpha_0} - f_{2p-1} \right) - \frac{\alpha^b_s}{\alpha_s} \frac{H_{2p-1}}{H_{2u+1}} f'_{2l}, \\
+        & \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} - \frac{a_1 m_1}{\alpha_0} + f_{2p-1} < \frac{Q}{\alpha_0 f_{2p} } < \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} - \frac{a_1 m_1}{\alpha_0} + f_{2p+1}, \\
+        & \begin{cases} \eqnum
+            Q > f_{2p} \left( \alpha_0 f_{2p-1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right), \\
+            Q < f_{2p} \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q = 2p+1, r = 2l\):
+    \begin{align*}
+        & N_1 = \frac{Q}{\alpha_0 \left( f_{2p+1} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) - a_1 m_1}, \quad 0 < N_{q} = N_{2p+1}< \frac{\mu_{2p+2}}{g_{2p+2}}, \\
+        & N_{2p+1} = H_{2p} \left( \frac{Q}{\alpha_0 \left( f_{2p+1} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) - a_1 m_1} - f_{2p} \right), \\
+        & f_{2p} < \frac{Q}{\alpha_0 \left( f_{2p+1} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) - a_1 m_1} < f_{2p+2}, \\
+        & \begin{cases} \eqnum \label{enum:split_s2p1_q}
+            Q > f_{2p} \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right), \\
+            Q < f_{2p+2} \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p+1, r=2l+1\):
+    \begin{align*}
+        & N_1 = \frac{f'_{2l+1}}{H_{2u}} + f_{2u}, \quad 0 < N_q = N_{2p+1} < \frac{\mu_{2p+2}}{g_{2p+2}} \\
+        & N_{2p+1} = H_{2p} \left( \frac{f'_{2l+1}}{H_{2u}} + f_{2u} - f_{2p} \right), \\
+        & f_{2p} - f_{2u} < \frac{f'_{2l+1}}{H_{2u}} < f_{2p+2} - f_{2u}, \\
+        & f_{2p} - f_{2u} - \frac{f'_{2l+1}}{H_{2u}} < 0 < f_{2p+2} - f_{2u} - \frac{f'_{2l+1}}{H_{2u}}. \eqnum \label{enum:split_s2p1_q_0}
+    \end{align*}
+\end{enumerate}
+
+Рассмотрим возможные варианты для \(N'_r\) при \(s=2u+1\):
+\begin{enumerate}[leftmargin=10pt,itemindent=26pt]
+    \item \(q = 2p, r = 2l\):
+    \begin{align*}
+        & 0 < N'_r = N'_{2l} < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & N'_{2l} = H'_{2l-1} \left( H_{2u} (f_{2p} - f_{2u}) - f'_{2l-1} \right), \\
+        & \frac{f'_{2l-1}}{H_{2u}} < f_{2p} - f_{2u} < \frac{f'_{2l+1}}{H_{2u}}, \\
+        & f_{2p} - f_{2u} - \frac{f'_{2l+1}}{H_{2u}} < 0 < f_{2p} - f_{2u} - \frac{f'_{2l-1}}{H_{2u}}. \eqnum \label{enum:split_s2p1_r_0}
+    \end{align*}
+
+    \item \(q = 2p+1, r = 2l\):
+    \begin{align*}
+        & 0 < N'_r = N'_{2l} < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & N'_{2l} = H'_{2l-1} \left( H_{2u} \left( \frac{Q}{\alpha_0 \left( f_{2p+1} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) - a_1 m_1} - f_{2u} \right) - f'_{2l-1} \right), \\
+        & \frac{f'_{2l-1}}{H_{2u}} + f_{2u} < \frac{Q}{\alpha_0 \left( f_{2p+1} + \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) - a_1 m_1} < \frac{f'_{2l+1}}{H_{2u}} + f_{2u}, \\
+        & \begin{cases} \eqnum \label{enum:split_s2p1_r}
+            Q > \left( f_{2u} + \frac{f'_{2l-1}}{H_{2u}} \right) \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right), \\
+            Q < \left( f_{2u} + \frac{f'_{2l+1}}{H_{2u}} \right) \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right).
+        \end{cases}
+    \end{align*}
+
+    \item \(q=2p+1, r=2l+1\):
+    \begin{align*}
+        & N_0 = \frac{Q}{\alpha_0 \left( \frac{f'_{2l+1}}{H_{2u}} + f_{2u} \right)} + \frac{a_1 m_1}{\alpha_0}, \quad 0 < N'_r = N'_{2l+1} < \frac{\mu'_{2l+1}}{g'_{2l+1}}, \\
+        & N'_{2l+1} = H'_{2l} \left( \frac{\alpha_s}{\alpha^b_s} H_{2u+1} \left( \frac{Q}{\alpha_0 \left( \frac{f'_{2l+1}}{H_{2u}} + f_{2u} \right)} + \frac{a_1 m_1}{\alpha_0} - f_{2p+1} \right) - f'_{2l} \right), \\
+        & \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} - \frac{a_1 m_1}{\alpha_0} + f_{2p+1} < \frac{Q}{\alpha_0 \left( \frac{f'_{2l+1}}{H_{2u}} + f_{2u} \right)} < \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u+1}} - \frac{a_1 m_1}{\alpha_0} + f_{2p+1}, \\
+        & \begin{cases} \eqnum
+            Q > \left( f_{2u} + \frac{f'_{2l+1}}{H_{2u}} \right) \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right), \\
+            Q < \left( f_{2u} + \frac{f'_{2l+1}}{H_{2u}} \right) \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l+2}}{H_{2u+1}} \right).
+        \end{cases}
+    \end{align*}
+\end{enumerate}
+
+При \(s=2u+1\) <<развилкой>> являются длины \(q=2p+1, ~~ r=2l\). Сравним верхние пределы для \(Q\) в \eqref{enum:split_s2p1_q} и \eqref{enum:split_s2p1_r}:
+\begin{align*}
+    & f_{2p+2} \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right) < \\
+    & < \left( f_{2u} + \frac{f'_{2l+1}}{H_{2u}} \right) \left( \alpha_0 f_{2p+1} - a_1 m_1 + \alpha_0 \frac{\alpha^b_s}{\alpha_s} \frac{f'_{2l}}{H_{2u+1}} \right), \\
+    & f_{2p+2} < f_{2u} + \frac{f'_{2l+1}}{H_{2u}}, \\
+    & f_{2p+2} - f_{2u} - \frac{f'_{2l+1}}{H_{2u}} < 0.
+\end{align*}
+Аналогично, похожее выражение встречается в уравнениях \eqref{enum:split_s2p1_q_0} и \eqref{enum:split_s2p1_r_0}. Соответственно, уравнения, которые напрямую не накладывают ограничения на поступающую энергию \(Q\), эквивалентны тому, что увеличится цепь с меньшим верхним пределом.
+
+Отдельно также можно отметить возможный случай равенства нулю. Например, при полном совпадении ветвей цепочек, начиная с уровня \(s\). Тогда поток энергии пойдёт сразу в обе ветви.
