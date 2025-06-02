@@ -20,6 +20,8 @@
 \RequirePackage{polyglossia}
 \RequirePackage{xecyr}
 
+\RequirePackage{cite}
+
 \setdefaultlanguage{russian}
 \setotherlanguage{english}
 
@@ -46,6 +48,21 @@
   \@esphack%
   #1%
 }
+
+%%% TOC
+\RequirePackage{titlesec}
+\RequirePackage{titletoc}
+
+% \titleformat*{\section}{\fontsize{14pt}{16pt} \selectfont \bfseries}
+% \titleformat*{\subsection}{\fontsize{14pt}{16pt} \selectfont \bfseries}
+
+\dottedcontents{section}[1.7em]{\bfseries}{1.7em}{1pc}
+\dottedcontents{section*}[1.7em]{\bfseries}{1.7em}{1pc}
+\dottedcontents{subsection}[2.5em]{}{2.5em}{1pc}
+
+% \setcounter{tocdepth}{2}
+\dottedcontents{subsubsection}[3.3em]{}{3.3em}{1pc}
+%%%
 
 \addto\captionsrussian{\def\refname{\section{Список литературы}\vspace*{-1em}}}
 \addto\captionsrussian{\def\contentsname{Оглавление}}

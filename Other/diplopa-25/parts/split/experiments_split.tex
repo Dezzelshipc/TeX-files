@@ -1,7 +1,9 @@
 \subsection{Численные эксперименты}
 Чтобы рассмотреть разные варианты ветвящейся цепи, выберем максимальные длины ветвей, равные \(q = 4, ~ r=2\). Таким образом, рассматривая четыре эксперимента по две пары параметров: \(s=2, ~~ s=3\) и \(\alpha^b_s = 16, ~~ \alpha^b_s = 8\). Пусть линейная система \eqref{double_lin} имеет такие коэффициенты:
 
-\begin{center}
+\begin{table}[H]
+    \centering
+    \caption{Коэффициенты дифференциальной системы ветвящейся цепи}
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
         \(i\)        & \(0\) & \(1\) & \(2\) & \(3\) & \(4\) \\ \hline
@@ -14,12 +16,14 @@
         \(m'_i\) &            & \(4\) & \(1\) &  &  \\ \hline
         \(k'_i\) &            & \(0.5\) & \(0.3\) &  &  \\ \hline
     \end{tabular}
-\end{center}
+\end{table}
 
 Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равны \(0.5\). 
 
-Рассмотрим при \(s=2\) и \(\alpha^b_s = 16\). Поскольку меняется длина сразу двух ветвей, то получим матрицу состояний:
-\begin{center}
+Рассмотрим при \(s=2\) и \(\alpha^b_s = 16\). Поскольку меняется длина сразу двух ветвей, то получим таблицу состояний:
+\begin{table}[H]
+    \centering
+    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 16\).}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -40,7 +44,7 @@
         & \(\begin{matrix} q?(0.29, 0.29) \\ r(60.57, 73.19) \end{matrix}\) 
         & \cellcolor{gray!20}\(\begin{matrix} q(89.3, +\infty) \\ r?(73.19, +\infty) \end{matrix}\) \\ \hline
     \end{tabular}
-\end{center}
+\end{table}
 Здесь обозначениями \(q(x,y), ~ r(x,y)\) показаны нижняя и верхняя границы \((x, y)\) поступающей энергии \(Q\) для данных длин цепи (\(x < Q < y\)), а \(q?(x,y), ~ r?(x,y)\) обозначены левая и правая часть неравенства существования соответствующих ветвей (\(x < 0 < y\)). Серым цветом помечены ячейки, длины которых появляются в эксперименте.
 
 \begin{figure}[H]
@@ -60,7 +64,9 @@
 \end{figure}
 
 Рассмотрим при \(s=2\) и \(\alpha^b_s = 8\). 
-\begin{center}
+\begin{table}[H]
+    \centering
+    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 8\).}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -81,7 +87,7 @@
         & \(\begin{matrix} q?(-0.58, -0.58) \\ r(100.57, 111.04) \end{matrix}\) \cellcolor{gray!20}
         & \(\begin{matrix} q(81.6, +\infty) \\ r(111.04, +\infty) \end{matrix}\) \cellcolor{gray!20} \\ \hline
     \end{tabular}
-\end{center}
+\end{table}
 \begin{figure}[H]
     \centering
     \subfigexp{1}   {pictures/split/exp1_s2_8/Q}{.3}
@@ -97,7 +103,9 @@
 
 
 Рассмотрим при \(s=3\) и \(\alpha^b_s = 16\). 
-\begin{center}
+\begin{table}[H]
+    \centering
+    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 16\).}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -118,7 +126,7 @@
         & -- 
         & \cellcolor{gray!20}\(\begin{matrix} q(133.16, +\infty) \\ r?(0.64, 0.64) \end{matrix}\) \\ \hline
     \end{tabular}
-\end{center}
+\end{table}
 \begin{figure}[H]
     \centering
     \subfigexp{1}   {pictures/split/exp1_s3_16/Q}{.3}
@@ -135,7 +143,9 @@
 
 
 Рассмотрим при \(s=3\) и \(\alpha^b_s = 8\). 
-\begin{center}
+\begin{table}[H]
+    \centering
+    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 8\).}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -156,7 +166,7 @@
         & --
         & \(\begin{matrix} q(103.53, +\infty) \\ r?(-0.42, -0.42) \end{matrix}\) \\ \hline
     \end{tabular}
-\end{center}
+\end{table}
 \begin{figure}[H]
     \centering
     \subfigexp{1}   {pictures/split/exp1_s3_8/Q}{.3}

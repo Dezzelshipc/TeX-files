@@ -6,16 +6,16 @@
 
 \newcommand{\usersignature}[1]{
     \(
-        \underset{\textit{(Ф.И.О.)}}{\uline{~ \text{#1} ~}}
+        \underset{\textit{Ф.И.О.}}{\uline{~ \text{#1} ~}}
     \)
     \(
-        \underset{\textit{(подпись)}}{\uline{\hspace{50pt}}}
+        \underset{\textit{подпись}}{\uline{\hspace{50pt}}}
     \)
 }
 
 \newcommand{\signatureuser}[1]{
     \(
-        \underset{\textit{(подпись)}}{\uline{\hspace{60pt}}}
+        \underset{\textit{подпись}}{\uline{\hspace{60pt}}}
     \)
     \(
         \underset{\textit{И. О. Фамилия}}{\uline{~ \text{#1} ~}}
@@ -24,13 +24,13 @@
 
 \newcommand{\signature}{
     \(
-        \underset{\textit{(подпись)}}{\uline{\hspace{100pt}}}
+        \underset{\textit{подпись}}{\uline{\hspace{100pt}}}
     \)
 }
 
 \newcommand{\undertext}[2]{
     \(
-        \underset{\textit{(#1)}}{\uline{#2}}
+        \underset{\textit{#1}}{\uline{#2}}
     \)
 }
 
@@ -262,20 +262,11 @@
     \selectfont
 
     \begin{multicols}{2}
-            {
-                В материалах данной выпускной \\[-6pt] квалификационной работы не содержатся \\[-6pt] сведения, составляющие государственную \\[-6pt] тайну, и сведения, подлежащие экспертному \\[-6pt] контролю
-            }
-
+        {
+            В материалах данной выпускной \\[-6pt] квалификационной работы не содержатся \\[-6pt] сведения, составляющие государственную \\[-6pt] тайну, и сведения, подлежащие экспертному \\[-6pt] контролю
+        } \\
         Уполномоченный по экспертному контролю \\
         \signatureuser{\hspace{100pt}} \\
-        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
-
-        \vfill
-
-        Защищена в ГЭК с оценкой: \\
-        \uline{~~\hspace{120pt}~~}\\
-        Секретарь ГЭК \\
-        \signatureuser{\hspace{100pt}}\\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         \columnbreak
@@ -290,7 +281,22 @@
         \signatureuser{#2}\\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
+        Назначен рецензент\undertext{учёное звание}{\hspace{80pt}} \\
+        \undertext{фамилия, имя, отчество}{\hspace{160pt}}
+
         \vfill
+
+    \end{multicols}
+    
+    \begin{multicols}{2}
+
+        Защищена в ГЭК с оценкой: \\
+        \uline{~~\hspace{120pt}~~}\\
+        Секретарь ГЭК \\
+        \signatureuser{\hspace{100pt}}\\
+        <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
+        
+        \columnbreak
 
         \textbf{<<Допустить к защите>>}
         
@@ -303,28 +309,6 @@
         \signatureuser{#3}
 
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
-
-
-        % \docdate
-
-        % \vspace{10pt}
-
-        % \small
-        % Практика пройдена в срок
-
-        % \vspace*{-6pt}
-
-        % с <<>>  20__ г.
-
-        % \vspace*{-6pt}
-
-        % по <<>> июля 20__ г.
-
-        % \vspace*{-10pt}
-
-        % (2 недели)
-        % \normalsize
-
         
     \end{multicols}
 
