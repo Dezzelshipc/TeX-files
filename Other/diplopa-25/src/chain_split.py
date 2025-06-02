@@ -52,7 +52,7 @@ k = np.append([0], np.linspace(0.5, 0.2, _q))
 m = np.append([0], np.linspace(5, 2, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
-alpha_b = 16
+alpha_b = 8
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 m2 = np.append([0], np.linspace(4, 1, _r))
@@ -130,12 +130,12 @@ def identity(x):
 
 
 ### CHANGE PARAMETERS
-Q = 15
+Q = 1000
 
-s = 2
+s = 1
 
-q = 2
-r = 0
+q = 4
+r = 2
 ###
 
 t_s = np.arange(0, 100, 0.01)
@@ -371,7 +371,7 @@ print(f"{s=}, {_q=}, {_r=}, {Q=}")
 
 
 from pathlib import Path
-# plt.savefig(Path(__file__).parent / f"figs/s{s}_{alpha_b}_Q{Q}.pdf")
+plt.savefig(Path(__file__).parent / f"figs/s{s}_{alpha_b}_Q{Q}.pdf")
 
 
 plt.show()

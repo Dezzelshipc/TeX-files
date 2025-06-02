@@ -180,3 +180,42 @@
     \subfigexp{10000}{pictures/split/exp1_s3_8/Q}{.3}
 \caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s3_8}
 \end{figure}
+
+Также рассмотрим пример при \(s=1\) и \(\alpha^b_s = 8\). Этот пример показывает, что цепь может увеличиваться по частям (в отличие от других примеров, где сначала увеличивалась до конца одна из ветвей). 
+\begin{table}[H]
+    \centering
+    \caption{Таблица состояний при \(s=1\) и \(\alpha^b_s = 8\).}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
+        \(1\)
+        & \(\begin{matrix} q(0.0, 5.14) \\ r(1.87, 9.0) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-1.0, -0.42) \\ r(9.0, 12.33) \end{matrix}\)
+        & \(\begin{matrix} q(0.0, 7.04) \\ r(12.33, +\infty) \end{matrix}\) \\ \hline
+        \(2\)
+        & \(\begin{matrix} q(5.14, 18.47) \\ r?(-0.42, 0.36) \end{matrix}\) \cellcolor{gray!20}
+        & --
+        & \(\begin{matrix} q(7.04, 20.38) \\ r?(-0.42, -0.42) \end{matrix}\) \\ \hline
+        \(3\)
+        & \(\begin{matrix} q(18.47, 73.9) \\ r(6.73, 32.33) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q?(-0.42, 1.28) \\ r(32.33, 35.66) \end{matrix}\) \cellcolor{gray!20}
+        & \(\begin{matrix} q(20.38, 81.52) \\ r(35.66, +\infty) \end{matrix}\) \cellcolor{gray!20} \\ \hline
+        \(4\)
+        & \(\begin{matrix} q(73.9, +\infty) \\ r?(1.28, 2.07) \end{matrix}\)
+        & --
+        & \(\begin{matrix} q(81.52, +\infty) \\ r?(1.28, 1.28) \end{matrix}\) \cellcolor{gray!20} \\ \hline
+    \end{tabular}
+\end{table}
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{10}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{20}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{30}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{34}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{40}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{80}  {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{100} {pictures/split/exp1_s1_8/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp1_s1_8/Q}{.3}
+\caption{Численности видов системы при \(s=1\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s1_8}
+\end{figure}
