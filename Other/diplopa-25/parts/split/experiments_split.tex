@@ -20,10 +20,10 @@
 
 Варьируем значение \(Q\) и получаем графики численностей в равновесии. Используем метод Рунге-Кутты \(4\)-порядка с шагом \(h = 0.01\). Начальные значения численностей равны \(0.5\). 
 
-Рассмотрим при \(s=2\) и \(\alpha^b_s = 16\). Поскольку меняется длина сразу двух ветвей, то получим таблицу состояний:
+Рассмотрим при \(s=2\) и \(\alpha^b_s = 16\). Поскольку меняется длина сразу двух ветвей, то получим \textit{таблицу состояний}:
 \begin{table}[H]
     \centering
-    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 16\).}
+    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 16\).} \label{tab:split_exp1_s2_16}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -45,7 +45,7 @@
         & \cellcolor{gray!20}\(\begin{matrix} q(89.3, +\infty) \\ r?(73.19, +\infty) \end{matrix}\) \\ \hline
     \end{tabular}
 \end{table}
-Здесь обозначениями \(q(x,y), ~ r(x,y)\) показаны нижняя и верхняя границы \((x, y)\) поступающей энергии \(Q\) для данных длин цепи (\(x < Q < y\)), а \(q?(x,y), ~ r?(x,y)\) обозначены левая и правая часть неравенства существования соответствующих ветвей (\(x < 0 < y\)). Серым цветом помечены ячейки, длины которых появляются в эксперименте.
+В таблицах состояний обозначениями \(q(x,y), ~ r(x,y)\) показаны нижняя и верхняя границы \((x, y)\) поступающей энергии \(Q\) для данных длин цепи (\(x < Q < y\)), а \(q?(x,y), ~ r?(x,y)\) обозначены левая и правая часть неравенства перехода направления роста соответствующих ветвей (\(x < 0 < y\)). Серым цветом помечены ячейки, длины которых теоретически предсказано появление в эксперименте.
 
 \begin{figure}[H]
     \centering
@@ -60,13 +60,14 @@
     \subfigexp{90}  {pictures/split/exp1_s2_16/Q}{.3}
     % \subfigexp{100} {pictures/split/exp1_s2_16/Q}{.3}
     \subfigexp{1000}{pictures/split/exp1_s2_16/Q}{.3}
-\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 16\).}  \label{fig:split_exp1_s2_16}
+\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 16\).} \label{fig:split_exp1_s2_16}
 \end{figure}
+Сравнивая результаты эксперимента по таблице \ref{tab:split_exp1_s2_16} и по графикам на рис. \ref{fig:split_exp1_s2_16}, мы можем увидеть совпадение теории и самого эксперимента. Длины цепи изменяются в порядке, предсказанном по таблице. Также, очевидно, наблюдаем асимптотическую устойчивость.
 
 Рассмотрим при \(s=2\) и \(\alpha^b_s = 8\). 
 \begin{table}[H]
     \centering
-    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 8\).}
+    \caption{Таблица состояний при \(s=2\) и \(\alpha^b_s = 8\).} \label{tab:split_exp1_s2_8}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -98,14 +99,14 @@
     \subfigexp{105} {pictures/split/exp1_s2_8/Q}{.3}
     \subfigexp{120} {pictures/split/exp1_s2_8/Q}{.3}
     \subfigexp{1000}{pictures/split/exp1_s2_8/Q}{.3}
-\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s2_8}
+\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 8\).} \label{fig:split_exp1_s2_8}
 \end{figure}
-
+Результаты эксперимента на графиках рис. \ref{fig:split_exp1_s2_8} также соответствуют теории в таблице \ref{tab:split_exp1_s2_8}.
 
 Рассмотрим при \(s=3\) и \(\alpha^b_s = 16\). 
 \begin{table}[H]
     \centering
-    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 16\).}
+    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 16\).} \label{tab:split_exp1_s3_16}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -138,14 +139,14 @@
     \subfigexp{120} {pictures/split/exp1_s3_16/Q}{.3}
     \subfigexp{150} {pictures/split/exp1_s3_16/Q}{.3}
     \subfigexp{1000}{pictures/split/exp1_s3_16/Q}{.3}
-\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 16\).}  \label{fig:split_exp1_s3_16}
+\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 16\).} \label{fig:split_exp1_s3_16}
 \end{figure}
-
+Меняя четность уровня ветвления и используя соответствующие формулы, снова получаем точное теоретическое описание эксперимента рис. \ref{fig:split_exp1_s3_16} по таблице \ref{tab:split_exp1_s3_16}.
 
 Рассмотрим при \(s=3\) и \(\alpha^b_s = 8\). 
 \begin{table}[H]
     \centering
-    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 8\).}
+    \caption{Таблица состояний при \(s=3\) и \(\alpha^b_s = 8\).} \label{tab:split_exp1_s3_8}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -178,13 +179,14 @@
     \subfigexp{1000}{pictures/split/exp1_s3_8/Q}{.3}
     \subfigexp{1001}{pictures/split/exp1_s3_8/Q}{.3}
     \subfigexp{10000}{pictures/split/exp1_s3_8/Q}{.3}
-\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s3_8}
+\caption{Численности видов системы при \(s=3\) и \(\alpha^b_s = 8\).} \label{fig:split_exp1_s3_8}
 \end{figure}
+Эксперимент таблицы \ref{tab:split_exp1_s3_8} показывает воздействие <<переопределённой>> ячейки, для которой невозможно найти формулу точки равновесия. После достижения состояния длин \(q=4, ~ r=0\) единственным путём увеличения длины является рост боковой цепи. Однако, как это подтверждает эксперимент на рис. \ref{fig:split_exp1_s3_8}, рост цепи далее не происходит.
 
-Также рассмотрим пример при \(s=1\) и \(\alpha^b_s = 8\). Этот пример показывает, что цепь может увеличиваться по частям (в отличие от других примеров, где сначала увеличивалась до конца одна из ветвей). 
+Также рассмотрим пример при \(s=1\) и \(\alpha^b_s = 8\). 
 \begin{table}[H]
     \centering
-    \caption{Таблица состояний при \(s=1\) и \(\alpha^b_s = 8\).}
+    \caption{Таблица состояний при \(s=1\) и \(\alpha^b_s = 8\).} \label{tab:split_exp1_s1_8}
     \begin{tabular}{|c|c|c|c|}
         \hline
         \backslashbox{\(q\)}{\(r\)} & \(0\) & \(1\) & \(2\) \\ \hline
@@ -217,5 +219,22 @@
     \subfigexp{80}  {pictures/split/exp1_s1_8/Q}{.3}
     \subfigexp{100} {pictures/split/exp1_s1_8/Q}{.3}
     \subfigexp{1000}{pictures/split/exp1_s1_8/Q}{.3}
-\caption{Численности видов системы при \(s=1\) и \(\alpha^b_s = 8\).}  \label{fig:split_exp1_s1_8}
+\caption{Численности видов системы при \(s=1\) и \(\alpha^b_s = 8\).} \label{fig:split_exp1_s1_8}
 \end{figure}
+Эксперимент на таблице \ref{tab:split_exp1_s1_8} показывает, что цепь может увеличиваться по частям, в отличие от других примеров, где сначала увеличивалась до конца одна из ветвей.
+
+И последним экспериментом вновь рассмотрим динамику цепи, когда трофические функции равны \(V_i(N_j) = \alpha_i \arctan{N_j}, ~~ V'_i(N'_j) = \alpha'_i \arctan{N'_j}\).
+\begin{figure}[H]
+    \centering
+    \subfigexp{1}   {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{5}   {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{13}  {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{14}  {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{15}  {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{30}  {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{70}  {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{100} {pictures/split/exp2_s2_16/Q}{.3}
+    \subfigexp{1000}{pictures/split/exp2_s2_16/Q}{.3}
+\caption{Численности видов системы при \(s=2\) и \(\alpha^b_s = 16\) и трофическими функциями, равными \(\arctan\).} \label{fig:split_exp2_s2_16}
+\end{figure}
+Аналогично другим подобным экспериментам, как можно видеть на графиках рис. \ref{fig:split_exp2_s2_16}, с некоторого момента (который теоретически можно найти по формуле \eqref{split_h_dost}, зная формулы точки равновесия) появляется периодичность, то есть имеется обычная устойчивость. При этом также останавливается рост цепи и до конца исследуемой области (\(Q \in [1, 1000]\)) остаётся равным \(q=2, ~ r=0\).

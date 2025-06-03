@@ -243,11 +243,11 @@
         & 0 < 4b_1 (d_0 - c_1).
     \end{split}
 \end{equation*}
-Значит, матрица \(A^1_1\) устойчива, если \(c_1 < d_0\), или \(m_1 a_1 < \alpha_0 N^*_0\). Из \eqref{cycle_2s1_01} имеем \(N^*_0 = \frac{m_1}{\alpha_0 k_1}\), поэтому условие устойчивости можно записать в виде \(a_1 k_1 < 1\). При этом
+Значит, матрица \(A^1_1\) устойчива, если \(c_1 < d_0\), или \(m_1 a_1 < \alpha_0 N_0\). Из \eqref{cycle_2s1_01} имеем \(N_0 = \frac{m_1}{\alpha_0 k_1}\), поэтому условие устойчивости можно записать в виде \(a_1 k_1 < 1\). При этом
 \begin{equation*}
-    N^*_1 = \frac{Q + f_{1} \varphi_0 - \sigma_{1}}{ \alpha_0 f_{1} - \psi_{1} } = \frac{Q + \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) \cdot 0 - 0}{\alpha_0 \cdot \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) - a_1 m_1} = \frac{Q k_1}{m_1(1 - a_1 k_1)}.
+    N_1 = \frac{Q + f_{1} \varphi_0 - \sigma_{1}}{ \alpha_0 f_{1} - \psi_{1} } = \frac{Q + \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) \cdot 0 - 0}{\alpha_0 \cdot \left( \frac{m_1}{\alpha_1} \cdot \frac{\alpha_1}{k_1 \alpha_0} \right) - a_1 m_1} = \frac{Q k_1}{m_1(1 - a_1 k_1)}.
 \end{equation*}
-Тогда \(N^*_1 > 0\) только при \(a_1 k_1 < 1\). Неравенство \eqref{cycle_nq_upper} даёт ограничение сверху на скорость поступления ресурса.
+Тогда \(N_1 > 0\) только при \(a_1 k_1 < 1\). Неравенство \eqref{cycle_nq_upper} даёт ограничение сверху на скорость поступления ресурса.
 \begin{equation*}
     \begin{split}
         & \frac{Q k_1}{m_1(1 - a_1 k_1)} < \frac{m_2}{\alpha_1 k_2}, \\
@@ -258,7 +258,7 @@
 \begin{equation*}
     0 < Q < \frac{m_1 m_2}{\alpha_1 k_1 k_2} (1 - a_1 k_1)
 \end{equation*}
-является необходимым и достаточным условием существования устойчивого равновесия типа \([N^*_0, N^*_1, 0, \dots, 0]\), то есть существования замкнутой трофической цепи длины \(1\).
+является необходимым и достаточным условием существования устойчивого равновесия типа \([N_0, N_1, 0, \dots, 0]\), то есть существования замкнутой трофической цепи длины \(1\).
 
 \item Пусть \(q=2\), тогда имеем \( \lambda^3 + e_2(2) \lambda^2 + e_1(2) \lambda + e_0(2) = 0 \). По теореме Виета корни связаны соотношениями:
 \begin{equation*}
@@ -276,31 +276,31 @@
         & e_2(2) = e_1(1) + b_2 d_1 e_2(0) = b_0 + b_2 d_1 \cdot 0 > 0,
     \end{split}
 \end{equation*}
-Из первого неравенства следует \( \alpha_0 N_1^* \cdot \alpha_1 N^*_1 > a_2 m_2 \cdot k_1 \alpha_0 N^*_1 \). По \eqref{cycle_2s_01} \(N_1^* = f_2 = \frac{m_2}{\alpha_2} \cdot \frac{\alpha_2}{k_2 \alpha_1} = \frac{m_2}{k_2 \alpha_1}\), значит неравенство становится
+Из первого неравенства следует \( \alpha_0 N_1 \cdot \alpha_1 N_1 > a_2 m_2 \cdot k_1 \alpha_0 N_1 \). По \eqref{cycle_2s_01} \(N_1 = f_2 = \frac{m_2}{\alpha_2} \cdot \frac{\alpha_2}{k_2 \alpha_1} = \frac{m_2}{k_2 \alpha_1}\), значит неравенство становится
 \begin{equation*}
     \alpha_1 \frac{m_2}{k_2 \alpha_1} > a_2 m_2 k_1, ~~ a_2 k_1 k_2 < 1. 
 \end{equation*}
 Второе неравенство записывается в виде
 \begin{equation*}
     \begin{split}
-        & k_1 \alpha_0 N^*_1 ( \alpha_0 N^*_0 - a_1 m_1 ) + k_2 \alpha_1 N^*_2 \cdot \alpha_1 N^*_1 > 0, \\
-        & \alpha_0 N^*_0 N^*_1 - a_1 m_1 N^*_1 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 N^*_2 > 0, \\
-        & (\alpha_0 N^*_0 N^*_1 - a_1 m_1 N^*_1 - a_2 m_2 N^*_2) + N^*_2 ( a_2 m_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 ) > 0, \\
-        & Q + a_2 m_2 N^*_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N^*_1 N^*_2 > 0,
+        & k_1 \alpha_0 N_1 ( \alpha_0 N_0 - a_1 m_1 ) + k_2 \alpha_1 N_2 \cdot \alpha_1 N_1 > 0, \\
+        & \alpha_0 N_0 N_1 - a_1 m_1 N_1 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N_1 N_2 > 0, \\
+        & (\alpha_0 N_0 N_1 - a_1 m_1 N_1 - a_2 m_2 N_2) + N_2 ( a_2 m_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N_1 ) > 0, \\
+        & Q + a_2 m_2 N_2 + \frac{k_2 \alpha_1^2}{k_1 \alpha_0} N_1 N_2 > 0,
     \end{split}
 \end{equation*}
-т.е. при \(N^*_2 > 0\) всегда выполняется. Найдём \(N^*_0\) и \( N^*_2\). 
+т.е. при \(N_2 > 0\) всегда выполняется. Найдём \(N_0\) и \( N_2\). 
 \begin{equation*}
     \begin{split}
-        N^*_0 &= \frac{Q + f_2 \psi_1 - \sigma_2}{\alpha_0 f_2 - \vphi_1} = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 f_1 g_1}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 g_1} =\\
+        N_0 &= \frac{Q + f_2 \psi_1 - \sigma_2}{\alpha_0 f_2 - \vphi_1} = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 f_1 g_1}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 g_1} =\\
         & = \frac{Q + \frac{m_2}{k_2 \alpha_1} \cdot a_1 m_1 - a_2 m_2 \frac{m_1}{\alpha_1}}{\alpha_0 \frac{m_2}{k_2 \alpha_1} - a_2 m_2 \frac{k_1 \alpha_0}{\alpha_1}} = 
         \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1- a_2 k_1 k_2 ) }, \\
-        N^*_2 &= H_1 (N^*_0 - f_1) = \frac{k_1 \alpha_0}{\alpha_1} \cdot \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1 - a_2 k_1 k_2 ) } - \frac{m_1}{\alpha_1} =\\
+        N_2 &= H_1 (N_0 - f_1) = \frac{k_1 \alpha_0}{\alpha_1} \cdot \frac{\alpha_1 k_2 Q +  m_1 m_2 ( a_1- a_2 k_2 )}{\alpha_0 m_2 ( 1 - a_2 k_1 k_2 ) } - \frac{m_1}{\alpha_1} =\\
         & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) } - \frac{m_1 m_2 ( 1- a_2 k_1 k_2 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 )} = \\
         & = \frac{\alpha_1 k_1 k_2 Q + m_1 m_2 ( a_1 k_1 - 1 )}{\alpha_1 m_2 ( 1- a_2 k_1 k_2 ) }.
     \end{split}
 \end{equation*}
-Поскольку \( N^*_2 > 0 \) при \( Q > \wt{Q}^*(2)\), то и в этом случае из существования стационарного состояния автоматически следует его устойчивость.
+Поскольку \( N_2 > 0 \) при \( Q > \wt{Q}^*(2)\), то и в этом случае из существования стационарного состояния автоматически следует его устойчивость.
 \end{enumerate}
 
 Как видно, для ответа на вопрос об устойчивости циклической трофической цепи приходится проводить дополнительное исследование, и заранее не известно будут ли необходимые условия в то же время и достаточными. Хотя и для любого конкретного \(q\) эта задача разрешима. Можем сформулировать слабое утверждение для циклической трофической цепи:
@@ -319,37 +319,37 @@
 \end{equation*}
 Тогда в матрице \eqref{cycle_stability_matrix} положим \(c_1 \neq 0, ~~ c_i = 0, i>1\). В этом случае матрица \(A^1_q\) будет принадлежать к классу якобиевых \eqref{flow_jacobian_big} и аналогично устойчивой при положительных переменных, то есть при \(d_0 - c_1 > 0\). Значит, при выполнении неравенства \(c_1 < d_0\) и \eqref{cycle_nq_upper}, существует трофическая цепь длины \(q\).
 
-Поскольку в нашем случае \(с_i = 0 ~ i > 1\), то в формулах \eqref{cycle_sub} положим \(a_1 \neq 0, ~~ a_i = 0, i>1\). Тогда \(\vphi_s = \sigma_2s = \sigma_{2s+1} = 0, ~ \psi_s = \psi_{s+1} = m_1 a_1 \), и при \(q = 2s\)
+Поскольку в нашем случае \(c_i = 0 ~ i > 1\), то в формулах \eqref{cycle_sub} положим \(a_1 \neq 0, ~~ a_i = 0, i>1\). Тогда \(\vphi_s = \sigma_2s = \sigma_{2s+1} = 0, ~ \psi_s = \psi_{s+1} = m_1 a_1 \), и при \(q = 2s\)
 \begin{equation} \label{cycle1_2s_01}
     \begin{split}
-        & N^*_0 = \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}}, ~~ N^*_1 = f_{2s}, \\
-        & N^*_q = N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right),
+        & N_0 = \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}}, ~~ N_1 = f_{2s}, \\
+        & N_q = N_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right),
     \end{split}
 \end{equation}
 а при \(q = 2s+1\)
 \begin{equation} \label{cycle1_2s1_01}
     \begin{split}
-        & N^*_0 = f_{2s}, ~~ N^*_1 = \frac{Q}{\alpha_0 f_{2s} - a_1 m_1}, \\
-        & N^*_q = N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right).
+        & N_0 = f_{2s}, ~~ N_1 = \frac{Q}{\alpha_0 f_{2s} - a_1 m_1}, \\
+        & N_q = N_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right).
     \end{split}
 \end{equation}
-Условие \( c_1 < d_0 \) эквивалентно \( a_1 m_1 < \alpha_0 N^*_0 \). Значит
+Условие \( c_1 < d_0 \) эквивалентно \( a_1 m_1 < \alpha_0 N_0 \). Значит
 \begin{equation*}
     \begin{matrix}
         a_1 m_1 f_{2s} < Q + a_1 m_1 f_{2s}, & q = 2s, \\
         a_1 m_1 < \alpha_0 f_{2s+1}, & q = 2s+1. \\
     \end{matrix}
 \end{equation*}
-Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N^*_q > 0\). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
+Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N_q > 0\). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
 
-Используя выражение для \(N^*_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s1_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
+Используя выражение для \(N_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s1_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
 
 \begin{subequations}
 \begin{itemize}
     \item При \(q = 2s \)
         \begin{align}
             \begin{split}
-                & N^*_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}}, \\
+                & N_{2s} = H_{2s-1} \left( \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} - f_{2s-1} \right) < \frac{m_{2s+1}}{\alpha_{2s} k_{2s+1}}, \\
                 & \frac{Q + m_1 a_1 f_{2s}}{\alpha_0 f_{2s}} < f_{2s-1} + \frac{1}{H_{2s-1}} \frac{\mu_{2s+1}}{g_{2s+1}}, \\
                 & Q < \alpha f_{2s} f_{2s+1} - a_1 m_1 f_{2s}.
             \end{split}
@@ -357,7 +357,7 @@
     \item При \( q = 2s+1 \)
         \begin{align}
             \begin{split}
-                & N^*_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}}, \\
+                & N_{2s+1} = H_{2s} \left( \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} - f_{2s} \right) < \frac{m_{2s+2}}{\alpha_{2s+1} k_{2s+2}}, \\
                 & \frac{Q}{\alpha_0 f_{2s+1} - a_1 m_1} < f_{2s} + \frac{1}{H_{2s}} \frac{\mu_{2s+2}}{g_{2s+2}}, \\
                 & Q < \alpha_0f_{2s+1} f_{2s+2} - a_1 m_1 f_{2s+2}.
             \end{split}

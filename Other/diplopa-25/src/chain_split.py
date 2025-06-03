@@ -52,7 +52,7 @@ k = np.append([0], np.linspace(0.5, 0.2, _q))
 m = np.append([0], np.linspace(5, 2, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
-alpha_b = 8
+alpha_b = 16
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 m2 = np.append([0], np.linspace(4, 1, _r))
@@ -130,19 +130,19 @@ def identity(x):
 
 
 ### CHANGE PARAMETERS
-Q = 1000
+Q = 100
 
-s = 1
+s = 2
 
-q = 4
-r = 2
+q = 2
+r = 0
 ###
 
-t_s = np.arange(0, 100, 0.01)
+t_s = np.arange(0, 100, 0.001)
 N0 = np.array([ 0.5 ] * (1+_q+_r))
 
-right_flow = get_right_split(identity)
-# right_flow = get_right_flow(np.atan)
+# right_flow = get_right_split(identity)
+right_flow = get_right_split(np.atan)
 
 Tl, Nl = runge_kutta(right_flow, N0, t_s)
 
@@ -206,9 +206,11 @@ else:
 
 
 print(N_0, N_1)
+
+### PLOT STABLE STATES
 if N_0 and N_1:
-    plt.plot(t_s[[0, -1]], [N_0]*2, "--")
-    plt.plot(t_s[[0, -1]], [N_1]*2, "--")
+    # plt.plot(t_s[[0, -1]], [N_0]*2, "--")
+    # plt.plot(t_s[[0, -1]], [N_1]*2, "--")
 
     leg.extend([
         "Равн0",
@@ -223,6 +225,8 @@ plt.xlabel('t')
 plt.ylabel('N')
 plt.title(f"{q=} {r=} {s=}")
 print(f"dt={t_s[1] - t_s[0]}")
+
+### PLOT STABLE STATES
 
 
 ### CALCULATE Q THRESHOLD
@@ -369,9 +373,10 @@ print(f"{r=}: {QR1} < Q < {QR2}")
 
 print(f"{s=}, {_q=}, {_r=}, {Q=}")
 
+add_ = "exp2_"
 
 from pathlib import Path
-plt.savefig(Path(__file__).parent / f"figs/s{s}_{alpha_b}_Q{Q}.pdf")
+# plt.savefig(Path(__file__).parent / f"figs/{add_}s{s}_{alpha_b}_Q{Q}.pdf")
 
 
 plt.show()
