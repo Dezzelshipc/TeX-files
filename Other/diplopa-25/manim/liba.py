@@ -1,11 +1,10 @@
 import numpy as np
 import copy
 from dataclasses import dataclass
-
-from cachetools.func import lru_cache
+from pathlib import Path
 
 from manim import *
-from manim_slides import Slide
+from manim_slides.slide import Slide
 
 @dataclass
 class DataClass:
@@ -45,8 +44,37 @@ class DataClass:
             a = np.append([0], [0.9, 0.9, 0.9]), # n-1, 0<=a_i<=1
         )
     
-@lru_cache(maxsize=1024)
-def runge_kutta(function, y0: tuple | float, time_space_params: tuple[float, float]) -> tuple[np.ndarray, np.ndarray]:
+def save_numpy_deco(func):
+    def _wrapper(*args, **kwargs):
+        _Q = kwargs['Q']
+        _f = kwargs['function'].__name__
+        _y0 = kwargs['y0']
+        _t = kwargs['time_space_params']
+        save_path = Path(__file__).parent / "save_rk_result"
+
+        save_path_x = save_path / "X"
+        save_path_y = save_path / "Y" / f"{_f}_{_y0}_{_t}"
+
+        save_path_x.mkdir(parents=True, exist_ok=True)
+        save_path_y.mkdir(parents=True, exist_ok=True)
+
+        save_path_x = save_path_x / f"X_{_t}.npy".replace(" ", "")
+        save_path_y = save_path_y / f"Y_{_Q}.npy".replace(" ", "")
+
+        if save_path_y.exists():
+            # print(f"LOADING : {save_path}")
+            return np.load(save_path_x), np.load(save_path_y)
+        else:
+            # print(f"SAVING : {save_path}")
+            X, Y = func(*args, **kwargs)
+            if not save_path_x.exists():
+                np.save(save_path_x, X)
+            np.save(save_path_y, Y)
+            return X, Y
+    return _wrapper
+
+@save_numpy_deco
+def runge_kutta(function, y0: tuple | float, time_space_params: tuple[float, float], Q: float) -> tuple[np.ndarray, np.ndarray]:
     time_space = np.arange(0, *time_space_params)
     h = time_space[1] - time_space[0]
     num = len(time_space)
@@ -83,7 +111,19 @@ def get_right_flow(func_v, data: DataClass):
 def identity(x):
     return x
 
+if __name__ == "__main__":
+    data = DataClass.get_example1()
+            
+    right_flow = get_right_flow(identity, data)
 
+    h = 0.01
+    X, Y = runge_kutta(
+        function=right_flow,
+        time_space_params=(100, h),
+        y0=(2,2,2,2),
+        Q=data.Q
+    )
+ 
 class Title2(Text):
     def __init__(
         self,
@@ -130,6 +170,7 @@ class Tikz(MathTex):
             **kwargs,
         )
 
+Text.set_default(font="Times New Roman")
 class SWSlide(Slide):
     def sw(self, time = 0):
         shortest_time = 1/self.camera.frame_rate
@@ -152,3 +193,7 @@ class PageNum(Integer):
     def bump(self):
         self.increment_value(1)
         self.to_corner(self.edge)
+
+
+def AnimGroupFunc(mobjects, func, lag_ratio=0, **kwargs):
+    return AnimationGroup(*map(lambda x: func(x, **kwargs), mobjects), lag_ratio=lag_ratio)

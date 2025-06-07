@@ -23,6 +23,7 @@ _r = 2
 
 ##
 
+###
 # alpha = np.linspace(20, 10, _q+1)
 # k = np.append([0], np.linspace(0.5, 0.2, _q))
 # m = np.append([0], np.linspace(5, 2, _q))
@@ -33,8 +34,9 @@ _r = 2
 # k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 # m2 = np.append([0], np.linspace(4, 1, _r))
 # a2 = np.append([0, 0.0], np.array([0] * (_r-1)))
+###
 
-
+###
 # alpha = np.linspace(80, 20, _q+1)
 # k = np.append([0], np.linspace(0.8, 0.5, _q))
 # m = np.append([0], np.linspace(20, 10, _q))
@@ -45,14 +47,14 @@ _r = 2
 # k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 # m2 = np.append([0], np.linspace(4, 2, _r))
 # a2 = np.append([0, 0.0], np.array([0] * (_r-1)))
-
+###
 
 alpha = np.linspace(20, 10, _q+1)
 k = np.append([0], np.linspace(0.5, 0.2, _q))
 m = np.append([0], np.linspace(5, 2, _q))
 a = np.append([0, 0.2], [0] * (_q-1))\
 
-alpha_b = 16
+alpha_b = 8
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
 k2 = np.append([0], np.linspace(0.5, 0.3, _r))
 m2 = np.append([0], np.linspace(4, 1, _r))
@@ -130,15 +132,15 @@ def identity(x):
 
 
 ### CHANGE PARAMETERS
-Q = 100
+Q = 1
 
-s = 2
+s = 1
 
 q = 2
 r = 0
 ###
 
-t_s = np.arange(0, 100, 0.001)
+t_s = np.arange(0, 100, 0.01)
 N0 = np.array([ 0.5 ] * (1+_q+_r))
 
 # right_flow = get_right_split(identity)
@@ -361,8 +363,65 @@ def calc_Q_table2(s_, q_, r_):
             print(out_str)
     print("-----")
 
+def calc_Q_table3(s_, q_, r_):
+    def trunc(x, pow: int):
+        from numpy import trunc as trnc
+        p10 = 10**int(pow)
+        return trnc(x * p10) / p10
 
-# calc_Q_table2(s, _q, _r)
+    print("-----")
+    print("MathTable([")
+    for qi in range(1,q_+1):
+        line = fr"["
+        for ri in range(r_+1):
+            QQ1, QQ2, QR1, QR2 = calc_Q(s_, qi, ri)
+            out_str = None
+            if QQ1 == -1:
+                out_str = " \"-\", "
+            else:
+                qstr, rstr = "", ""
+                if isinstance(QQ1, tuple):
+                    q1 = trunc(QQ1[0], 2)
+                    q2 = trunc(QQ2[0], 2)
+                    qstr = fr"q?({q1}, {q2})"
+                else:
+                    q1 = trunc(QQ1, 2)
+                    q2 = trunc(QQ2, 2)
+                    if QQ1 == QQ2:
+                        q2 = r"+\infty"
+                    qstr = fr"q({q1}, {q2})"
+
+                if isinstance(QR1, tuple):
+                    r1 = trunc(QR1[0], 2)
+                    r2 = trunc(QR2[0], 2)
+                    rstr = fr"r?({r1}, {r2})"
+                else:
+                    r1 = trunc(QR1, 2)
+                    r2 = trunc(QR2, 2)
+                    if QR1 == QR2:
+                        r2 = r"+\infty"
+                    rstr = fr"r({r1}, {r2})"
+
+                out_str = fr""" r" {qstr} \\ {rstr} ", """
+
+            if ri == r_:
+                if qi == q_:
+                    out_str += f""" ]
+],
+include_outer_lines=True,
+row_labels=[{",".join(f"Tex({i})" for i in range(1,_q+1))}],
+col_labels=[{",".join(f"Tex({i})" for i in range(_r+1))}],
+top_left_entry=VGroup( MathTex("q"), MathTex("r") ).arrange(UR),
+)"""
+                else:
+                    out_str += r" ],"
+
+            line += out_str
+        print(line)
+    print("-----")
+
+
+calc_Q_table3(s, _q, _r)
 
 print("Current threshold")
 QQ1, QQ2, QR1, QR2 = calc_Q(s, q, r)
