@@ -4,6 +4,9 @@ from dataclasses import dataclass
 
 from cachetools.func import lru_cache
 
+from manim import *
+from manim_slides import Slide
+
 @dataclass
 class DataClass:
     Q: float
@@ -79,3 +82,73 @@ def get_right_flow(func_v, data: DataClass):
 
 def identity(x):
     return x
+
+
+class Title2(Text):
+    def __init__(
+        self,
+        *text_parts,
+        include_underline=True,
+        match_underline_width_to_text=False,
+        underline_buff=MED_SMALL_BUFF,
+        **kwargs,
+    ):
+        self.include_underline = include_underline
+        self.match_underline_width_to_text = match_underline_width_to_text
+        self.underline_buff = underline_buff
+        kwargs["font"] = kwargs.get("font") or "Times New Roman"
+        super().__init__(*text_parts, **kwargs)
+        self.to_edge(UP)
+        if self.include_underline:
+            underline_width = config["frame_width"] - 2
+            underline = Line(LEFT, RIGHT)
+            underline.next_to(self, DOWN, buff=self.underline_buff)
+            if self.match_underline_width_to_text:
+                underline.match_width(self)
+            else:
+                underline.width = underline_width
+            self.add(underline)
+            self.underline = underline
+
+class Tikz(MathTex):
+    def __init__(
+            self, *tex_strings, arg_separator="", tex_environment="tikzpicture", **kwargs
+    ):
+        kwargs["stroke_width"] = kwargs.get("stroke_width") or 1 
+        kwargs["tex_template"] = kwargs.get("tex_template") or TexTemplate(tex_compiler='xelatex',output_format='.pdf')\
+            .add_to_preamble(r"""\usepackage{tikz}
+                    \usepackage{polyglossia}
+                    \usepackage{xecyr}
+                             
+                    \setmainfont{Times New Roman} 
+                    \newfontfamily{\cyrillicfont}{Times New Roman}""")\
+            .add_to_document(r"\usetikzlibrary{shapes.geometric, calc, arrows.meta, shapes.multipart}")
+        super().__init__(
+            *tex_strings,
+            arg_separator=arg_separator,
+            tex_environment=tex_environment,
+            **kwargs,
+        )
+
+class SWSlide(Slide):
+    def sw(self, time = 0):
+        shortest_time = 1/self.camera.frame_rate
+        if time < shortest_time:
+            time = shortest_time
+
+        self.wait(time)
+        _marker = Dot(color=YELLOW).to_corner(DR).shift(0.55*DR).set_opacity(0.2)
+        self.add(_marker)
+        self.wait(shortest_time)
+        self.next_slide()
+        self.remove(_marker)
+
+class PageNum(Integer):
+    def __init__(self, number = 0, edge = DR, **kwargs):
+        super().__init__(number, 0, **kwargs)
+        self.edge = edge
+        self.to_corner(edge)
+
+    def bump(self):
+        self.increment_value(1)
+        self.to_corner(self.edge)
