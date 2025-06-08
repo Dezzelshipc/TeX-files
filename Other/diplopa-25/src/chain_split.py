@@ -134,7 +134,7 @@ def identity(x):
 ### CHANGE PARAMETERS
 Q = 1
 
-s = 1
+s = 3
 
 q = 2
 r = 0
