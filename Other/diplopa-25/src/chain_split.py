@@ -27,7 +27,7 @@ _r = 2
 # alpha = np.linspace(20, 10, _q+1)
 # k = np.append([0], np.linspace(0.5, 0.2, _q))
 # m = np.append([0], np.linspace(5, 2, _q))
-# a = np.append([0, 0.2], [0] * (_q-1))\
+# a = np.append([0, 0.2], [0] * (_q-1))
 
 # alpha_b = 16
 # alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
@@ -40,7 +40,7 @@ _r = 2
 # alpha = np.linspace(80, 20, _q+1)
 # k = np.append([0], np.linspace(0.8, 0.5, _q))
 # m = np.append([0], np.linspace(20, 10, _q))
-# a = np.append([0, 0.2], [0] * (_q-1))\
+# a = np.append([0, 0.2], [0] * (_q-1))
 
 # alpha_b = 20
 # alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
@@ -52,7 +52,7 @@ _r = 2
 alpha = np.linspace(20, 10, _q+1)
 k = np.append([0], np.linspace(0.5, 0.2, _q))
 m = np.append([0], np.linspace(5, 2, _q))
-a = np.append([0, 0.2], [0] * (_q-1))\
+a = np.append([0, 0.2], [0] * (_q-1))
 
 alpha_b = 8
 alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 

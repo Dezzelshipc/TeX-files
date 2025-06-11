@@ -9,17 +9,22 @@ from manim_slides.slide import Slide
 @dataclass
 class DataClass:
     Q: float
-    n: int
+    n: int | tuple[int, int]
     alpha: np.ndarray
     k: np.ndarray
     m: np.ndarray
     a: np.ndarray
 
+    s: int | None = None
+    alpha_b: float | None = None
+
     def __copy__(self):
         return DataClass(
             Q = self.Q,
             n = self.n,
+            s = self.s,
             alpha = self.alpha,
+            alpha_b = self.alpha_b,
             k = self.k,
             m = self.m,
             a = self.a
@@ -44,16 +49,64 @@ class DataClass:
             a = np.append([0], [0.9, 0.9, 0.9]), # n-1, 0<=a_i<=1
         )
     
+    @staticmethod
+    def get_example_split_base():
+        _q = 4
+        _r = 2
+
+        alpha = np.linspace(20, 10, _q+1)
+        k = np.append([0], np.linspace(0.5, 0.2, _q))
+        m = np.append([0], np.linspace(5, 2, _q))
+        a = np.append([0, 0.2], [0] * (_q-1))
+
+        alpha_b = 16
+        alpha2 = np.append([alpha_b], np.linspace(16, 8, _r)) 
+        k2 = np.append([0], np.linspace(0.5, 0.3, _r))
+        m2 = np.append([0], np.linspace(4, 1, _r))
+        a2 = np.append([0, 0.0], np.array([0] * (_r-1)))
+
+        alpha = np.append(alpha, alpha2[1:])
+        k = np.append(k, k2[1:])
+        m = np.append(m, m2[1:])
+        a = np.append(a, a2[1:])
+
+        return DataClass(
+            Q = 0,
+            n = (_q,_r),
+            alpha = alpha,
+            k = k,
+            m = m,
+            a = a,
+        )
+    
+    @staticmethod
+    def get_example_split_s1a8():
+        data = DataClass.get_example_split_base()
+        data.alpha_b = 8
+        data.s = 1
+
+        return data
+    
+    @staticmethod
+    def get_example_split_s3a8():
+        data = DataClass.get_example_split_base()
+        data.alpha_b = 8
+        data.s = 3
+
+        return data
+    
+
 def save_numpy_deco(func):
     def _wrapper(*args, **kwargs):
         _Q = kwargs['Q']
         _f = kwargs['function'].__name__
         _y0 = kwargs['y0']
         _t = kwargs['time_space_params']
+        _add = kwargs["add"] or ""
         save_path = Path(__file__).parent / "save_rk_result"
 
         save_path_x = save_path / "X"
-        save_path_y = save_path / "Y" / f"{_f}_{_y0}_{_t}"
+        save_path_y = save_path / f"Y{_add}" / f"{_f}_{_y0}_{_t}"
 
         save_path_x.mkdir(parents=True, exist_ok=True)
         save_path_y.mkdir(parents=True, exist_ok=True)
@@ -74,7 +127,7 @@ def save_numpy_deco(func):
     return _wrapper
 
 @save_numpy_deco
-def runge_kutta(function, y0: tuple | float, time_space_params: tuple[float, float], Q: float) -> tuple[np.ndarray, np.ndarray]:
+def runge_kutta(function, y0: tuple | float, time_space_params: tuple[float, float], **kwargs) -> tuple[np.ndarray, np.ndarray]:
     time_space = np.arange(0, *time_space_params)
     h = time_space[1] - time_space[0]
     num = len(time_space)
@@ -98,6 +151,9 @@ def get_right_flow(func_v, data: DataClass):
     alpha = data.alpha
     k = data.k
     m = data.m
+    
+    assert isinstance(n, int)
+
     def right_flow(t, x):
         return np.append(
             [Q - alpha[0] * func_v(x[0]) * x[1]],
@@ -107,6 +163,46 @@ def get_right_flow(func_v, data: DataClass):
             ]
         )
     return right_flow
+
+def get_right_split(func_v, data: DataClass):
+    assert isinstance(data.n, tuple)
+
+    s = data.s
+    Q = data.Q
+    _q, _r = data.n
+    alpha = data.alpha
+    alpha_b = data.alpha_b
+    k = data.k
+    m = data.m
+    a = data.a
+
+    assert s > 0
+    assert alpha_b > 0
+
+    cc = a*m
+    def right_split(_, x):
+        return np.array([
+            *[Q - alpha[0] * func_v(x[0]) * x[1] + sum(cc * x)],
+            *[
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - x[i+1] * alpha[i] * func_v(x[i])
+                for i in range(1, s)
+            ],
+            *[
+                -m[s] * x[s] + k[s] * alpha[s-1] * func_v(x[s-1]) * x[s] - x[s+1] * alpha[s] * func_v(x[s]) - (alpha_b * func_v(x[s]) * x[_q+1] if _r > 0 else 0)
+            ],
+            *[
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < _q else 0 ) * alpha[i] * func_v(x[i])
+                for i in range(s+1, _q+1)
+            ],
+            *[
+                -m[_q+1] * x[_q+1] + k[_q+1] * alpha_b * func_v(x[s]) * x[_q+1] - (x[_q+2] * alpha[_q+1] * func_v(x[_q+1]) if _r > 1 else 0 )
+            ],
+            *[
+                -m[i] * x[i] + k[i] * alpha[i-1] * func_v(x[i-1]) * x[i] - (x[i+1] if i < _q+_r else 0 ) * alpha[i] * func_v(x[i])
+                for i in range(_q+2, _q+_r+1)
+            ],
+        ])
+    return right_split
 
 def identity(x):
     return x
@@ -171,6 +267,7 @@ class Tikz(MathTex):
         )
 
 Text.set_default(font="Times New Roman")
+
 class SWSlide(Slide):
     def sw(self, time = 0):
         shortest_time = 1/self.camera.frame_rate
