@@ -1,0 +1,3 @@
+manim-slides convert Intro DiplomIntro ModelsIntro StabilityTypes SignStability ExampleFlow1Intro ExampleFlow1 CycleSplitIntro SplitStability ExampleSplitIntro ExampleSplit ExampleSplit2Intro ExampleSplit2 Conclusion Outro present/full.html
+
+manim-slides convert Intro DiplomIntro ModelsIntro StabilityTypes SignStability ExampleFlow1Intro ExampleFlow1 CycleSplitIntro SplitStability ExampleSplitIntro ExampleSplit ExampleSplit2Intro ExampleSplit2 Conclusion Outro present/full.pptx
