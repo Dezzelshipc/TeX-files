@@ -1,7 +1,7 @@
 \subsection{Равновесные состояния}
 Аналогично незамкнутой системе, в системе с частичным восстановлением ресурса (\ref{cycle}) при \(Q > 0\) могут существовать \( n \) равновесных состояний типа \(\left[ N_0, N_1, \ldots, N_q, 0, \ldots, 0 \right]\), которые могут быть найдены из уравнений
 \begin{equation} \label{cycle_stationary_equations}
-    \frac{dN}{dt} = 0 \Rightarrow
+    \frac{d \mb{N} }{dt} = 0 \Rightarrow
     \left\lbrace\begin{split}
         & Q + \sum_{i=1}^{q} a_i m_i N_i = \alpha_0 N_0 N_1, \\
         & \alpha_i N_{i+1} = k_i \alpha_{i-1} N_{i-1} - m_i, \quad i=\overline{1,q}                
@@ -41,7 +41,7 @@
             & Q + f_{2s+1} \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1} = \\
             & = N_1 \left( \alpha_0 f_{2s+1} - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} \right) + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2},  \\
             & Q + f_{2s+1} \varphi_s - \sigma_{2s+1} = N_1 \left( \alpha_0 f_{2s+1} - \psi_{s+1} \right), \\
-            & N_0 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
+            & N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
         \end{split}
         \end{equation*}
 \end{enumerate}
@@ -95,9 +95,10 @@
             Сравнивая с (\ref{cycle_lower_2s}) получаем
             \begin{equation*}
                 \begin{split}
-                & f_{2s-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}
-                < Q \leq 
-                f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}, \\
+                & \left\{ \begin{split}
+                    & Q > f_{2s-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s}, \\
+                    & Q \leq f_{2u-1} ( \alpha_0 f_{2s} - \varphi_s ) - f_{2s} \psi_s + \sigma_{2s},
+                \end{split} \right. \\
                 & f_{2s-1} < f_{2u-1}
                 \end{split}
             \end{equation*}
@@ -120,8 +121,7 @@
             \begin{equation*}
                 \begin{split}
                 & \left\{ \begin{split}
-                    & f_{2s} ( \alpha_0 f_{2s+1}  - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}
-                    < Q, \\
+                    & Q > f_{2s} ( \alpha_0 f_{2s+1}  - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1}, \\
                     & Q \leq f_{2u} ( \alpha_0 f_{2s+1} - \psi_{s+1} ) - f_{2s+1} \varphi_s + \sigma_{2s+1},
                 \end{split} \right. \\
                 & f_{2s} < f_{2u}.
@@ -138,32 +138,32 @@
 
 Получим матрицу, похожую на (\ref{flow_jacobian_small}), вида
 \begin{equation} \label{cycle_stability_matrix}
-    J = \left\Vert \begin{matrix}
+    J = \pares{ \begin{matrix}
         A^1_q & C \\
         0 & D_{n-q}
-    \end{matrix} \right\Vert,
+    \end{matrix} },
 \end{equation}
 где
 \begin{equation}
-    A^1_q = \left\Vert \begin{matrix}
+    A^1_q = \pares{ \begin{matrix}
             -b_0  & c_1-d_0&   c_2    &  \dots   & c_q      \\
             b_1  &  0     &  -d_1    &          &  0       \\
                     & \ddots & \ddots   &  \ddots  &          \\
                     &        & b_{q-1}  &     0    & -d_{q-1} \\
                     &   0    &          & b_{q}    &  0  
-    \end{matrix} \right\Vert,
-    C = \left\Vert \begin{matrix}
+    \end{matrix} }, ~
+    C = \pares{ \begin{matrix}
         c_{q+1} & c_{q+2} & \dots & c_{n} \\
                 &    0    &       &
-    \end{matrix} \right\Vert,
+    \end{matrix} },
 \end{equation}
 \( c_i = a_i m_i, i = \overline{1,n} \), а остальные обозначения соответствуют (\ref{flow_jacobian_vars}).
 
 Аналогично из (\ref{flow_jacobian_spectrum}) имеем асимптотическую устойчивость системы при
-\begin{equation} \label{cycle_nq_upper}
+\begin{align} \label{cycle_nq_upper}
     N_q < \frac{m_{q+1}}{\alpha_q k_{q+1}}.
-\end{equation}
-и устойчивости матрицы \( A^q_1 \).
+\end{align}
+и устойчивости матрицы \( A^1_q \).
 
 Матрица \(A^1_q\) не является якобиевой (трёхдиагональной), поэтому определять её устойчивость нужно определять методами обычной устойчивости, например с помощью характеристического многочлена.
 
@@ -342,7 +342,7 @@
         a_1 m_1 < \alpha_0 f_{2s+1}, & q = 2s+1. \\
     \end{matrix}
 \end{equation*}
-Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N_q > 0\). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
+Очевидно, что при \( Q > 0 \) первое неравенство выполняется. Второе неравенство перепишем в виде \( \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} > 0 \). Но неравенство \eqref{cycle_lower_2s1} для нашего случая становится \( Q > \alpha_0 f_{2s} f_{2s+1} - a_1 m_1 f_{2s} \). Это неравенство необходимо выполняется для положительности \(N_q > 0\) (\(\forall q\) это значение не меньше 0). Таким образом, положительность обеспечивает выполнение неравенства \(c_1 < d_0\) для нечётных \(q\). Поэтому остаётся единственное неравенство \eqref{cycle_nq_upper}, при выполнении которого равновесие устойчиво, то есть замкнутая только по первому уровню трофическая цепь длины \(q\) существует.
 
 Используя выражение для \(N_q\) из \eqref{cycle1_2s_01} и \eqref{cycle1_2s1_01}, неравенство \eqref{cycle_nq_upper} запишем в виде
 

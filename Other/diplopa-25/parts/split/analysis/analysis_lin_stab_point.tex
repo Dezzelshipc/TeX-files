@@ -1,6 +1,5 @@
 \subsection{Равновесные состояния при линейных функциях}
 Пусть трофические функции соответствуют напряжённым связям и при этом есть замыкание только по первому виду, т.е. \(V_i(N_i) = \alpha_i N_i, ~ V'_k(N'_k) = \alpha'_k N'_k, ~ V^b_s(N_s) = \alpha^b_s N_s\) и \( a_1 \neq 0, ~ a_i, a'_k = 0 ~ i=\overline{2,q}, k=\overline{1,r}\). Тогда система \eqref{double_full} становится:
-
 \begin{equation} \label{double_lin}
     \begin{split}
         & \frac{d N_0}{dt} = Q + N_1 ( -\alpha_0 N_0 + a_1 m_1 ), \\
@@ -10,7 +9,7 @@
         & \frac{d N'_k}{dt} = N'_k ( -m'_k + k'_k \alpha'_{k-1} N'_{k-1} - \alpha'_k N'_{k+1} ), \quad k=\overline{2,r}.
     \end{split}
 \end{equation}
-Из \( \frac{d \mb{N}}{dt} = 0 \) можно найти состояние равновесия:
+Из \( \frac{d \mb{N}}{dt} = 0 \) можно найти систему для определения состояние равновесия:
 \begin{equation} \label{double_stab_system}
     \begin{cases}
         N_1 = \dfrac{Q}{ \alpha_0 N_0 - a_1 m_1 }, \\
