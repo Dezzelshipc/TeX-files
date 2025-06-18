@@ -228,8 +228,12 @@
         \vspace{20pt}
 
         \textbf{ВЫПУСКНАЯ КВАЛИФИКАЦИОННАЯ РАБОТА}
+
+        \vspace{5pt}
+
+        \undertext{вид ВКР}{\hspace{100pt} \textbf{Бакалаврская} \hspace{100pt}}
         
-        \vspace{20pt}
+        \vspace{10pt}
 
         \textbf{#2}
         
@@ -254,7 +258,7 @@
     \setcounter{page}{1}
 }
 
-\newcommand{\fefureverseVKR}[6]{
+\newcommand{\fefureverseVKR}[8]{
 
     \begingroup
 
@@ -269,7 +273,7 @@
             В материалах данной выпускной \\[-6pt] квалификационной работы не содержатся \\[-6pt] сведения, составляющие государственную \\[-6pt] тайну, и сведения, подлежащие экспертному \\[-6pt] контролю
         } \\
         Уполномоченный по экспертному контролю \\
-        \signatureuser{\hspace{100pt}} \\
+        \signatureuser{#1} \\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         \columnbreak
@@ -280,18 +284,18 @@
 
         \vspace{20pt}
         
-        Руководитель ВКР\undertext{должность, учёное звание}{\text{#1}} \\
-        \signatureuser{#2}\\
+        Руководитель ВКР\undertext{должность, учёное звание}{\text{#2}} \\
+        \signatureuser{#3}\\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         Нормоконролер \\
-        \signatureuser{#3}\\
+        \signatureuser{#4}\\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
 
         \vspace{20pt}
 
-        Назначен рецензент\undertext{учёное звание}{~ \text{#4} ~} \\
-        \undertext{фамилия, имя, отчество}{~ \text{#5} ~}
+        Назначен рецензент\undertext{учёное звание}{~ \text{#5} ~} \\
+        \undertext{фамилия, имя, отчество}{~ \text{#6} ~}
 
         \vfill
 
@@ -302,7 +306,7 @@
         Защищена в ГЭК с оценкой: \\
         \uline{~~\hspace{150pt}~~}\\
         Секретарь ГЭК \\
-        \signatureuser{\hspace{100pt}}\\
+        \signatureuser{#7}\\
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
         
         \columnbreak
@@ -315,7 +319,7 @@
 
         \undertext{должность, учёное звание}{~~\hspace{140pt}~~}
 
-        \signatureuser{#6}
+        \signatureuser{#8}
 
         <<\uline{\hspace{30pt}}>> \uline{\hspace{80pt}} \the\year \, г.
         
