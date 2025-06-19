@@ -1,1 +1,1 @@
-manim-slides present Intro DiplomIntro ModelsIntro StabilityTypes SignStability ExampleFlow1Intro ExampleFlow1 CycleSplitIntro SplitStability ExampleSplitIntro ExampleSplit ExampleSplit2Intro ExampleSplit2 Conclusion Outro
+manim-slides present Intro Goal DiplomIntro ModelsIntro StabilityTypes SignStability ExampleFlow1Intro  CycleSplitIntro SplitStability ExampleSplitIntro ExampleSplit ExampleSplit2Intro ExampleSplit2 Conclusion Outro      ExampleFlow1
