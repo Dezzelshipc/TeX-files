@@ -24,24 +24,28 @@
     Используя первое уравнение в (\ref{cycle_stationary_equations}), будем иметь            
     \begin{equation*}
     \begin{split}
-        & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
-        & Q + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(f_{2s} - f_{2i-2})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}), \\
-        & Q + f_{2s} \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} - \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2} = \\
+        Q & + \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) +\\
+        & + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
+        % Q &+ \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2}(f_{2s} - f_{2i-2}) =\\ 
+        % & = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}), \\
+        Q &+ f_{2s} \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} - \sum\limits_{i=1}^{s} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2} = \\
         & = N_0 \left( \alpha_0 f_{2s} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} \right) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1},  \\
-        & Q + f_{2s} \psi_s - \sigma_{2s} = N_0 \left( \alpha_0 f_{2s} - \varphi_s \right), \\
-        & N_0 = \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}.
+        Q &+ f_{2s} \psi_s - \sigma_{2s} = N_0 \left( \alpha_0 f_{2s} - \varphi_s \right), \\
+        N_0 &= \frac{Q + f_{2s} \psi_s - \sigma_{2s}}{\alpha_0 f_{2s} - \varphi_s}.
     \end{split}
     \end{equation*}
 
     \item Пусть \(q = 2s+1\) -- \textit{нечётное}. Тогда \( N_1 = f_{2s+1} \) и
     \begin{equation*}
         \begin{split}
-            & Q + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
-            & Q + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(f_{2s+1} - f_{2i-1})  = \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}), \\
-            & Q + f_{2s+1} \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1} = \\
+            Q &+ \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}) +\\
+            & + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(N_0-f_{2i-1}) = \alpha_0 N_0 N_1, \\
+            % & Q + \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1}(f_{2s+1} - f_{2i-1}) =\\
+            % &= \alpha_0 N_0 N_1 - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2}(N_1 - f_{2i-2}), \\
+            Q &+ f_{2s+1} \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} - \sum\limits_{i=1}^{s} a_{2i} m_{2i} H_{2i-1} f_{2i-1} = \\
             & = N_1 \left( \alpha_0 f_{2s+1} - \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} \right) + \sum\limits_{i=1}^{s+1} a_{2i-1} m_{2i-1} H_{2i-2} f_{2i-2},  \\
-            & Q + f_{2s+1} \varphi_s - \sigma_{2s+1} = N_1 \left( \alpha_0 f_{2s+1} - \psi_{s+1} \right), \\
-            & N_1 = \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
+            Q &+ f_{2s+1} \varphi_s - \sigma_{2s+1} = N_1 \left( \alpha_0 f_{2s+1} - \psi_{s+1} \right), \\
+            N_1 &= \frac{Q + f_{2s+1} \varphi_s - \sigma_{2s+1}}{ \alpha_0 f_{2s+1} - \psi_{s+1} }.
         \end{split}
         \end{equation*}
 \end{enumerate}

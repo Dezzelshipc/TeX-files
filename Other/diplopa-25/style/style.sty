@@ -22,6 +22,8 @@
 
 \RequirePackage{cite}
 
+\RequirePackage{microtype}
+
 \setdefaultlanguage{russian}
 \setotherlanguage{english}
 
@@ -63,6 +65,12 @@
 % \setcounter{tocdepth}{2}
 \dottedcontents{subsubsection}[4.5em]{}{3.3em}{1pc}
 %%%
+
+\newcommand{\secnonum}[1]{
+\refstepcounter{subsection}
+\addcontentsline{toc}{section}{#1}
+\section*{#1}
+}
 
 \addto\captionsrussian{\def\refname{\section{Список литературы}\vspace*{-1em}}}
 \addto\captionsrussian{\def\contentsname{\centering Оглавление}}

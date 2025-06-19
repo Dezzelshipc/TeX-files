@@ -246,7 +246,10 @@
         \end{equation}
         где действительный \(m\)-вектор \(\mathrm{x}\) является решением системы (\ref{sign_hunter_ode}). Очевидно, что данная квадратичная форма положительна определена. Найдём её производную на траекториях системы:
         \begin{equation}
-            \frac{dV}{dt} = \frac{\D V}{\D \mathrm{x}} \frac{d \mathrm{x}}{dt} = \nabla V \cdot \widetilde{A} \mathrm{x} = \left( 2 \alpha_i x_i \right) \cdot \left( \sum_{j=1}^{m} a_{ij} x_j \right) = 2 \sum_{i=1}^{m} \left( \alpha_i x_i  \sum_{j=1}^{m} a_{ij} x_j \right).
+            \begin{split}
+                \frac{dV}{dt} &= \frac{\D V}{\D \mathrm{x}} \frac{d \mathrm{x}}{dt} = \nabla V \cdot \widetilde{A} \mathrm{x} =\\ 
+                & = \left( 2 \alpha_i x_i \right) \cdot \left( \sum_{j=1}^{m} a_{ij} x_j \right) = 2 \sum_{i=1}^{m} \left( \alpha_i x_i  \sum_{j=1}^{m} a_{ij} x_j \right).
+            \end{split}
         \end{equation}
         Для каждого слагаемого вида \(\alpha_i a_{ij} x_i x_j\) имеем симметричное \(\alpha_j a_{ji} x_j x_i\) и в силу соотношения (\ref{sign_conntcnted_ij}) они являются противоположными и исчезнут, оставляя только диагональные элементы. Поэтому получаем
         \begin{equation} \label{sign_lyapunov_func_diag}
