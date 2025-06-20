@@ -3,7 +3,7 @@
 \RequirePackage{amsthm}
 \RequirePackage{geometry}
 \RequirePackage{graphicx}
-\RequirePackage[justification=centering]{caption}
+\RequirePackage[justification=centering, labelsep=endash, font={small}]{caption}
 \RequirePackage{subcaption}
 \RequirePackage{float}
 \RequirePackage[hidelinks]{hyperref}
@@ -20,9 +20,9 @@
 \RequirePackage{polyglossia}
 \RequirePackage{xecyr}
 
-\RequirePackage{cite}
+\RequirePackage{fancyhdr}
 
-\RequirePackage{microtype}
+\RequirePackage{cite}
 
 \setdefaultlanguage{russian}
 \setotherlanguage{english}
@@ -36,10 +36,20 @@
 \parindent 1.25cm
 \linespread{1.5}
 
-\geometry{left=2.5cm}
-\geometry{right=1.5cm}
-\geometry{top=2cm}
-\geometry{bottom=2cm}
+\geometry{left=25mm}
+\geometry{right=15mm}
+\geometry{top=20mm}
+\geometry{bottom=20mm}
+
+% Page numbering
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyheadoffset{0mm}
+\fancyfootoffset{0mm}
+\setlength{\headheight}{17pt}
 
 \renewcommand{\lstlistingname}{Листинг}
 
@@ -55,16 +65,20 @@
 \RequirePackage{titlesec}
 \RequirePackage{titletoc}
 
-% \titleformat*{\section}{\fontsize{14pt}{16pt} \selectfont \bfseries}
-% \titleformat*{\subsection}{\fontsize{14pt}{16pt} \selectfont \bfseries}
+\titleformat{\section}[block]{\centering \fontsize{14pt}{16pt} \selectfont \bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[block]{\hspace{2em} \fontsize{14pt}{16pt} \selectfont \bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[block]{\hspace{2em} \fontsize{14pt}{16pt} \selectfont \bfseries}{\thesubsubsection.}{1em}{}
 
-\dottedcontents{section}[1.7em]{\bfseries}{1.7em}{1pc}
-\dottedcontents{section*}[1.7em]{\bfseries}{1.7em}{1pc}
+\dottedcontents{section}[1.7em]{}{1.7em}{1pc} % \bfseries
+\dottedcontents{section*}[1.7em]{}{1.7em}{1pc} % \bfseries
 \dottedcontents{subsection}[3.2em]{}{2.5em}{1pc}
 
 % \setcounter{tocdepth}{2}
 \dottedcontents{subsubsection}[4.5em]{}{3.3em}{1pc}
 %%%
+
+% \RequirePackage{sectsty}
+% \sectionfont{\centering}
 
 \newcommand{\secnonum}[1]{
 \refstepcounter{subsection}
@@ -73,7 +87,12 @@
 }
 
 \addto\captionsrussian{\def\refname{\section{Список литературы}\vspace*{-1em}}}
-\addto\captionsrussian{\def\contentsname{\centering Оглавление}}
+\addto\captionsrussian{\def\contentsname{Оглавление}}
+
+\makeatletter
+\renewcommand*{\@biblabel}[1]{\hfill#1.}
+\makeatother
+\addto\captionsrussian{\renewcommand{\figurename}{Рисунок}}
 
 \makeatletter
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
@@ -105,42 +124,6 @@
 	\or
 	декабря%
 	\fi
-}
-
-\usepackage{color}
-\definecolor{darkred}{rgb}{0.6,0.0,0.0}
-\definecolor{darkgreen}{rgb}{0,0.50,0}
-\definecolor{lightblue}{rgb}{0.0,0.42,0.91}
-\definecolor{orange}{rgb}{0.99,0.48,0.13}
-\definecolor{grass}{rgb}{0.18,0.80,0.18}
-\definecolor{pink}{rgb}{0.97,0.15,0.45}
-
-% listings
-\usepackage{listings}
-
-% General Setting of listings
-\lstset{
-  aboveskip=1em,
-  breaklines=true,
-  abovecaptionskip=-6pt,
-  captionpos=b,
-  escapeinside={\%*}{*)},
-  frame=single,
-  numbers=left,
-  numberstyle=\tiny,
-}
-% 0. Basic Color Theme
-\lstdefinestyle{colored}{ %
-  basicstyle=\ttfamily,
-  backgroundcolor=\color{white},
-  commentstyle=\color{green}\itshape,
-  keywordstyle=\color{blue}\bfseries\itshape,
-  keywordstyle=[2]\color{blue}\bfseries,
-  keywordstyle=[3]\color{orange},
-  stringstyle=\color{red},
-  morekeywords={self},
-  morekeywords=[2]{__init__},
-  morekeywords=[3]{@staticmethod},
 }
 
 \delimitershortfall=-1pt
